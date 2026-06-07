@@ -681,6 +681,79 @@ def trend_momentum(
     return result
 
 
+# ── WHAT WORKS NOW (модель успіху) ───────────────────────────────────────────
+
+
+def what_works_now(
+    campaigns: Sequence[Campaign],
+    *,
+    now: str,
+    window_days: int = 30,
+    by: str = "channels",
+    min_n: int = 2,
+) -> list[dict]:
+    """«Що працює зараз»: топ-комбо за actor-нормалізованим engagement_rate.
+
+    Серед СВІЖИХ зборів (within window_days від now) групує за значенням осі `by`,
+    обчислює mean rel_resonance (actor-нормалізований er) по групі.
+    Виключає групи з n < min_n та групи без жодного rel_resonance-сигналу.
+
+    Args:
+        campaigns: всі кампанії (rel_resonance обчислюється глобально по всіх).
+        now: ISO-рядок референсної дати (не datetime.now).
+        window_days: вікно «свіжості» в днях.
+        by: вісь групування — 'channels' | 'tone' | 'form_factor' | 'goal' | 'face'.
+        min_n: мінімальна кількість recent-кампаній в групі.
+
+    Returns:
+        [{key, score (mean rel_resonance), n}] — відсортовано desc за score.
+    """
+    now_date = date.fromisoformat(now)
+    window_start = now_date - timedelta(days=window_days)
+
+    # Фільтруємо recent-кампанії
+    recent: list[Campaign] = []
+    for c in campaigns:
+        ds = parse_campaign_date(c)
+        if ds is None:
+            continue
+        try:
+            d = date.fromisoformat(ds)
+        except ValueError:
+            continue
+        if window_start < d <= now_date:
+            recent.append(c)
+
+    if not recent:
+        return []
+
+    # rel_resonance обчислюємо по ВСІХ кампаніях (щоб actor median був стабільним)
+    rrmap = rel_resonance_map(list(campaigns))
+
+    # Групуємо recent по осі
+    buckets: dict[str, list[Campaign]] = {}
+    for c in recent:
+        keys = _camp_axis_values_momentum(c, by)
+        for k in keys:
+            buckets.setdefault(k, []).append(c)
+
+    result: list[dict] = []
+    for key, camps in buckets.items():
+        n = len(camps)
+        if n < min_n:
+            continue
+        # mean rel_resonance серед кампаній з ненульовим сигналом
+        rels = [rrmap.get(c.id) for c in camps]
+        valid_rels = [r for r in rels if r is not None]
+        if not valid_rels:
+            continue  # честний null: групу без сигналу не включаємо
+        score = sum(valid_rels) / len(valid_rels)
+        result.append({"key": key, "score": score, "n": n})
+
+    result.sort(key=lambda x: x["score"], reverse=True)
+    return result
+
+
 def campaign_axis_summary(
     campaigns: Sequence[Campaign],
     *,
