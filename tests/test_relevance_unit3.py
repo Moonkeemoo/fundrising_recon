@@ -90,7 +90,7 @@ def test_purge_deletes_topical_keeps_jar_keeps_no_raw(tmp_path):
     _write_raw(raw_dir, url_topical, {
         "url": url_topical,
         "title": "ТАКТИЧНА АПТЕЧКА TCCC для військових",
-        "raw_text": "Навчальний контент без реквізитів.",
+        "raw_text": "Навчальний контент, огляд аптечки.",
     })
 
     # raw для jar-збору
@@ -140,7 +140,7 @@ def test_purge_deletes_creatives_of_deleted_campaign(tmp_path):
     _write_raw(raw_dir, url_topical, {
         "url": url_topical,
         "title": "Навчальний відео",
-        "raw_text": "Освітній контент без реквізитів і посилань.",
+        "raw_text": "Освітній контент, лише огляд теми.",
     })
 
     # До purge: creative існує

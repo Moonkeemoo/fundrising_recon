@@ -173,8 +173,8 @@ def test_topical_tccc_video_is_not_fundraising():
     assert is_fundraising(raw) is False
 
 
-def test_news_article_no_ask_is_not_fundraising():
-    """Новинна стаття описує збір але без механізму → False."""
+def test_news_article_about_collection_is_fundraising():
+    """Текст із явною фразою 'збір коштів' → True (посилається на реальний збір)."""
     from fundrec.relevance import is_fundraising
     raw = _raw(
         title="Волонтери зібрали кошти на дрони",
@@ -183,7 +183,7 @@ def test_news_article_no_ask_is_not_fundraising():
             "на придбання 50 дронів для ЗСУ. Деталі в репортажі."
         ),
     )
-    assert is_fundraising(raw) is False
+    assert is_fundraising(raw) is True
 
 
 def test_educational_article_no_ask_is_not_fundraising():
@@ -216,11 +216,11 @@ def test_empty_raw_is_not_fundraising():
     assert is_fundraising({}) is False
 
 
-def test_raw_with_only_title_no_mechanism_is_not_fundraising():
-    """raw тільки з заголовком без механізму → False."""
+def test_raw_with_explicit_fundraising_title_is_fundraising():
+    """raw з явною назвою-збором ('збір на ...') → True навіть без механізму у сніпеті."""
     from fundrec.relevance import is_fundraising
     raw = _raw(title="Збір на броньовик для 3-ї бригади")
-    assert is_fundraising(raw) is False
+    assert is_fundraising(raw) is True
 
 
 # ---------------------------------------------------------------------------
