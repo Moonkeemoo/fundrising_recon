@@ -306,9 +306,14 @@ def run_ingest(
     discovered_urls: list[str] = []
     if search_fn is not None:
         discovered_urls = discover_sources(theme, existing_urls=set(), _search=search_fn)
-    elif not dry_run:
-        # Live пошук (pragma: no cover у _live_search)
-        discovered_urls = discover_sources(theme, existing_urls=set())  # pragma: no cover
+    elif not dry_run and any(s in active_sources for s in ("reports", "news")):
+        # Web-discovery (DDG) потрібен лише для URL-джерел (reports/news).
+        # DDG нестабільний → збій НЕ фатальний (pragma: no cover — мережа).
+        try:  # pragma: no cover
+            discovered_urls = discover_sources(theme, existing_urls=set())
+        except Exception as exc:  # noqa: BLE001  # pragma: no cover
+            print(f"ingest: web-discovery (DDG) не вдалась, пропускаю: {exc}", file=sys.stderr)
+            discovered_urls = []
 
     if dry_run:
         return {
