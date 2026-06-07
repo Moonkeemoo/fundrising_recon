@@ -161,9 +161,9 @@ tr.detail td{background:#0c0f14}
   </div>
   <h4>верифікація</h4>
   <select class="full" id="f-verif">
-   <option value="cross">≥ cross-checked (за замовч.)</option>
+   <option value="all" selected>усі (вкл. auto) — за замовч.</option>
+   <option value="cross">≥ cross-checked</option>
    <option value="verified">тільки verified</option>
-   <option value="all">усі (включно з auto — «сире широке»)</option>
   </select>
   <div class="vrow" style="margin-top:8px">
    <label><input type="checkbox" id="f-conflict" checked> показувати конфлікти (флаг)</label>
@@ -355,7 +355,7 @@ tr.detail td{background:#0c0f14}
 let RAW=null, CASES=[], ANALYTICS=null;
 let CAMPAIGNS=[], CREATIVES=[], PARTNERS=[];
 const SEL={goal:new Set(),style:new Set(),method:new Set()};
-let yFrom=2022, yTo=2026, verifMode="cross", showConflict=true;
+let yFrom=2022, yTo=2026, verifMode="all", showConflict=true;
 let trendMetric="volume_usd", trendSplit="", heatMetric="count", lbAxis="amount_uah", lbDir=-1;
 const openRows=new Set();
 let chTrend=null, chHeat=null;
@@ -1047,8 +1047,8 @@ function bindSegs(){
  document.getElementById("f-conflict").onchange=e=>{showConflict=e.target.checked;update();};
  document.getElementById("reset").onclick=()=>{
   SEL.goal.clear();SEL.style.clear();SEL.method.clear();
-  verifMode="cross";showConflict=true;
-  document.getElementById("f-verif").value="cross";
+  verifMode="all";showConflict=true;
+  document.getElementById("f-verif").value="all";
   document.getElementById("f-conflict").checked=true;
   renderChips("f-goal",GOAL_ORDER,"goal");renderChips("f-style",STYLE_ORDER,"style");renderChips("f-method",METHOD_ORDER,"method");
   bindChips();renderYears();update();};
