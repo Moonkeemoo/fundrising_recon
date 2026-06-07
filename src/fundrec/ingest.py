@@ -44,10 +44,13 @@ from .pipeline_verify import verify_cases
 from .schema import Actor, Source
 
 # Яким ключам відповідають джерела
+# telegram: порожній список — web-шлях (t.me/s/<channel>) не потребує ключів.
+# Telethon-шлях (collect/telegram.py) потребує TELEGRAM_API_ID/HASH,
+# але за замовчуванням використовується web-шлях.
 _SOURCE_KEY_MAP: dict[str, list[str]] = {
     "meta":     ["META_ADS_TOKEN"],
     "youtube":  ["YOUTUBE_API_KEY"],
-    "telegram": ["TELEGRAM_API_ID", "TELEGRAM_API_HASH"],
+    "telegram": [],   # web-шлях: без ключів (t.me/s/<channel>)
     # Без ключів:
     "monobank": [],
     "reports":  [],
@@ -63,7 +66,7 @@ _SEARCH_SOURCES = {"youtube", "meta", "telegram"}
 _SEARCH_SOURCE_META: dict[str, dict[str, Any]] = {
     "youtube":  {"type": "social", "tier": 3},
     "meta":     {"type": "social", "tier": 1},
-    "telegram": {"type": "social", "tier": 2},
+    "telegram": {"type": "social", "tier": 3},
 }
 
 
@@ -114,7 +117,13 @@ def _get_default_search_collector(src_name: str) -> Any | None:
             return search_ads
         except ImportError:  # pragma: no cover
             return None
-    # telegram: no-op (needs interactive auth)
+    if src_name == "telegram":
+        try:
+            from .collect.telegram_web import search_channels  # noqa: PLC0415
+            # Обгортаємо: search_channels(theme, max_results=...) — сигнатура theme->list[dict]
+            return search_channels
+        except ImportError:  # pragma: no cover
+            return None
     return None
 
 

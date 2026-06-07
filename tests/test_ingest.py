@@ -504,3 +504,128 @@ def test_youtube_active_when_injected_collector_no_key(tmp_path):
     assert "youtube" not in summary["skipped_no_key"]
     # Кампанії зібрано
     assert summary["campaigns"] == 2
+
+
+# ---------------------------------------------------------------------------
+# Telegram web-path collection — нові тести
+# ---------------------------------------------------------------------------
+
+_FAKE_TELEGRAM_ITEMS = [
+    {
+        "source_url": "https://t.me/prytulafoundation/101",
+        "platform": "telegram",
+        "channel": "prytulafoundation",
+        "text": "Збір на FPV дрони! Монобанк jar 5375411200012345",
+        "views": 12300,
+        "date": "2024-03-15T10:30:00+00:00",
+        "message_id": 101,
+    },
+    {
+        "source_url": "https://t.me/back_and_alive/201",
+        "platform": "telegram",
+        "channel": "back_and_alive",
+        "text": "Банка на броньовик: mono.bank/send/xyz",
+        "views": 3100,
+        "date": "2024-03-10T09:00:00+00:00",
+        "message_id": 201,
+    },
+]
+
+
+def _make_components_telegram_only():
+    """_components без web-search, тільки telegram fake collector."""
+
+    def fake_telegram_collector(theme):
+        return list(_FAKE_TELEGRAM_ITEMS)
+
+    call_count = {"n": 0}
+
+    def fake_complete(prompt):
+        call_count["n"] += 1
+        if "creatives" in prompt:
+            return _FAKE_LLM_CAMPAIGN.copy()
+        return _FAKE_LLM_CASE.copy()
+
+    def fake_judge(prompt):
+        return {"supported": True, "confidence": 0.9, "reason": "ok"}
+
+    def fake_sleep(seconds):
+        pass
+
+    return {
+        "collect": {
+            "telegram": fake_telegram_collector,
+        },
+        "complete": fake_complete,
+        "judge": fake_judge,
+        "sleep": fake_sleep,
+    }
+
+
+def test_telegram_search_based_collection_yields_campaigns(tmp_path):
+    """Search-based (telegram web) збирає кампанії без ключів."""
+    from fundrec import ingest, store
+
+    components = _make_components_telegram_only()
+    summary = ingest.run_ingest(
+        "FPV дрони",
+        sources=["telegram"],
+        max_items=10,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+
+    assert summary["discovered"] == 0
+    assert summary["campaigns"] == 2
+    assert summary["collected_per_source"].get("telegram", 0) == 2
+
+    conn = store.connect(tmp_path / "test.sqlite")
+    campaigns = store.load_campaigns(conn)
+    assert len(campaigns) == 2
+
+
+def test_telegram_active_by_default_no_keys(tmp_path):
+    """telegram активний за замовчуванням через web-шлях (не потребує ключів).
+
+    Підтверджує, що telegram НЕ в skipped_no_key навіть без env-ключів.
+    """
+    from fundrec import ingest
+
+    components = _make_components_telegram_only()
+    summary = ingest.run_ingest(
+        "FPV",
+        sources=["telegram"],
+        max_items=5,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+    assert "telegram" not in summary["skipped_no_key"]
+    assert summary["campaigns"] == 2
+
+
+def test_telegram_search_source_type_is_social_tier3(tmp_path):
+    """Джерело telegram зберігається з type='social' і tier=3."""
+    from fundrec import ingest, store
+
+    components = _make_components_telegram_only()
+    ingest.run_ingest(
+        "FPV дрони",
+        sources=["telegram"],
+        max_items=5,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+    conn = store.connect(tmp_path / "test.sqlite")
+    row = conn.execute(
+        "SELECT type, tier FROM sources WHERE url = ?",
+        ("https://t.me/prytulafoundation/101",),
+    ).fetchone()
+    assert row is not None
+    assert row[0] == "social"
+    assert row[1] == 3
