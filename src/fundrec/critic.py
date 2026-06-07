@@ -1,6 +1,7 @@
 """LLM-критик на прямому Anthropic API (окрема модель, temp=0).
 
-Тестована поверхня: build_critic_prompt / parse_verdict / critique_case.
+Тестована поверхня: build_critic_prompt / parse_verdict / critique_case /
+build_campaign_critic_prompt / critique_campaign.
 Мережевий виклик ізольовано у _live_judge (# pragma: no cover).
 """
 
@@ -10,7 +11,7 @@ import json
 from typing import Callable
 
 from . import config
-from .schema import Case
+from .schema import Campaign, Case
 
 
 def build_critic_prompt(case: Case) -> str:
@@ -102,3 +103,74 @@ def _live_judge(prompt: str) -> dict:  # pragma: no cover
     )
     text = message.content[0].text
     return json.loads(text)
+
+
+# ---------------------------------------------------------------------------
+# Critic on campaigns (F3)
+# ---------------------------------------------------------------------------
+
+
+def build_campaign_critic_prompt(campaign: Campaign) -> str:
+    """Будує промпт для критика-судді кампанії.
+
+    Просить суддю оцінити, чи провенанс підтверджує метрики і типізацію
+    (type / tone / channels) кампанії.
+    Вимагає СТРОГИЙ JSON: {"supported": bool, "confidence": 0..1, "reason": "..."}.
+    """
+    source_urls = sorted(
+        {
+            entry["source_url"]
+            for entry in campaign.provenance.values()
+            if isinstance(entry, dict) and entry.get("source_url")
+        }
+    )
+    return (
+        "Ти — незалежний критик-валідатор кампаній фандрайзингу.\n"
+        "Оціни, чи цитовані джерела реально підтверджують вказані метрики і "
+        "типізацію кампанії.\n\n"
+        f"Заголовок: {campaign.title}\n"
+        f"Ціль (goal): {campaign.goal}\n"
+        f"Тип: {campaign.type}\n"
+        f"Канали: {campaign.channels}\n"
+        f"Тон: {campaign.tone}\n"
+        f"amount_uah: {campaign.amount_uah}\n"
+        f"reach: {campaign.reach}\n"
+        f"spend: {campaign.spend}\n"
+        f"Джерела провенансу: {source_urls}\n\n"
+        "Поверни СТРОГО JSON (без зайвого тексту):\n"
+        '{"supported": true|false, "confidence": 0.0..1.0, "reason": "<коротко українською>"}\n'
+    )
+
+
+def critique_campaign(
+    campaign: Campaign,
+    *,
+    base_status: str,
+    _judge: Callable[[str], dict] | None = None,
+) -> tuple[str, str]:
+    """Запускає суддю для кампанії і повертає (verification_status, reason).
+
+    Upgrade rules (ідентичні critique_case):
+    - base_status == "conflict" → завжди залишається "conflict".
+    - base_status == "cross-checked" AND supported AND confidence >= 0.7 → "verified".
+    - base_status == "cross-checked" AND NOT supported → зберігає "cross-checked".
+    - base_status == "auto" → суддя не може підняти; pass through.
+    """
+    if _judge is None:
+        _judge = _live_judge  # pragma: no cover
+
+    if base_status == "conflict":
+        return "conflict", ""
+
+    prompt = build_campaign_critic_prompt(campaign)
+    raw = _judge(prompt)
+    verdict = parse_verdict(raw)
+
+    if base_status == "cross-checked":
+        if verdict["supported"] and verdict["confidence"] >= 0.7:
+            return "verified", verdict["reason"]
+        reason = verdict["reason"] if verdict["reason"] else "суддя не підтвердив"
+        return base_status, reason
+
+    # auto або інший: pass through
+    return base_status, verdict["reason"]
