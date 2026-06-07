@@ -229,9 +229,14 @@ def parse_tme_html(channel: str, html: str) -> list[dict[str, Any]]:
 def fetch_channel_web(
     channel: str,
     *,
+    pages: int = 1,
     _client: Any | None = None,
 ) -> list[dict[str, Any]]:
     """Завантажує публічний канал через https://t.me/s/<channel> (без логіну).
+
+    pages > 1: слідкує за курсором ?before=<min_message_id> і накопичує
+    пости до `pages` запитів. Зупиняється достроково якщо сторінка не
+    повертає нових постів. Дедуплікація за message_id.
 
     _client інжектиться в тестах.
     Live _client=None шлях: # pragma: no cover.
@@ -239,10 +244,34 @@ def fetch_channel_web(
     if _client is None:  # pragma: no cover
         import httpx  # noqa: PLC0415  # pragma: no cover
         _client = httpx.Client(timeout=20, follow_redirects=True)  # pragma: no cover
-    url = f"https://t.me/s/{channel}"
-    resp = _client.get(url, timeout=20)
-    resp.raise_for_status()
-    return parse_tme_html(channel, resp.text)
+
+    base_url = f"https://t.me/s/{channel}"
+    seen_ids: set[int | None] = set()
+    all_posts: list[dict[str, Any]] = []
+
+    url = base_url
+    for _page in range(pages):
+        resp = _client.get(url, timeout=20)
+        resp.raise_for_status()
+        page_posts = parse_tme_html(channel, resp.text)
+
+        # Дедуплікуємо: залишаємо лише нові пости
+        new_posts = [p for p in page_posts if p["message_id"] not in seen_ids]
+        if not new_posts:
+            break  # зупинка достроково — немає нових
+
+        for p in new_posts:
+            seen_ids.add(p["message_id"])
+        all_posts.extend(new_posts)
+
+        # Готуємо наступний курсор: мін відомий message_id
+        numeric_ids = [p["message_id"] for p in all_posts if p["message_id"] is not None]
+        if not numeric_ids or _page + 1 >= pages:
+            break
+        min_id = min(numeric_ids)
+        url = f"{base_url}?before={min_id}"
+
+    return all_posts
 
 
 def _text_matches_fundraising(text: str | None) -> bool:
@@ -258,15 +287,18 @@ def search_channels(
     *,
     channels: list[str] | None = None,
     max_results: int = 25,
+    pages: int = 1,
     _client: Any | None = None,
     keyword_filter: bool = True,
 ) -> list[dict[str, Any]]:
     """Шукає пости про збори в публічних Telegram-каналах без логіну.
 
     Перебирає channels (або SEED_CHANNELS), завантажує кожен через
-    fetch_channel_web, за keyword_filter=True залишає лише пости зі словами
-    збору АБО зі словами теми. Повертає flat-список до max_results постів.
+    fetch_channel_web (з pages сторінками), за keyword_filter=True залишає
+    лише пости зі словами збору АБО зі словами теми.
+    Повертає flat-список до max_results постів.
 
+    pages передається у fetch_channel_web для пагінації.
     Помилки мережі для окремих каналів — graceful-skip (continue).
     """
     seed = channels if channels is not None else SEED_CHANNELS
@@ -278,7 +310,7 @@ def search_channels(
         if len(collected) >= max_results:
             break
         try:
-            posts = fetch_channel_web(ch, _client=_client)
+            posts = fetch_channel_web(ch, pages=pages, _client=_client)
         except Exception as exc:  # noqa: BLE001
             print(f"telegram_web: канал '{ch}' — помилка: {exc}", file=sys.stderr)
             continue

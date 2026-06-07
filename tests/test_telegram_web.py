@@ -346,3 +346,132 @@ def test_search_channels_uses_seed_channels_by_default():
 
     telegram_web.search_channels("test", _client=_RecordingClient(), keyword_filter=False)
     assert len(called) == len(telegram_web.SEED_CHANNELS)
+
+
+# ---------------------------------------------------------------------------
+# Unit 1 — пагінація fetch_channel_web(pages=N)
+# ---------------------------------------------------------------------------
+
+# Сторінка 1: пости з id 100–110 (11 постів)
+_PAGE1_HTML = "".join([
+    f"""<div class="tgme_widget_message" data-post="testchan/{i}">
+      <div class="tgme_widget_message_text">Збір на дрони {i}</div>
+      <a class="tgme_widget_message_date" href="https://t.me/testchan/{i}">
+        <time datetime="2024-01-01T00:00:00+00:00">1 Jan</time>
+      </a>
+    </div>"""
+    for i in range(100, 111)  # ids 100..110
+])
+_PAGE1_HTML = f"<html><body>{_PAGE1_HTML}</body></html>"
+
+# Сторінка 2: пости з id 88–99 (12 постів), з'являється після ?before=100
+_PAGE2_HTML = "".join([
+    f"""<div class="tgme_widget_message" data-post="testchan/{i}">
+      <div class="tgme_widget_message_text">Збір на дрони {i}</div>
+      <a class="tgme_widget_message_date" href="https://t.me/testchan/{i}">
+        <time datetime="2024-01-01T00:00:00+00:00">1 Jan</time>
+      </a>
+    </div>"""
+    for i in range(88, 100)  # ids 88..99
+])
+_PAGE2_HTML = f"<html><body>{_PAGE2_HTML}</body></html>"
+
+
+class _PaginatingClient:
+    """Повертає page1 або page2 залежно від наявності before= у URL."""
+
+    def __init__(self):
+        self.calls: list[str] = []
+
+    def get(self, url: str, *, timeout: int = 20):
+        self.calls.append(url)
+        if "before=" in url:
+            return _FakeResp(_PAGE2_HTML)
+        return _FakeResp(_PAGE1_HTML)
+
+
+def test_fetch_channel_web_pages1_returns_first_page_only():
+    """pages=1 (за замовчуванням) — лише перша сторінка."""
+    from fundrec.collect.telegram_web import fetch_channel_web
+
+    client = _PaginatingClient()
+    results = fetch_channel_web("testchan", pages=1, _client=client)
+    assert len(results) == 11  # 100..110
+    assert len(client.calls) == 1
+    # Немає before= у URL
+    assert "before=" not in client.calls[0]
+
+
+def test_fetch_channel_web_pages2_merges_two_pages():
+    """pages=2 → 11+12=23 унікальних постів злито разом."""
+    from fundrec.collect.telegram_web import fetch_channel_web
+
+    client = _PaginatingClient()
+    results = fetch_channel_web("testchan", pages=2, _client=client)
+    assert len(results) == 23  # 11 + 12
+    ids = [p["message_id"] for p in results]
+    assert len(set(ids)) == 23  # всі унікальні
+
+
+def test_fetch_channel_web_pages2_cursor_uses_min_id():
+    """Курсор before= = мін message_id першої сторінки (100)."""
+    from fundrec.collect.telegram_web import fetch_channel_web
+
+    client = _PaginatingClient()
+    fetch_channel_web("testchan", pages=2, _client=client)
+    assert len(client.calls) == 2
+    # Другий запит має before=100 (мін id зі сторінки 1)
+    assert "before=100" in client.calls[1]
+
+
+def test_fetch_channel_web_stops_early_on_empty_page():
+    """Якщо сторінка не повертає нових постів — зупиняємось достроково."""
+    from fundrec.collect.telegram_web import fetch_channel_web
+
+    # Клієнт, де друга сторінка порожня
+    class _EmptyPage2Client:
+        def __init__(self):
+            self.calls: list[str] = []
+
+        def get(self, url: str, *, timeout: int = 20):
+            self.calls.append(url)
+            if "before=" in url:
+                return _FakeResp("<html><body></body></html>")
+            return _FakeResp(_PAGE1_HTML)
+
+    client = _EmptyPage2Client()
+    results = fetch_channel_web("testchan", pages=5, _client=client)
+    # Зупиняємось після 2 запитів (1 реальний + 1 порожній)
+    assert len(client.calls) == 2
+    assert len(results) == 11
+
+
+def test_fetch_channel_web_dedup_overlapping_pages():
+    """Якщо дві сторінки мають спільні message_id — дедуп (кожен id один раз)."""
+    from fundrec.collect.telegram_web import fetch_channel_web
+
+    # Обидві сторінки повертають ОДНАКОВИЙ HTML
+    class _SamePageClient:
+        def get(self, url: str, *, timeout: int = 20):
+            return _FakeResp(_PAGE1_HTML)
+
+    results = fetch_channel_web("testchan", pages=2, _client=_SamePageClient())
+    ids = [p["message_id"] for p in results]
+    assert len(set(ids)) == len(ids)  # немає дублів
+
+
+def test_search_channels_passes_pages_to_fetch():
+    """search_channels(pages=2) передає pages у fetch_channel_web."""
+    from fundrec.collect.telegram_web import search_channels
+
+    client = _PaginatingClient()
+    results = search_channels(
+        "дрони",
+        channels=["testchan"],
+        pages=2,
+        _client=client,
+        keyword_filter=False,
+    )
+    # Має бути 2 виклики: сторінка 1 і сторінка 2
+    assert len(client.calls) == 2
+    assert len(results) == 23
