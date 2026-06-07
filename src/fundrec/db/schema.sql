@@ -38,5 +38,6 @@ CREATE TABLE IF NOT EXISTS cases (
     confidence_overall  REAL NOT NULL DEFAULT 0.0,
     verification_status TEXT NOT NULL DEFAULT 'auto',
     extracted_at        TEXT,
-    extracted_by_model  TEXT
+    extracted_by_model  TEXT,
+    verdict_reason      TEXT
 );
