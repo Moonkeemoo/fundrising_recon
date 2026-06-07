@@ -253,6 +253,7 @@ def run_ingest(
     raw_dir: Path | str = config.RAW_DIR,
     _components: dict[str, Any] | None = None,
     dry_run: bool = False,
+    verify: bool = True,
 ) -> dict[str, Any]:
     """Запускає повний live-pipeline.
 
@@ -449,11 +450,11 @@ def run_ingest(
             if case_stored:
                 stored_cases += 1
 
-    # --- Verify campaigns ---
-    _verify_campaigns(conn, judge_fn=judge_fn)
-
-    # --- Verify Cases ---
-    verify_cases(conn, _judge=judge_fn)
+    # --- Verify (критик/крос-чек) — опційно; для tier-3 джерел нічого не змінює,
+    #     тому при масовому зборі (--no-verify) пропускаємо заради швидкості/вартості ---
+    if verify:
+        _verify_campaigns(conn, judge_fn=judge_fn)
+        verify_cases(conn, _judge=judge_fn)
 
     # --- Analyze ---
     analyze_all(conn)
@@ -510,6 +511,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--raw-dir", default=str(config.RAW_DIR), help="Директорія сирих кешів"
     )
+    parser.add_argument(
+        "--no-verify", action="store_true",
+        help="Пропустити критик/крос-чек (швидше/дешевше; для tier-3 не змінює статус)",
+    )
     args = parser.parse_args(argv)
 
     requested = [s.strip() for s in args.sources.split(",") if s.strip()]
@@ -522,6 +527,7 @@ def main(argv: list[str] | None = None) -> int:
         out_path=args.out,
         raw_dir=args.raw_dir,
         dry_run=args.dry_run,
+        verify=not args.no_verify,
     )
 
     if args.dry_run:

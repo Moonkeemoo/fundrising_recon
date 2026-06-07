@@ -24,8 +24,13 @@ SEED_CHANNELS: list[str] = [
     "u24_gov_ua",          # UNITED24
     "backandalive",        # Повернись живим (Come Back Alive)
     "ssternenko",          # Сергій Стерненко
-    "kpszsu",              # Сили підтримки/збори
+    "kpszsu",              # Сили підтримки / збори
     "signal_dnipro",       # волонтерський збір
+    "dignitas_fund",       # фонд Dignitas
+    "operativnoZSU",       # оперативні збори ЗСУ
+    "butusovplus",         # Бутусов Плюс (збори)
+    "zsu_donate",          # донати ЗСУ
+    "lachenpyshe",         # волонтер
 ]
 # Перевірено живими (t.me/s) 2026-06-07. Список публічний і редагований.
 
