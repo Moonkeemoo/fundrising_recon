@@ -16,6 +16,7 @@ from .analyze import (
     compute_virality,
     compute_volume_scores,
     crosstab,
+    goal_reached_rate,
     kpis,
     trend_series,
 )
@@ -170,6 +171,19 @@ def _build_campaign_analytics(conn: sqlite3.Connection) -> dict:
         "cta_amount": campaign_axis_summary(campaigns, axis="cta_type", metric="amount_uah"),
         "face_amount": campaign_axis_summary(campaigns, axis="face", metric="amount_uah"),
         "channel_amount": campaign_axis_summary(campaigns, axis="channels", metric="amount_uah"),
+        # Нові: медіана engagement/reach по осях
+        "tone_engagement": campaign_axis_summary(campaigns, axis="tone", metric="engagement"),
+        "channel_engagement": campaign_axis_summary(campaigns, axis="channels", metric="engagement"),
     }
 
-    return {"kpis": kpi_data, "crosstabs": crosstabs, "axis_summaries": axis_summaries}
+    success_rates = {
+        "tone": goal_reached_rate(campaigns, axis="tone"),
+        "channels": goal_reached_rate(campaigns, axis="channels"),
+    }
+
+    return {
+        "kpis": kpi_data,
+        "crosstabs": crosstabs,
+        "axis_summaries": axis_summaries,
+        "success_rates": success_rates,
+    }

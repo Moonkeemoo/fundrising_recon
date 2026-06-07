@@ -292,8 +292,12 @@ tr.detail td{background:#0c0f14}
    <!-- АНАЛІТИКА СТИЛЮ -->
    <div class="panel">
     <div class="head">
-     <h3>📊 Аналітика стилю — медіана ₴</h3><span class="n" id="sa-bar-n"></span>
+     <h3>📊 Аналітика стилю</h3><span class="n" id="sa-bar-n"></span>
      <span class="spacer"></span>
+     <div class="seg" id="sa-metric">
+      <button data-m="amount_uah" class="on">медіана ₴</button>
+      <button data-m="engagement">залучення</button>
+     </div>
      <div class="seg" id="sa-axis">
       <button data-a="tone" class="on">тон</button>
       <button data-a="channels">канал</button>
@@ -302,6 +306,19 @@ tr.detail td{background:#0c0f14}
      </div>
     </div>
     <div class="chart" id="sa-bar"></div>
+   </div>
+
+   <!-- % ДОСЯГНЕННЯ ЦІЛІ -->
+   <div class="panel">
+    <div class="head">
+     <h3>📊 % досягнення цілі</h3><span class="n" id="sr-bar-n"></span>
+     <span class="spacer"></span>
+     <div class="seg" id="sr-axis">
+      <button data-a="tone" class="on">тон</button>
+      <button data-a="channels">канал</button>
+     </div>
+    </div>
+    <div class="chart" id="sr-bar"></div>
    </div>
 
    <div class="panel">
@@ -346,9 +363,9 @@ const HAS_ECHARTS=(typeof echarts!=="undefined");
 // ── стан КАМПАНІЙ ──
 let activeTab="cases";
 const CSEL={channels:new Set(),form_factor:new Set(),tone:new Set(),face:new Set(),type:new Set()};
-let cVerifMode="all", saAxis="tone";
+let cVerifMode="all", saAxis="tone", saMetric="amount_uah", srAxis="tone";
 const openCamps=new Set();
-let chSaBar=null, chSaFe=null, chSaGc=null, campChartsInit=false;
+let chSaBar=null, chSaFe=null, chSaGc=null, chSrBar=null, campChartsInit=false;
 
 // ── словники (упорядкований показ) ──
 const GOAL_ORDER=["military","medical","humanitarian","reconstruction","energy","animals","science_education","info_defense","other"];
@@ -787,24 +804,82 @@ function renderGallery(crs){
  }).join("");
 }
 
-// ── аналітика стилю: бари (медіана ₴) ──
+// ── аналітика стилю: бари (медіана ₴ або engagement) ──
 function renderSaBar(camps){
- const rows=campAxisSummary(camps,SA_AXIS_FIELD[saAxis],"amount_uah").filter(r=>r.value!=null);
+ const axis=SA_AXIS_FIELD[saAxis]||saAxis;
+ const rows=campAxisSummary(camps,axis,saMetric).filter(r=>r.value!=null);
  document.getElementById("sa-bar-n").textContent="N="+rows.reduce((s,r)=>s+r.n,0)+" кат.="+rows.length;
  if(!chSaBar)return;
  if(!rows.length){chSaBar.clear();chSaBar.setOption({backgroundColor:"transparent",
   graphic:{type:"text",left:"center",top:"center",style:{text:"немає даних (— null≠0)",fill:"#8893a0",fontFamily:"monospace"}}});return;}
  rows.sort((a,b)=>b.value-a.value);
+ const isUAH=(saMetric==="amount_uah");
+ const fmtY=isUAH?fmtUAH:v=>(v>=1e6?(v/1e6).toFixed(1)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":v.toFixed(0));
+ const metricLabel=isUAH?"медіана ₴":"медіана залучення";
  chSaBar.setOption({backgroundColor:"transparent",
   tooltip:{trigger:"axis",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
-   formatter:p=>{const i=p[0].dataIndex;return `${esc(rows[i].key)}<br><b>${fmtUAH(rows[i].value)}</b> (медіана) <span style="color:#525c6b">N=${rows[i].n}</span>`;}},
+   formatter:p=>{const i=p[0].dataIndex;return `${esc(rows[i].key)}<br><b>${fmtY(rows[i].value)}</b> (${metricLabel}) <span style="color:#525c6b">N=${rows[i].n}</span>`;}},
   grid:{left:70,right:18,top:14,bottom:60},
   xAxis:{type:"category",data:rows.map(r=>r.key),axisLine:{lineStyle:{color:"#222a35"}},
    axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:35,fontSize:10}},
   yAxis:{type:"value",axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
-   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:v=>fmtUAH(v)}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:fmtY}},
   series:[{type:"bar",data:rows.map((r,i)=>({value:r.value,itemStyle:{color:PALETTE[i%PALETTE.length]}})),
    label:{show:true,position:"top",color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:p=>"N="+rows[p.dataIndex].n}}]},true);
+}
+
+// ── % досягнення цілі: бари ──
+function renderSrBar(camps){
+ // Використовуємо success_rates з ANALYTICS якщо доступно; fallback — клієнтський розрахунок
+ let rows;
+ const analyticsRates=ANALYTICS&&ANALYTICS.campaign_analytics&&ANALYTICS.campaign_analytics.success_rates;
+ if(analyticsRates&&analyticsRates[srAxis]){
+  // Фільтруємо під поточні відфільтровані кампанії (простий fallback: беремо з analytics)
+  rows=analyticsRates[srAxis].filter(r=>r.value!=null);
+ } else {
+  // Клієнтський розрахунок
+  const b={};
+  camps.forEach(c=>{
+   (srAxis==="tone"?(c.tone||[]):srAxis==="channels"?(c.channels||[]):[c[srAxis]].filter(Boolean)).forEach(k=>{
+    if(!b[k])b[k]={total:0,yes:0};
+    b[k].total++;
+    if(c.goal_reached===true)b[k].yes++;
+    else if(c.goal_reached===false){/* counted in total, not yes */}
+    // null: total++ але не рахується у yes
+   });});
+  // Перерахунок: denominator = non-null
+  rows=[];
+  camps.forEach(c=>{
+   (srAxis==="tone"?(c.tone||[]):srAxis==="channels"?(c.channels||[]):[c[srAxis]].filter(Boolean)).forEach(k=>{});});
+  // Клієнтський goal_reached_rate
+  const bk={};
+  camps.forEach(c=>{
+   const keys=srAxis==="tone"?(c.tone||[]):srAxis==="channels"?(c.channels||[]):([c[srAxis]].filter(Boolean));
+   keys.forEach(k=>{if(!bk[k])bk[k]={n:0,nonNull:0,yes:0};
+    bk[k].n++;
+    if(c.goal_reached!=null){bk[k].nonNull++;if(c.goal_reached===true)bk[k].yes++;}});});
+  rows=Object.keys(bk).sort().map(k=>{
+   const {n,nonNull,yes}=bk[k];
+   return {key:k,value:nonNull?yes/nonNull:null,n};
+  }).filter(r=>r.value!=null);
+ }
+ const totalN=rows.reduce((s,r)=>s+r.n,0);
+ document.getElementById("sr-bar-n").textContent="N="+totalN+" кат.="+rows.length;
+ if(!chSrBar)return;
+ if(!rows.length){chSrBar.clear();chSrBar.setOption({backgroundColor:"transparent",
+  graphic:{type:"text",left:"center",top:"center",style:{text:"немає даних про досягнення цілі",fill:"#8893a0",fontFamily:"monospace"}}});return;}
+ rows.sort((a,b)=>b.value-a.value);
+ chSrBar.setOption({backgroundColor:"transparent",
+  tooltip:{trigger:"axis",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
+   formatter:p=>{const i=p[0].dataIndex;return `${esc(rows[i].key)}<br><b>${(rows[i].value*100).toFixed(0)}%</b> цілей досягнуто <span style="color:#525c6b">N=${rows[i].n}</span>`;}},
+  grid:{left:50,right:18,top:14,bottom:60},
+  xAxis:{type:"category",data:rows.map(r=>r.key),axisLine:{lineStyle:{color:"#222a35"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:35,fontSize:10}},
+  yAxis:{type:"value",min:0,max:1,axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:v=>(v*100).toFixed(0)+"%"}},
+  series:[{type:"bar",data:rows.map((r,i)=>({value:r.value,itemStyle:{color:PALETTE[(i+3)%PALETTE.length]}})),
+   label:{show:true,position:"top",color:"#8893a0",fontFamily:"monospace",fontSize:10,
+    formatter:p=>(rows[p.dataIndex].value*100).toFixed(0)+"% N="+rows[p.dataIndex].n}}]},true);
 }
 
 // ── теплокарта стилю ──
@@ -892,6 +967,7 @@ function updateCamp(){
  renderCampKPIs(camps,crs);
  renderGallery(crs);
  renderSaBar(camps);
+ renderSrBar(camps);
  renderStyleHeat(chSaFe,"sa-fe-n",camps,"form_factor","channels","engagement",FORM_ORDER,CHANNEL_ORDER);
  renderStyleHeat(chSaGc,"sa-gc-n",camps,"goal_category","channels","count",GOAL_ORDER,CHANNEL_ORDER);
  renderExplorer(camps);
@@ -901,13 +977,14 @@ function initCampCharts(){
  if(campChartsInit)return;
  campChartsInit=true;
  if(!HAS_ECHARTS){
-  ["sa-bar","sa-fe","sa-gc"].forEach(id=>{const el=document.getElementById(id);
+  ["sa-bar","sr-bar","sa-fe","sa-gc"].forEach(id=>{const el=document.getElementById(id);
    if(el)el.innerHTML="<div style='padding:24px;color:#8893a0'>графіки недоступні (ECharts не завантажився) — галерея й дослідник нижче працюють</div>";});
   return;}
  chSaBar=echarts.init(document.getElementById("sa-bar"));
+ chSrBar=echarts.init(document.getElementById("sr-bar"));
  chSaFe=echarts.init(document.getElementById("sa-fe"));
  chSaGc=echarts.init(document.getElementById("sa-gc"));
- window.addEventListener("resize",()=>{[chSaBar,chSaFe,chSaGc].forEach(c=>{if(c)c.resize();});});
+ window.addEventListener("resize",()=>{[chSaBar,chSrBar,chSaFe,chSaGc].forEach(c=>{if(c)c.resize();});});
 }
 
 function setupCampaignView(){
@@ -921,9 +998,13 @@ function setupCampaignView(){
  renderCampChips("cf-face",FACE_ORDER,"face");
  renderCampChips("cf-type",CTYPE_ORDER,"type");
  bindCampChips();
- document.getElementById("c-foot").textContent="чесна магнітуда: кожен віджет показує власне N · null≠0 (— замість 0) · медіана ₴ для барів";
+ document.getElementById("c-foot").textContent="чесна магнітуда: кожен віджет показує власне N · null≠0 (— замість 0) · медіана для барів · % цілей — non-null";
+ document.querySelectorAll("#sa-metric button").forEach(b=>b.onclick=()=>{
+  saMetric=b.dataset.m;document.querySelectorAll("#sa-metric button").forEach(x=>x.classList.toggle("on",x===b));renderSaBar(filteredCamps());});
  document.querySelectorAll("#sa-axis button").forEach(b=>b.onclick=()=>{
   saAxis=b.dataset.a;document.querySelectorAll("#sa-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSaBar(filteredCamps());});
+ document.querySelectorAll("#sr-axis button").forEach(b=>b.onclick=()=>{
+  srAxis=b.dataset.a;document.querySelectorAll("#sr-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSrBar(filteredCamps());});
  document.getElementById("cf-verif").onchange=e=>{cVerifMode=e.target.value;updateCamp();};
  document.getElementById("c-reset").onclick=()=>{
   Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";
@@ -943,7 +1024,7 @@ function switchTab(tab){
   initCampCharts();
   updateCamp();
   // ECharts потребує видимого контейнера для коректного розміру
-  setTimeout(()=>{[chSaBar,chSaFe,chSaGc].forEach(c=>{if(c)c.resize();});},30);
+  setTimeout(()=>{[chSaBar,chSrBar,chSaFe,chSaGc].forEach(c=>{if(c)c.resize();});},30);
  }else{
   setTimeout(()=>{if(chTrend)chTrend.resize();if(chHeat)chHeat.resize();},30);
  }

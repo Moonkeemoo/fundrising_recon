@@ -468,6 +468,35 @@ def campaign_crosstab(
     return result
 
 
+def goal_reached_rate(
+    campaigns: Sequence[Campaign],
+    *,
+    axis: str,
+) -> list[dict]:
+    """Частка goal_reached==True в розрізі осі (tone/channels/form_factor/...).
+
+    Для кожного ключа осі повертає:
+        {key, value (частка goal_reached==True серед non-null), n (всього під ключем)}
+
+    value=None якщо під ключем немає кампаній з non-null goal_reached (honest null).
+    """
+    buckets: dict[str, list[Campaign]] = {}
+    for c in campaigns:
+        for key in _campaign_axis_values(c, axis):
+            buckets.setdefault(key, []).append(c)
+
+    result: list[dict] = []
+    for key, camps in sorted(buckets.items()):
+        with_flag = [c for c in camps if c.goal_reached is not None]
+        if not with_flag:
+            value: float | None = None
+        else:
+            n_true = sum(1 for c in with_flag if c.goal_reached is True)
+            value = n_true / len(with_flag)
+        result.append({"key": key, "value": value, "n": len(camps)})
+    return result
+
+
 def campaign_axis_summary(
     campaigns: Sequence[Campaign],
     *,
