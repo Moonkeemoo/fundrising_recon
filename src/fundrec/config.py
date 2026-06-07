@@ -41,7 +41,9 @@ def _load_dotenv() -> None:
             os.environ[key] = value
 
 
-_load_dotenv()
+# Автозавантаження .env можна вимкнути (тести роблять це для герметичності).
+if os.environ.get("FUNDREC_SKIP_DOTENV") != "1":
+    _load_dotenv()
 
 # ---------------------------------------------------------------------------
 # Моделі
