@@ -133,7 +133,73 @@ tr.detail td{background:#0c0f14}
 .cdet .subcr{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .cdet .minicr{background:#000;border:1px solid var(--line);border-radius:2px;padding:5px 8px;font-size:11px;max-width:240px}
 .cdet .minicr .h{color:var(--fg);font-weight:600}
-@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.side{position:static;width:100%;height:auto}.layout{flex-direction:column}}
+/* ── F3 coverage strip ── */
+.coverage{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;font-size:11px}
+.covpill{background:var(--bg2);border:1px solid var(--line);border-radius:2px;padding:4px 9px;color:var(--dim)}
+.covpill b{color:var(--fg);font-variant-numeric:tabular-nums}
+.covpill .lk{color:var(--faint);text-transform:uppercase;letter-spacing:.5px;font-size:10px}
+.covpill.good b{color:var(--green)}.covpill.warn b{color:var(--amber)}.covpill.bad b{color:var(--red)}
+/* ── F1 overview insight cards ── */
+.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.icard{background:var(--bg2);border:1px solid var(--line);border-radius:3px;padding:11px 13px;display:flex;flex-direction:column;min-width:0}
+.icard h5{margin:0 0 8px;font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--amber);font-weight:700;
+ display:flex;align-items:center;gap:6px}
+.icard h5 .n{margin-left:auto;color:var(--faint);font-size:10px;font-weight:400}
+.irow{display:flex;align-items:baseline;gap:8px;padding:3px 0;border-bottom:1px dashed var(--bg3);font-size:12px}
+.irow:last-child{border-bottom:0}
+.irow .ik{color:var(--fg);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.irow .iv{font-variant-numeric:tabular-nums;color:var(--green);font-weight:600}
+.irow .in{color:var(--faint);font-size:10px}
+.irow.fall .iv{color:var(--red)}
+.irow.clk{cursor:pointer}.irow.clk:hover .ik{color:var(--amber)}
+.iempty{color:var(--dim);font-size:11px;padding:8px 0;text-align:center}
+.iarrow{font-weight:700}
+/* ── F3 effectiveness matrix ── */
+table.mx{width:100%;border-collapse:collapse;font-size:12px}
+table.mx th{text-align:right;color:var(--faint);font-size:10px;text-transform:uppercase;letter-spacing:.5px;
+ padding:5px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+table.mx th:first-child{text-align:left}
+table.mx td{padding:5px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+table.mx td:first-child{text-align:left;color:var(--fg)}
+table.mx tr.lown{opacity:.42}
+table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
+/* ── F4 detail modal ── */
+.modal-bd{position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:50;display:none;align-items:flex-start;
+ justify-content:center;overflow-y:auto;padding:34px 14px}
+.modal-bd.on{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--amber);border-radius:4px;max-width:780px;width:100%;
+ box-shadow:0 0 40px rgba(0,0,0,.6)}
+.modal .mhd{display:flex;align-items:flex-start;gap:10px;padding:13px 16px;border-bottom:1px solid var(--line);
+ position:sticky;top:0;background:var(--bg2);z-index:2}
+.modal .mhd .mt{flex:1;min-width:0}
+.modal .mhd .mt .mtitle{font-size:15px;font-weight:700;color:var(--fg);font-family:var(--sans)}
+.modal .mhd .mt .mactor{color:var(--dim);font-size:12px}
+.modal .mclose{background:#000;border:1px solid var(--line);color:var(--dim);cursor:pointer;
+ padding:3px 10px;border-radius:2px;font:14px var(--mono)}
+.modal .mclose:hover{border-color:var(--red);color:var(--red)}
+.modal .mbody{padding:14px 16px}
+.modal .mgrid{display:grid;grid-template-columns:1fr 1fr;gap:6px 18px;margin-bottom:10px}
+.modal .mrow{font-size:12px}
+.modal .mrow .k{color:var(--faint);display:inline-block;min-width:120px}
+.modal .mrow.full{grid-column:1/-1}
+.modal .mnote{color:var(--amber);font-family:var(--sans);font-size:12.5px;line-height:1.55;margin:8px 0;
+ background:#0c0f14;border-left:2px solid var(--amber);padding:8px 11px;border-radius:2px}
+.modal h6{margin:14px 0 6px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--faint);font-weight:700}
+.modal .mcrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
+.modal .mcr{background:#000;border:1px solid var(--line);border-radius:2px;overflow:hidden;display:flex;flex-direction:column}
+.modal .mcr img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#0a0c10}
+.modal .mcr .mcrb{padding:6px 8px;font-size:11px}
+.modal .mcr .mcrb .h{color:var(--fg);font-weight:600}
+.modal .mcr .mcrb .c{color:var(--dim);line-height:1.35;margin-top:2px}
+.modal .pct-on{color:var(--green)}.modal .pct-off{color:var(--amber)}
+/* ── F2/F4 search + sort bar ── */
+.searchbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.searchbar input{background:#000;border:1px solid var(--line);color:var(--fg);padding:5px 9px;font:12px var(--mono);
+ border-radius:2px;flex:1;min-width:160px}
+.searchbar input:focus{outline:none;border-color:var(--amber)}
+.ccard .crow .res-frontier{color:var(--amber);font-size:10px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.side{position:static;width:100%;height:auto}.layout{flex-direction:column}
+ .insights{grid-template-columns:1fr}.modal .mgrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -284,6 +350,25 @@ tr.detail td{background:#0c0f14}
   </div>
 
   <div id="c-dash" style="display:none">
+   <!-- F3: смужка покриття даними -->
+   <div class="coverage" id="coverage"></div>
+
+   <!-- F1: старт-екран «Що працює зараз» -->
+   <div class="insights" id="insights">
+    <div class="icard">
+     <h5>🔥 Топ-комбо <span class="n" id="ins-combo-n"></span></h5>
+     <div id="ins-combo"></div>
+    </div>
+    <div class="icard">
+     <h5>📈 На підйомі / згасає <span class="n" id="ins-mom-n"></span></h5>
+     <div id="ins-mom"></div>
+    </div>
+    <div class="icard">
+     <h5>⭐ Лідери резонансу <span class="n" id="ins-lead-n"></span></h5>
+     <div id="ins-lead"></div>
+    </div>
+   </div>
+
    <!-- KPI кампаній -->
    <div class="kpis">
     <div class="kpi acc-a"><div class="lbl">N кампаній</div><div class="val" id="ck-camp">—</div><div class="sub">після фільтрів</div></div>
@@ -347,10 +432,45 @@ tr.detail td{background:#0c0f14}
     <div class="chart heat" id="sa-gc"></div>
    </div>
 
+   <!-- F2: SCATTER охоплення × engagement rate -->
+   <div class="panel">
+    <div class="head">
+     <h3>🎯 Резонансний фронтир: охоплення × engagement rate</h3><span class="n" id="scatter-n"></span>
+    </div>
+    <div class="chart" id="scatter-chart" style="height:340px"></div>
+    <div id="scatter-empty" class="empty" style="display:none"><div class="big">нема даних</div><div>немає кампаній з охопленням і engagement rate</div></div>
+   </div>
+
+   <!-- F3: МАТРИЦЯ ЕФЕКТИВНОСТІ -->
+   <div class="panel">
+    <div class="head">
+     <h3>🧮 Матриця ефективності</h3><span class="n" id="mx-n"></span>
+     <span class="spacer"></span>
+     <div class="seg" id="mx-axis">
+      <button data-a="channels" class="on">канал</button>
+      <button data-a="tone">тон</button>
+      <button data-a="form_factor">формат</button>
+     </div>
+    </div>
+    <div id="mx-wrap"><table class="mx"><thead id="mx-head"></thead><tbody id="mx-body"></tbody></table></div>
+    <div id="mx-empty" class="empty" style="display:none"><div class="big">нема даних</div></div>
+   </div>
+
    <!-- ДОСЛІДНИК КАМПАНІЙ -->
    <div class="panel">
     <div class="head">
      <h3>🧭 Дослідник кампаній</h3><span class="n" id="ce-n"></span>
+     <span class="spacer"></span>
+     <span style="color:var(--faint);font-size:11px">сортувати:</span>
+     <div class="seg" id="ce-sort">
+      <button data-s="rel_resonance" class="on">резонанс</button>
+      <button data-s="engagement">залучення</button>
+      <button data-s="amount_uah">обсяг ₴</button>
+      <button data-s="date">дата</button>
+     </div>
+    </div>
+    <div class="searchbar">
+     <input type="text" id="ce-search" placeholder="🔎 пошук за назвою або актором…" autocomplete="off">
     </div>
     <div id="cexplorer" class="cgrid"></div>
    </div>
@@ -360,6 +480,9 @@ tr.detail td{background:#0c0f14}
  </main>
 </div>
 </div><!-- /view-campaigns -->
+
+<!-- F4: деталь кампанії (модалка) -->
+<div class="modal-bd" id="camp-modal"><div class="modal" id="camp-modal-box"></div></div>
 
 <script>
 "use strict";
@@ -380,6 +503,8 @@ let recencyDays=30; // 0 = усі
 let campRelevMode="zbory"; // "zbory" | "all" | "topical"
 const openCamps=new Set();
 let chSaBar=null, chSaFe=null, chSaGc=null, chSrBar=null, campChartsInit=false;
+let chScatter=null;
+let ceSort="rel_resonance", ceSearch="", mxAxis="channels";
 
 // ── словники (упорядкований показ) ──
 const GOAL_ORDER=["military","medical","humanitarian","reconstruction","energy","animals","science_education","info_defense","other"];
@@ -758,7 +883,9 @@ function passesVerifCamp(c){
  return (VERIF_RANK[st]??0)>=VERIF_RANK["cross-checked"];
 }
 function filteredCamps(){
+ const q=ceSearch.trim().toLowerCase();
  return CAMPAIGNS.filter(c=>{
+  if(q){const hay=((c.title||"")+" "+(c.actor_id||"")).toLowerCase();if(!hay.includes(q))return false;}
   if(!passesRecency(c))return false;
   // is_campaign фільтр: false=топічний прихований за замовч.; null=невідомо -> видимий
   if(campRelevMode==="zbory"&&c.is_campaign===false)return false;
@@ -962,61 +1089,288 @@ function renderStyleHeat(chart,nId,camps,axisA,axisB,metric,orderA,orderB){
 }
 
 // ── дослідник кампаній ── (сортування: engagement desc за замовч.)
+function explorerSort(camps){
+ const byNull=(a,b,fa,fb)=>{if(fa==null&&fb==null)return 0;if(fa==null)return 1;if(fb==null)return -1;return null;};
+ return [...camps].sort((a,b)=>{
+  if(ceSort==="date"){
+   const da=campDate(a),db=campDate(b);
+   const r=byNull(a,b,da,db);if(r!==null)return r;
+   return db.getTime()-da.getTime();}
+  const fa=a[ceSort],fb=b[ceSort];
+  const r=byNull(a,b,fa,fb);if(r!==null)return r;
+  if(fb!==fa)return fb-fa;
+  // tiebreak: rel_resonance
+  const ra=a.rel_resonance,rb=b.rel_resonance;
+  const r2=byNull(a,b,ra,rb);if(r2!==null)return r2;return rb-ra;
+ });
+}
 function renderExplorer(camps){
  document.getElementById("ce-n").textContent="N="+camps.length;
  const box=document.getElementById("cexplorer");
  if(!camps.length){box.innerHTML='<div class="empty">немає кампаній за фільтрами</div>';return;}
- // Сортуємо за rel_resonance desc, потім за engagement (null в кінці)
- camps=[...camps].sort((a,b)=>{
-  const ra=a.rel_resonance,rb=b.rel_resonance;
-  if(ra!=null&&rb!=null)return rb-ra;
-  if(ra!=null)return -1;if(rb!=null)return 1;
-  const ea=a.engagement,eb=b.engagement;
-  if(ea==null&&eb==null)return 0;if(ea==null)return 1;if(eb==null)return -1;
-  return eb-ea;});
- const partById={};PARTNERS.forEach(p=>partById[p.id]=p);
- const crByCamp={};CREATIVES.forEach(a=>{(crByCamp[a.campaign_id]=crByCamp[a.campaign_id]||[]).push(a);});
+ camps=explorerSort(camps);
  box.innerHTML=camps.map(c=>{
-  const open=openCamps.has(c.id);
-  const tones=(c.tone||[]).map(t=>`<span class="ctag tone">${esc(t)}</span>`).join(" ");
   const chans=(c.channels||[]).map(t=>`<span class="ctag chan">${esc(t)}</span>`).join(" ");
-  const forms=(c.form_factor||[]).map(t=>`<span class="ctag">${esc(t)}</span>`).join(" ")||'<span class="dash">—</span>';
-  const parts=(c.partner_ids||[]).map(pid=>{const p=partById[pid];
-   return p?(p.links&&p.links[0]?`<a href="${esc(p.links[0])}" target="_blank" rel="noopener">${esc(p.name)}</a> <span class="dash">(${esc(p.role)})</span>`:`${esc(p.name)} <span class="dash">(${esc(p.role)})</span>`):esc(pid);}).join(", ")||'<span class="dash">—</span>';
-  const crs=crByCamp[c.id]||[];
-  const minicr=crs.map(a=>`<div class="minicr"><div class="h">${esc(a.platform)}·${esc(a.format)}</div>${a.hook?esc(a.hook):(a.copy_text?esc(a.copy_text.slice(0,60)):"")}</div>`).join("")||'<span class="dash">— без креативів</span>';
-  const src=c.provenance&&c.provenance.campaign?c.provenance.campaign.source_url:c.url;
-  return `<div class="ccard ${open?"open":""}" data-cid="${esc(c.id)}">
+  const frontier=(c.reach!=null&&c.engagement_rate!=null);
+  return `<div class="ccard" data-cid="${esc(c.id)}">
    <div class="crow">
     <span class="ctitle">${esc(c.title)} <span class="cactor">· ${esc(c.actor_id)}</span></span>
     <span class="ctag">${esc(c.type)}</span>
     ${chans}
+    ${frontier?`<span class="res-frontier" title="охоплення × ER відомі">◎ ER ${(c.engagement_rate*100).toFixed(1)}%</span>`:''}
     ${c.rel_resonance!=null?`<span class="camt" style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}" title="actor-нормалізований резонанс">×${c.rel_resonance.toFixed(2)}</span>`:''}
     ${c.engagement!=null?`<span class="camt" style="color:var(--blue)" title="залучення">▲${c.engagement.toLocaleString("uk-UA")}</span>`:''}
     <span class="camt">${fmtUAH(c.amount_uah)}</span>
     ${c.is_campaign===null?'<span class="badge auto" title="релевантність невідома">?</span>':""}
     <span class="badge ${esc(c.verification_status)}">${esc(c.verification_status)}</span>
-   </div>
-   <div class="cdet">
-    <div><span class="k">ціль:</span><span class="goalt">${esc(c.goal)}</span></div>
-    <div><span class="k">тон:</span>${tones||'<span class="dash">—</span>'}</div>
-    <div><span class="k">формат:</span>${forms}</div>
-    <div><span class="k">обличчя / CTA:</span>${esc(c.face||"—")} / ${esc(c.cta_type||"—")}</div>
-    <div><span class="k">каденс:</span>${esc(c.cadence||"—")}</div>
-    <div><span class="k">обсяг ₴ / охоплення / залуч.:</span>${fmtUAH(c.amount_uah)} / ${c.reach!=null?c.reach.toLocaleString("uk-UA"):"—"} / ${c.engagement!=null?c.engagement.toLocaleString("uk-UA"):"—"}</div>
-    <div><span class="k">engagement rate:</span>${c.engagement_rate!=null?((c.engagement_rate*100).toFixed(2)+"%"):'<span class="dash">—</span>'}</div>
-    <div><span class="k">резонанс (×медіани):</span>${c.rel_resonance!=null?`<span style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}">×${c.rel_resonance.toFixed(2)} від медіани актора</span>`:'<span class="dash">—</span>'}</div>
-    <div><span class="k">бюджет ₴:</span>${fmtUAH(c.spend)}</div>
-    <div><span class="k">партнери:</span>${parts}</div>
-    <div><span class="k">джерело:</span>${src?`<a href="${esc(src)}" target="_blank" rel="noopener">${esc(src)}</a>`:'<span class="dash">—</span>'}</div>
-    <div><span class="k">креативи (${crs.length}):</span></div><div class="subcr">${minicr}</div>
-    ${c.playbook_note?`<div class="note">📝 ${esc(c.playbook_note)}</div>`:""}
    </div></div>`;
  }).join("");
- box.querySelectorAll(".ccard .crow").forEach(row=>{
-  row.onclick=()=>{const cid=row.parentElement.dataset.cid;
-   if(openCamps.has(cid))openCamps.delete(cid);else openCamps.add(cid);
-   row.parentElement.classList.toggle("open");};});
+ box.querySelectorAll(".ccard").forEach(card=>{
+  card.onclick=()=>openCampModal(card.dataset.cid);});
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// ── F3: смужка покриття даними ──
+// ════════════════════════════════════════════════════════════════════════════
+function renderCoverage(camps){
+ const box=document.getElementById("coverage");if(!box)return;
+ const Y=camps.length;
+ const nAmt=camps.filter(c=>c.amount_uah!=null).length;
+ const nEng=camps.filter(c=>c.engagement_rate!=null).length;
+ const nReach=camps.filter(c=>c.reach!=null).length;
+ const nGoal=camps.filter(c=>c.goal_reached!=null).length;
+ const nVer=camps.filter(c=>c.verification_status==="verified").length;
+ const cls=(k)=>!Y?"":k/Y>=0.6?"good":k/Y>=0.25?"warn":"bad";
+ const pill=(label,k,extra)=>`<span class="covpill ${cls(k)}"><span class="lk">${label}</span> <b>${k}/${Y}</b>${extra||""}</span>`;
+ box.innerHTML=
+  `<span class="covpill"><span class="lk">кампаній</span> <b>${Y}</b></span>`+
+  pill("обсяг ₴ відомо",nAmt)+
+  pill("engagement rate",nEng)+
+  pill("охоплення",nReach)+
+  pill("ціль (так/ні)",nGoal)+
+  pill("банка-verified",nVer);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// ── F1: старт-екран «Що працює зараз» ──
+// ════════════════════════════════════════════════════════════════════════════
+// Чи активні «додаткові» фільтри (крім дефолтних recency/relev) — тоді recompute клієнтом
+function extraFiltersActive(){
+ return ceSearch.trim()!==""||CSEL.channels.size||CSEL.form_factor.size||CSEL.tone.size||
+  CSEL.face.size||CSEL.type.size||cVerifMode!=="all";
+}
+function comboFromCamps(camps,field,minN){ // mean rel_resonance per key, N>=minN
+ const b={};
+ camps.forEach(c=>{const rr=c.rel_resonance;if(rr==null)return;
+  campAxisVals(c,field==="goal_category"?"goal_category":field).forEach(k=>{(b[k]=b[k]||[]).push(rr);});});
+ return Object.keys(b).map(k=>({key:k,score:b[k].reduce((s,x)=>s+x,0)/b[k].length,n:b[k].length}))
+  .filter(r=>r.n>=minN).sort((a,b)=>b.score-a.score);
+}
+function renderInsCombo(camps){
+ const wrap=document.getElementById("ins-combo"),nEl=document.getElementById("ins-combo-n");
+ const radar=ANALYTICS&&ANALYTICS.radar&&ANALYTICS.radar.what_works_now;
+ let rows,src="";
+ if(!extraFiltersActive()&&radar&&radar.channel){
+  // radar агрегує канал/тон/формат; беремо найкращі по каналах + тонах
+  const tag=(arr,lbl)=>(arr||[]).filter(r=>r.score!=null&&r.n>=2).map(r=>({key:lbl+" "+r.key,score:r.score,n:r.n}));
+  rows=[...tag(radar.channel,"канал:"),...tag(radar.tone,"тон:"),...tag(radar.form_factor,"формат:")]
+   .sort((a,b)=>b.score-a.score).slice(0,5);
+  src=" · radar";
+ }else{
+  rows=[...comboFromCamps(camps,"channels",2).map(r=>({key:"канал: "+r.key,score:r.score,n:r.n})),
+   ...comboFromCamps(camps,"tone",2).map(r=>({key:"тон: "+r.key,score:r.score,n:r.n})),
+   ...comboFromCamps(camps,"form_factor",2).map(r=>({key:"формат: "+r.key,score:r.score,n:r.n}))]
+   .sort((a,b)=>b.score-a.score).slice(0,5);
+ }
+ nEl.textContent=rows.length?("кат.="+rows.length+src):"";
+ if(!rows.length){wrap.innerHTML='<div class="iempty">недостатньо даних (N&lt;2)</div>';return;}
+ wrap.innerHTML=rows.map(r=>
+  `<div class="irow"><span class="ik">${esc(r.key)}</span>`+
+  `<span class="iv">×${r.score.toFixed(2)}</span><span class="in">N=${r.n}</span></div>`).join("");
+}
+function renderInsMomentum(){
+ const wrap=document.getElementById("ins-mom"),nEl=document.getElementById("ins-mom-n");
+ const mom=ANALYTICS&&ANALYTICS.radar&&ANALYTICS.radar.momentum;
+ if(!mom){wrap.innerHTML='<div class="iempty">недостатньо даних</div>';nEl.textContent="";return;}
+ // обʼєднуємо ціль+тон+канал, помічаємо вимір
+ const lblMap={goal:"ціль",tone:"тон",channel:"канал"};
+ let all=[];
+ ["goal","tone","channel"].forEach(dim=>{(mom[dim]||[]).forEach(r=>{
+  all.push({key:lblMap[dim]+": "+r.key,momentum:r.momentum,recent_n:r.recent_n,prior_n:r.prior_n});});});
+ const rising=all.filter(r=>r.momentum>0).sort((a,b)=>b.momentum-a.momentum).slice(0,3);
+ const falling=all.filter(r=>r.momentum<0).sort((a,b)=>a.momentum-b.momentum).slice(0,3);
+ nEl.textContent="вимірів="+all.length;
+ if(!rising.length&&!falling.length){wrap.innerHTML='<div class="iempty">без помітної динаміки</div>';return;}
+ const line=(r,fall)=>`<div class="irow ${fall?"fall":""}"><span class="ik">${esc(r.key)}</span>`+
+  `<span class="iv"><span class="iarrow">${fall?"↓":"↑"}</span> ${r.recent_n}<span class="in"> vs ${r.prior_n}</span></span></div>`;
+ wrap.innerHTML=rising.map(r=>line(r,false)).join("")+falling.map(r=>line(r,true)).join("")
+  ||'<div class="iempty">без помітної динаміки</div>';
+}
+function renderInsLeaders(camps){
+ const wrap=document.getElementById("ins-lead"),nEl=document.getElementById("ins-lead-n");
+ const rows=camps.filter(c=>c.rel_resonance!=null).sort((a,b)=>b.rel_resonance-a.rel_resonance).slice(0,5);
+ nEl.textContent=rows.length?("N="+rows.length):"";
+ if(!rows.length){wrap.innerHTML='<div class="iempty">немає кампаній з резонансом</div>';return;}
+ wrap.innerHTML=rows.map(c=>
+  `<div class="irow clk" data-lead="${esc(c.id)}" title="відкрити деталь"><span class="ik">${esc(c.title)}</span>`+
+  `<span class="iv" style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}">×${c.rel_resonance.toFixed(2)}</span></div>`).join("");
+ wrap.querySelectorAll(".irow[data-lead]").forEach(el=>{
+  el.onclick=()=>openCampModal(el.dataset.lead);});
+}
+function renderInsights(camps){
+ renderInsCombo(camps);renderInsMomentum();renderInsLeaders(camps);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// ── F2: scatter охоплення × engagement rate ──
+// ════════════════════════════════════════════════════════════════════════════
+const CHAN_COLOR={facebook:"#8bb6df",instagram:"#b58bdf",threads:"#d7dce2",youtube:"#ff6b6b",
+ telegram:"#33ff99",tiktok:"#e068c0",web:"#ffb000",irl:"#e0c068"};
+function renderScatter(camps){
+ const pts=camps.filter(c=>c.reach!=null&&c.reach>0&&c.engagement_rate!=null);
+ const nEl=document.getElementById("scatter-n");
+ nEl.textContent="N="+pts.length+" · "+pts.length+" кампаній з даними";
+ const empty=document.getElementById("scatter-empty");
+ if(!HAS_ECHARTS)return; // cont+ degr. handled in init
+ if(!pts.length){if(chScatter)chScatter.clear();empty.style.display="block";return;}
+ empty.style.display="none";
+ const amts=pts.map(c=>c.amount_uah).filter(x=>x!=null);
+ const maxAmt=amts.length?Math.max(...amts):0;
+ const sizeOf=a=>{if(a==null||maxAmt<=0)return 9;return 8+Math.sqrt(a/maxAmt)*26;};
+ // групуємо за основним каналом для кольору+легенди
+ const byChan={};
+ pts.forEach(c=>{const ch=(c.channels&&c.channels[0])||"—";
+  (byChan[ch]=byChan[ch]||[]).push([c.reach,c.engagement_rate,sizeOf(c.amount_uah),c.title,ch,c.amount_uah,c.id]);});
+ const series=Object.keys(byChan).map(ch=>({
+  name:ch,type:"scatter",data:byChan[ch],
+  symbolSize:d=>d[2],
+  itemStyle:{color:CHAN_COLOR[ch]||"#8893a0",opacity:0.78,borderColor:"#0a0c10",borderWidth:0.5}}));
+ chScatter.setOption({backgroundColor:"transparent",
+  tooltip:{backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
+   formatter:p=>{const d=p.data;return `${esc(d[3])}<br><span style="color:#8bb6df">${esc(d[4])}</span>`+
+    `<br>охоплення: <b>${d[0].toLocaleString("uk-UA")}</b>`+
+    `<br>ER: <b>${(d[1]*100).toFixed(2)}%</b>`+
+    `<br>обсяг: <b>${fmtUAH(d[5])}</b>`;}},
+  legend:{show:true,top:0,type:"scroll",textStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10}},
+  grid:{left:60,right:24,top:30,bottom:50},
+  xAxis:{type:"log",name:"охоплення (log)",nameLocation:"middle",nameGap:32,nameTextStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10},
+   axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:v=>v>=1e6?(v/1e6)+"M":v>=1e3?(v/1e3)+"K":v}},
+  yAxis:{type:"value",name:"engagement rate",nameLocation:"middle",nameGap:46,nameTextStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10},
+   axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:v=>(v*100).toFixed(1)+"%"}},
+  series},true);
+ chScatter.off("click");
+ chScatter.on("click",p=>{if(p.data&&p.data[6])openCampModal(p.data[6]);});
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// ── F3: матриця ефективності ──
+// ════════════════════════════════════════════════════════════════════════════
+const MX_LABEL={channels:"канал",tone:"тон",form_factor:"формат"};
+const MX_ORDER={channels:CHANNEL_ORDER,tone:TONE_ORDER,form_factor:FORM_ORDER};
+function heatColor(t){ // t 0..1 -> green scale on dark
+ if(t==null)return "transparent";
+ const a=0.06+t*0.5;return `rgba(51,255,153,${a.toFixed(3)})`;
+}
+function renderMatrix(camps){
+ const axis=mxAxis,order=MX_ORDER[axis]||[];
+ const b={};
+ camps.forEach(c=>{(c[axis]||[]).forEach(k=>{(b[k]=b[k]||[]).push(c);});});
+ const keys=order.filter(k=>b[k]&&b[k].length).concat(Object.keys(b).filter(k=>!order.includes(k)));
+ const totalN=camps.length;
+ document.getElementById("mx-n").textContent="N="+totalN+" рядків="+keys.length;
+ const wrap=document.getElementById("mx-wrap"),empty=document.getElementById("mx-empty");
+ if(!keys.length){wrap.style.display="none";empty.style.display="block";return;}
+ wrap.style.display="block";empty.style.display="none";
+ const rows=keys.map(k=>{
+  const cs=b[k];
+  const ers=cs.map(c=>c.engagement_rate).filter(x=>x!=null);
+  const amts=cs.map(c=>c.amount_uah).filter(x=>x!=null);
+  const grNonNull=cs.filter(c=>c.goal_reached!=null);
+  const grYes=grNonNull.filter(c=>c.goal_reached===true).length;
+  return {key:k,n:cs.length,
+   er:ers.length?median(ers):null,erN:ers.length,
+   gr:grNonNull.length?grYes/grNonNull.length:null,grN:grNonNull.length,
+   amt:amts.length?median(amts):null,amtN:amts.length};
+ });
+ // нормалізація для теплоти
+ const erVals=rows.map(r=>r.er).filter(x=>x!=null);
+ const maxEr=erVals.length?Math.max(...erVals):0;
+ const grVals=rows.map(r=>r.gr).filter(x=>x!=null);const maxGr=grVals.length?Math.max(...grVals):0;
+ const amtVals=rows.map(r=>r.amt).filter(x=>x!=null);const maxAmt=amtVals.length?Math.max(...amtVals):0;
+ document.getElementById("mx-head").innerHTML=
+  `<tr><th>${MX_LABEL[axis]}</th><th>к-сть</th><th>мед. ER</th><th>% цілі</th><th>мед. ₴</th></tr>`;
+ const cell=(v,disp,t)=>`<td style="background:${heatColor(t)}">${disp}</td>`;
+ document.getElementById("mx-body").innerHTML=rows.map(r=>{
+  const low=r.n<2?" lown":"";
+  const erD=r.er!=null?(r.er*100).toFixed(2)+"%"+`<span class="mn">N=${r.erN}</span>`:'<span class="dash">—</span>';
+  const grD=r.gr!=null?(r.gr*100).toFixed(0)+"%"+`<span class="mn">N=${r.grN}</span>`:'<span class="dash">—</span>';
+  const amtD=r.amt!=null?fmtUAH(r.amt)+`<span class="mn">N=${r.amtN}</span>`:'<span class="dash">—</span>';
+  return `<tr class="${low.trim()}"><td>${esc(r.key)}</td>`+
+   `<td>${r.n}</td>`+
+   cell(r.er,erD,r.er!=null&&maxEr>0?r.er/maxEr:null)+
+   cell(r.gr,grD,r.gr!=null&&maxGr>0?r.gr/maxGr:null)+
+   cell(r.amt,amtD,r.amt!=null&&maxAmt>0?r.amt/maxAmt:null)+
+   `</tr>`;
+ }).join("");
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// ── F4: деталь кампанії (модалка) ──
+// ════════════════════════════════════════════════════════════════════════════
+function campById(id){return CAMPAIGNS.find(c=>c.id===id)||null;}
+function openCampModal(id){
+ const c=campById(id);if(!c)return;
+ const bd=document.getElementById("camp-modal"),box=document.getElementById("camp-modal-box");
+ const partById={};PARTNERS.forEach(p=>partById[p.id]=p);
+ const crs=CREATIVES.filter(a=>a.campaign_id===c.id);
+ const src=c.provenance&&c.provenance.campaign?c.provenance.campaign.source_url:c.url;
+ const tag=(t,cls)=>`<span class="ctag ${cls||""}">${esc(t)}</span>`;
+ const chans=(c.channels||[]).map(t=>tag(t,"chan")).join(" ")||'<span class="dash">—</span>';
+ const tones=(c.tone||[]).map(t=>tag(t,"tone")).join(" ")||'<span class="dash">—</span>';
+ const forms=(c.form_factor||[]).map(t=>tag(t)).join(" ")||'<span class="dash">—</span>';
+ const pct=(c.amount_uah!=null&&c.goal_amount!=null&&c.goal_amount>0)?(c.amount_uah/c.goal_amount*100):null;
+ const parts=(c.partner_ids||[]).map(pid=>{const p=partById[pid];
+  return p?(p.links&&p.links[0]?`<a href="${esc(p.links[0])}" target="_blank" rel="noopener">${esc(p.name)}</a> <span class="dash">(${esc(p.role)})</span>`:`${esc(p.name)} <span class="dash">(${esc(p.role)})</span>`):esc(pid);}).join(", ")||'<span class="dash">—</span>';
+ const crHtml=crs.length?crs.map(a=>{
+  const img=a.media_url?`<img src="${esc(a.media_url)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">`:"";
+  const txt=a.hook||a.copy_text||"";
+  return `<div class="mcr">${img}<div class="mcrb"><div class="h">${esc(a.platform)}·${esc(a.format)}</div>`+
+   `${txt?`<div class="c">${esc(txt.length>120?txt.slice(0,120)+"…":txt)}</div>`:""}</div></div>`;
+ }).join(""):'<span class="dash">— без креативів</span>';
+ box.innerHTML=
+  `<div class="mhd"><div class="mt"><div class="mtitle">${esc(c.title)}</div>`+
+   `<div class="mactor">${esc(c.actor_id)} · <span class="goalt">${esc(c.goal)}</span></div></div>`+
+   `<span class="badge ${esc(c.verification_status)}">${esc(c.verification_status)}</span>`+
+   `<button class="mclose" id="modal-x">✕</button></div>`+
+  `<div class="mbody">`+
+   `<div class="tags">${chans} ${tones} ${forms}`+
+    `${c.face?tag("обличчя: "+c.face):""} ${c.cta_type?tag("CTA: "+c.cta_type):""} ${c.cadence?tag("каденс: "+c.cadence):""}</div>`+
+   `<div class="mgrid">`+
+    `<div class="mrow"><span class="k">обсяг ₴:</span>${fmtUAH(c.amount_uah)}</div>`+
+    `<div class="mrow"><span class="k">ціль ₴:</span>${c.goal_amount!=null?fmtUAH(c.goal_amount):'<span class="dash">—</span>'}`+
+     `${pct!=null?` <span class="${pct>=100?"pct-on":"pct-off"}">(${pct.toFixed(0)}%)</span>`:""}</div>`+
+    `<div class="mrow"><span class="k">охоплення:</span>${c.reach!=null?c.reach.toLocaleString("uk-UA"):'<span class="dash">—</span>'}</div>`+
+    `<div class="mrow"><span class="k">залучення:</span>${c.engagement!=null?c.engagement.toLocaleString("uk-UA"):'<span class="dash">—</span>'}</div>`+
+    `<div class="mrow"><span class="k">engagement rate:</span>${c.engagement_rate!=null?(c.engagement_rate*100).toFixed(2)+"%":'<span class="dash">—</span>'}</div>`+
+    `<div class="mrow"><span class="k">резонанс:</span>${c.rel_resonance!=null?`<span style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}">×${c.rel_resonance.toFixed(2)} від медіани актора</span>`:'<span class="dash">—</span>'}</div>`+
+    `<div class="mrow"><span class="k">рекл. бюджет:</span>${fmtUAH(c.spend)}</div>`+
+    `<div class="mrow"><span class="k">ціль досягнуто:</span>${c.goal_reached==null?'<span class="dash">—</span>':(c.goal_reached?'<span class="pct-on">так</span>':'<span class="pct-off">ні</span>')}</div>`+
+    `<div class="mrow full"><span class="k">партнери:</span>${parts}</div>`+
+    `<div class="mrow full"><span class="k">джерело:</span>${src?`<a href="${esc(src)}" target="_blank" rel="noopener">${esc(src)} ↗</a>`:'<span class="dash">—</span>'}</div>`+
+   `</div>`+
+   `${c.playbook_note?`<div class="mnote">📝 ${esc(c.playbook_note)}</div>`:""}`+
+   `<h6>креативи (${crs.length})</h6><div class="mcrs">${crHtml}</div>`+
+  `</div>`;
+ bd.classList.add("on");
+ document.getElementById("modal-x").onclick=closeCampModal;
+}
+function closeCampModal(){document.getElementById("camp-modal").classList.remove("on");}
+function bindModal(){
+ const bd=document.getElementById("camp-modal");
+ bd.addEventListener("click",e=>{if(e.target===bd)closeCampModal();});
+ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCampModal();});
 }
 
 // ── оновлення вигляду кампаній ──
@@ -1025,12 +1379,16 @@ function updateCamp(){
  const camps=filteredCamps();
  const crs=creativesForCamps(camps);
  document.getElementById("c-matchline").textContent="показано "+camps.length+" з "+CAMPAIGNS.length+" кампаній";
+ renderCoverage(camps);
+ renderInsights(camps);
  renderCampKPIs(camps,crs);
  renderGallery(crs);
  renderSaBar(camps);
  renderSrBar(camps);
  renderStyleHeat(chSaFe,"sa-fe-n",camps,"form_factor","channels","engagement",FORM_ORDER,CHANNEL_ORDER);
  renderStyleHeat(chSaGc,"sa-gc-n",camps,"goal_category","channels","count",GOAL_ORDER,CHANNEL_ORDER);
+ renderScatter(camps);
+ renderMatrix(camps);
  renderExplorer(camps);
 }
 
@@ -1038,14 +1396,15 @@ function initCampCharts(){
  if(campChartsInit)return;
  campChartsInit=true;
  if(!HAS_ECHARTS){
-  ["sa-bar","sr-bar","sa-fe","sa-gc"].forEach(id=>{const el=document.getElementById(id);
-   if(el)el.innerHTML="<div style='padding:24px;color:#8893a0'>графіки недоступні (ECharts не завантажився) — галерея й дослідник нижче працюють</div>";});
+  ["sa-bar","sr-bar","sa-fe","sa-gc","scatter-chart"].forEach(id=>{const el=document.getElementById(id);
+   if(el)el.innerHTML="<div style='padding:24px;color:#8893a0'>графіки недоступні (ECharts не завантажився) — таблиці, картки й дослідник нижче працюють</div>";});
   return;}
  chSaBar=echarts.init(document.getElementById("sa-bar"));
  chSrBar=echarts.init(document.getElementById("sr-bar"));
  chSaFe=echarts.init(document.getElementById("sa-fe"));
  chSaGc=echarts.init(document.getElementById("sa-gc"));
- window.addEventListener("resize",()=>{[chSaBar,chSrBar,chSaFe,chSaGc].forEach(c=>{if(c)c.resize();});});
+ chScatter=echarts.init(document.getElementById("scatter-chart"));
+ window.addEventListener("resize",()=>{[chSaBar,chSrBar,chSaFe,chSaGc,chScatter].forEach(c=>{if(c)c.resize();});});
 }
 
 function setupCampaignView(){
@@ -1066,6 +1425,16 @@ function setupCampaignView(){
   saAxis=b.dataset.a;document.querySelectorAll("#sa-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSaBar(filteredCamps());});
  document.querySelectorAll("#sr-axis button").forEach(b=>b.onclick=()=>{
   srAxis=b.dataset.a;document.querySelectorAll("#sr-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSrBar(filteredCamps());});
+ // F3: matrix axis toggle
+ document.querySelectorAll("#mx-axis button").forEach(b=>b.onclick=()=>{
+  mxAxis=b.dataset.a;document.querySelectorAll("#mx-axis button").forEach(x=>x.classList.toggle("on",x===b));renderMatrix(filteredCamps());});
+ // F4: explorer sort toggle
+ document.querySelectorAll("#ce-sort button").forEach(b=>b.onclick=()=>{
+  ceSort=b.dataset.s;document.querySelectorAll("#ce-sort button").forEach(x=>x.classList.toggle("on",x===b));renderExplorer(filteredCamps());});
+ // F4: search (re-runs full filter so insights/scatter/matrix також звужуються)
+ {let t=null;const inp=document.getElementById("ce-search");
+  inp.oninput=()=>{ceSearch=inp.value;clearTimeout(t);t=setTimeout(updateCamp,160);};}
+ bindModal();
  document.getElementById("cf-verif").onchange=e=>{cVerifMode=e.target.value;updateCamp();};
  // Recency segmented control
  document.querySelectorAll("#recency-seg button").forEach(b=>b.onclick=()=>{
@@ -1079,6 +1448,10 @@ function setupCampaignView(){
   updateCamp();});
  document.getElementById("c-reset").onclick=()=>{
   Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";recencyDays=30;campRelevMode="zbory";
+  ceSearch="";ceSort="rel_resonance";mxAxis="channels";
+  document.getElementById("ce-search").value="";
+  document.querySelectorAll("#ce-sort button").forEach(b=>b.classList.toggle("on",b.dataset.s==="rel_resonance"));
+  document.querySelectorAll("#mx-axis button").forEach(b=>b.classList.toggle("on",b.dataset.a==="channels"));
   document.getElementById("cf-verif").value="all";
   document.querySelectorAll("#recency-seg button").forEach(b=>b.classList.toggle("on",b.dataset.days==="30"));
   document.querySelectorAll("#relev-seg button").forEach(b=>b.classList.toggle("on",b.dataset.relev==="zbory"));
@@ -1097,7 +1470,7 @@ function switchTab(tab){
   initCampCharts();
   updateCamp();
   // ECharts потребує видимого контейнера для коректного розміру
-  setTimeout(()=>{[chSaBar,chSrBar,chSaFe,chSaGc].forEach(c=>{if(c)c.resize();});},30);
+  setTimeout(()=>{[chSaBar,chSrBar,chSaFe,chSaGc,chScatter].forEach(c=>{if(c)c.resize();});},30);
  }else{
   setTimeout(()=>{if(chTrend)chTrend.resize();if(chHeat)chHeat.resize();},30);
  }
