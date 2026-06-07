@@ -135,9 +135,11 @@ def claude_cli(prompt: str, model: str = "sonnet", *, timeout: int = 180) -> dic
     # На Windows `claude` — це .CMD-шім; subprocess(["claude"]) дає WinError 2.
     # Резолвимо повний шлях через which (знаходить claude.CMD/.exe).
     exe = shutil.which("claude") or "claude"
+    # Промпт — через STDIN (а не argv): великий багаторядковий текст з кирилицею
+    # як аргумент на Windows ламається (довжина/екранування) → порожній вивід.
     proc = subprocess.run(
-        [exe, "-p", prompt, "--output-format", "json", "--model", model],
-        capture_output=True, text=True, encoding="utf-8", timeout=timeout,
+        [exe, "-p", "--output-format", "json", "--model", model],
+        input=prompt, capture_output=True, text=True, encoding="utf-8", timeout=timeout,
     )
     if proc.returncode != 0:
         raise RuntimeError(f"claude CLI exit {proc.returncode}: {(proc.stderr or '')[:200]}")
