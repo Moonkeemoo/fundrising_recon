@@ -75,8 +75,10 @@ def critique_case(
         return "conflict", ""
 
     prompt = build_critic_prompt(case)
-    raw = _judge(prompt)
-    verdict = parse_verdict(raw)
+    try:
+        verdict = parse_verdict(_judge(prompt))
+    except Exception as exc:  # noqa: BLE001 — збій критика не має валити прогін
+        return base_status, f"критик недоступний: {exc}"[:200]
 
     if base_status == "cross-checked":
         if verdict["supported"] and verdict["confidence"] >= 0.7:
@@ -96,7 +98,7 @@ def _live_judge(prompt: str) -> dict:  # pragma: no cover
     client = anthropic.Anthropic(api_key=config.CRITIC_API_KEY)
     message = client.messages.create(
         model=config.JUDGE_MODEL,
-        max_tokens=256,
+        max_tokens=1024,
         temperature=0,
         messages=[{"role": "user", "content": prompt}],
     )
@@ -163,8 +165,10 @@ def critique_campaign(
         return "conflict", ""
 
     prompt = build_campaign_critic_prompt(campaign)
-    raw = _judge(prompt)
-    verdict = parse_verdict(raw)
+    try:
+        verdict = parse_verdict(_judge(prompt))
+    except Exception as exc:  # noqa: BLE001 — збій критика не має валити прогін
+        return base_status, f"критик недоступний: {exc}"[:200]
 
     if base_status == "cross-checked":
         if verdict["supported"] and verdict["confidence"] >= 0.7:
