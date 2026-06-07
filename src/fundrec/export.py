@@ -12,7 +12,7 @@ import sqlite3
 from pathlib import Path
 
 from . import config, schema, store
-from .analyze import engagement_rate, rel_resonance_map
+from .analyze import derive_themes, engagement_rate, rel_resonance_map
 from .pipeline_analyze import build_analytics
 
 
@@ -30,6 +30,9 @@ def export_cases(conn: sqlite3.Connection, out_path: Path | str = config.CASES_J
         d = schema.campaign_to_dict(c)
         d["engagement_rate"] = engagement_rate(c)
         d["rel_resonance"] = rrmap.get(c.id)
+        # Теми — keyword-derived з title + playbook_note (export-time, не в схемі)
+        text = (c.title or "") + " " + (c.playbook_note or "")
+        d["themes"] = derive_themes(text)
         campaign_dicts.append(d)
 
     payload = {
