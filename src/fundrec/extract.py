@@ -249,6 +249,15 @@ def parse_campaign_extraction(
                 "note": "",
             }
 
+    # Завжди фіксуємо джерело самої кампанії (щоб лінк на джерело працював і для
+    # live-даних, де числових полів може не бути).
+    provenance["campaign"] = {
+        "source_url": source.url,
+        "confidence": confidence,
+        "tier": source.tier,
+        "note": "",
+    }
+
     # Відфільтровуємо невідомі теги
     channels = [c for c in (obj.get("channels") or []) if c in schema.CHANNELS]
     form_factor = [f for f in (obj.get("form_factor") or []) if f in schema.FORM_FACTORS]

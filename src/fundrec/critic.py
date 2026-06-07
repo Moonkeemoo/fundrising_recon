@@ -102,7 +102,8 @@ def _live_judge(prompt: str) -> dict:  # pragma: no cover
         messages=[{"role": "user", "content": prompt}],
     )
     text = message.content[0].text
-    return json.loads(text)
+    from .extract import _json_from_text
+    return _json_from_text(text)
 
 
 # ---------------------------------------------------------------------------
