@@ -355,7 +355,11 @@ def classify_relevance_db(
         if will_use_llm:
             llm_calls += 1
 
-        flag = classify_campaign(campaign, raw_item, judge=judge)
+        try:
+            flag = classify_campaign(campaign, raw_item, judge=judge)
+        except Exception as exc:  # noqa: BLE001 — збій LLM не має валити весь прохід
+            print(f"relevance: класифікація не вдалась {campaign.id}: {exc}", file=sys.stderr)
+            continue  # лишаємо is_campaign=None (невідомо)
         store.set_campaign_relevance(conn, campaign.id, flag)
 
         if flag:

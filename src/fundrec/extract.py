@@ -40,7 +40,10 @@ def _json_from_text(text: str) -> dict:
     # 1. Спробуємо знайти ```json ... ``` або ``` ... ``` фенс
     fenced = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
     if fenced:
-        return json.loads(fenced.group(1))
+        try:
+            return json.loads(fenced.group(1))
+        except Exception:  # noqa: BLE001 — кривий фенс, спробуємо brace-scan нижче
+            pass
 
     # 2. Знаходимо перший {...} блок (ігноруємо зовнішній прозовий текст)
     brace_start = text.find("{")
