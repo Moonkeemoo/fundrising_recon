@@ -41,6 +41,18 @@ _FUNDRAISING_KEYWORDS = [
     "зібрано", "ціль", "задонатити",
 ]
 
+# Ключові слова закриття/досягнення цілі — щоб capturing'ати фінальні пости
+# (final amounts, milestone posts).  Доповнюють fundraising-фільтр.
+_CLOSING_KEYWORDS = [
+    "зібрали",
+    "завершено",
+    "ціль досягнут",
+    "дякуємо",
+    "закрили збір",
+    "мету досягнут",
+    "100%",
+]
+
 _POST_URL_TMPL = "https://t.me/{channel}/{message_id}"
 
 
@@ -275,11 +287,18 @@ def fetch_channel_web(
 
 
 def _text_matches_fundraising(text: str | None) -> bool:
-    """Перевіряє, чи містить текст сигнальні слова збору коштів."""
+    """Перевіряє, чи містить текст сигнальні слова збору коштів АБО closing-паттерни.
+
+    Включає _CLOSING_KEYWORDS щоб closing/milestone пости (з фінальними сумами)
+    проходили фільтр і потрапляли до збору.
+    """
     if not text:
         return False
     text_lower = text.lower()
-    return any(kw.lower() in text_lower for kw in _FUNDRAISING_KEYWORDS)
+    return (
+        any(kw.lower() in text_lower for kw in _FUNDRAISING_KEYWORDS)
+        or any(kw.lower() in text_lower for kw in _CLOSING_KEYWORDS)
+    )
 
 
 def search_channels(
