@@ -197,6 +197,25 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
 .searchbar input{background:#000;border:1px solid var(--line);color:var(--fg);padding:5px 9px;font:12px var(--mono);
  border-radius:2px;flex:1;min-width:160px}
 .searchbar input:focus{outline:none;border-color:var(--amber)}
+/* ── «живе зараз» feed ── */
+.livefeed{background:var(--bg2);border:1px solid var(--amber);border-radius:3px;margin-bottom:16px;padding:12px 14px}
+.livefeed .lfhead{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.livefeed .lfhead h3{margin:0;font-size:13px;color:var(--amber);letter-spacing:.5px}
+.livefeed .lfhead .n{font-size:11px;color:var(--faint)}
+.lfrow{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px dashed var(--bg3);flex-wrap:wrap;cursor:pointer}
+.lfrow:last-child{border-bottom:0}
+.lfrow:hover .lftitle{color:var(--amber)}
+.lftitle{color:var(--fg);font-weight:600;font-size:12px;flex:1;min-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lfmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:11px;color:var(--dim);white-space:nowrap}
+.lfmeta .lf-rr{color:var(--green);font-weight:700}
+.lfmeta .lf-rr.dim{color:var(--dim)}
+.lfmeta .lf-eng{color:var(--blue)}
+.lfmeta .lf-days{color:var(--faint)}
+.lfbar{display:flex;align-items:center;gap:5px;font-size:11px}
+.lfbar-track{width:80px;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;border:1px solid var(--line)}
+.lfbar-fill{height:100%;background:var(--amber);border-radius:3px;transition:width .2s}
+.lfbar-fill.done{background:var(--green)}
+.lfempty{padding:24px;text-align:center;color:var(--dim);font-size:12px}
 .ccard .crow .res-frontier{color:var(--amber);font-size:10px}
 @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.side{position:static;width:100%;height:auto}.layout{flex-direction:column}
  .insights{grid-template-columns:1fr}.modal .mgrid{grid-template-columns:1fr}}
@@ -326,6 +345,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
 <div class="layout">
  <!-- ── SIDEBAR (фільтри кампаній) ── -->
  <aside class="side" id="side-c">
+  <h4>тема</h4><div class="chips" id="cf-theme"></div>
   <h4>канал</h4><div class="chips" id="cf-channels"></div>
   <h4>формат</h4><div class="chips" id="cf-form"></div>
   <h4>тон</h4><div class="chips" id="cf-tone"></div>
@@ -363,6 +383,15 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
   <div id="c-dash" style="display:none">
    <!-- F3: смужка покриття даними -->
    <div class="coverage" id="coverage"></div>
+
+   <!-- ЖИВЕ ЗАРАЗ: стрічка поточних зборів -->
+   <div class="livefeed" id="live-feed-panel">
+    <div class="lfhead">
+     <h3 id="live-feed-title">&#9889; Живе зараз</h3>
+     <span class="n" id="live-feed-n"></span>
+    </div>
+    <div id="live-feed-rows"></div>
+   </div>
 
    <!-- F1: старт-екран «Що працює зараз» -->
    <div class="insights" id="insights">
@@ -508,7 +537,7 @@ let chTrend=null, chHeat=null;
 const HAS_ECHARTS=(typeof echarts!=="undefined");
 // ── стан КАМПАНІЙ ──
 let activeTab="cases";
-const CSEL={channels:new Set(),form_factor:new Set(),tone:new Set(),face:new Set(),type:new Set()};
+const CSEL={themes:new Set(),channels:new Set(),form_factor:new Set(),tone:new Set(),face:new Set(),type:new Set()};
 let cVerifMode="all", saAxis="tone", saMetric="engagement", srAxis="tone";
 let recencyDays=30; // 0 = усі
 let campRelevMode="zbory"; // "zbory" | "all" | "topical"
@@ -533,6 +562,7 @@ const CTYPE_ORDER=["online_ad","organic_social","telethon","event_irl","platform
 const CTA_ORDER=["donate_link","jar","qr","auction","subscription","merch"];
 const SA_AXIS_FIELD={tone:"tone",channels:"channels",cta_type:"cta_type",face:"face"};
 const THEME_ORDER=["fpv","interceptors","reb_ew","vehicles","recon","fiber","medical","comms","ammo","optics_electro","energy","humanitarian"];
+const THEME_LABEL={fpv:"FPV/дрони",interceptors:"перехоплювачі/ППО",reb_ew:"РЕБ",vehicles:"авто/транспорт",medical:"медицина",fiber:"оптоволокно",comms:"звʼязок/Starlink",ammo:"боєприпаси",optics_electro:"оптика/електроніка",energy:"енергетика",recon:"розвідка",humanitarian:"гуманітарка"};
 
 // ── утиліти ──
 const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
@@ -984,6 +1014,7 @@ function filteredCamps(){
   // is_campaign фільтр: false=топічний прихований за замовч.; null=невідомо -> видимий
   if(campRelevMode==="zbory"&&c.is_campaign===false)return false;
   if(campRelevMode==="topical"&&c.is_campaign!==false)return false;
+  if(CSEL.themes.size&&!(c.themes||[]).some(x=>CSEL.themes.has(x)))return false;
   if(CSEL.channels.size&&!(c.channels||[]).some(x=>CSEL.channels.has(x)))return false;
   if(CSEL.form_factor.size&&!(c.form_factor||[]).some(x=>CSEL.form_factor.has(x)))return false;
   if(CSEL.tone.size&&!(c.tone||[]).some(x=>CSEL.tone.has(x)))return false;
@@ -1009,6 +1040,15 @@ function renderCampChips(boxId,order,field){
  const cnt=campTagCounts(field);const present=order.filter(t=>cnt[t]);
  box.innerHTML=present.map(t=>
   `<span class="chip ${CSEL[field].has(t)?"on":""}" data-cf="${field}" data-t="${esc(t)}">${esc(t)}<span class="n">${cnt[t]}</span></span>`
+ ).join("")||'<span class="dash" style="font-size:11px">—</span>';
+}
+function renderCampChipsTheme(){
+ const box=document.getElementById("cf-theme");if(!box)return;
+ const cnt={};
+ CAMPAIGNS.forEach(c=>(c.themes||[]).forEach(t=>cnt[t]=(cnt[t]||0)+1));
+ const present=THEME_ORDER.filter(t=>cnt[t]);
+ box.innerHTML=present.map(t=>
+  `<span class="chip ${CSEL.themes.has(t)?"on":""}" data-cf="themes" data-t="${esc(t)}" title="${esc(t)}">${esc(THEME_LABEL[t]||t)}<span class="n">${cnt[t]}</span></span>`
  ).join("")||'<span class="dash" style="font-size:11px">—</span>';
 }
 function bindCampChips(){
@@ -1250,7 +1290,7 @@ function renderCoverage(camps){
 // ════════════════════════════════════════════════════════════════════════════
 // Чи активні «додаткові» фільтри (крім дефолтних recency/relev) — тоді recompute клієнтом
 function extraFiltersActive(){
- return ceSearch.trim()!==""||CSEL.channels.size||CSEL.form_factor.size||CSEL.tone.size||
+ return ceSearch.trim()!==""||CSEL.themes.size||CSEL.channels.size||CSEL.form_factor.size||CSEL.tone.size||
   CSEL.face.size||CSEL.type.size||cVerifMode!=="all";
 }
 function comboFromCamps(camps,field,minN){ // mean rel_resonance per key, N>=minN
@@ -1311,6 +1351,68 @@ function renderInsLeaders(camps){
  wrap.querySelectorAll(".irow[data-lead]").forEach(el=>{
   el.onclick=()=>openCampModal(el.dataset.lead);});
 }
+// ════════════════════════════════════════════════════════════════════════════
+// ── «ЖИВЕ ЗАРАЗ» feed ──
+// ════════════════════════════════════════════════════════════════════════════
+function renderLiveFeed(camps){
+ const panel=document.getElementById("live-feed-panel");
+ const nEl=document.getElementById("live-feed-n");
+ const rowsEl=document.getElementById("live-feed-rows");
+ if(!panel||!rowsEl)return;
+ const now=Date.now();
+ // Ranked: sorted by rel_resonance desc (null last), tiebreak by recency (most recent first)
+ // No additional recency window here — camps already filtered by filteredCamps() which applies recencyDays
+ const ranked=[...camps].sort((a,b)=>{
+  const ra=a.rel_resonance,rb=b.rel_resonance;
+  if(ra==null&&rb==null){// tiebreak by date
+   const da=campDate(a),db=campDate(b);
+   if(!da&&!db)return 0;if(!da)return 1;if(!db)return -1;
+   return db.getTime()-da.getTime();}
+  if(ra==null)return 1;if(rb==null)return -1;
+  if(ra!==rb)return rb-ra;
+  // tiebreak by recency
+  const da=campDate(a),db=campDate(b);
+  if(!da&&!db)return 0;if(!da)return 1;if(!db)return -1;
+  return db.getTime()-da.getTime();
+ }).slice(0,10);
+ nEl.textContent="N="+ranked.length+" з "+camps.length;
+ if(!ranked.length){
+  rowsEl.innerHTML='<div class="lfempty">недостатньо свіжих зборів</div>';
+  return;}
+ rowsEl.innerHTML=ranked.map(c=>{
+  // days ago
+  const d=campDate(c);
+  const daysAgo=d!=null?Math.max(0,Math.round((now-d.getTime())/(1000*60*60*24))):null;
+  const daysStr=daysAgo!=null?(daysAgo===0?"сьогодні":daysAgo+"д тому"):"—";
+  // channels
+  const chans=(c.channels||[]).slice(0,3).map(t=>`<span class="ctag chan" style="font-size:10px">${esc(t)}</span>`).join(" ")||"—";
+  // resonance
+  const rrStr=c.rel_resonance!=null?`<span class="lf-rr${c.rel_resonance<1?" dim":""}">×${c.rel_resonance.toFixed(2)}</span>`:'<span class="dash">—</span>';
+  // engagement
+  const engStr=c.engagement!=null?`<span class="lf-eng">▲${c.engagement.toLocaleString("uk-UA")}</span>`:'<span class="dash">—</span>';
+  // progress bar
+  let barHtml="";
+  if(c.amount_uah!=null&&c.goal_amount!=null&&c.goal_amount>0){
+   const pct=Math.min(100,c.amount_uah/c.goal_amount*100);
+   const done=pct>=100;
+   barHtml=`<span class="lfbar"><span class="lfbar-track"><span class="lfbar-fill${done?" done":""}" style="width:${pct.toFixed(1)}%"></span></span>`+
+    `банка: ${pct.toFixed(0)}% (${fmtUAH(c.amount_uah)} / ${fmtUAH(c.goal_amount)})</span>`;
+  }
+  return `<div class="lfrow" data-lfid="${esc(c.id)}">
+   <span class="lftitle" title="${esc(c.title)}">${esc(c.title)}</span>
+   <span class="lfmeta">
+    ${chans}
+    <span class="lf-days">${esc(daysStr)}</span>
+    ${engStr}
+    ${rrStr}
+    ${barHtml}
+   </span>
+  </div>`;
+ }).join("");
+ rowsEl.querySelectorAll(".lfrow[data-lfid]").forEach(el=>{
+  el.onclick=()=>openCampModal(el.dataset.lfid);});
+}
+
 function renderInsights(camps){
  renderInsCombo(camps);renderInsMomentum();renderInsLeaders(camps);
 }
@@ -1474,6 +1576,7 @@ function updateCamp(){
  const crs=creativesForCamps(camps);
  document.getElementById("c-matchline").textContent="показано "+camps.length+" з "+CAMPAIGNS.length+" кампаній";
  renderCoverage(camps);
+ renderLiveFeed(camps);
  renderInsights(camps);
  renderCampKPIs(camps,crs);
  renderGallery(crs);
@@ -1506,6 +1609,7 @@ function setupCampaignView(){
  document.getElementById("c-empty").style.display=hasCamps?"none":"block";
  document.getElementById("c-dash").style.display=hasCamps?"block":"none";
  if(!hasCamps)return;
+ renderCampChipsTheme();
  renderCampChips("cf-channels",CHANNEL_ORDER,"channels");
  renderCampChips("cf-form",FORM_ORDER,"form_factor");
  renderCampChips("cf-tone",TONE_ORDER,"tone");
@@ -1549,6 +1653,7 @@ function setupCampaignView(){
   document.getElementById("cf-verif").value="all";
   document.querySelectorAll("#recency-seg button").forEach(b=>b.classList.toggle("on",b.dataset.days==="30"));
   document.querySelectorAll("#relev-seg button").forEach(b=>b.classList.toggle("on",b.dataset.relev==="zbory"));
+  renderCampChipsTheme();
   renderCampChips("cf-channels",CHANNEL_ORDER,"channels");renderCampChips("cf-form",FORM_ORDER,"form_factor");
   renderCampChips("cf-tone",TONE_ORDER,"tone");renderCampChips("cf-face",FACE_ORDER,"face");renderCampChips("cf-type",CTYPE_ORDER,"type");
   bindCampChips();updateCamp();};
