@@ -231,6 +231,7 @@ def build_campaign_prompt(raw: dict[str, Any], source: Source) -> str:
         '  "amount_uah": float|null, "amount_usd": float|null,\n'
         '  "reach": float|null, "engagement": float|null,\n'
         '  "spend": float|null, "assets_count": float|null,\n'
+        '  "goal_reached": true|false|null,\n'
         '  "creatives": [{"platform": str, "format": str, "copy_text": str|null,\n'
         '    "hook": str|null, "cta": str|null, "media_url": str|null,\n'
         '    "published": str|null, "impressions_range": str|null,\n'
@@ -238,6 +239,8 @@ def build_campaign_prompt(raw: dict[str, Any], source: Source) -> str:
         '  "partners": [{"name": str, "role": str, "links": []}]\n'
         "}\n\n"
         "Не вигадуй чисел: якщо значення немає в джерелі — став null.\n"
+        "goal_reached: true якщо явно сказано що ціль досягнута/збір завершено успішно; "
+        "false якщо явно НЕ досягнута; null якщо невідомо.\n"
         "playbook_note — ОПИСОВА нотатка про підхід кампанії (не порада).\n\n"
         f"Дозволені campaign type: {sorted(schema.CAMPAIGN_TYPES)}\n"
         f"Дозволені channels: {sorted(schema.CHANNELS)}\n"
@@ -319,6 +322,14 @@ def parse_campaign_extraction(
 
     partner_ids = [p.id for p in partners]
 
+    # goal_reached: читаємо з LLM як bool|None (null → None)
+    gr_raw = obj.get("goal_reached")
+    goal_reached: bool | None = None
+    if gr_raw is True:
+        goal_reached = True
+    elif gr_raw is False:
+        goal_reached = False
+
     campaign = Campaign(
         id=campaign_id,
         actor_id=actor_id,
@@ -341,6 +352,7 @@ def parse_campaign_extraction(
         engagement=obj.get("engagement"),
         spend=obj.get("spend"),
         assets_count=obj.get("assets_count"),
+        goal_reached=goal_reached,
         case_id=None,  # внутрішній FK на cases — НЕ з LLM (вигаданий id ламає FK)
         partner_ids=partner_ids,
         provenance=provenance,

@@ -136,6 +136,12 @@ def _row_to_campaign(row: sqlite3.Row, partner_ids: list[str] | None = None) -> 
         data[name] = json.loads(data[name])
     if partner_ids is not None:
         data["partner_ids"] = partner_ids
+    # INTEGER NULL → bool | None (SQLite зберігає bool як 0/1)
+    gr = data.get("goal_reached")
+    if gr is None:
+        data["goal_reached"] = None
+    else:
+        data["goal_reached"] = bool(gr)
     return Campaign(**data)
 
 

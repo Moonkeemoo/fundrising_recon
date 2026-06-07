@@ -347,6 +347,38 @@ def kpis(cases: Sequence[Case]) -> dict:
     }
 
 
+# ── KEYWORD FALLBACK: goal_reached ───────────────────────────────────────────
+
+_GOAL_REACHED_PATTERNS = [
+    "ціль досягнут",
+    "збір завершен",
+    "зібрали повністю",
+    "100%",
+    "дякуємо, зібрали",
+    "ціль закрит",
+    "мету досягнут",
+    "закрили збір",
+    "закрити збір",
+    "зібрали!",
+    "збір закрит",
+]
+
+
+def text_signals_goal_reached(text: str | None) -> bool | None:
+    """Детермінований keyword-аналіз тексту на ознаки досягнення цілі.
+
+    Повертає True якщо текст містить closing/milestone паттерн.
+    Повертає None якщо сигналу немає (честний null — не False).
+    """
+    if not text:
+        return None
+    t = text.lower()
+    for pattern in _GOAL_REACHED_PATTERNS:
+        if pattern.lower() in t:
+            return True
+    return None
+
+
 # ── CAMPAIGN ANALYTICS (F5) ─────────────────────────────────────────────────
 #
 # Глибока аналітика стилю/каналу/формату над сутністю Campaign. Ті самі

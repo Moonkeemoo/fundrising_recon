@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS campaigns (
     engagement          REAL,
     spend               REAL,
     assets_count        REAL,
+    goal_reached        INTEGER,
     case_id             TEXT REFERENCES cases(id),
     partner_ids         TEXT NOT NULL DEFAULT '[]',
     provenance          TEXT NOT NULL DEFAULT '{}',

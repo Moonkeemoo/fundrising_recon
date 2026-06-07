@@ -38,6 +38,7 @@ from pathlib import Path
 from typing import Any
 
 from . import config, export, extract, jars, store, validate
+from .analyze import text_signals_goal_reached
 from .critic import critique_campaign
 from .discover import discover_sources
 from .extract import _TIER_CONFIDENCE
@@ -338,6 +339,13 @@ def _ingest_one(
 
     # --- Детерміновані сигнали (reach/engagement) з сирих платформних даних ---
     _apply_signals(campaign, raw_item, tier=source.tier)
+
+    # --- goal_reached: keyword fallback якщо LLM не встановив ---
+    if campaign.goal_reached is None:
+        text_for_kw = raw_item.get("text") or raw_item.get("raw_text") or ""
+        kw_result = text_signals_goal_reached(text_for_kw)
+        if kw_result is not None:
+            campaign.goal_reached = kw_result
 
     # --- Збагачення jar-даними (tier-1) ---
     jar_data: dict[str, Any] | None = None
