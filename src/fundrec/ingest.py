@@ -28,6 +28,7 @@ Graceful-skip: джерело без ключа → лог + skipped_no_key.
   2. Search-based (youtube, meta, telegram): theme search → list[dict] raw_items.
 Обидва етапи об'єднуються в єдиний список перед екстракцією.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -48,13 +49,13 @@ from .schema import Actor, Source
 # Telethon-шлях (collect/telegram.py) потребує TELEGRAM_API_ID/HASH,
 # але за замовчуванням використовується web-шлях.
 _SOURCE_KEY_MAP: dict[str, list[str]] = {
-    "meta":     ["META_ADS_TOKEN"],
-    "youtube":  ["YOUTUBE_API_KEY"],
-    "telegram": [],   # web-шлях: без ключів (t.me/s/<channel>)
+    "meta": ["META_ADS_TOKEN"],
+    "youtube": ["YOUTUBE_API_KEY"],
+    "telegram": [],  # web-шлях: без ключів (t.me/s/<channel>)
     # Без ключів:
     "monobank": [],
-    "reports":  [],
-    "news":     [],
+    "reports": [],
+    "news": [],
 }
 
 _ALL_SOURCES = list(_SOURCE_KEY_MAP.keys())
@@ -64,8 +65,8 @@ _SEARCH_SOURCES = {"youtube", "meta", "telegram"}
 
 # Source type + tier для кожного пошукового джерела
 _SEARCH_SOURCE_META: dict[str, dict[str, Any]] = {
-    "youtube":  {"type": "social", "tier": 3},
-    "meta":     {"type": "social", "tier": 1},
+    "youtube": {"type": "social", "tier": 3},
+    "meta": {"type": "social", "tier": 1},
     "telegram": {"type": "social", "tier": 3},
 }
 
@@ -114,6 +115,7 @@ def _write_raw_cache(raw_dir: Path, url: str, payload: dict[str, Any]) -> None:
 
 def _default_sleep(seconds: float) -> None:  # pragma: no cover
     import time
+
     time.sleep(seconds)
 
 
@@ -122,23 +124,37 @@ def _get_default_search_collector(src_name: str) -> Any | None:
     if src_name == "youtube":
         try:
             from .collect.youtube import search_fundraising  # noqa: PLC0415
+
             return search_fundraising
         except ImportError:  # pragma: no cover
             return None
     if src_name == "meta":
         try:
             from .collect.meta_ads import search_ads  # noqa: PLC0415
+
             return search_ads
         except ImportError:  # pragma: no cover
             return None
     if src_name == "telegram":
         try:
             from .collect.telegram_web import search_channels  # noqa: PLC0415
+
             # Обгортаємо: search_channels(theme, max_results=...) — сигнатура theme->list[dict]
             return search_channels
         except ImportError:  # pragma: no cover
             return None
     return None
+
+
+def _default_jar_fetch_fn() -> Any:
+    """Повертає live jar fetcher: render_jar_cached якщо playwright доступний,
+    інакше — fetch_jar_data (HTTP fallback)."""
+    try:
+        from .collect.jar_render import render_jar_cached  # noqa: PLC0415
+
+        return render_jar_cached
+    except ImportError:  # pragma: no cover
+        return jars.fetch_jar_data
 
 
 def _collect_search_items(
@@ -191,7 +207,8 @@ _TIER1_CONFIDENCE = 0.95  # extract._TIER_CONFIDENCE[1]
 
 
 def _apply_jar_to_campaign(campaign: Any, jar_data: dict[str, Any]) -> None:
-    """Перезаписує campaign.amount_uah значенням банки і ставить tier-1 provenance."""
+    """Перезаписує campaign.amount_uah значенням банки і ставить tier-1 provenance.
+    Також встановлює goal_amount якщо присутнє у jar_data."""
     amount = jar_data.get("amount_uah")
     if amount is None:
         return
@@ -202,6 +219,9 @@ def _apply_jar_to_campaign(campaign: Any, jar_data: dict[str, Any]) -> None:
         "tier": 1,
         "note": "monobank jar tier-1",
     }
+    goal = jar_data.get("goal_amount")
+    if goal is not None:
+        campaign.goal_amount = goal
 
 
 def _apply_jar_to_case(case: Any, jar_data: dict[str, Any]) -> None:
@@ -242,9 +262,7 @@ def _ingest_one(
     url = source.url
 
     # --- Jar: витяг id зі збіркового тексту ---
-    text_for_jar = (
-        raw_item.get("text") or raw_item.get("raw_text") or ""
-    )
+    text_for_jar = raw_item.get("text") or raw_item.get("raw_text") or ""
     found_jar_ids = jars.extract_jar_ids(text_for_jar)
 
     # Jar-dedup: якщо jar_id вже оброблений у цьому запуску або є в БД — пропускаємо
@@ -279,8 +297,11 @@ def _ingest_one(
         except Exception as exc:  # noqa: BLE001
             print(f"ingest: jar fetch failed for {found_jar_ids[0]}: {exc}", file=sys.stderr)
 
+    jar_applied = False
     if jar_data is not None:
         _apply_jar_to_campaign(campaign, jar_data)
+        if jar_data.get("amount_uah") is not None:
+            jar_applied = True
 
     for partner in partners:
         store.upsert_partner(conn, partner)
@@ -289,6 +310,10 @@ def _ingest_one(
         store.upsert_creative(conn, creative)
     for partner in partners:
         store.link_campaign_partner(conn, campaign_id, partner.id)
+
+    # Tier-1 jar amount = публічне перевірене джерело → статус "verified"
+    if jar_applied:
+        store.set_campaign_verification(conn, campaign_id, "verified", reason="monobank jar tier-1")
 
     collected_per_source[source_key] = collected_per_source.get(source_key, 0) + 1
     campaign_stored = True
@@ -354,8 +379,8 @@ def run_ingest(
     complete_fn = comps.get("complete")
     judge_fn = comps.get("judge")
     sleep_fn = comps.get("sleep", _default_sleep)
-    # Jar fetcher: injectable через _components["collect"]["jar"]; live — з jars модуля
-    jar_fetch_fn: Any = collect_fns.get("jar") or jars.fetch_jar_data
+    # Jar fetcher: injectable через _components["collect"]["jar"]; live — render_jar_cached
+    jar_fetch_fn: Any = collect_fns.get("jar") or _default_jar_fetch_fn()
 
     requested_sources = sources or _ALL_SOURCES
     keys = config.keys_status()
@@ -439,9 +464,11 @@ def run_ingest(
                     # live fallback (pragma: no cover)
                     if src_name == "reports":
                         from .collect.reports import fetch_report  # pragma: no cover
+
                         collector_fn = fetch_report  # pragma: no cover
                     elif src_name == "news":
                         from .collect.news import fetch_news  # pragma: no cover
+
                         collector_fn = fetch_news  # pragma: no cover
                 if collector_fn is not None:
                     try:
@@ -593,11 +620,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--db", default=str(config.DB_PATH), help="Шлях до SQLite БД")
     parser.add_argument("--out", default=str(config.CASES_JSON), help="Шлях до cases.json")
+    parser.add_argument("--raw-dir", default=str(config.RAW_DIR), help="Директорія сирих кешів")
     parser.add_argument(
-        "--raw-dir", default=str(config.RAW_DIR), help="Директорія сирих кешів"
-    )
-    parser.add_argument(
-        "--no-verify", action="store_true",
+        "--no-verify",
+        action="store_true",
         help="Пропустити критик/крос-чек (швидше/дешевше; для tier-3 не змінює статус)",
     )
     args = parser.parse_args(argv)

@@ -7,7 +7,10 @@
 2. Два пости з ОДНАКОВИМ jar-id → лише ОДНА кампанія (jar-деdup).
 3. Jar-id вже в БД (provenance) → ПРОПУСКАЄТЬСЯ.
 """
+
 from __future__ import annotations
+
+import pytest
 
 
 # ---------------------------------------------------------------------------
@@ -20,7 +23,7 @@ _FAKE_LLM_CASE = {
     "style": ["urgency"],
     "method": ["monobank_jar"],
     "year": 2024,
-    "amount_uah": None,   # не дало LLM — буде замінено банкою
+    "amount_uah": None,  # не дало LLM — буде замінено банкою
     "amount_usd": None,
     "goal_amount": 500_000.0,
     "currency_raw": "UAH",
@@ -40,7 +43,7 @@ _FAKE_LLM_CAMPAIGN = {
     "face": None,
     "cadence": None,
     "playbook_note": "Jar-based fundraising",
-    "amount_uah": None,   # не дало LLM
+    "amount_uah": None,  # не дало LLM
     "amount_usd": None,
     "reach": None,
     "engagement": None,
@@ -218,13 +221,21 @@ def test_same_jar_dedup_second_run(tmp_path):
         jar_data=_JAR_DATA_JARTEST01,
     )
     ingest.run_ingest(
-        "FPV", sources=["telegram"], max_items=5,
-        db_path=db_path, out_path=out_path, raw_dir=raw_dir,
+        "FPV",
+        sources=["telegram"],
+        max_items=5,
+        db_path=db_path,
+        out_path=out_path,
+        raw_dir=raw_dir,
         _components=components,
     )
     ingest.run_ingest(
-        "FPV", sources=["telegram"], max_items=5,
-        db_path=db_path, out_path=out_path, raw_dir=raw_dir,
+        "FPV",
+        sources=["telegram"],
+        max_items=5,
+        db_path=db_path,
+        out_path=out_path,
+        raw_dir=raw_dir,
         _components=components,
     )
 
@@ -291,7 +302,9 @@ def test_post_without_jar_id_processes_normally(tmp_path):
             "telegram": lambda theme: [post_no_jar],
             "jar": fake_jar_fetch,
         },
-        "complete": lambda p: _FAKE_LLM_CAMPAIGN.copy() if "creatives" in p else _FAKE_LLM_CASE.copy(),
+        "complete": lambda p: (
+            _FAKE_LLM_CAMPAIGN.copy() if "creatives" in p else _FAKE_LLM_CASE.copy()
+        ),
         "judge": lambda p: {"supported": True, "confidence": 0.9, "reason": "ok"},
         "sleep": lambda s: None,
     }
@@ -336,7 +349,9 @@ def test_jar_already_in_db_true_after_insert(tmp_path):
         jar_data=_JAR_DATA_JARTEST01,
     )
     ingest.run_ingest(
-        "FPV", sources=["telegram"], max_items=5,
+        "FPV",
+        sources=["telegram"],
+        max_items=5,
         db_path=tmp_path / "test.sqlite",
         out_path=tmp_path / "cases.json",
         raw_dir=tmp_path / "raw",
@@ -346,3 +361,82 @@ def test_jar_already_in_db_true_after_insert(tmp_path):
     conn = store.connect(tmp_path / "test.sqlite")
     assert ingest._jar_already_in_db(conn, "JARTEST01") is True
     assert ingest._jar_already_in_db(conn, "NONEXISTENT") is False
+
+
+# ---------------------------------------------------------------------------
+# Тест 5: verification_status == "verified" коли jar amount застосовано
+# ---------------------------------------------------------------------------
+
+
+def test_jar_amount_sets_verified_status(tmp_path):
+    """Якщо jar amount застосовано (tier-1) → campaign.verification_status == 'verified'."""
+    from fundrec import ingest, store
+
+    components = _make_jar_ingest_components(
+        posts=[_POST_WITH_JAR],
+        jar_data=_JAR_DATA_JARTEST01,
+    )
+    ingest.run_ingest(
+        "FPV дрони",
+        sources=["telegram"],
+        max_items=5,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+
+    conn = store.connect(tmp_path / "test.sqlite")
+    campaigns = store.load_campaigns(conn)
+    assert len(campaigns) == 1
+    camp = campaigns[0]
+    assert camp.verification_status == "verified"
+
+
+def test_jar_no_data_not_verified(tmp_path):
+    """Якщо jar fetcher повернув None → verification_status НЕ 'verified' (залишається 'auto')."""
+    from fundrec import ingest, store
+
+    components = _make_jar_ingest_components(
+        posts=[_POST_WITH_JAR],
+        jar_data=None,
+    )
+    ingest.run_ingest(
+        "FPV дрони",
+        sources=["telegram"],
+        max_items=5,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+
+    conn = store.connect(tmp_path / "test.sqlite")
+    campaigns = store.load_campaigns(conn)
+    assert len(campaigns) == 1
+    # Без jar amount — статус НЕ 'verified' (буде 'auto' або 'cross-checked' після критика)
+    assert campaigns[0].verification_status != "verified"
+
+
+def test_jar_goal_amount_stored_on_campaign(tmp_path):
+    """goal_amount з jar даних зберігається на campaign."""
+    from fundrec import ingest, store
+
+    components = _make_jar_ingest_components(
+        posts=[_POST_WITH_JAR],
+        jar_data=_JAR_DATA_JARTEST01,  # goal_amount=500_000.0
+    )
+    ingest.run_ingest(
+        "FPV дрони",
+        sources=["telegram"],
+        max_items=5,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+
+    conn = store.connect(tmp_path / "test.sqlite")
+    campaigns = store.load_campaigns(conn)
+    assert len(campaigns) == 1
+    assert campaigns[0].goal_amount == pytest.approx(500_000.0)

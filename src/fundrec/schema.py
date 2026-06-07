@@ -187,6 +187,7 @@ class Campaign:
     # метрики (nullable; honest null)
     amount_uah: float | None = None
     amount_usd: float | None = None
+    goal_amount: float | None = None
     reach: float | None = None
     engagement: float | None = None
     spend: float | None = None

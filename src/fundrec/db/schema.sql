@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS campaigns (
     playbook_note       TEXT,
     amount_uah          REAL,
     amount_usd          REAL,
+    goal_amount         REAL,
     reach               REAL,
     engagement          REAL,
     spend               REAL,
