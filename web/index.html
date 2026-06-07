@@ -257,8 +257,13 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
    <!-- TREND -->
    <div class="panel">
     <div class="head">
-     <h3>тренд 2022 → 2026</h3><span class="n" id="trend-n"></span>
+     <h3 id="trend-title">тренд 2022 → 2026</h3><span class="n" id="trend-n"></span>
      <span class="spacer"></span>
+     <div class="seg" id="trend-window">
+      <button data-w="30">30 днів</button>
+      <button data-w="90">90 днів</button>
+      <button data-w="0" class="on">весь час</button>
+     </div>
      <div class="seg" id="trend-metric">
       <button data-m="volume_usd" class="on">обсяг ₴</button>
       <button data-m="count">к-сть</button>
@@ -491,7 +496,7 @@ let RAW=null, CASES=[], ANALYTICS=null;
 let CAMPAIGNS=[], CREATIVES=[], PARTNERS=[];
 const SEL={goal:new Set(),style:new Set(),method:new Set()};
 let yFrom=2022, yTo=2026, verifMode="all", showConflict=true;
-let trendMetric="volume_usd", trendSplit="", heatMetric="count", lbAxis="amount_uah", lbDir=-1;
+let trendMetric="volume_usd", trendSplit="", trendWindow=0, heatMetric="count", lbAxis="amount_uah", lbDir=-1;
 const openRows=new Set();
 let chTrend=null, chHeat=null;
 const HAS_ECHARTS=(typeof echarts!=="undefined");
@@ -531,6 +536,19 @@ function caseQuarter(c){
   if(/^\d{4}$/.test(d))return d+"-Q1";}
  if(c.year)return c.year+"-Q1";
  return null;}
+function caseDateMs(c){
+ // Returns ms timestamp or null — works for both Case and Campaign objects.
+ if(c.date_start){const s=String(c.date_start);
+  const m=s.match(/^(\d{4}-\d{2}-\d{2})/);if(m)return new Date(m[1]).getTime();
+  const m2=s.match(/^(\d{4}-\d{2})/);if(m2)return new Date(m2[1]+"-01").getTime();
+  const m3=s.match(/^(\d{4})/);if(m3)return new Date(m3[1]+"-01-01").getTime();}
+ if(c.year)return new Date(c.year+"-01-01").getTime();
+ return null;}
+function bucketDay(ms){const d=new Date(ms);return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function bucketWeek(ms){
+ // ISO week approx: floor to Monday.
+ const d=new Date(ms);const day=d.getDay()||7;d.setDate(d.getDate()-day+1);
+ return d.getFullYear()+"-W"+String(Math.ceil((((d-new Date(d.getFullYear(),0,1))/86400000)+1)/7)).padStart(2,"0");}
 function caseYear(c){
  if(c.year)return c.year;
  if(c.date_start){const m=String(c.date_start).match(/^(\d{4})/);if(m)return parseInt(m[1],10);}
@@ -586,17 +604,40 @@ function keysFor(c,split){
  if(split==="style")return (c.style&&c.style.length)?c.style:[];
  if(split==="method")return (c.method&&c.method.length)?c.method:[];
  return ["_total"];}
-function trendData(cases,metric,split){
- // buckets[key][period] -> list
+function trendData(cases,metric,split,windowDays){
+ // windowDays: 0=весь час (quarterly), 30=daily buckets, 90=weekly buckets
+ // Returns {keys, series: [{key, vals, ns}], periods}
+ let bucketFn, periods, filterFn;
+ if(windowDays===0){
+  // весь час — quarter buckets
+  bucketFn=c=>caseQuarter(c);
+  periods=ALL_QUARTERS;
+  filterFn=()=>true;
+ } else {
+  const nowMs=Date.now();
+  const cutMs=nowMs-windowDays*86400000;
+  filterFn=c=>{const ms=caseDateMs(c);return ms!=null&&ms>=cutMs&&ms<=nowMs;};
+  if(windowDays<=30){
+   bucketFn=c=>{const ms=caseDateMs(c);return ms!=null?bucketDay(ms):null;};
+  } else {
+   bucketFn=c=>{const ms=caseDateMs(c);return ms!=null?bucketWeek(ms):null;};
+  }
+  // build periods from filtered cases
+  const filteredForPeriods=cases.filter(filterFn);
+  const pSet=new Set();
+  filteredForPeriods.forEach(c=>{const p=bucketFn(c);if(p)pSet.add(p);});
+  periods=[...pSet].sort();
+ }
+ const filteredCases=cases.filter(filterFn);
  const buckets={};
- cases.forEach(c=>{const p=caseQuarter(c);if(!p||!ALL_QUARTERS.includes(p))return;
+ filteredCases.forEach(c=>{const p=bucketFn(c);if(!p)return;
   keysFor(c,split).forEach(k=>{(buckets[k]=buckets[k]||{});(buckets[k][p]=buckets[k][p]||[]).push(c);});});
  const keys=Object.keys(buckets).sort();
  const series=keys.map(k=>{
-  const vals=ALL_QUARTERS.map(p=>metricOf(buckets[k][p]||[],metric));
-  const ns=ALL_QUARTERS.map(p=>(buckets[k][p]||[]).length);
+  const vals=periods.map(p=>metricOf(buckets[k][p]||[],metric));
+  const ns=periods.map(p=>(buckets[k][p]||[]).length);
   return {key:k,vals,ns};});
- return {keys,series};}
+ return {keys,series,periods};}
 function heatData(cases,metric){
  const cells={}; // "goal|method" -> list
  cases.forEach(c=>{const g=goalCat(c.goal);(c.method||[]).forEach(m=>{
@@ -661,9 +702,14 @@ function renderKPIs(cases){
 // ── TREND chart ──
 const PALETTE=["#ffb000","#33ff99","#8bb6df","#b58bdf","#ff6b6b","#e0c068","#68c0e0","#c0e068","#e068c0","#68e0a0"];
 function renderTrend(cases){
- const {series}=trendData(cases,trendMetric,trendSplit);
- const totalN=cases.filter(c=>caseQuarter(c)&&ALL_QUARTERS.includes(caseQuarter(c))).length;
+ const {series,periods}=trendData(cases,trendMetric,trendSplit,trendWindow);
+ const nowMs=Date.now();
+ const totalN=cases.filter(c=>{if(trendWindow===0){const p=caseQuarter(c);return p&&ALL_QUARTERS.includes(p);}
+  const ms=caseDateMs(c);if(ms==null)return false;
+  return ms>=nowMs-trendWindow*86400000&&ms<=nowMs;}).length;
  document.getElementById("trend-n").textContent="N="+totalN;
+ const titleEl=document.getElementById("trend-title");
+ if(titleEl){titleEl.textContent=trendWindow===0?"тренд 2022 → 2026":trendWindow===30?"тренд — 30 днів":"тренд — 90 днів";}
  const metricName={volume_usd:"обсяг ₴",count:"к-сть",median_speed:"мед. швидкість ₴/д"}[trendMetric];
  const ech=series.map((s,i)=>({
   name:trendSplit?s.key:metricName,type:"line",smooth:true,symbol:"circle",symbolSize:5,
@@ -681,7 +727,7 @@ function renderTrend(cases){
     return out;}},
   legend:trendSplit?{show:true,top:0,textStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10},type:"scroll"}:{show:false},
   grid:{left:60,right:18,top:trendSplit?28:12,bottom:48},
-  xAxis:{type:"category",data:ALL_QUARTERS,axisLine:{lineStyle:{color:"#222a35"}},
+  xAxis:{type:"category",data:periods,axisLine:{lineStyle:{color:"#222a35"}},
    axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:45,fontSize:10}},
   yAxis:{type:"value",axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
    axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,
@@ -1481,6 +1527,8 @@ function bindTabs(){
 
 // ── seg-кнопки ──
 function bindSegs(){
+ document.querySelectorAll("#trend-window button").forEach(b=>b.onclick=()=>{
+  trendWindow=parseInt(b.dataset.w,10);document.querySelectorAll("#trend-window button").forEach(x=>x.classList.toggle("on",x===b));update();});
  document.querySelectorAll("#trend-metric button").forEach(b=>b.onclick=()=>{
   trendMetric=b.dataset.m;document.querySelectorAll("#trend-metric button").forEach(x=>x.classList.toggle("on",x===b));update();});
  document.querySelectorAll("#trend-split button").forEach(b=>b.onclick=()=>{
