@@ -298,21 +298,99 @@ def classify_campaign(campaign: Any, raw: dict[str, Any], *, judge: Any = None) 
     return parse_relevance_verdict(result)
 
 
+def classify_relevance_db(
+    conn: Any,
+    raw_dir: Path | str,
+    *,
+    judge: Any = None,
+    only_unset: bool = True,
+) -> dict[str, int]:
+    """Класифікує всі кампанії в БД і зберігає is_campaign прапор.
+
+    NON-DESTRUCTIVE: нічого не видаляє. None = невідомо (no raw) — залишається None.
+
+    Args:
+        conn: SQLite connection (ініціалізована БД).
+        raw_dir: директорія сирих кешів.
+        judge: ін'єктована LLM-функція (prompt: str) -> dict; за замовч. _live_judge_relevance.
+        only_unset: якщо True — пропускає кампанії де is_campaign вже встановлено.
+
+    Returns:
+        {scanned, relevant, topical, no_raw, llm_calls}
+    """
+    from . import store  # noqa: PLC0415
+
+    if judge is None:
+        judge = _live_judge_relevance  # pragma: no cover
+
+    raw_dir = Path(raw_dir)
+    campaigns = store.load_campaigns(conn)
+
+    scanned = 0
+    relevant = 0
+    topical = 0
+    no_raw = 0
+    llm_calls = 0
+
+    for campaign in campaigns:
+        if only_unset and campaign.is_campaign is not None:
+            continue
+
+        scanned += 1
+
+        raw_file = _find_raw_file(campaign, raw_dir)
+        if raw_file is None:
+            no_raw += 1
+            continue  # залишаємо None — невідомо
+
+        try:
+            raw_item: dict[str, Any] = json.loads(raw_file.read_text(encoding="utf-8"))
+        except Exception as exc:  # noqa: BLE001
+            print(f"relevance: не вдалось зчитати {raw_file}: {exc}", file=sys.stderr)
+            no_raw += 1
+            continue
+
+        # Рахуємо LLM-виклики: is_fundraising True — детерміновано, без LLM
+        will_use_llm = not is_fundraising(raw_item)
+        if will_use_llm:
+            llm_calls += 1
+
+        flag = classify_campaign(campaign, raw_item, judge=judge)
+        store.set_campaign_relevance(conn, campaign.id, flag)
+
+        if flag:
+            relevant += 1
+        else:
+            topical += 1
+
+    return {
+        "scanned": scanned,
+        "relevant": relevant,
+        "topical": topical,
+        "no_raw": no_raw,
+        "llm_calls": llm_calls,
+    }
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
 def main(argv: list[str] | None = None) -> int:
-    """CLI: python -m fundrec.relevance --purge [--db PATH] [--raw-dir PATH] [--out PATH]."""
+    """CLI: python -m fundrec.relevance [--purge | --classify] [--db PATH] [--raw-dir PATH] [--out PATH]."""
     import argparse  # noqa: PLC0415
 
     from . import config, export, store  # noqa: PLC0415
 
     argv = argv if argv is not None else sys.argv[1:]
     parser = argparse.ArgumentParser(
-        description="fundrec relevance: видаляє нерелевантні кампанії з БД"
+        description="fundrec relevance: purge або classify кампаній"
     )
-    parser.add_argument("--purge", action="store_true", help="Запустити purge_non_fundraising")
+    parser.add_argument("--purge", action="store_true", help="Видалити нерелевантні кампанії")
+    parser.add_argument(
+        "--classify", action="store_true",
+        help="Встановити is_campaign прапор (non-destructive)",
+    )
     parser.add_argument("--db", default=str(config.DB_PATH), help="Шлях до SQLite БД")
     parser.add_argument(
         "--raw-dir", default=str(config.RAW_DIR), help="Директорія сирих кешів"
@@ -322,7 +400,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
-    if not args.purge:
+    if not args.purge and not args.classify:
         parser.print_help()
         return 1
 
@@ -334,16 +412,26 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     conn = store.connect(db_path)
-    result = purge_non_fundraising(conn, raw_dir)
 
-    # re-export cases.json
-    exported = export.export_cases(conn, args.out)
+    if args.purge:
+        result = purge_non_fundraising(conn, raw_dir)
+        exported = export.export_cases(conn, args.out)
+        print(
+            f"purge: scanned={result['scanned']} deleted={result['deleted']} "
+            f"kept={result['kept']} no_raw={result['no_raw']} exported={exported}",
+            file=sys.stdout,
+        )
 
-    print(
-        f"purge: scanned={result['scanned']} deleted={result['deleted']} "
-        f"kept={result['kept']} no_raw={result['no_raw']} exported={exported}",
-        file=sys.stdout,
-    )
+    if args.classify:
+        result = classify_relevance_db(conn, raw_dir)
+        exported = export.export_cases(conn, args.out)
+        print(
+            f"classify: scanned={result['scanned']} relevant={result['relevant']} "
+            f"topical={result['topical']} no_raw={result['no_raw']} "
+            f"llm_calls={result['llm_calls']} exported={exported}",
+            file=sys.stdout,
+        )
+
     return 0
 
 
