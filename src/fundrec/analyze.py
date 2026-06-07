@@ -12,6 +12,7 @@ Spec §6: порівнюємо подібне з подібним (в межах
 from __future__ import annotations
 
 import math
+import re
 import statistics
 from datetime import date, timedelta
 from typing import Sequence
@@ -381,6 +382,64 @@ def text_signals_goal_reached(text: str | None) -> bool | None:
         if pattern.lower() in t:
             return True
     return None
+
+
+# ── THEME TAGGER ─────────────────────────────────────────────────────────────
+
+# Keyword → theme map.  Lowercase substrings matched in lowercase(text).
+# "машин" needs a special regex guard to avoid matching "машинально".
+_THEME_KEYWORDS: dict[str, list[str]] = {
+    "fpv": ["fpv", "фпв", "дрон", "коптер", "квадрокоптер", "мавик", "mavic"],
+    "interceptors": ["перехоплюв", "шахед", "антишахед", "ппо", "дрон-перехоплювач"],
+    "reb_ew": ["реб", "антидрон", "глушилк", "радіоелектрон", "ew"],
+    "vehicles": ["авто", "пікап", "буханк", "транспорт", "баггі", "машин"],
+    "recon": ["розвідуваль", "розвідник", "крило", "autel", "автел"],
+    "fiber": ["оптоволокн", "оптичн", "на оптиці"],
+    "medical": ["медиц", "тактмед", "аптечк", "турнікет", "евакуац", "ноші"],
+    "comms": ["starlink", "старлінк", "зв'язк", "рація", "ретранслятор", "антена"],
+    "ammo": ["боєприпас", "набої", "рушниц", "гранат"],
+    "optics_electro": ["тепловізор", "приціл", "акумулятор", "планшет", "монокуляр"],
+    "energy": ["генератор", "павербанк", "енергет"],
+    "humanitarian": ["гуманітар", "цивільн", "переселен", "прихист"],
+}
+
+# "машин" must NOT match "машинально" — negative lookahead for those suffixes.
+_MACHINES_GUARD = re.compile(r"машин(?!ально|ний|ному|ній|ною|них|ними)", re.UNICODE)
+
+
+def derive_themes(text: str) -> list[str]:
+    """Keyword-based multi-label theme tagger.
+
+    Повертає список унікальних тем (рядки), впорядкованих за порядком мапи.
+    Порожній список якщо жоден ключ не співпав.
+
+    Args:
+        text: будь-який рядок (title, playbook_note, raw text).
+
+    Returns:
+        list of theme strings, e.g. ['fpv', 'fiber']
+    """
+    if not text or not text.strip():
+        return []
+
+    t = text.lower()
+    found: list[str] = []
+
+    for theme, keywords in _THEME_KEYWORDS.items():
+        matched = False
+        for kw in keywords:
+            if kw == "машин":
+                # special guard: avoid matching машинально and inflections
+                if _MACHINES_GUARD.search(t):
+                    matched = True
+                    break
+            elif kw in t:
+                matched = True
+                break
+        if matched:
+            found.append(theme)
+
+    return found
 
 
 # ── CAMPAIGN ANALYTICS (F5) ─────────────────────────────────────────────────
