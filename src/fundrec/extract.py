@@ -127,29 +127,39 @@ def _live_complete(prompt: str) -> dict:  # pragma: no cover - мережа/LLM
     Запасний шлях — прямий Anthropic API якщо SDK не доступний.
     Парсинг JSON через _json_from_text (чистий хелпер, тестується окремо).
     """
-    import asyncio  # noqa: PLC0415
+    import os  # noqa: PLC0415
 
-    async def _async_sdk(p: str) -> dict:
-        from claude_agent_sdk import query as sdk_query  # noqa: PLC0415
-        chunks: list[str] = []
-        async for msg in sdk_query(prompt=p):
-            text = getattr(msg, "text", None)
-            if text:
-                chunks.append(text)
-        return _json_from_text("".join(chunks))
-
-    # Спроба 1: Agent SDK
-    try:
-        return asyncio.run(_async_sdk(prompt))
-    except Exception:  # noqa: BLE001
-        pass
-
-    # Запасний шлях: прямий Anthropic API
     from . import config as _cfg  # noqa: PLC0415
+
+    # FUNDREC_EXTRACT_BACKEND=api → одразу прямий API (Agent SDK у headless/фоні
+    # може ВИСНУТИ на підписочній авторизації, а не падати — тоді fallback не
+    # спрацьовує). За замовч. ("auto") пробуємо SDK, потім API.
+    backend = os.environ.get("FUNDREC_EXTRACT_BACKEND", "auto")
+
+    if backend != "api":
+        import asyncio  # noqa: PLC0415
+
+        async def _async_sdk(p: str) -> dict:
+            from claude_agent_sdk import query as sdk_query  # noqa: PLC0415
+            chunks: list[str] = []
+            async for msg in sdk_query(prompt=p):
+                text = getattr(msg, "text", None)
+                if text:
+                    chunks.append(text)
+            return _json_from_text("".join(chunks))
+
+        try:
+            return asyncio.run(_async_sdk(prompt))
+        except Exception:  # noqa: BLE001
+            pass
+
+    # Прямий Anthropic API (ключ критика). Модель екстракції — економна (sonnet)
+    # за замовч., перевизначається через FUNDREC_EXTRACT_API_MODEL.
     import anthropic  # noqa: PLC0415
+    model = os.environ.get("FUNDREC_EXTRACT_API_MODEL", _cfg.JUDGE_MODEL)
     client = anthropic.Anthropic(api_key=_cfg.CRITIC_API_KEY)
     message = client.messages.create(
-        model=_cfg.EXTRACT_MODEL,
+        model=model,
         max_tokens=2048,
         temperature=0,
         messages=[{"role": "user", "content": prompt}],
