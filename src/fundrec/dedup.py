@@ -401,6 +401,145 @@ def campaign_jar_id(campaign: Campaign) -> str | None:
     return None
 
 
+# Шумові токени: скорочення валют/одиниць, що не несуть семантики назви
+_TITLE_NOISE_WORDS: frozenset[str] = frozenset(
+    {
+        "млн",
+        "тис",
+        "грн",
+        "uah",
+        "usd",
+        "eur",
+        "грн",
+        "грн.",
+        "тис.",
+        "млн.",
+        "тисяч",
+        "мільйон",
+        "мільйонів",
+    }
+)
+
+
+def normalize_title(title: str) -> str:
+    """Нормалізує заголовок для порівняння схожості.
+
+    Кроки:
+    1. Lowercase.
+    2. Видаляємо емодзі.
+    3. Видаляємо цифри та символи валют.
+    4. Видаляємо пунктуацію.
+    5. Видаляємо шумові слова (млн, грн, тис тощо).
+    6. Collapse whitespace → один пробіл, strip.
+    """
+    if not title:
+        return ""
+    t = title.lower()
+    # Видаляємо емодзі
+    t = _EMOJI_PAT.sub(" ", t)
+    # Видаляємо символи валют та цифри
+    t = re.sub(r"[₴$€£¥₩\d]", " ", t)
+    # Видаляємо пунктуацію (все, крім літер і пробілів; залишаємо Cyrillic/Latin)
+    t = re.sub(r"[^\w\s]", " ", t, flags=re.UNICODE)
+    # Після regex \w залишає underscore — прибираємо їх теж
+    t = re.sub(r"_+", " ", t)
+    t = re.sub(r"\s+", " ", t).strip()
+    # Видаляємо шумові токени (валюти, одиниці)
+    tokens = [tok for tok in t.split() if tok not in _TITLE_NOISE_WORDS]
+    return " ".join(tokens)
+
+
+def _stem_token(token: str) -> str:
+    """Спрощений префіксний стемінг для українських слів (перші 6 символів).
+
+    Дозволяє ототожнити «підрозділу» і «підрозділ», «дронів» і «дрони» тощо.
+    Для коротких токенів (≤6) повертає незмінений токен.
+    """
+    return token[:6] if len(token) > 6 else token  # noqa: PLR2004
+
+
+def title_similarity(a_title: str, b_title: str) -> float:
+    """Токен-сетова Жаккардова схожість двох заголовків після normalize_title.
+
+    Порівняння виконується на стемованих (prefix-6) токенах щоб
+    українські відмінки не зменшували схожість.
+
+    Повертає float у діапазоні [0.0, 1.0]:
+    - 1.0 → ідентичні набори токенів;
+    - 0.0 → порожні або повністю різні набори.
+    """
+    a_raw = set(normalize_title(a_title).split())
+    b_raw = set(normalize_title(b_title).split())
+    # Фільтруємо порожні токени та однолітерні (шумові)
+    a_tokens = {_stem_token(t) for t in a_raw if len(t) > 1}
+    b_tokens = {_stem_token(t) for t in b_raw if len(t) > 1}
+    if not a_tokens and not b_tokens:
+        return 0.0
+    intersection = a_tokens & b_tokens
+    union = a_tokens | b_tokens
+    if not union:
+        return 0.0
+    return len(intersection) / len(union)
+
+
+def fuzzy_merge_groups(
+    campaigns: list[Campaign],
+    *,
+    min_sim: float = 0.6,
+) -> list[list[Campaign]]:
+    """Групує кампанії за нечіткою схожістю заголовків.
+
+    Умови об'єднання в одну групу:
+    - однаковий ``actor_id``;
+    - однакова ``goal_category`` (частина goal до «/»);
+    - ``title_similarity`` ≥ ``min_sim``.
+
+    Використовує Union-Find для транзитивного замикання.
+    Синглтони включаються як окремі групи.
+    Порядок груп відповідає першому входженню кандидата.
+    """
+    if not campaigns:
+        return []
+
+    n = len(campaigns)
+    parent = list(range(n))
+
+    def _goal_cat(goal: str) -> str:
+        return (goal or "").split("/")[0]
+
+    def find(x: int) -> int:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(x: int, y: int) -> None:
+        rx, ry = find(x), find(y)
+        if rx != ry:
+            parent[ry] = rx
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            ci, cj = campaigns[i], campaigns[j]
+            # Різні актори → ніколи не об'єднуємо
+            if ci.actor_id != cj.actor_id:
+                continue
+            # Різні goal_category → не об'єднуємо
+            if _goal_cat(ci.goal) != _goal_cat(cj.goal):
+                continue
+            sim = title_similarity(ci.title or "", cj.title or "")
+            if sim >= min_sim:
+                union(i, j)
+
+    # Збираємо групи зберігаючи порядок першого входження
+    root_to_group: dict[int, list[Campaign]] = {}
+    for i, c in enumerate(campaigns):
+        root = find(i)
+        root_to_group.setdefault(root, []).append(c)
+
+    return list(root_to_group.values())
+
+
 def campaign_identity(campaign: Campaign, *, text: str | None = None) -> str:
     """Jar-centric hybrid ключ ідентичності кампанії.
 
