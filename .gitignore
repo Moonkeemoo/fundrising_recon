@@ -1,0 +1,24 @@
+# brainstorming artifacts
+.superpowers/
+
+# raw scrape cache + local DB
+data/raw/
+*.sqlite
+*.sqlite3
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# env
+.env
+.env.local
+
+# os
+.DS_Store
+Thumbs.db
