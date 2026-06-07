@@ -11184,7 +11184,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
-      "is_campaign": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -11319,7 +11319,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
-      "is_campaign": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "1020",
@@ -12115,7 +12115,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
-      "is_campaign": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -12589,7 +12589,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
-      "is_campaign": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "espresotv",
@@ -15297,7 +15297,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
-      "is_campaign": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -19877,7 +19877,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
-      "is_campaign": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
