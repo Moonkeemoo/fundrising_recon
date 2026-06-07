@@ -1,0 +1,255 @@
+"""Гейт релевантності: is_fundraising(raw) — це збір чи ні?
+
+is_fundraising(raw: dict) -> bool
+    Повертає True якщо у raw є хоча б один механізм збору/пожертви:
+      1. Посилання на Monobank jar (через jars.jar_ids_from_raw).
+      2. Номер картки (16 цифр, можливо з пробілами/тире).
+      3. IBAN UA + 27 цифр.
+      4. Донат-ключове слово + (сума або URL).
+    Інакше — False (топічний/освітній/новинний контент без запиту).
+
+purge_non_fundraising(conn, raw_dir) -> dict
+    Для кожної кампанії у БД знаходить raw-файл і перевіряє is_fundraising.
+    Якщо raw знайдено і is_fundraising → False — видаляє кампанію (+ її
+    creative_assets). Якщо raw НЕ знайдено — залишає (консервативно).
+    Повертає {scanned, deleted, kept, no_raw}.
+
+CLI:
+    python -m fundrec.relevance --purge [--db PATH] [--raw-dir PATH] [--out PATH]
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+import sys
+from pathlib import Path
+from typing import Any
+
+from .amounts import parse_amounts_from_text
+from .jars import jar_ids_from_raw
+
+# ---------------------------------------------------------------------------
+# Regex-константи
+# ---------------------------------------------------------------------------
+
+# Номер картки: 16 цифр, розділені пробілами або тире (довільно)
+_CARD_PAT = re.compile(r"(?:\d[ -]?){15}\d")
+
+# IBAN: UA + рівно 27 цифр
+_IBAN_PAT = re.compile(r"\bUA\d{27}\b")
+
+# Донат-ключові слова
+_DONATE_KW = re.compile(
+    r"задонат|донат|підтримати збір|реквізит|банка|монобанк|"
+    r"збираємо на|на картку|перекажіть|допомогти збору",
+    re.IGNORECASE | re.UNICODE,
+)
+
+# URL (http/https або посилання без схеми, але з доменом)
+_URL_PAT = re.compile(r"https?://\S+", re.IGNORECASE)
+
+
+# ---------------------------------------------------------------------------
+# Публічний API: is_fundraising
+# ---------------------------------------------------------------------------
+
+def _all_text(raw: dict[str, Any]) -> str:
+    """Об'єднує text, title, description, links у один рядок для пошуку."""
+    parts: list[str] = []
+    for field in ("text", "title", "description"):
+        val = raw.get(field)
+        if val:
+            parts.append(str(val))
+    for link in raw.get("links") or []:
+        if link:
+            parts.append(str(link))
+    return " ".join(parts)
+
+
+def is_fundraising(raw: dict[str, Any]) -> bool:
+    """Повертає True якщо raw містить механізм збору/пожертви.
+
+    Правила (будь-яке з):
+    1. Є хоча б один jar-id Monobank.
+    2. Є номер картки (16 цифр, можливо з пробілами/тире).
+    3. Є IBAN (UA + 27 цифр).
+    4. Є донат-ключове слово + (непорожня сума з parse_amounts_from_text АБО URL).
+
+    Консервативно: jar = True безумовно; відсутність механізму = False.
+    """
+    if not raw:
+        return False
+
+    # ── 1. Jar-посилання ────────────────────────────────────────────────────
+    if jar_ids_from_raw(raw):
+        return True
+
+    # ── Об'єднаний текст для решти перевірок ────────────────────────────────
+    combined = _all_text(raw)
+    if not combined:
+        return False
+
+    # ── 2. Номер картки ─────────────────────────────────────────────────────
+    if _CARD_PAT.search(combined):
+        return True
+
+    # ── 3. IBAN ──────────────────────────────────────────────────────────────
+    if _IBAN_PAT.search(combined):
+        return True
+
+    # ── 4. Донат-ключове слово + (сума або URL) ──────────────────────────────
+    if _DONATE_KW.search(combined):
+        # Перевіряємо наявність URL
+        if _URL_PAT.search(combined):
+            return True
+        # Або непорожньої суми
+        amounts = parse_amounts_from_text(combined)
+        if amounts.get("amount_uah") is not None or amounts.get("goal_amount") is not None:
+            return True
+
+    return False
+
+
+# ---------------------------------------------------------------------------
+# purge_non_fundraising
+# ---------------------------------------------------------------------------
+
+def _find_raw_file(campaign: Any, raw_dir: Path) -> Path | None:
+    """Знаходить raw-файл для кампанії (дзеркало логіки backfill).
+
+    Спочатку за source_url з provenance, потім glob по id-префіксу.
+    """
+    # Основний шлях: source_url у provenance
+    source_url = (campaign.provenance.get("campaign") or {}).get("source_url") or ""
+    if source_url:
+        file_id = hashlib.sha256(source_url.encode()).hexdigest()[:16]
+        candidate = raw_dir / f"{file_id}.json"
+        if candidate.exists():
+            return candidate
+
+    # Fallback: glob по id-префіксу (camp-{sha256[:12]} → перші 12 hex)
+    id_suffix = campaign.id[5:]  # strip "camp-"
+    if len(id_suffix) >= 12:
+        prefix = id_suffix[:12]
+        candidates = list(raw_dir.glob(f"{prefix}*.json"))
+        if candidates:
+            return candidates[0]
+
+    return None
+
+
+def purge_non_fundraising(conn: Any, raw_dir: Path | str) -> dict[str, int]:
+    """Видаляє нерелевантні кампанії (не збори) з БД.
+
+    Алгоритм (для кожної кампанії):
+      - raw знайдено + is_fundraising(raw) is False → видалити (+ creative_assets).
+      - raw НЕ знайдено → залишити (консервативно, немає підстав видаляти).
+      - raw знайдено + is_fundraising(raw) is True → залишити.
+
+    Args:
+        conn: SQLite connection (ініціалізована БД).
+        raw_dir: шлях до директорії сирих кешів.
+
+    Returns:
+        {scanned, deleted, kept, no_raw}
+    """
+    from . import store  # noqa: PLC0415
+
+    raw_dir = Path(raw_dir)
+    campaigns = store.load_campaigns(conn)
+
+    scanned = 0
+    deleted = 0
+    kept = 0
+    no_raw = 0
+
+    for campaign in campaigns:
+        scanned += 1
+
+        raw_file = _find_raw_file(campaign, raw_dir)
+        if raw_file is None:
+            no_raw += 1
+            kept += 1
+            continue
+
+        try:
+            raw_item: dict[str, Any] = json.loads(raw_file.read_text(encoding="utf-8"))
+        except Exception as exc:  # noqa: BLE001
+            print(f"relevance: не вдалось зчитати {raw_file}: {exc}", file=sys.stderr)
+            kept += 1
+            continue
+
+        if is_fundraising(raw_item):
+            kept += 1
+            continue
+
+        # Видаляємо creative_assets перед видаленням кампанії
+        conn.execute(
+            "DELETE FROM creative_assets WHERE campaign_id = ?",
+            (campaign.id,),
+        )
+        conn.commit()
+        store.delete_campaign(conn, campaign.id)
+
+        print(
+            f"relevance: видалено (не збір): {campaign.id} — {campaign.title!r}",
+            file=sys.stderr,
+        )
+        deleted += 1
+
+    return {"scanned": scanned, "deleted": deleted, "kept": kept, "no_raw": no_raw}
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+def main(argv: list[str] | None = None) -> int:
+    """CLI: python -m fundrec.relevance --purge [--db PATH] [--raw-dir PATH] [--out PATH]."""
+    import argparse  # noqa: PLC0415
+
+    from . import config, export, store  # noqa: PLC0415
+
+    argv = argv if argv is not None else sys.argv[1:]
+    parser = argparse.ArgumentParser(
+        description="fundrec relevance: видаляє нерелевантні кампанії з БД"
+    )
+    parser.add_argument("--purge", action="store_true", help="Запустити purge_non_fundraising")
+    parser.add_argument("--db", default=str(config.DB_PATH), help="Шлях до SQLite БД")
+    parser.add_argument(
+        "--raw-dir", default=str(config.RAW_DIR), help="Директорія сирих кешів"
+    )
+    parser.add_argument(
+        "--out", default=str(config.CASES_JSON), help="Шлях до cases.json для re-export"
+    )
+    args = parser.parse_args(argv)
+
+    if not args.purge:
+        parser.print_help()
+        return 1
+
+    db_path = Path(args.db)
+    raw_dir = Path(args.raw_dir)
+
+    if not db_path.exists():
+        print(f"relevance: БД не знайдено: {db_path}", file=sys.stderr)
+        return 1
+
+    conn = store.connect(db_path)
+    result = purge_non_fundraising(conn, raw_dir)
+
+    # re-export cases.json
+    exported = export.export_cases(conn, args.out)
+
+    print(
+        f"purge: scanned={result['scanned']} deleted={result['deleted']} "
+        f"kept={result['kept']} no_raw={result['no_raw']} exported={exported}",
+        file=sys.stdout,
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
