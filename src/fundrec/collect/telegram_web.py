@@ -123,14 +123,17 @@ class _TmeParser(HTMLParser):
         if self._in_text and tag in ("br", "p"):
             self._text_parts.append(" ")
 
-        elif self._in_text and tag == "a":
-            # Збираємо href з посилань всередині тексту повідомлення (дедуп)
+        if tag == "a" and self._current is not None:
             href = attrs_dict.get("href")
-            if href and href not in self._links_seen:
+            # Збираємо БУДЬ-який href всередині повідомлення, крім:
+            #  • tgme_widget_message_date — це permalink самого поста (дата)
+            #  • внутрішні tg-nav посилання (t.me без /NNN — канал-навігація)
+            _is_date_link = "tgme_widget_message_date" in classes
+            if href and not _is_date_link and href not in self._links_seen:
                 self._links_seen.add(href)
                 self._current["links"].append(href)
 
-        elif tag == "span" and "tgme_widget_message_views" in classes:
+        if tag == "span" and "tgme_widget_message_views" in classes:
             self._in_views = True
 
         elif tag == "a" and "tgme_widget_message_date" in classes:
