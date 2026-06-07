@@ -137,7 +137,7 @@ tr.detail td{background:#0c0f14}
   <div id="dash" style="display:none">
    <!-- KPI -->
    <div class="kpis">
-    <div class="kpi acc-a"><div class="lbl">Σ зібрано (USD)</div><div class="val" id="k-usd">—</div><div class="sub" id="k-usd-n"></div></div>
+    <div class="kpi acc-a"><div class="lbl">Σ зібрано (₴)</div><div class="val" id="k-usd">—</div><div class="sub" id="k-usd-n"></div></div>
     <div class="kpi acc-b"><div class="lbl">N зборів</div><div class="val" id="k-count">—</div><div class="sub">після фільтрів</div></div>
     <div class="kpi acc-g"><div class="lbl">медіанна швидкість</div><div class="val" id="k-speed">—</div><div class="sub" id="k-speed-n"></div></div>
     <div class="kpi acc-v"><div class="lbl">N verified</div><div class="val" id="k-verif">—</div><div class="sub" id="k-verif-sub"></div></div>
@@ -149,7 +149,7 @@ tr.detail td{background:#0c0f14}
      <h3>тренд 2022 → 2026</h3><span class="n" id="trend-n"></span>
      <span class="spacer"></span>
      <div class="seg" id="trend-metric">
-      <button data-m="volume_usd" class="on">обсяг USD</button>
+      <button data-m="volume_usd" class="on">обсяг ₴</button>
       <button data-m="count">к-сть</button>
       <button data-m="median_speed">мед. швидкість</button>
      </div>
@@ -170,7 +170,7 @@ tr.detail td{background:#0c0f14}
      <span class="spacer"></span>
      <div class="seg" id="heat-metric">
       <button data-m="count" class="on">к-сть</button>
-      <button data-m="volume_usd">обсяг USD</button>
+      <button data-m="volume_usd">обсяг ₴</button>
      </div>
     </div>
     <div class="chart heat" id="heat-chart"></div>
@@ -183,7 +183,7 @@ tr.detail td{background:#0c0f14}
      <span class="spacer"></span>
      <span style="color:var(--faint);font-size:11px">сортувати:</span>
      <div class="seg" id="lb-axis">
-      <button data-a="amount_usd" class="on">обсяг $</button>
+      <button data-a="amount_uah" class="on">обсяг ₴</button>
       <button data-a="volume_score">volume</button>
       <button data-a="speed">speed</button>
       <button data-a="virality_score">virality</button>
@@ -204,9 +204,10 @@ tr.detail td{background:#0c0f14}
 let RAW=null, CASES=[], ANALYTICS=null;
 const SEL={goal:new Set(),style:new Set(),method:new Set()};
 let yFrom=2022, yTo=2026, verifMode="cross", showConflict=true;
-let trendMetric="volume_usd", trendSplit="", heatMetric="count", lbAxis="amount_usd", lbDir=-1;
+let trendMetric="volume_usd", trendSplit="", heatMetric="count", lbAxis="amount_uah", lbDir=-1;
 const openRows=new Set();
 let chTrend=null, chHeat=null;
+const HAS_ECHARTS=(typeof echarts!=="undefined");
 
 // ── словники (упорядкований показ) ──
 const GOAL_ORDER=["military","medical","humanitarian","reconstruction","energy","animals","science_education","info_defense","other"];
@@ -214,7 +215,7 @@ const STYLE_ORDER=["emotional_personal","data_transparent","urgency","gamificati
 const METHOD_ORDER=["monobank_jar","bank_transfer","crypto","nft_merch","auction","telethon","stream","challenge","corporate_match","platform"];
 const VERIF_RANK={auto:0,"cross-checked":1,verified:2};
 const ALL_QUARTERS=(()=>{const a=[];for(let y=2022;y<=2026;y++)for(let q=1;q<=4;q++)a.push(y+"-Q"+q);return a;})();
-const AXIS_LABEL={amount_usd:"обсяг $",volume_score:"volume",speed:"speed",virality_score:"virality",repeatability:"repeat"};
+const AXIS_LABEL={amount_uah:"обсяг ₴",volume_score:"volume",speed:"speed",virality_score:"virality",repeatability:"repeat"};
 
 // ── утиліти ──
 const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
@@ -236,6 +237,11 @@ function fmtUSD(v){if(v==null)return "—";
  if(v>=1e6)return "$"+(v/1e6).toFixed(1)+"M";
  if(v>=1e3)return "$"+(v/1e3).toFixed(0)+"K";
  return "$"+v.toFixed(0);}
+function fmtUAH(v){if(v==null)return "—";
+ if(v>=1e9)return "₴"+(v/1e9).toFixed(2)+" млрд";
+ if(v>=1e6)return "₴"+(v/1e6).toFixed(1)+" млн";
+ if(v>=1e3)return "₴"+(v/1e3).toFixed(0)+" тис";
+ return "₴"+v.toFixed(0);}
 function fmtSpeed(v){if(v==null)return "—";
  if(v>=1e6)return (v/1e6).toFixed(1)+"M ₴/д";
  if(v>=1e3)return (v/1e3).toFixed(0)+"K ₴/д";
@@ -264,8 +270,8 @@ function filtered(){
 // ── клієнтська агрегація (дзеркало analyze.py) ──
 function metricOf(cases,metric){
  if(metric==="count")return cases.length;
- if(metric==="volume_usd"){const v=cases.filter(c=>c.amount_usd!=null);
-  return v.length?v.reduce((s,c)=>s+c.amount_usd,0):null;}
+ if(metric==="volume_usd"){const v=cases.filter(c=>c.amount_uah!=null);
+  return v.length?v.reduce((s,c)=>s+c.amount_uah,0):null;}
  if(metric==="median_speed"){const s=cases.map(c=>c.speed).filter(x=>x!=null);
   return median(s);}
  return null;}
@@ -333,9 +339,9 @@ function renderYears(){
 
 // ── KPI ──
 function renderKPIs(cases){
- const withUsd=cases.filter(c=>c.amount_usd!=null);
- const sumUsd=withUsd.reduce((s,c)=>s+c.amount_usd,0);
- document.getElementById("k-usd").textContent=withUsd.length?fmtUSD(sumUsd):"—";
+ const withUsd=cases.filter(c=>c.amount_uah!=null);
+ const sumUsd=withUsd.reduce((s,c)=>s+c.amount_uah,0);
+ document.getElementById("k-usd").textContent=withUsd.length?fmtUAH(sumUsd):"—";
  document.getElementById("k-usd-n").textContent="N="+withUsd.length+" з "+cases.length+" (із сумою)";
  document.getElementById("k-count").textContent=cases.length;
  const speeds=cases.map(c=>c.speed).filter(x=>x!=null);
@@ -353,18 +359,19 @@ function renderTrend(cases){
  const {series}=trendData(cases,trendMetric,trendSplit);
  const totalN=cases.filter(c=>caseQuarter(c)&&ALL_QUARTERS.includes(caseQuarter(c))).length;
  document.getElementById("trend-n").textContent="N="+totalN;
- const metricName={volume_usd:"обсяг USD",count:"к-сть",median_speed:"мед. швидкість ₴/д"}[trendMetric];
+ const metricName={volume_usd:"обсяг ₴",count:"к-сть",median_speed:"мед. швидкість ₴/д"}[trendMetric];
  const ech=series.map((s,i)=>({
   name:trendSplit?s.key:metricName,type:"line",smooth:true,symbol:"circle",symbolSize:5,
   connectNulls:false,
   lineStyle:{width:2},itemStyle:{color:PALETTE[i%PALETTE.length]},
   data:s.vals,_ns:s.ns}));
+ if(!chTrend)return;
  chTrend.setOption({
   backgroundColor:"transparent",
   tooltip:{trigger:"axis",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
    formatter:p=>{let out=esc(p[0].axisValue);p.forEach(s=>{
     const n=(ech[s.seriesIndex]._ns||[])[s.dataIndex];
-    const v=s.value==null?"—":(trendMetric==="volume_usd"?fmtUSD(s.value):trendMetric==="median_speed"?fmtSpeed(s.value):s.value);
+    const v=s.value==null?"—":(trendMetric==="volume_usd"?fmtUAH(s.value):trendMetric==="median_speed"?fmtSpeed(s.value):s.value);
     out+=`<br>${s.marker}${esc(s.seriesName)}: <b>${v}</b> <span style="color:#525c6b">N=${n??0}</span>`;});
     return out;}},
   legend:trendSplit?{show:true,top:0,textStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10},type:"scroll"}:{show:false},
@@ -373,7 +380,7 @@ function renderTrend(cases){
    axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:45,fontSize:10}},
   yAxis:{type:"value",axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
    axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,
-    formatter:v=>trendMetric==="volume_usd"?fmtUSD(v):trendMetric==="median_speed"?(v>=1e6?(v/1e6).toFixed(0)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":v):v}},
+    formatter:v=>trendMetric==="volume_usd"?fmtUAH(v):trendMetric==="median_speed"?(v>=1e6?(v/1e6).toFixed(0)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":v):v}},
   series:ech},true);
 }
 
@@ -381,6 +388,7 @@ function renderTrend(cases){
 function renderHeat(cases){
  const {goals,methods,data}=heatData(cases,heatMetric);
  document.getElementById("heat-n").textContent="N="+data.reduce((s,d)=>s+d[3],0)+" клітинок="+data.length;
+ if(!chHeat)return;
  if(!goals.length||!methods.length){
   chHeat.clear();
   chHeat.setOption({backgroundColor:"transparent",
@@ -391,7 +399,7 @@ function renderHeat(cases){
   backgroundColor:"transparent",
   tooltip:{position:"top",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
    formatter:p=>{const[mi,gi,v,n]=p.data;
-    const vs=heatMetric==="volume_usd"?fmtUSD(v):v;
+    const vs=heatMetric==="volume_usd"?fmtUAH(v):v;
     return `${esc(goals[gi])} × ${esc(methods[mi])}<br><b>${vs}</b> <span style="color:#525c6b">N=${n}</span>`;}},
   grid:{left:130,right:24,top:10,bottom:90},
   xAxis:{type:"category",data:methods,splitArea:{show:true},
@@ -412,7 +420,7 @@ function lbValue(c,axis){return c[axis];}
 function renderLB(cases){
  document.getElementById("lb-n").textContent="N="+cases.length;
  const cols=[
-  {a:"_t",l:"кейс"},{a:"goal",l:"ціль"},{a:"amount_usd",l:"обсяг $",num:1},
+  {a:"_t",l:"кейс"},{a:"goal",l:"ціль"},{a:"amount_uah",l:"обсяг ₴",num:1},
   {a:"volume_score",l:"vol",num:1},{a:"speed",l:"speed",num:1},
   {a:"virality_score",l:"viral",num:1},{a:"repeatability",l:"repeat",num:1},
   {a:"verification_status",l:"верифікація"}];
@@ -433,7 +441,7 @@ function renderLB(cases){
  if(!sorted.length){body.innerHTML='<tr><td colspan="8" class="empty">нічого не знайдено за фільтрами</td></tr>';return;}
  const fmtCell=(c,col)=>{
   const v=c[col.a];
-  if(col.a==="amount_usd")return v==null?'<span class="dash">—</span>':fmtUSD(v);
+  if(col.a==="amount_uah")return v==null?'<span class="dash">—</span>':fmtUAH(v);
   if(col.a==="speed")return v==null?'<span class="dash">—</span>':fmtSpeed(v);
   return v==null?'<span class="dash">—</span>':fmtScore(v);};
  body.innerHTML=sorted.map(c=>{
@@ -441,7 +449,7 @@ function renderLB(cases){
   const row=`<tr class="row" data-id="${esc(c.id)}">
    <td><div class="title">${esc(c.title)}</div><div class="actor">${esc(c.actor_id)}</div></td>
    <td class="goalt">${esc(c.goal)}</td>
-   <td class="num">${fmtCell(c,{a:"amount_usd"})}</td>
+   <td class="num">${fmtCell(c,{a:"amount_uah"})}</td>
    <td class="num">${fmtCell(c,{a:"volume_score"})}</td>
    <td class="num">${fmtCell(c,{a:"speed"})}</td>
    <td class="num">${fmtCell(c,{a:"virality_score"})}</td>
@@ -476,6 +484,7 @@ function detailRow(c){
 }
 function drawRadar(c){
  const el=document.getElementById("radar-"+c.id);if(!el)return;
+ if(!HAS_ECHARTS)return;
  const ch=echarts.init(el,null,{renderer:"canvas"});
  // speed нормалізуємо до 0..1 лог-шкалою серед усіх кейсів зі швидкістю
  const speeds=CASES.map(x=>x.speed).filter(x=>x!=null&&x>0);
@@ -533,6 +542,10 @@ function bindSegs(){
 }
 
 function initCharts(){
+ if(!HAS_ECHARTS){
+  ["trend-chart","heat-chart"].forEach(id=>{const el=document.getElementById(id);
+   if(el)el.innerHTML="<div style='padding:24px;color:#8893a0'>графіки недоступні (не завантажився ECharts) — таблиця й KPI нижче працюють</div>";});
+  return;}
  chTrend=echarts.init(document.getElementById("trend-chart"));
  chHeat=echarts.init(document.getElementById("heat-chart"));
  window.addEventListener("resize",()=>{chTrend.resize();chHeat.resize();
