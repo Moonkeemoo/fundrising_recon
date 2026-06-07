@@ -92,7 +92,21 @@ def critique_case(
 
 
 def _live_judge(prompt: str) -> dict:  # pragma: no cover
-    """Живий виклик Anthropic API (Sonnet, temp=0). Не тестується."""
+    """Живий критик. Дефолт — claude CLI (підписка, безкоштовно); якщо CLI
+    недоступний і є ключ — прямий Anthropic API. Бекенд: FUNDREC_CRITIC_BACKEND.
+    """
+    import os
+
+    from .extract import claude_cli
+
+    backend = os.environ.get("FUNDREC_CRITIC_BACKEND", "cli")
+    if backend == "cli":
+        try:
+            return claude_cli(prompt, os.environ.get("FUNDREC_CRITIC_MODEL_LIVE", "sonnet"))
+        except Exception:  # noqa: BLE001
+            if not config.CRITIC_API_KEY:
+                raise
+
     import anthropic
 
     client = anthropic.Anthropic(api_key=config.CRITIC_API_KEY)
@@ -102,9 +116,8 @@ def _live_judge(prompt: str) -> dict:  # pragma: no cover
         temperature=0,
         messages=[{"role": "user", "content": prompt}],
     )
-    text = message.content[0].text
     from .extract import _json_from_text
-    return _json_from_text(text)
+    return _json_from_text(message.content[0].text)
 
 
 # ---------------------------------------------------------------------------

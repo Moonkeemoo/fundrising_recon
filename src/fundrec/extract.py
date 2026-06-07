@@ -121,22 +121,48 @@ def extract_case(
     return parse_extraction(llm_obj, raw, source, model=model, case_id=case_id, actor_id=actor_id)
 
 
-def _live_complete(prompt: str) -> dict:  # pragma: no cover - мережа/LLM
-    """Живий виклик через Claude Agent SDK (підписка, без ключа).
+def claude_cli(prompt: str, model: str = "sonnet", *, timeout: int = 180) -> dict:  # pragma: no cover
+    """Виклик `claude` CLI у print-режимі — підписка, headless, БЕЗ окремого білінгу.
 
-    Запасний шлях — прямий Anthropic API якщо SDK не доступний.
-    Парсинг JSON через _json_from_text (чистий хелпер, тестується окремо).
+    `claude -p <prompt> --output-format json` віддає конверт із полем `result`
+    (текст відповіді моделі); парсимо його через _json_from_text. Працює у фоні
+    без TTY (на відміну від Agent SDK query(), що зависає на авторизації).
+    """
+    import json as _json  # noqa: PLC0415
+    import subprocess  # noqa: PLC0415
+
+    proc = subprocess.run(
+        ["claude", "-p", prompt, "--output-format", "json", "--model", model],
+        capture_output=True, text=True, encoding="utf-8", timeout=timeout,
+    )
+    if proc.returncode != 0:
+        raise RuntimeError(f"claude CLI exit {proc.returncode}: {(proc.stderr or '')[:200]}")
+    envelope = _json.loads(proc.stdout)
+    return _json_from_text(envelope.get("result", ""))
+
+
+def _live_complete(prompt: str) -> dict:  # pragma: no cover - мережа/LLM
+    """Жива екстракція. Бекенди (FUNDREC_EXTRACT_BACKEND):
+      - "cli"  (ДЕФОЛТ): claude CLI на підписці — безкоштовно, headless-надійно.
+      - "api": прямий Anthropic API (платний ключ CRITIC_API_KEY).
+      - "sdk": Agent SDK (у фоні висне — не радимо).
+    Модель CLI/SDK — FUNDREC_EXTRACT_MODEL_LIVE (дефолт sonnet).
     """
     import os  # noqa: PLC0415
 
     from . import config as _cfg  # noqa: PLC0415
 
-    # FUNDREC_EXTRACT_BACKEND=api → одразу прямий API (Agent SDK у headless/фоні
-    # може ВИСНУТИ на підписочній авторизації, а не падати — тоді fallback не
-    # спрацьовує). За замовч. ("auto") пробуємо SDK, потім API.
-    backend = os.environ.get("FUNDREC_EXTRACT_BACKEND", "auto")
+    backend = os.environ.get("FUNDREC_EXTRACT_BACKEND", "cli")
+    model = os.environ.get("FUNDREC_EXTRACT_MODEL_LIVE", "sonnet")
 
-    if backend != "api":
+    if backend == "cli":
+        try:
+            return claude_cli(prompt, model)
+        except Exception:  # noqa: BLE001 — падаємо в API-фолбек, якщо є ключ
+            if not _cfg.CRITIC_API_KEY:
+                raise
+
+    if backend == "sdk":
         import asyncio  # noqa: PLC0415
 
         async def _async_sdk(p: str) -> dict:
@@ -153,19 +179,17 @@ def _live_complete(prompt: str) -> dict:  # pragma: no cover - мережа/LLM
         except Exception:  # noqa: BLE001
             pass
 
-    # Прямий Anthropic API (ключ критика). Модель екстракції — економна (sonnet)
-    # за замовч., перевизначається через FUNDREC_EXTRACT_API_MODEL.
+    # Прямий Anthropic API (платний ключ).
     import anthropic  # noqa: PLC0415
-    model = os.environ.get("FUNDREC_EXTRACT_API_MODEL", _cfg.JUDGE_MODEL)
+    api_model = os.environ.get("FUNDREC_EXTRACT_API_MODEL", _cfg.JUDGE_MODEL)
     client = anthropic.Anthropic(api_key=_cfg.CRITIC_API_KEY)
     message = client.messages.create(
-        model=model,
+        model=api_model,
         max_tokens=2048,
         temperature=0,
         messages=[{"role": "user", "content": prompt}],
     )
-    text = message.content[0].text
-    return _json_from_text(text)
+    return _json_from_text(message.content[0].text)
 
 
 # ---------------------------------------------------------------------------
