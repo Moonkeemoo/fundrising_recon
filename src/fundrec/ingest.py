@@ -37,7 +37,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from . import config, export, extract, jars, store, validate
+from . import config, export, extract, jars, relevance, store, validate
 from .analyze import text_signals_goal_reached
 from .critic import critique_campaign
 from .discover import discover_sources
@@ -499,6 +499,7 @@ def run_ingest(
 
     stored_campaigns = 0
     stored_cases = 0
+    skipped_irrelevant = 0
     collected_per_source: dict[str, int] = {}
     # Jar-dedup: jar_id → вже оброблено у цьому запуску (міжсесійний dedup — _jar_already_in_db)
     seen_jar_ids: set[str] = set()
@@ -541,6 +542,12 @@ def run_ingest(
 
         if raw_item is None:
             raw_item = {"url": url, "title": None, "raw_text": ""}
+
+        # --- Гейт релевантності: пропускаємо не-збори ---
+        if not relevance.is_fundraising(raw_item):
+            print(f"ingest: пропущено (не збір): {url}", file=sys.stderr)
+            skipped_irrelevant += 1
+            continue
 
         source = Source(
             url=url,
@@ -593,6 +600,12 @@ def run_ingest(
             if _url_already_in_db(conn, item_url):
                 continue
 
+            # --- Гейт релевантності: пропускаємо не-збори ---
+            if not relevance.is_fundraising(raw_item):
+                print(f"ingest: пропущено (не збір): {item_url}", file=sys.stderr)
+                skipped_irrelevant += 1
+                continue
+
             source = Source(
                 url=item_url,
                 type=src_meta["type"],
@@ -638,6 +651,7 @@ def run_ingest(
         "campaigns": stored_campaigns,
         "cases": stored_cases,
         "skipped_no_key": skipped_no_key,
+        "skipped_irrelevant": skipped_irrelevant,
         "exported": exported,
     }
 

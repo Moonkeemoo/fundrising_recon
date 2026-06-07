@@ -21,7 +21,8 @@ _FAKE_RAW = {
     "amount_uah": 500_000.0,
     "goal_amount": 1_000_000.0,
     "currency_raw": "UAH",
-    "raw_text": "зібрано 500 000 грн",
+    # Додано jar-link щоб пройти гейт релевантності
+    "raw_text": "зібрано 500 000 грн. Банка: send.monobank.ua/jar/TESTJAR1",
 }
 
 _FAKE_LLM_CASE = {
@@ -272,6 +273,8 @@ _FAKE_YOUTUBE_ITEMS = [
         "platform": "youtube",
         "video_id": "aaa111",
         "title": "FPV дрони для ЗСУ",
+        # Додано jar-link щоб пройти гейт релевантності
+        "text": "Збираємо кошти на FPV дрони. Банка: send.monobank.ua/jar/YTJAR1",
         "description": "Збираємо кошти на FPV дрони",
         "published": "2024-01-01T00:00:00Z",
         "channel": "TestChannel",
@@ -283,6 +286,8 @@ _FAKE_YOUTUBE_ITEMS = [
         "platform": "youtube",
         "video_id": "bbb222",
         "title": "Збір на броньований автомобіль",
+        # Додано картку щоб пройти гейт релевантності
+        "text": "Допоможіть зібрати на авто. Картка: 5375 4141 1234 0001",
         "description": "Допоможіть зібрати на авто",
         "published": "2024-02-01T00:00:00Z",
         "channel": "TestChannel",
@@ -525,7 +530,8 @@ _FAKE_TELEGRAM_ITEMS = [
         "source_url": "https://t.me/back_and_alive/201",
         "platform": "telegram",
         "channel": "back_and_alive",
-        "text": "Банка на броньовик: mono.bank/send/xyz",
+        # Додано jar-link щоб пройти гейт релевантності
+        "text": "Банка на броньовик: send.monobank.ua/jar/TGJAR2",
         "views": 3100,
         "date": "2024-03-10T09:00:00+00:00",
         "message_id": 201,

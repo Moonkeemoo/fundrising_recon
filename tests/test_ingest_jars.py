@@ -285,7 +285,8 @@ def test_post_without_jar_id_processes_normally(tmp_path):
         "source_url": "https://t.me/testchan/999",
         "platform": "telegram",
         "channel": "testchan",
-        "text": "Збір на автомобіль! Реквізити у нас на сайті.",
+        # Картка (без jar) — щоб пройти гейт релевантності, але jar_calls == []
+        "text": "Збір на автомобіль! Картка: 5375 4141 9999 0001",
         "views": 1000,
         "date": "2024-03-15T10:00:00+00:00",
         "message_id": 999,
