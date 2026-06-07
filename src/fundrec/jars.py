@@ -266,6 +266,130 @@ def parse_rendered_jar(jar_id: str, body_text: str) -> dict[str, Any]:
     }
 
 
+# ---------------------------------------------------------------------------
+# Відомі скорочувачі посилань (host lower-case)
+# ---------------------------------------------------------------------------
+_KNOWN_SHORTENERS: frozenset[str] = frozenset({
+    "surl.li",
+    "cutt.ly",
+    "bit.ly",
+    "tinyurl.com",
+    "is.gd",
+    "t.co",
+    "u24.gov.ua",
+    "clck.ru",
+})
+
+
+def _url_host(url: str) -> str:
+    """Повертає hostname (lower-case) з URL; порожній рядок якщо не вдалось."""
+    try:
+        from urllib.parse import urlparse  # noqa: PLC0415
+        return urlparse(url).hostname or ""
+    except Exception:  # noqa: BLE001
+        return ""
+
+
+def resolve_jar_id(
+    url: str,
+    *,
+    _client: Any | None = None,
+    _cache: dict[str, str | None] | None = None,
+) -> str | None:
+    """Розпізнає jar-id з URL або слідуючи редиректам скорочувачів.
+
+    Логіка:
+      1. Якщо URL вже містить send/base.monobank.ua/jar/<id> — повертаємо id.
+      2. Якщо хост — відомий скорочувач — слідуємо редиректам (HEAD, fallback GET)
+         через `_client` (ін'єктується в тестах; httpx у production).
+         Якщо фінальний URL містить jar — повертаємо id.
+      3. Інакше — None.
+
+    _cache: dict для кешування результатів (уникнення повторних запитів).
+    """
+    if _cache is not None and url in _cache:
+        return _cache[url]
+
+    # Крок 1: прямий jar URL
+    ids = extract_jar_ids(url)
+    if ids:
+        result: str | None = ids[0]
+        if _cache is not None:
+            _cache[url] = result
+        return result
+
+    # Крок 2: скорочений URL
+    host = _url_host(url)
+    if host not in _KNOWN_SHORTENERS:
+        if _cache is not None:
+            _cache[url] = None
+        return None
+
+    # Слідуємо редиректам
+    if _client is None:  # pragma: no cover
+        import httpx  # noqa: PLC0415
+        _client = httpx.Client(follow_redirects=True, timeout=10)  # pragma: no cover
+
+    final_url: str | None = None
+    try:
+        resp = _client.head(url, timeout=10)
+        final_url = str(resp.url)
+    except Exception:  # noqa: BLE001
+        pass
+
+    if final_url is None or not extract_jar_ids(final_url):
+        # HEAD не спрацював або не jar — пробуємо GET
+        try:
+            resp = _client.get(url, timeout=10)
+            final_url = str(resp.url)
+        except Exception:  # noqa: BLE001
+            if _cache is not None:
+                _cache[url] = None
+            return None
+
+    jar_ids = extract_jar_ids(final_url)
+    result = jar_ids[0] if jar_ids else None
+    if _cache is not None:
+        _cache[url] = result
+    return result
+
+
+def jar_ids_from_raw_resolved(
+    raw: dict,
+    *,
+    _client: Any | None = None,
+    _cache: dict[str, str | None] | None = None,
+) -> list[str]:
+    """Розширена версія jar_ids_from_raw: додатково розкриває скорочені посилання.
+
+    Сканує raw.get('text'), raw.get('links'), raw.get('description').
+    Для кожного прямого jar URL та для кожного скорочувача — запускає resolve_jar_id.
+    Повертає унікальні jar-id (порядок першої появи; дублікати між полями видаляються).
+    """
+    seen: set[str] = set()
+    result: list[str] = []
+
+    def _add(jar_id: str) -> None:
+        if jar_id not in seen:
+            seen.add(jar_id)
+            result.append(jar_id)
+
+    # Спочатку — прямий шлях (не потребує мережі)
+    for jar_id in jar_ids_from_raw(raw):
+        _add(jar_id)
+
+    # Потім — розкриваємо посилання з links
+    for link in raw.get("links") or []:
+        resolved = resolve_jar_id(link, _client=_client, _cache=_cache)
+        if resolved:
+            _add(resolved)
+
+    # І з тексту — регекс може пропустити скорочені, але links їх вловлює
+    # description окремо не сканується resolve_jar_id (скорочувачів зазвичай нема)
+
+    return result
+
+
 def fetch_jar_data(jar_id: str, *, _client: Any | None = None) -> dict[str, Any] | None:
     """GET https://send.monobank.ua/jar/<jar_id> → parse_jar_page або None.
 
