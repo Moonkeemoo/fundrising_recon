@@ -12,6 +12,7 @@ import sqlite3
 from pathlib import Path
 
 from . import config, schema, store
+from .analyze import engagement_rate, rel_resonance_map
 from .pipeline_analyze import build_analytics
 
 
@@ -21,11 +22,21 @@ def export_cases(conn: sqlite3.Connection, out_path: Path | str = config.CASES_J
     campaigns = store.load_campaigns(conn)
     creatives = store.load_creatives(conn)
     partners = store.load_partners(conn)
+
+    # Збагачуємо кампанії обчисленими метриками (не змінюємо схему — тільки export-dict)
+    rrmap = rel_resonance_map(campaigns)
+    campaign_dicts = []
+    for c in campaigns:
+        d = schema.campaign_to_dict(c)
+        d["engagement_rate"] = engagement_rate(c)
+        d["rel_resonance"] = rrmap.get(c.id)
+        campaign_dicts.append(d)
+
     payload = {
         "count": len(cases),
         "cases": [schema.case_to_dict(c) for c in cases],
         "analytics": analytics,
-        "campaigns": [schema.campaign_to_dict(c) for c in campaigns],
+        "campaigns": campaign_dicts,
         "creatives": [schema.creative_to_dict(a) for a in creatives],
         "partners": [schema.partner_to_dict(p) for p in partners],
     }

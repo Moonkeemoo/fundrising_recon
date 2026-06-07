@@ -18,7 +18,10 @@ from .analyze import (
     crosstab,
     goal_reached_rate,
     kpis,
+    parse_campaign_date,
+    trend_momentum,
     trend_series,
+    what_works_now,
 )
 from .rates import to_usd
 from .schema import Case
@@ -125,6 +128,50 @@ def build_analytics(conn: sqlite3.Connection) -> dict:
         "crosstabs": crosstabs,
         "generated_for_counts": {"total_cases": len(cases)},
         "campaign_analytics": _build_campaign_analytics(conn),
+        "radar": _build_radar(conn),
+    }
+
+
+def _build_radar(conn: sqlite3.Connection) -> dict:
+    """Радар «Що працює зараз»: what_works_now + momentum.
+
+    now = max parse_campaign_date серед кампаній (детермінований).
+    Якщо жодної дати немає — використовуємо сьогоднішню дату (ISO).
+
+    Returns:
+        {
+          now: "<iso>",
+          what_works_now: {channel:[...], tone:[...], form_factor:[...], goal:[...]},
+          momentum: {goal:[...], channel:[...], tone:[...]}
+        }
+    """
+    import datetime  # noqa: PLC0415
+
+    campaigns = store.load_campaigns(conn)
+
+    # Знаходимо максимальну відому дату кампанії
+    dates = [parse_campaign_date(c) for c in campaigns]
+    valid_dates = [d for d in dates if d is not None]
+    if valid_dates:
+        now_str = max(valid_dates)
+    else:
+        now_str = datetime.date.today().isoformat()
+
+    wwn = {
+        "channel": what_works_now(campaigns, now=now_str, by="channels", min_n=1),
+        "tone": what_works_now(campaigns, now=now_str, by="tone", min_n=1),
+        "form_factor": what_works_now(campaigns, now=now_str, by="form_factor", min_n=1),
+        "goal": what_works_now(campaigns, now=now_str, by="goal", min_n=1),
+    }
+    momentum = {
+        "goal": trend_momentum(campaigns, axis="goal", now=now_str),
+        "channel": trend_momentum(campaigns, axis="channels", now=now_str),
+        "tone": trend_momentum(campaigns, axis="tone", now=now_str),
+    }
+    return {
+        "now": now_str,
+        "what_works_now": wwn,
+        "momentum": momentum,
     }
 
 

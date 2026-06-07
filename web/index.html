@@ -828,18 +828,32 @@ function renderGallery(crs){
  }).join("");
 }
 
-// ── аналітика стилю: бари (медіана ₴ або engagement) ──
+// ── аналітика стилю: бари (резонанс або медіана ₴/engagement) ──
+// Якщо radar.what_works_now доступний і метрика=engagement — показуємо actor-нормалізований резонанс.
 function renderSaBar(camps){
  const axis=SA_AXIS_FIELD[saAxis]||saAxis;
- const rows=campAxisSummary(camps,axis,saMetric).filter(r=>r.value!=null);
- document.getElementById("sa-bar-n").textContent="N="+rows.reduce((s,r)=>s+r.n,0)+" кат.="+rows.length;
+ // Mapper: saAxis → radar.what_works_now key
+ const RADAR_AXIS_MAP={tone:"tone",channels:"channel",cta_type:null,face:"face"};
+ const radarAxisKey=RADAR_AXIS_MAP[saAxis];
+ const radar=ANALYTICS&&ANALYTICS.radar&&ANALYTICS.radar.what_works_now;
+ const useRadar=(saMetric==="engagement")&&radar&&radarAxisKey&&radar[radarAxisKey]&&radar[radarAxisKey].length>0;
+ let rows, isResonance=false, metricLabel;
+ if(useRadar){
+  // radar rows: {key, score (mean rel_resonance), n}
+  rows=radar[radarAxisKey].filter(r=>r.score!=null&&r.n>0).map(r=>({key:r.key,value:r.score,n:r.n}));
+  isResonance=true;
+  metricLabel="резонанс (×актора)";
+ } else {
+  rows=campAxisSummary(camps,axis,saMetric).filter(r=>r.value!=null);
+  metricLabel=(saMetric==="amount_uah")?"медіана ₴":"медіана залучення";
+ }
+ document.getElementById("sa-bar-n").textContent="N="+rows.reduce((s,r)=>s+r.n,0)+" кат.="+rows.length+(useRadar?" · radar":"");
  if(!chSaBar)return;
  if(!rows.length){chSaBar.clear();chSaBar.setOption({backgroundColor:"transparent",
   graphic:{type:"text",left:"center",top:"center",style:{text:"немає даних (— null≠0)",fill:"#8893a0",fontFamily:"monospace"}}});return;}
  rows.sort((a,b)=>b.value-a.value);
- const isUAH=(saMetric==="amount_uah");
- const fmtY=isUAH?fmtUAH:v=>(v>=1e6?(v/1e6).toFixed(1)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":v.toFixed(0));
- const metricLabel=isUAH?"медіана ₴":"медіана залучення";
+ const isUAH=(saMetric==="amount_uah"&&!isResonance);
+ const fmtY=isUAH?fmtUAH:isResonance?v=>("×"+v.toFixed(2)):v=>(v>=1e6?(v/1e6).toFixed(1)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":v.toFixed(0));
  chSaBar.setOption({backgroundColor:"transparent",
   tooltip:{trigger:"axis",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
    formatter:p=>{const i=p[0].dataIndex;return `${esc(rows[i].key)}<br><b>${fmtY(rows[i].value)}</b> (${metricLabel}) <span style="color:#525c6b">N=${rows[i].n}</span>`;}},
@@ -848,7 +862,7 @@ function renderSaBar(camps){
    axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:35,fontSize:10}},
   yAxis:{type:"value",axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
    axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:fmtY}},
-  series:[{type:"bar",data:rows.map((r,i)=>({value:r.value,itemStyle:{color:PALETTE[i%PALETTE.length]}})),
+  series:[{type:"bar",data:rows.map((r,i)=>({value:r.value,itemStyle:{color:isResonance&&r.value>=1?"#33ff99":PALETTE[i%PALETTE.length]}})),
    label:{show:true,position:"top",color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:p=>"N="+rows[p.dataIndex].n}}]},true);
 }
 
@@ -942,8 +956,11 @@ function renderExplorer(camps){
  document.getElementById("ce-n").textContent="N="+camps.length;
  const box=document.getElementById("cexplorer");
  if(!camps.length){box.innerHTML='<div class="empty">немає кампаній за фільтрами</div>';return;}
- // Сортуємо за engagement desc (null в кінці)
+ // Сортуємо за rel_resonance desc, потім за engagement (null в кінці)
  camps=[...camps].sort((a,b)=>{
+  const ra=a.rel_resonance,rb=b.rel_resonance;
+  if(ra!=null&&rb!=null)return rb-ra;
+  if(ra!=null)return -1;if(rb!=null)return 1;
   const ea=a.engagement,eb=b.engagement;
   if(ea==null&&eb==null)return 0;if(ea==null)return 1;if(eb==null)return -1;
   return eb-ea;});
@@ -964,7 +981,8 @@ function renderExplorer(camps){
     <span class="ctitle">${esc(c.title)} <span class="cactor">· ${esc(c.actor_id)}</span></span>
     <span class="ctag">${esc(c.type)}</span>
     ${chans}
-    ${c.engagement!=null?`<span class="camt" style="color:var(--green)" title="залучення">▲${c.engagement.toLocaleString("uk-UA")}</span>`:''}
+    ${c.rel_resonance!=null?`<span class="camt" style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}" title="actor-нормалізований резонанс">×${c.rel_resonance.toFixed(2)}</span>`:''}
+    ${c.engagement!=null?`<span class="camt" style="color:var(--blue)" title="залучення">▲${c.engagement.toLocaleString("uk-UA")}</span>`:''}
     <span class="camt">${fmtUAH(c.amount_uah)}</span>
     <span class="badge ${esc(c.verification_status)}">${esc(c.verification_status)}</span>
    </div>
@@ -975,6 +993,8 @@ function renderExplorer(camps){
     <div><span class="k">обличчя / CTA:</span>${esc(c.face||"—")} / ${esc(c.cta_type||"—")}</div>
     <div><span class="k">каденс:</span>${esc(c.cadence||"—")}</div>
     <div><span class="k">обсяг ₴ / охоплення / залуч.:</span>${fmtUAH(c.amount_uah)} / ${c.reach!=null?c.reach.toLocaleString("uk-UA"):"—"} / ${c.engagement!=null?c.engagement.toLocaleString("uk-UA"):"—"}</div>
+    <div><span class="k">engagement rate:</span>${c.engagement_rate!=null?((c.engagement_rate*100).toFixed(2)+"%"):'<span class="dash">—</span>'}</div>
+    <div><span class="k">резонанс (×медіани):</span>${c.rel_resonance!=null?`<span style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}">×${c.rel_resonance.toFixed(2)} від медіани актора</span>`:'<span class="dash">—</span>'}</div>
     <div><span class="k">бюджет ₴:</span>${fmtUAH(c.spend)}</div>
     <div><span class="k">партнери:</span>${parts}</div>
     <div><span class="k">джерело:</span>${src?`<a href="${esc(src)}" target="_blank" rel="noopener">${esc(src)}</a>`:'<span class="dash">—</span>'}</div>
