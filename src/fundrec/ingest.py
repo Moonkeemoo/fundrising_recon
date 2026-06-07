@@ -36,7 +36,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
-from . import config, export, extract, store, validate
+from . import config, export, extract, jars, store, validate
 from .critic import critique_campaign
 from .discover import discover_sources
 from .pipeline_analyze import analyze_all
@@ -84,6 +84,20 @@ def _make_id(url: str, prefix: str = "auto") -> str:
 def _url_already_in_db(conn: Any, url: str) -> bool:
     """Перевіряє чи URL вже присутній як кампанія у БД."""
     row = conn.execute("SELECT id FROM campaigns WHERE id = ?", (_make_id(url, "camp"),)).fetchone()
+    return row is not None
+
+
+def _jar_already_in_db(conn: Any, jar_id: str) -> bool:
+    """Перевіряє чи jar-id вже присутній у provenance будь-якої кампанії в БД.
+
+    Шукає source_url банки (send.monobank.ua/jar/<jar_id>) у JSON-полі provenance.
+    """
+    jar_url = f"https://send.monobank.ua/jar/{jar_id}"
+    # Шукаємо в JSON-тексті provenance колонки campaigns
+    row = conn.execute(
+        "SELECT id FROM campaigns WHERE provenance LIKE ?",
+        (f"%{jar_url}%",),
+    ).fetchone()
     return row is not None
 
 
@@ -173,6 +187,37 @@ def _collect_search_items(
     return result
 
 
+_TIER1_CONFIDENCE = 0.95  # extract._TIER_CONFIDENCE[1]
+
+
+def _apply_jar_to_campaign(campaign: Any, jar_data: dict[str, Any]) -> None:
+    """Перезаписує campaign.amount_uah значенням банки і ставить tier-1 provenance."""
+    amount = jar_data.get("amount_uah")
+    if amount is None:
+        return
+    campaign.amount_uah = amount
+    campaign.provenance["amount_uah"] = {
+        "source_url": jar_data["url"],
+        "confidence": _TIER1_CONFIDENCE,
+        "tier": 1,
+        "note": "monobank jar tier-1",
+    }
+
+
+def _apply_jar_to_case(case: Any, jar_data: dict[str, Any]) -> None:
+    """Перезаписує case.amount_uah значенням банки і ставить tier-1 provenance."""
+    amount = jar_data.get("amount_uah")
+    if amount is None:
+        return
+    case.amount_uah = amount
+    case.provenance["amount_uah"] = {
+        "source_url": jar_data["url"],
+        "confidence": _TIER1_CONFIDENCE,
+        "tier": 1,
+        "note": "monobank jar tier-1",
+    }
+
+
 def _ingest_one(
     conn: Any,
     raw_item: dict[str, Any],
@@ -184,12 +229,30 @@ def _ingest_one(
     sleep_fn: Any,
     source_key: str,
     collected_per_source: dict[str, int],
+    jar_fetch_fn: Any | None = None,
+    seen_jar_ids: set[str] | None = None,
 ) -> tuple[bool, bool]:
     """Екстрагує та зберігає одну кампанію + case.
+
+    jar_fetch_fn: fn(jar_id, *, _client=None) -> dict | None  — injectable.
+    seen_jar_ids: set для внутрішнього jar-dedup протягом поточного запуску.
 
     Повертає (campaign_stored, case_stored).
     """
     url = source.url
+
+    # --- Jar: витяг id зі збіркового тексту ---
+    text_for_jar = (
+        raw_item.get("text") or raw_item.get("raw_text") or ""
+    )
+    found_jar_ids = jars.extract_jar_ids(text_for_jar)
+
+    # Jar-dedup: якщо jar_id вже оброблений у цьому запуску або є в БД — пропускаємо
+    if found_jar_ids and seen_jar_ids is not None:
+        first_jar = found_jar_ids[0]
+        if first_jar in seen_jar_ids or _jar_already_in_db(conn, first_jar):
+            return False, False
+        seen_jar_ids.add(first_jar)
 
     _write_raw_cache(raw_dir, url, raw_item)
     store.upsert_source(conn, source)
@@ -207,6 +270,17 @@ def _ingest_one(
     except Exception as exc:  # noqa: BLE001
         print(f"ingest: extract_campaign failed for {url}: {exc}", file=sys.stderr)
         return False, False
+
+    # --- Збагачення jar-даними (tier-1) ---
+    jar_data: dict[str, Any] | None = None
+    if found_jar_ids and jar_fetch_fn is not None:
+        try:
+            jar_data = jar_fetch_fn(found_jar_ids[0])
+        except Exception as exc:  # noqa: BLE001
+            print(f"ingest: jar fetch failed for {found_jar_ids[0]}: {exc}", file=sys.stderr)
+
+    if jar_data is not None:
+        _apply_jar_to_campaign(campaign, jar_data)
 
     for partner in partners:
         store.upsert_partner(conn, partner)
@@ -231,6 +305,9 @@ def _ingest_one(
             model=config.EXTRACT_MODEL,
             _complete=complete_fn,
         )
+        if jar_data is not None:
+            _apply_jar_to_case(case, jar_data)
+
         problems = validate.validate_case(case)
         if problems:
             print(f"ingest: validate [{case_id}]: {problems}", file=sys.stderr)
@@ -277,6 +354,8 @@ def run_ingest(
     complete_fn = comps.get("complete")
     judge_fn = comps.get("judge")
     sleep_fn = comps.get("sleep", _default_sleep)
+    # Jar fetcher: injectable через _components["collect"]["jar"]; live — з jars модуля
+    jar_fetch_fn: Any = collect_fns.get("jar") or jars.fetch_jar_data
 
     requested_sources = sources or _ALL_SOURCES
     keys = config.keys_status()
@@ -338,6 +417,8 @@ def run_ingest(
     stored_campaigns = 0
     stored_cases = 0
     collected_per_source: dict[str, int] = {}
+    # Jar-dedup: jar_id → вже оброблено у цьому запуску (міжсесійний dedup — _jar_already_in_db)
+    seen_jar_ids: set[str] = set()
 
     # -----------------------------------------------------------------------
     # Етап 1: URL-based (reports, news) — зі списку discovered_urls
@@ -395,6 +476,8 @@ def run_ingest(
             sleep_fn=sleep_fn,
             source_key=matched_src,
             collected_per_source=collected_per_source,
+            jar_fetch_fn=jar_fetch_fn,
+            seen_jar_ids=seen_jar_ids,
         )
         if campaign_stored:
             stored_campaigns += 1
@@ -444,6 +527,8 @@ def run_ingest(
                 sleep_fn=sleep_fn,
                 source_key=src_name,
                 collected_per_source=collected_per_source,
+                jar_fetch_fn=jar_fetch_fn,
+                seen_jar_ids=seen_jar_ids,
             )
             if campaign_stored:
                 stored_campaigns += 1
