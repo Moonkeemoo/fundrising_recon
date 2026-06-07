@@ -222,6 +222,83 @@ def purge_non_fundraising(conn: Any, raw_dir: Path | str) -> dict[str, int]:
 
 
 # ---------------------------------------------------------------------------
+# Двоетапний класифікатор is_campaign
+# ---------------------------------------------------------------------------
+
+def build_relevance_prompt(title: str, text: str) -> str:
+    """Будує промпт для LLM-судді: це збір чи топічний контент?
+
+    Args:
+        title: заголовок допису/кампанії.
+        text: тіло тексту (обрізається до ~800 символів).
+
+    Returns:
+        Рядок промпту — LLM повинен відповісти СТРОГО JSON {"is_campaign": true|false}.
+    """
+    snippet = text[:800] if text else ""
+    return (
+        "Визнач: чи є цей пост ФАНДРАЙЗИНГОВИМ ЗВЕРНЕННЯМ (збір коштів, запит на донат,\n"
+        "збір на ЗСУ/медицину/гум.допомогу, є реквізити або посилання на оплату),\n"
+        "чи це ТОПІЧНИЙ/ОСВІТНІЙ/НОВИННИЙ контент без прямого запиту на пожертву.\n\n"
+        "Відповідай СТРОГО JSON, без зайвого тексту:\n"
+        '{"is_campaign": true}   — якщо це ЗБІР (просить задонатити/перекинути кошти)\n'
+        '{"is_campaign": false}  — якщо це топічний/освітній/новинний/оглядовий пост\n\n'
+        f"Заголовок: {title}\n"
+        f"Текст (до 800 символів):\n{snippet}\n"
+    )
+
+
+def parse_relevance_verdict(obj: dict) -> bool:
+    """Зчитує is_campaign з відповіді LLM.
+
+    Args:
+        obj: розпарсений JSON-словник від судді.
+
+    Returns:
+        True якщо is_campaign is True (строго bool), False у всіх інших випадках
+        (відсутній ключ, None, рядок, тощо).
+    """
+    return obj.get("is_campaign") is True
+
+
+def _live_judge_relevance(prompt: str) -> dict:  # pragma: no cover
+    """Жива LLM-класифікація через claude CLI (haiku — дешево і достатньо)."""
+    from . import extract  # noqa: PLC0415
+    return extract.claude_cli(prompt, "haiku")
+
+
+def classify_campaign(campaign: Any, raw: dict[str, Any], *, judge: Any = None) -> bool:
+    """Класифікує кампанію: True = збір, False = топічний контент.
+
+    Алгоритм:
+      1. is_fundraising(raw) → True → повертаємо True (детерміновано, без LLM).
+      2. Інакше → judge(build_relevance_prompt(title, text)) → parse_relevance_verdict.
+
+    Args:
+        campaign: об'єкт Campaign (потрібен для fallback title).
+        raw: сирий словник запису.
+        judge: ін'єктована функція (prompt: str) -> dict; за замовч. _live_judge_relevance.
+
+    Returns:
+        bool — True якщо збір, False якщо топічний.
+    """
+    if judge is None:
+        judge = _live_judge_relevance  # pragma: no cover
+
+    # Детермінований гейт — без LLM
+    if is_fundraising(raw):
+        return True
+
+    # Витягаємо title + text з raw
+    title = raw.get("title") or campaign.title or ""
+    text = raw.get("text") or raw.get("raw_text") or raw.get("description") or ""
+
+    prompt = build_relevance_prompt(title, text)
+    result = judge(prompt)
+    return parse_relevance_verdict(result)
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
