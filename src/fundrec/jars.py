@@ -1,4 +1,4 @@
-"""Утиліти для роботи з банками Monobank: витяг jar-id, парсинг сторінки, fetch.
+"""Утиліти для роботи з банками Monobank: витяг jar-id, парсинг сторінки, fetch, velocity.
 
 extract_jar_ids(text) -> list[str]
     Витягує унікальні jar-id з довільного тексту (regex по send/base.monobank.ua).
@@ -10,13 +10,21 @@ parse_jar_page(jar_id, html) -> dict
 fetch_jar_data(jar_id, *, _client=None) -> dict | None
     GET https://send.monobank.ua/jar/<jar_id>, повертає parse_jar_page або None.
     _client інжектується в тестах; live-шлях # pragma: no cover.
+
+jar_velocity(history) -> dict
+    Обчислює velocity (₴/день) зі списку timestamped snapshot-ів (history).
+    Потребує ≥2 snapshots; повертає None-значення якщо недостатньо даних.
 """
 
 from __future__ import annotations
 
 import json
 import re
+from datetime import datetime, timezone
 from typing import Any
+
+# Мінімальний знаменник часу (секунди) щоб уникнути ділення на ~0
+_MIN_SPAN_SECONDS = 1.0
 
 JAR_URL = "https://send.monobank.ua/jar/{jar_id}"
 
@@ -274,3 +282,75 @@ def fetch_jar_data(jar_id: str, *, _client: Any | None = None) -> dict[str, Any]
         return parse_jar_page(jar_id, resp.text)
     except Exception:  # noqa: BLE001
         return None
+
+
+def _parse_snapshot_ts(ts_str: str) -> datetime | None:
+    """Парсить ISO timestamp → datetime (UTC-aware). None якщо не вдалось."""
+    try:
+        dt = datetime.fromisoformat(ts_str)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt
+    except (ValueError, TypeError):
+        return None
+
+
+def jar_velocity(history: list[dict]) -> dict[str, Any]:
+    """Обчислює velocity (₴/день) зі списку timestamped snapshot-ів.
+
+    Алгоритм: (last.amount_uah - first.amount_uah) / span_days,
+    де span_days = (last.ts - first.ts) в днях.
+
+    Повертає:
+        {
+          "uah_per_day": float | None,   — ₴/день (може бути 0 або від'ємне)
+          "delta_uah": float | None,     — різниця сум (last - first)
+          "span_days": float | None,     — проміжок між першим і останнім snapshot
+          "pct_per_day": float | None,   — uah_per_day / goal_amount * 100 (None якщо goal невідомий)
+        }
+
+    Повертає None-значення коли:
+      - history порожня або має 1 snapshot;
+      - amount_uah відсутній (None) хоч у першому, хоч в останньому snapshot;
+      - span занадто малий (< _MIN_SPAN_SECONDS) щоб запобігти ділення на ~0.
+    """
+    _NONE = {"uah_per_day": None, "delta_uah": None, "span_days": None, "pct_per_day": None}
+
+    if not history or len(history) < 2:
+        return _NONE
+
+    first = history[0]
+    last = history[-1]
+
+    first_amount = first.get("amount_uah")
+    last_amount = last.get("amount_uah")
+
+    if first_amount is None or last_amount is None:
+        return _NONE
+
+    first_ts = _parse_snapshot_ts(first.get("ts", ""))
+    last_ts = _parse_snapshot_ts(last.get("ts", ""))
+
+    if first_ts is None or last_ts is None:
+        return _NONE
+
+    span_seconds = (last_ts - first_ts).total_seconds()
+    if span_seconds < _MIN_SPAN_SECONDS:
+        return _NONE
+
+    span_days = span_seconds / 86400.0
+    delta_uah = float(last_amount) - float(first_amount)
+    uah_per_day = delta_uah / span_days
+
+    # pct_per_day відносно goal (останнього відомого)
+    goal = last.get("goal_amount") or first.get("goal_amount")
+    pct_per_day: float | None = None
+    if goal is not None and float(goal) > 0:
+        pct_per_day = uah_per_day / float(goal) * 100.0
+
+    return {
+        "uah_per_day": uah_per_day,
+        "delta_uah": delta_uah,
+        "span_days": span_days,
+        "pct_per_day": pct_per_day,
+    }
