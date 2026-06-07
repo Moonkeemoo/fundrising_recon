@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS sources (
 CREATE TABLE IF NOT EXISTS cases (
     id                  TEXT PRIMARY KEY,
     title               TEXT NOT NULL,
-    actor_id            TEXT NOT NULL,
+    actor_id            TEXT NOT NULL REFERENCES actors(id),
     url                 TEXT NOT NULL,
     goal                TEXT NOT NULL,
     style               TEXT NOT NULL DEFAULT '[]',
