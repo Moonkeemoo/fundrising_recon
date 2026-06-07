@@ -22,13 +22,28 @@ merge_campaigns(campaigns) -> list[Campaign]:
   - confidence_overall: max confidence збережених числових полів.
   ПРИМІТКА: Креативи зберігаються окремо по campaign_id; re-pointing при злитті
   виконується на рівні store (поза scоpом цієї функції).
+
+content_hash(text) -> str | None:
+  Нормалізує текст і повертає sha256 hexdigest[:16] перших ~300 символів.
+  None для порожнього або None вводу.
+
+campaign_jar_id(campaign) -> str | None:
+  Сканує campaign.provenance на source_url банки Monobank → повертає jar_id або None.
+
+campaign_identity(campaign, *, text=None) -> str:
+  Jar-centric hybrid ключ:
+  1. jar:<jar_id> якщо є банка в провенансі.
+  2. content:<hash> якщо є content_hash тексту/title.
+  3. actor:<slug_actor>|<slug_title> як fallback.
 """
 from __future__ import annotations
 
+import hashlib
 import re
 import unicodedata
 from urllib.parse import urlparse
 
+from .jars import extract_jar_ids
 from .schema import Campaign, Case
 
 # Числові поля, які конкурують за провенанс
@@ -318,3 +333,84 @@ def merge_campaigns(campaigns: list[Campaign]) -> list[Campaign]:
         result.append(merged)
 
     return result
+
+
+# ---------------------------------------------------------------------------
+# Jar-centric identity helpers (Unit 1 — dedup engine)
+# ---------------------------------------------------------------------------
+
+# Regex для видалення URL з тексту перед нормалізацією
+_URL_PAT = re.compile(r"https?://\S+|www\.\S+", re.IGNORECASE)
+# Regex для видалення емодзі (Unicode категорія So/Sm/Sk/Cf та Emoji blocks)
+_EMOJI_PAT = re.compile(
+    "["
+    "\U0001f600-\U0001f64f"
+    "\U0001f300-\U0001f5ff"
+    "\U0001f680-\U0001f9ff"
+    "\U00002600-\U000027bf"
+    "\U0001fa00-\U0001faff"
+    "]+",
+    re.UNICODE,
+)
+
+
+def content_hash(text: str | None) -> str | None:
+    """Нормалізує текст і повертає sha256 hexdigest[:16] перших ~300 символів.
+
+    Нормалізація: lowercase → видалити URL → видалити емодзі → видалити пунктуацію
+    → collapse whitespace → взяти перші 300 символів.
+    Повертає None для порожнього або None вводу.
+    """
+    if not text:
+        return None
+    t = text.lower()
+    t = _URL_PAT.sub(" ", t)
+    t = _EMOJI_PAT.sub(" ", t)
+    # Видаляємо пунктуацію (залишаємо літери/цифри/пробіли)
+    t = re.sub(r"[^\w\s]", " ", t)
+    t = re.sub(r"\s+", " ", t).strip()
+    if not t:
+        return None
+    snippet = t[:300]
+    return hashlib.sha256(snippet.encode("utf-8")).hexdigest()[:16]
+
+
+def campaign_jar_id(campaign: Campaign) -> str | None:
+    """Сканує campaign.provenance на source_url банки Monobank → jar_id або None.
+
+    Перевіряє кожне поле провенансу; якщо source_url містить
+    send.monobank.ua/jar/<id> — повертає перший знайдений jar_id.
+    """
+    for entry in campaign.provenance.values():
+        if not isinstance(entry, dict):
+            continue
+        url = entry.get("source_url", "")
+        if not url:
+            continue
+        ids = extract_jar_ids(str(url))
+        if ids:
+            return ids[0]
+    return None
+
+
+def campaign_identity(campaign: Campaign, *, text: str | None = None) -> str:
+    """Jar-centric hybrid ключ ідентичності кампанії.
+
+    Пріоритети:
+    1. ``jar:<jar_id>`` — якщо в провенансі є source_url банки Monobank.
+    2. ``content:<hash>`` — якщо є content_hash тексту (або campaign.title).
+    3. ``actor:<slug_actor>|<slug_title>`` — fallback за actor_id + normalized title.
+    """
+    jar_id = campaign_jar_id(campaign)
+    if jar_id:
+        return f"jar:{jar_id}"
+
+    effective_text = text if text is not None else (campaign.title or "")
+    h = content_hash(effective_text)
+    if h:
+        return f"content:{h}"
+
+    # Fallback: actor + title slug
+    actor_slug = _slugify(campaign.actor_id or "")
+    title_slug = _slugify(campaign.title or "")
+    return f"actor:{actor_slug}|{title_slug}"
