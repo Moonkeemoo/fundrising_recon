@@ -201,7 +201,6 @@ def build_campaign_prompt(raw: dict[str, Any], source: Source) -> str:
         '  "amount_uah": float|null, "amount_usd": float|null,\n'
         '  "reach": float|null, "engagement": float|null,\n'
         '  "spend": float|null, "assets_count": float|null,\n'
-        '  "case_id": str|null,\n'
         '  "creatives": [{"platform": str, "format": str, "copy_text": str|null,\n'
         '    "hook": str|null, "cta": str|null, "media_url": str|null,\n'
         '    "published": str|null, "impressions_range": str|null,\n'
@@ -312,7 +311,7 @@ def parse_campaign_extraction(
         engagement=obj.get("engagement"),
         spend=obj.get("spend"),
         assets_count=obj.get("assets_count"),
-        case_id=obj.get("case_id"),
+        case_id=None,  # внутрішній FK на cases — НЕ з LLM (вигаданий id ламає FK)
         partner_ids=partner_ids,
         provenance=provenance,
         confidence_overall=confidence if provenance else 0.0,
