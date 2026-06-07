@@ -133,6 +133,18 @@ tr.detail td{background:#0c0f14}
 .cdet .subcr{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
 .cdet .minicr{background:#000;border:1px solid var(--line);border-radius:2px;padding:5px 8px;font-size:11px;max-width:240px}
 .cdet .minicr .h{color:var(--fg);font-weight:600}
+/* ── кореляції ── */
+.corr-list{display:flex;flex-direction:column;gap:4px}
+.corr-row{display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dashed var(--bg3);font-size:12px}
+.corr-row:last-child{border-bottom:0}
+.corr-row.low-n{opacity:.45}
+.corr-label{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--fg)}
+.corr-lift{font-variant-numeric:tabular-nums;font-weight:700;min-width:62px;text-align:right}
+.corr-lift.pos{color:var(--green)}.corr-lift.neg{color:var(--red)}.corr-lift.neu{color:var(--dim)}
+.corr-bar-wrap{width:80px;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;position:relative}
+.corr-bar{height:100%;border-radius:3px;position:absolute;top:0}
+.corr-bar.pos{background:var(--green);left:50%}.corr-bar.neg{background:var(--red);right:50%}
+.corr-meta{color:var(--faint);font-size:10px;white-space:nowrap}
 /* ── F3 coverage strip ── */
 .coverage{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;font-size:11px}
 .covpill{background:var(--bg2);border:1px solid var(--line);border-radius:2px;padding:4px 9px;color:var(--dim)}
@@ -495,6 +507,41 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
     </div>
     <div id="mx-wrap"><table class="mx"><thead id="mx-head"></thead><tbody id="mx-body"></tbody></table></div>
     <div id="mx-empty" class="empty" style="display:none"><div class="big">нема даних</div></div>
+   </div>
+
+   <!-- КОРЕЛЯЦІЇ СТИЛЮ → УСПІХ -->
+   <div class="panel" id="corr-panel">
+    <div class="head">
+     <h3>Кореляції: що корелює з вищим резонансом</h3><span class="n" id="corr-n"></span>
+     <span class="spacer"></span>
+     <div class="seg" id="corr-axis">
+      <button data-ax="tone" class="on">тон</button>
+      <button data-ax="form_factor">формат</button>
+      <button data-ax="channels">канал</button>
+      <button data-ax="themes">тема</button>
+     </div>
+    </div>
+    <div id="corr-body" class="corr-list"></div>
+    <div id="corr-baseline" style="font-size:10px;color:var(--faint);margin-top:6px"></div>
+   </div>
+
+   <!-- ТАЙМЛАЙН АКТИВНОСТІ -->
+   <div class="panel" id="timeline-panel">
+    <div class="head">
+     <h3>Таймлайн активності зборів</h3><span class="n" id="timeline-n"></span>
+     <span class="spacer"></span>
+     <div class="seg" id="timeline-metric">
+      <button data-m="count" class="on">к-сть</button>
+      <button data-m="volume">обсяг ₴</button>
+     </div>
+     <div class="seg" id="timeline-themes">
+      <button data-t="total" class="on">разом</button>
+      <button data-t="split">за темами</button>
+     </div>
+    </div>
+    <div class="chart" id="timeline-chart"></div>
+    <div id="timeline-fallback" style="display:none;padding:12px;font-size:12px;color:var(--dim)"></div>
+    <div id="timeline-info" style="font-size:10px;color:var(--faint);margin-top:4px"></div>
    </div>
 
    <!-- ДОСЛІДНИК КАМПАНІЙ -->
@@ -1473,6 +1520,243 @@ function renderScatter(camps){
 }
 
 // ════════════════════════════════════════════════════════════════════════════
+// ── КОРЕЛЯЦІЇ СТИЛЮ → УСПІХ ──
+// ════════════════════════════════════════════════════════════════════════════
+let corrAxis="tone";
+
+function corrAxisVals(c, ax){
+ // Multi-valued axes: tone, form_factor, channels, themes
+ if(ax==="tone")return (c.tone||[]).slice();
+ if(ax==="form_factor")return (c.form_factor||[]).slice();
+ if(ax==="channels")return (c.channels||[]).slice();
+ if(ax==="themes")return (c.themes||[]).slice();
+ return [];
+}
+
+function renderCorr(camps){
+ const body=document.getElementById("corr-body");
+ const nEl=document.getElementById("corr-n");
+ const baselineEl=document.getElementById("corr-baseline");
+ if(!body)return;
+
+ const ax=corrAxis;
+ // Only campaigns with non-null rel_resonance
+ const withRR=camps.filter(c=>c.rel_resonance!=null);
+ const baseline=withRR.length? withRR.reduce((s,c)=>s+c.rel_resonance,0)/withRR.length : null;
+
+ if(!withRR.length||baseline==null){
+  nEl.textContent="N=0";
+  body.innerHTML='<div class="iempty">нема даних для кореляції (всі rel_resonance=null)</div>';
+  baselineEl.textContent="";
+  return;
+ }
+
+ // Group by axis value
+ const buckets={};
+ withRR.forEach(c=>{
+  corrAxisVals(c,ax).forEach(k=>{
+   if(!buckets[k])buckets[k]={rr:[],goal_yes:0,goal_total:0};
+   buckets[k].rr.push(c.rel_resonance);
+   if(c.goal_reached!=null){buckets[k].goal_total++;if(c.goal_reached===true)buckets[k].goal_yes++;}
+  });
+ });
+
+ let rows=Object.keys(buckets).map(k=>{
+  const b=buckets[k];
+  const n=b.rr.length;
+  const meanRR=b.rr.reduce((s,x)=>s+x,0)/n;
+  const lift=meanRR/baseline-1;
+  const goalRate=b.goal_total>0?b.goal_yes/b.goal_total:null;
+  return {key:k,n,meanRR,lift,goalRate,goalN:b.goal_total};
+ });
+ rows.sort((a,b)=>b.lift-a.lift);
+
+ nEl.textContent="N="+withRR.length+" по осі: "+ax+" · "+rows.length+" значень";
+ baselineEl.textContent="базовий рівень (середнє резонансу): "+baseline.toFixed(3)+" · N="+withRR.length;
+
+ if(!rows.length){body.innerHTML='<div class="iempty">—</div>';return;}
+
+ // max |lift| for bar scaling
+ const maxLift=Math.max(0.001,...rows.map(r=>Math.abs(r.lift)));
+
+ body.innerHTML=rows.map(r=>{
+  const lowN=r.n<3;
+  const liftPct=(r.lift*100).toFixed(1);
+  const liftSign=r.lift>0?"+":"";
+  const liftCls=r.lift>0.05?"pos":r.lift<-0.05?"neg":"neu";
+  const barPct=Math.min(50,(Math.abs(r.lift)/maxLift)*50);
+  const goalStr=r.goalN>0?(" · ціль "+(r.goalRate*100).toFixed(0)+"%"):"";
+  const lowLabel=lowN?' <span style="color:var(--faint);font-size:10px">(мало даних)</span>':"";
+  return `<div class="corr-row${lowN?" low-n":""}">
+   <span class="corr-label">${esc(r.key)}${lowLabel}</span>
+   <span class="corr-bar-wrap"><span class="corr-bar ${liftCls}" style="width:${barPct.toFixed(1)}%"></span></span>
+   <span class="corr-lift ${liftCls}">${liftSign}${liftPct}%</span>
+   <span class="corr-meta">N=${r.n}${esc(goalStr)}</span>
+  </div>`;
+ }).join("");
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// ── ТАЙМЛАЙН АКТИВНОСТІ ──
+// ════════════════════════════════════════════════════════════════════════════
+let timelineMetric="count"; // "count" | "volume"
+let timelineSplit="total";  // "total" | "split"
+let chTimeline=null;
+
+function timelineBuckets(camps){
+ // Determine span to auto-select weekly vs monthly
+ const dated=camps.filter(c=>campDate(c)!=null);
+ if(!dated.length)return {buckets:[],bucketFn:null,spanDays:0,mode:"monthly"};
+ const times=dated.map(c=>campDate(c).getTime());
+ const minT=Math.min(...times),maxT=Math.max(...times);
+ const spanDays=(maxT-minT)/(1000*60*60*24);
+ const mode=spanDays<=120?"weekly":"monthly";
+
+ function toBucketKey(d){
+  if(mode==="weekly"){
+   // floor to Monday
+   const day=d.getDay()||7;
+   const mon=new Date(d);mon.setDate(d.getDate()-day+1);
+   mon.setHours(0,0,0,0);
+   return mon.getFullYear()+"-"+String(mon.getMonth()+1).padStart(2,"0")+"-"+String(mon.getDate()).padStart(2,"0");
+  }else{
+   return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0");
+  }
+ }
+
+ // Build sorted unique bucket keys
+ const keySet=new Set();
+ dated.forEach(c=>keySet.add(toBucketKey(campDate(c))));
+ const bucketKeys=[...keySet].sort();
+ return {bucketKeys,toBucketKey,spanDays,mode};
+}
+
+function renderTimeline(camps){
+ const chartEl=document.getElementById("timeline-chart");
+ const fallbackEl=document.getElementById("timeline-fallback");
+ const nEl=document.getElementById("timeline-n");
+ const infoEl=document.getElementById("timeline-info");
+ if(!chartEl)return;
+
+ const dated=camps.filter(c=>campDate(c)!=null);
+ const nExcluded=camps.length-dated.length;
+
+ if(!dated.length){
+  nEl.textContent="N=0";
+  if(infoEl)infoEl.textContent="нема кампаній з датою";
+  if(!HAS_ECHARTS){
+   chartEl.style.display="none";
+   if(fallbackEl){fallbackEl.style.display="block";fallbackEl.textContent=camps.length+" зборів за період (дати відсутні)";}
+  }
+  return;
+ }
+
+ const {bucketKeys,toBucketKey,spanDays,mode}=timelineBuckets(camps);
+ if(!bucketKeys||!bucketKeys.length){nEl.textContent="N=0";return;}
+
+ // Aggregate by bucket
+ const bucketData={}; // key -> {camps:[]}
+ bucketKeys.forEach(k=>{bucketData[k]={camps:[]};});
+ dated.forEach(c=>{const k=toBucketKey(campDate(c));if(bucketData[k])bucketData[k].camps.push(c);});
+
+ // Compute primary series values
+ function bucketVal(cs){
+  if(timelineMetric==="count")return cs.length;
+  const amts=cs.map(c=>c.amount_uah).filter(x=>x!=null);
+  return amts.length?amts.reduce((s,x)=>s+x,0):0;
+ }
+ const vals=bucketKeys.map(k=>bucketVal(bucketData[k].camps));
+
+ // Spike detection: mean + 1*stddev
+ const mean=vals.reduce((s,x)=>s+x,0)/vals.length;
+ const std=Math.sqrt(vals.reduce((s,x)=>s+(x-mean)**2,0)/vals.length);
+ const spikeThresh=mean+std;
+ const spikeIndices=vals.map((v,i)=>v>spikeThresh?i:-1).filter(i=>i>=0);
+
+ nEl.textContent="N="+dated.length+(nExcluded?" · "+nExcluded+" без дати":"");
+ if(infoEl){
+  const modeLabel=mode==="weekly"?"тижневі":"місячні";
+  infoEl.textContent="бакети: "+modeLabel+" · "+bucketKeys.length+" бакетів · "+(spanDays.toFixed(0))+" днів у діапазоні"+(spikeIndices.length?" · сплески: "+spikeIndices.length:"");
+ }
+
+ if(!HAS_ECHARTS){
+  chartEl.style.display="none";
+  if(fallbackEl){
+   fallbackEl.style.display="block";
+   fallbackEl.innerHTML="<b>"+dated.length+"</b> зборів за "+bucketKeys.length+" "+
+    (mode==="weekly"?"тижнів":"місяців")+
+    (nExcluded?" ("+nExcluded+" без дати виключено)":"");
+  }
+  return;
+ }
+ chartEl.style.display="";
+ if(fallbackEl)fallbackEl.style.display="none";
+ if(!chTimeline)return;
+
+ const fmtMetric=v=>timelineMetric==="volume"?fmtUAH(v):v;
+ const fmtY=v=>timelineMetric==="volume"?(v>=1e6?(v/1e6).toFixed(1)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":v):v;
+
+ // Spike markArea: highlight spike buckets
+ const markAreas=spikeIndices.map(i=>[{xAxis:bucketKeys[i]},{xAxis:bucketKeys[i]}]);
+
+ // Theme split: top ~4 themes by count
+ let series=[];
+ if(timelineSplit==="split"){
+  // count themes across all dated
+  const themeCnt={};
+  dated.forEach(c=>(c.themes||[]).forEach(t=>themeCnt[t]=(themeCnt[t]||0)+1));
+  const topThemes=Object.entries(themeCnt).sort((a,b)=>b[1]-a[1]).slice(0,4).map(x=>x[0]);
+  topThemes.forEach((th,i)=>{
+   const tVals=bucketKeys.map(k=>{
+    const cs=bucketData[k].camps.filter(c=>(c.themes||[]).includes(th));
+    return bucketVal(cs);
+   });
+   series.push({name:th,type:"line",smooth:true,symbol:"circle",symbolSize:4,
+    lineStyle:{width:2},itemStyle:{color:PALETTE[(i+2)%PALETTE.length]},
+    data:tVals,connectNulls:false});
+  });
+  // also total as thin background
+  series.unshift({name:"разом",type:"bar",barMaxWidth:14,
+   itemStyle:{color:"rgba(255,176,0,0.18)"},
+   data:vals.map((v,i)=>({value:v,itemStyle:spikeIndices.includes(i)?{color:"rgba(255,176,0,0.45)"}:{}}))});
+ } else {
+  series=[{
+   name:timelineMetric==="count"?"к-сть зборів":"обсяг ₴",
+   type:"bar",barMaxWidth:20,
+   data:vals.map((v,i)=>({value:v,itemStyle:spikeIndices.includes(i)?{color:"#ffb000"}:{color:"#1f3a2e"}})),
+   markArea:spikeIndices.length?{
+    silent:true,
+    itemStyle:{color:"rgba(255,176,0,0.07)"},
+    data:markAreas
+   }:undefined,
+   markLine:spikeIndices.length?{
+    silent:true,
+    data:[{type:"average",name:"середнє",lineStyle:{color:"rgba(139,182,223,0.5)",type:"dashed"},
+     label:{formatter:"сер. {c}",color:"#8bb6df",fontFamily:"monospace",fontSize:9}}]
+   }:undefined
+  }];
+ }
+
+ chTimeline.setOption({
+  backgroundColor:"transparent",
+  tooltip:{trigger:"axis",backgroundColor:"#11151c",borderColor:"#222a35",
+   textStyle:{color:"#d7dce2",fontFamily:"monospace"},
+   formatter:p=>{
+    let out=esc(p[0].axisValue);
+    const isSpike=spikeIndices.includes(p[0].dataIndex);
+    if(isSpike)out+=' <b style="color:#ffb000">&#9650; сплеск</b>';
+    p.forEach(s=>{out+=`<br>${s.marker}${esc(s.seriesName)}: <b>${fmtMetric(s.value==null?0:s.value)}</b>`;});
+    return out;}},
+  legend:timelineSplit==="split"?{show:true,top:0,type:"scroll",textStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10}}:{show:false},
+  grid:{left:60,right:18,top:timelineSplit==="split"?28:12,bottom:48},
+  xAxis:{type:"category",data:bucketKeys,axisLine:{lineStyle:{color:"#222a35"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:45,fontSize:10}},
+  yAxis:{type:"value",axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:fmtY}},
+  series},true);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
 // ── F3: матриця ефективності ──
 // ════════════════════════════════════════════════════════════════════════════
 const MX_LABEL={channels:"канал",tone:"тон",form_factor:"формат"};
@@ -1599,6 +1883,8 @@ function updateCamp(){
  renderStyleHeat(chSaGc,"sa-gc-n",camps,"goal_category","channels","count",GOAL_ORDER,CHANNEL_ORDER);
  renderScatter(camps);
  renderMatrix(camps);
+ renderCorr(camps);
+ renderTimeline(camps);
  renderExplorer(camps);
 }
 
@@ -1606,7 +1892,7 @@ function initCampCharts(){
  if(campChartsInit)return;
  campChartsInit=true;
  if(!HAS_ECHARTS){
-  ["sa-bar","sr-bar","sa-fe","sa-gc","scatter-chart"].forEach(id=>{const el=document.getElementById(id);
+  ["sa-bar","sr-bar","sa-fe","sa-gc","scatter-chart","timeline-chart"].forEach(id=>{const el=document.getElementById(id);
    if(el)el.innerHTML="<div style='padding:24px;color:#8893a0'>графіки недоступні (ECharts не завантажився) — таблиці, картки й дослідник нижче працюють</div>";});
   return;}
  chSaBar=echarts.init(document.getElementById("sa-bar"));
@@ -1614,7 +1900,8 @@ function initCampCharts(){
  chSaFe=echarts.init(document.getElementById("sa-fe"));
  chSaGc=echarts.init(document.getElementById("sa-gc"));
  chScatter=echarts.init(document.getElementById("scatter-chart"));
- window.addEventListener("resize",()=>{[chSaBar,chSrBar,chSaFe,chSaGc,chScatter].forEach(c=>{if(c)c.resize();});});
+ chTimeline=echarts.init(document.getElementById("timeline-chart"));
+ window.addEventListener("resize",()=>{[chSaBar,chSrBar,chSaFe,chSaGc,chScatter,chTimeline].forEach(c=>{if(c)c.resize();});});
 }
 
 function setupCampaignView(){
@@ -1636,6 +1923,14 @@ function setupCampaignView(){
   saAxis=b.dataset.a;document.querySelectorAll("#sa-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSaBar(filteredCamps());});
  document.querySelectorAll("#sr-axis button").forEach(b=>b.onclick=()=>{
   srAxis=b.dataset.a;document.querySelectorAll("#sr-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSrBar(filteredCamps());});
+ // Кореляції: axis toggle
+ document.querySelectorAll("#corr-axis button").forEach(b=>b.onclick=()=>{
+  corrAxis=b.dataset.ax;document.querySelectorAll("#corr-axis button").forEach(x=>x.classList.toggle("on",x===b));renderCorr(filteredCamps());});
+ // Таймлайн: metric + split toggles
+ document.querySelectorAll("#timeline-metric button").forEach(b=>b.onclick=()=>{
+  timelineMetric=b.dataset.m;document.querySelectorAll("#timeline-metric button").forEach(x=>x.classList.toggle("on",x===b));renderTimeline(filteredCamps());});
+ document.querySelectorAll("#timeline-themes button").forEach(b=>b.onclick=()=>{
+  timelineSplit=b.dataset.t;document.querySelectorAll("#timeline-themes button").forEach(x=>x.classList.toggle("on",x===b));renderTimeline(filteredCamps());});
  // F3: matrix axis toggle
  document.querySelectorAll("#mx-axis button").forEach(b=>b.onclick=()=>{
   mxAxis=b.dataset.a;document.querySelectorAll("#mx-axis button").forEach(x=>x.classList.toggle("on",x===b));renderMatrix(filteredCamps());});
@@ -1659,7 +1954,10 @@ function setupCampaignView(){
   updateCamp();});
  document.getElementById("c-reset").onclick=()=>{
   Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";recencyDays=30;campRelevMode="zbory";
-  ceSearch="";ceSort="rel_resonance";mxAxis="channels";
+  ceSearch="";ceSort="rel_resonance";mxAxis="channels";corrAxis="tone";timelineMetric="count";timelineSplit="total";
+  document.querySelectorAll("#corr-axis button").forEach(b=>b.classList.toggle("on",b.dataset.ax==="tone"));
+  document.querySelectorAll("#timeline-metric button").forEach(b=>b.classList.toggle("on",b.dataset.m==="count"));
+  document.querySelectorAll("#timeline-themes button").forEach(b=>b.classList.toggle("on",b.dataset.t==="total"));
   document.getElementById("ce-search").value="";
   document.querySelectorAll("#ce-sort button").forEach(b=>b.classList.toggle("on",b.dataset.s==="rel_resonance"));
   document.querySelectorAll("#mx-axis button").forEach(b=>b.classList.toggle("on",b.dataset.a==="channels"));
@@ -1682,7 +1980,7 @@ function switchTab(tab){
   initCampCharts();
   updateCamp();
   // ECharts потребує видимого контейнера для коректного розміру
-  setTimeout(()=>{[chSaBar,chSrBar,chSaFe,chSaGc,chScatter].forEach(c=>{if(c)c.resize();});},30);
+  setTimeout(()=>{[chSaBar,chSrBar,chSaFe,chSaGc,chScatter,chTimeline].forEach(c=>{if(c)c.resize();});},30);
  }else{
   setTimeout(()=>{if(chTrend)chTrend.resize();if(chHeat)chHeat.resize();},30);
  }
