@@ -282,8 +282,14 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
    <!-- HEATMAP -->
    <div class="panel">
     <div class="head">
-     <h3>теплокарта ціль × спосіб</h3><span class="n" id="heat-n"></span>
+     <h3>теплокарта</h3><span class="n" id="heat-n"></span>
      <span class="spacer"></span>
+     <div class="seg" id="heat-axis">
+      <button data-ax="theme_channel" class="on">тема×канал</button>
+      <button data-ax="goal_method">ціль×спосіб</button>
+      <button data-ax="tone_channel">тон×канал</button>
+      <button data-ax="format_channel">формат×канал</button>
+     </div>
      <div class="seg" id="heat-metric">
       <button data-m="count" class="on">к-сть</button>
       <button data-m="volume_usd">обсяг ₴</button>
@@ -496,7 +502,7 @@ let RAW=null, CASES=[], ANALYTICS=null;
 let CAMPAIGNS=[], CREATIVES=[], PARTNERS=[];
 const SEL={goal:new Set(),style:new Set(),method:new Set()};
 let yFrom=2022, yTo=2026, verifMode="all", showConflict=true;
-let trendMetric="volume_usd", trendSplit="", trendWindow=0, heatMetric="count", lbAxis="amount_uah", lbDir=-1;
+let trendMetric="volume_usd", trendSplit="", trendWindow=0, heatMetric="count", heatAxis="theme_channel", lbAxis="amount_uah", lbDir=-1;
 const openRows=new Set();
 let chTrend=null, chHeat=null;
 const HAS_ECHARTS=(typeof echarts!=="undefined");
@@ -526,6 +532,7 @@ const FACE_ORDER=["soldier","blogger","celebrity","brand","official","anonymous"
 const CTYPE_ORDER=["online_ad","organic_social","telethon","event_irl","platform","jar","mixed"];
 const CTA_ORDER=["donate_link","jar","qr","auction","subscription","merch"];
 const SA_AXIS_FIELD={tone:"tone",channels:"channels",cta_type:"cta_type",face:"face"};
+const THEME_ORDER=["fpv","interceptors","reb_ew","vehicles","recon","fiber","medical","comms","ammo","optics_electro","energy","humanitarian"];
 
 // ── утиліти ──
 const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
@@ -650,6 +657,27 @@ function heatData(cases,metric){
   if(cell){const v=metricOf(cell,metric);data.push([mi,gi,v==null?0:v,cell.length]);}
  }));
  return {goals,methods,data};}
+function heatDataCampaign(axisAField,axisBField,orderA,orderB,metric){
+ // Works over CAMPAIGNS (global, unfiltered) since themes+channels live on campaigns.
+ // Returns {rowLabels, colLabels, data} same shape as heatData.
+ const cells={}; // "a|b" -> list of campaigns
+ CAMPAIGNS.forEach(c=>{
+  const aVals=(axisAField==="themes")?(c.themes||[]):(c[axisAField]||[]);
+  const bVals=Array.isArray(c[axisBField])?(c[axisBField]||[]):(c[axisBField]?[c[axisBField]]:[]);
+  aVals.forEach(a=>bVals.forEach(b=>{
+   const key=a+"|"+b;(cells[key]=cells[key]||[]).push(c);}));});
+ const rowLabels=orderA.filter(a=>CAMPAIGNS.some(c=>(axisAField==="themes"?(c.themes||[]):(c[axisAField]||[])).includes(a)));
+ const colLabels=orderB.filter(b=>CAMPAIGNS.some(c=>(Array.isArray(c[axisBField])?(c[axisBField]||[]):(c[axisBField]?[c[axisBField]]:[])).includes(b)));
+ const data=[];
+ rowLabels.forEach((a,ai)=>colLabels.forEach((b,bi)=>{
+  const cell=cells[a+"|"+b];
+  if(cell){
+   let v;
+   if(metric==="count")v=cell.length;
+   else{const vals=cell.map(c=>c[metric]==="engagement_rate"?c.engagement_rate:c[metric]).filter(x=>x!=null);v=vals.length?vals.reduce((s,x)=>s+x,0)/vals.length:null;}
+   data.push([bi,ai,v==null?0:v,cell.length]);
+  }}));
+ return {rowLabels,colLabels,data};}
 
 // ── рендер фільтрів ──
 function tagCounts(field){ // підрахунок по ВСІХ кейсах (наскрізна магнітуда)
@@ -737,25 +765,45 @@ function renderTrend(cases){
 
 // ── HEATMAP ──
 function renderHeat(cases){
- const {goals,methods,data}=heatData(cases,heatMetric);
- document.getElementById("heat-n").textContent="N="+data.reduce((s,d)=>s+d[3],0)+" клітинок="+data.length;
+ // Determine row/col data based on heatAxis
+ let rowLabels, colLabels, data, tooltipFmt;
+ if(heatAxis==="theme_channel"){
+  const r=heatDataCampaign("themes","channels",THEME_ORDER,CHANNEL_ORDER,heatMetric);
+  rowLabels=r.rowLabels;colLabels=r.colLabels;data=r.data;
+  tooltipFmt=(p)=>{const[ci,ri,v,n]=p.data;const vs=heatMetric==="volume_usd"?fmtUAH(v):v;
+   return `${esc(rowLabels[ri])} × ${esc(colLabels[ci])}<br><b>${vs}</b> <span style="color:#525c6b">N=${n}</span> <span style="color:#525c6b">(кампанії)</span>`;};
+ } else if(heatAxis==="goal_method"){
+  const r=heatData(cases,heatMetric);rowLabels=r.goals;colLabels=r.methods;data=r.data;
+  tooltipFmt=(p)=>{const[mi,gi,v,n]=p.data;const vs=heatMetric==="volume_usd"?fmtUAH(v):v;
+   return `${esc(rowLabels[gi])} × ${esc(colLabels[mi])}<br><b>${vs}</b> <span style="color:#525c6b">N=${n}</span>`;};
+ } else if(heatAxis==="tone_channel"){
+  const r=heatDataCampaign("tone","channels",TONE_ORDER,CHANNEL_ORDER,heatMetric);
+  rowLabels=r.rowLabels;colLabels=r.colLabels;data=r.data;
+  tooltipFmt=(p)=>{const[ci,ri,v,n]=p.data;const vs=heatMetric==="volume_usd"?fmtUAH(v):v;
+   return `${esc(rowLabels[ri])} × ${esc(colLabels[ci])}<br><b>${vs}</b> <span style="color:#525c6b">N=${n}</span>`;};
+ } else { // format_channel
+  const r=heatDataCampaign("form_factor","channels",FORM_ORDER,CHANNEL_ORDER,heatMetric);
+  rowLabels=r.rowLabels;colLabels=r.colLabels;data=r.data;
+  tooltipFmt=(p)=>{const[ci,ri,v,n]=p.data;const vs=heatMetric==="volume_usd"?fmtUAH(v):v;
+   return `${esc(rowLabels[ri])} × ${esc(colLabels[ci])}<br><b>${vs}</b> <span style="color:#525c6b">N=${n}</span>`;};
+ }
+ const campSuffix=(heatAxis==="theme_channel"||heatAxis==="tone_channel"||heatAxis==="format_channel")?" (кампаній="+CAMPAIGNS.length+")":"";
+ document.getElementById("heat-n").textContent="N="+data.reduce((s,d)=>s+d[3],0)+" клітинок="+data.length+campSuffix;
  if(!chHeat)return;
- if(!goals.length||!methods.length){
+ if(!rowLabels.length||!colLabels.length){
   chHeat.clear();
   chHeat.setOption({backgroundColor:"transparent",
-   graphic:{type:"text",left:"center",top:"center",style:{text:"немає даних для теплокарти",fill:"#8893a0",fontFamily:"monospace"}}});
+   graphic:{type:"text",left:"center",top:"center",style:{text:"нема даних",fill:"#8893a0",fontFamily:"monospace"}}});
   return;}
  const maxV=Math.max(1,...data.map(d=>d[2]));
  chHeat.setOption({
   backgroundColor:"transparent",
   tooltip:{position:"top",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
-   formatter:p=>{const[mi,gi,v,n]=p.data;
-    const vs=heatMetric==="volume_usd"?fmtUAH(v):v;
-    return `${esc(goals[gi])} × ${esc(methods[mi])}<br><b>${vs}</b> <span style="color:#525c6b">N=${n}</span>`;}},
+   formatter:tooltipFmt},
   grid:{left:130,right:24,top:10,bottom:90},
-  xAxis:{type:"category",data:methods,splitArea:{show:true},
+  xAxis:{type:"category",data:colLabels,splitArea:{show:true},
    axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:45,fontSize:10},axisLine:{lineStyle:{color:"#222a35"}}},
-  yAxis:{type:"category",data:goals,splitArea:{show:true},
+  yAxis:{type:"category",data:rowLabels,splitArea:{show:true},
    axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:11},axisLine:{lineStyle:{color:"#222a35"}}},
   visualMap:{min:0,max:maxV,calculable:true,orient:"horizontal",left:"center",bottom:6,
    inRange:{color:["#11151c","#1f3a2e","#2e6b4f","#33ff99"]},
@@ -1533,6 +1581,8 @@ function bindSegs(){
   trendMetric=b.dataset.m;document.querySelectorAll("#trend-metric button").forEach(x=>x.classList.toggle("on",x===b));update();});
  document.querySelectorAll("#trend-split button").forEach(b=>b.onclick=()=>{
   trendSplit=b.dataset.s;document.querySelectorAll("#trend-split button").forEach(x=>x.classList.toggle("on",x===b));update();});
+ document.querySelectorAll("#heat-axis button").forEach(b=>b.onclick=()=>{
+  heatAxis=b.dataset.ax;document.querySelectorAll("#heat-axis button").forEach(x=>x.classList.toggle("on",x===b));update();});
  document.querySelectorAll("#heat-metric button").forEach(b=>b.onclick=()=>{
   heatMetric=b.dataset.m;document.querySelectorAll("#heat-metric button").forEach(x=>x.classList.toggle("on",x===b));update();});
  document.querySelectorAll("#lb-axis button").forEach(b=>b.onclick=()=>{
