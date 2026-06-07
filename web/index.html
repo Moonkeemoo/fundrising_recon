@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FUNDREC ◆ КОКПІТ ФАНДРАЙЗИНГУ</title>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+:root{
+ --bg:#0a0c10;--bg2:#11151c;--bg3:#161b24;--fg:#d7dce2;--dim:#8893a0;--faint:#525c6b;
+ --amber:#ffb000;--green:#33ff99;--red:#ff6b6b;--blue:#8bb6df;--violet:#b58bdf;--line:#222a35;
+ --mono:"Cascadia Mono","Consolas",ui-monospace,monospace;
+ --sans:"Inter","Segoe UI",system-ui,sans-serif;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:13px/1.55 var(--mono)}
+a{color:var(--green)}
+header{background:#000;border-bottom:2px solid var(--amber);padding:9px 16px;position:sticky;top:0;z-index:20;
+ display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+header .logo{color:var(--amber);font-weight:700;letter-spacing:2px}
+header .meta{color:var(--faint);font-size:11px}
+header .warn{color:var(--amber);font-size:11px}
+.layout{display:flex;align-items:flex-start}
+/* ── sidebar ── */
+.side{width:260px;flex:0 0 260px;background:var(--bg2);border-right:1px solid var(--line);
+ padding:12px 14px;position:sticky;top:40px;height:calc(100vh - 40px);overflow-y:auto}
+.side h4{margin:14px 0 6px;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--faint);font-weight:700}
+.side h4:first-child{margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{background:#000;border:1px solid var(--line);color:var(--dim);padding:3px 8px;cursor:pointer;
+ border-radius:2px;font-size:11px;user-select:none}
+.chip:hover{border-color:var(--dim);color:var(--fg)}
+.chip.on{background:#1a2230;border-color:var(--blue);color:var(--blue)}
+.chip .n{color:var(--faint);font-size:10px;margin-left:4px}
+.chip.on .n{color:var(--blue)}
+.years{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.years select{background:#000;color:var(--fg);border:1px solid var(--line);padding:4px 6px;font:inherit;border-radius:2px}
+.vrow{display:flex;flex-direction:column;gap:4px}
+.vrow label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;color:var(--dim)}
+.vrow input{accent-color:var(--amber)}
+.side select.full{width:100%;background:#000;color:var(--fg);border:1px solid var(--line);padding:5px 6px;font:inherit;border-radius:2px}
+.resetbtn{margin-top:14px;width:100%;background:#000;border:1px solid var(--line);color:var(--dim);
+ padding:6px;cursor:pointer;font:11px var(--mono);border-radius:2px}
+.resetbtn:hover{border-color:var(--amber);color:var(--amber)}
+.matchline{margin-top:10px;font-size:11px;color:var(--amber)}
+/* ── main ── */
+.main{flex:1;min-width:0;padding:14px 18px 60px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:var(--bg2);border:1px solid var(--line);border-radius:3px;padding:12px 14px}
+.kpi .lbl{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--faint)}
+.kpi .val{font-size:24px;font-weight:700;color:var(--fg);margin-top:4px;line-height:1.1}
+.kpi .sub{font-size:10px;color:var(--dim);margin-top:3px}
+.kpi.acc-a .val{color:var(--amber)}.kpi.acc-g .val{color:var(--green)}
+.kpi.acc-b .val{color:var(--blue)}.kpi.acc-v .val{color:var(--violet)}
+.panel{background:var(--bg2);border:1px solid var(--line);border-radius:3px;margin-bottom:16px;padding:12px 14px}
+.panel .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.panel .head h3{margin:0;font-size:13px;color:var(--fg);letter-spacing:.5px}
+.panel .head .n{font-size:11px;color:var(--amber)}
+.panel .head .spacer{margin-left:auto}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:2px;overflow:hidden}
+.seg button{background:#000;border:0;border-right:1px solid var(--line);color:var(--dim);
+ padding:4px 9px;cursor:pointer;font:11px var(--mono)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:#1a2230;color:var(--blue)}
+.seg button:hover:not(.on){color:var(--fg)}
+.chart{width:100%;height:300px}
+.chart.heat{height:360px}
+.empty{padding:50px 16px;text-align:center;color:var(--dim)}
+.empty .big{font-size:15px;color:var(--amber);margin-bottom:8px}
+/* ── leaderboard ── */
+table.lb{width:100%;border-collapse:collapse;font-size:12px}
+table.lb th{text-align:left;color:var(--faint);font-size:10px;text-transform:uppercase;letter-spacing:1px;
+ padding:6px 8px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap}
+table.lb th:hover{color:var(--fg)}
+table.lb th.sorted{color:var(--amber)}
+table.lb td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+table.lb tr.row{cursor:pointer}
+table.lb tr.row:hover td{background:var(--bg3)}
+.title{color:var(--fg);font-weight:600}
+.actor{color:var(--dim);font-size:11px}
+.goalt{color:var(--blue);font-size:11px}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.dash{color:var(--faint)}
+.badge{font-size:9px;font-weight:700;padding:1px 6px;border:1px solid;border-radius:2px;text-transform:uppercase;letter-spacing:.5px}
+.badge.verified{color:var(--green);border-color:var(--green)}
+.badge.cross-checked{color:var(--blue);border-color:var(--blue)}
+.badge.auto{color:var(--dim);border-color:var(--dim)}
+.badge.conflict{color:var(--red);border-color:var(--red)}
+tr.detail td{background:#0c0f14}
+.detgrid{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start;padding:6px 2px}
+.radar{width:280px;height:230px;flex:0 0 280px}
+.detmeta{flex:1;min-width:220px;font-size:12px}
+.detmeta .k{color:var(--faint);display:inline-block;min-width:130px}
+.detmeta .reason{color:var(--amber);font-family:var(--sans);font-size:12px;margin-top:8px;line-height:1.5}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0}
+.tag{background:#000;border:1px solid var(--line);color:var(--dim);padding:1px 6px;font-size:10px;border-radius:2px}
+.foot{color:var(--faint);font-size:10px;text-align:center;padding:8px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.side{position:static;width:100%;height:auto}.layout{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+ <span class="logo">FUNDREC ◆ КОКПІТ</span>
+ <span class="meta" id="meta">завантаження…</span>
+ <span class="warn" id="warn"></span>
+</header>
+
+<div class="layout">
+ <!-- ── SIDEBAR ── -->
+ <aside class="side" id="side">
+  <h4>ціль (категорія)</h4><div class="chips" id="f-goal"></div>
+  <h4>стиль</h4><div class="chips" id="f-style"></div>
+  <h4>спосіб</h4><div class="chips" id="f-method"></div>
+  <h4>роки</h4>
+  <div class="years">
+   <select id="y-from"></select><span>→</span><select id="y-to"></select>
+  </div>
+  <h4>верифікація</h4>
+  <select class="full" id="f-verif">
+   <option value="cross">≥ cross-checked (за замовч.)</option>
+   <option value="verified">тільки verified</option>
+   <option value="all">усі (включно з auto — «сире широке»)</option>
+  </select>
+  <div class="vrow" style="margin-top:8px">
+   <label><input type="checkbox" id="f-conflict" checked> показувати конфлікти (флаг)</label>
+  </div>
+  <button class="resetbtn" id="reset">скинути фільтри</button>
+  <div class="matchline" id="matchline"></div>
+ </aside>
+
+ <!-- ── MAIN ── -->
+ <main class="main" id="main">
+  <div id="empty" class="empty" style="display:none">
+   <div class="big">немає даних</div>
+   <div>запусти пайплайн або демо:&nbsp;<code>python -m fundrec.make_sample</code></div>
+  </div>
+
+  <div id="dash" style="display:none">
+   <!-- KPI -->
+   <div class="kpis">
+    <div class="kpi acc-a"><div class="lbl">Σ зібрано (USD)</div><div class="val" id="k-usd">—</div><div class="sub" id="k-usd-n"></div></div>
+    <div class="kpi acc-b"><div class="lbl">N зборів</div><div class="val" id="k-count">—</div><div class="sub">після фільтрів</div></div>
+    <div class="kpi acc-g"><div class="lbl">медіанна швидкість</div><div class="val" id="k-speed">—</div><div class="sub" id="k-speed-n"></div></div>
+    <div class="kpi acc-v"><div class="lbl">N verified</div><div class="val" id="k-verif">—</div><div class="sub" id="k-verif-sub"></div></div>
+   </div>
+
+   <!-- TREND -->
+   <div class="panel">
+    <div class="head">
+     <h3>тренд 2022 → 2026</h3><span class="n" id="trend-n"></span>
+     <span class="spacer"></span>
+     <div class="seg" id="trend-metric">
+      <button data-m="volume_usd" class="on">обсяг USD</button>
+      <button data-m="count">к-сть</button>
+      <button data-m="median_speed">мед. швидкість</button>
+     </div>
+     <div class="seg" id="trend-split">
+      <button data-s="" class="on">разом</button>
+      <button data-s="goal">за ціллю</button>
+      <button data-s="style">за стилем</button>
+      <button data-s="method">за способом</button>
+     </div>
+    </div>
+    <div class="chart" id="trend-chart"></div>
+   </div>
+
+   <!-- HEATMAP -->
+   <div class="panel">
+    <div class="head">
+     <h3>теплокарта ціль × спосіб</h3><span class="n" id="heat-n"></span>
+     <span class="spacer"></span>
+     <div class="seg" id="heat-metric">
+      <button data-m="count" class="on">к-сть</button>
+      <button data-m="volume_usd">обсяг USD</button>
+     </div>
+    </div>
+    <div class="chart heat" id="heat-chart"></div>
+   </div>
+
+   <!-- LEADERBOARD -->
+   <div class="panel">
+    <div class="head">
+     <h3>лідерборд кейсів</h3><span class="n" id="lb-n"></span>
+     <span class="spacer"></span>
+     <span style="color:var(--faint);font-size:11px">сортувати:</span>
+     <div class="seg" id="lb-axis">
+      <button data-a="amount_usd" class="on">обсяг $</button>
+      <button data-a="volume_score">volume</button>
+      <button data-a="speed">speed</button>
+      <button data-a="virality_score">virality</button>
+      <button data-a="repeatability">repeat</button>
+     </div>
+    </div>
+    <table class="lb"><thead id="lb-head"></thead><tbody id="lb-body"></tbody></table>
+   </div>
+
+   <div class="foot" id="foot"></div>
+  </div>
+ </main>
+</div>
+
+<script>
+"use strict";
+// ── стан ──
+let RAW=null, CASES=[], ANALYTICS=null;
+const SEL={goal:new Set(),style:new Set(),method:new Set()};
+let yFrom=2022, yTo=2026, verifMode="cross", showConflict=true;
+let trendMetric="volume_usd", trendSplit="", heatMetric="count", lbAxis="amount_usd", lbDir=-1;
+const openRows=new Set();
+let chTrend=null, chHeat=null;
+
+// ── словники (упорядкований показ) ──
+const GOAL_ORDER=["military","medical","humanitarian","reconstruction","energy","animals","science_education","info_defense","other"];
+const STYLE_ORDER=["emotional_personal","data_transparent","urgency","gamification","celebrity","grassroots","meme_satire"];
+const METHOD_ORDER=["monobank_jar","bank_transfer","crypto","nft_merch","auction","telethon","stream","challenge","corporate_match","platform"];
+const VERIF_RANK={auto:0,"cross-checked":1,verified:2};
+const ALL_QUARTERS=(()=>{const a=[];for(let y=2022;y<=2026;y++)for(let q=1;q<=4;q++)a.push(y+"-Q"+q);return a;})();
+const AXIS_LABEL={amount_usd:"обсяг $",volume_score:"volume",speed:"speed",virality_score:"virality",repeatability:"repeat"};
+
+// ── утиліти ──
+const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const goalCat=g=>(g||"other").split("/")[0];
+function caseQuarter(c){
+ if(c.date_start){const d=String(c.date_start);const m=d.match(/^(\d{4})-(\d{2})/);
+  if(m){const q=Math.floor((parseInt(m[2],10)-1)/3)+1;return m[1]+"-Q"+q;}
+  if(/^\d{4}$/.test(d))return d+"-Q1";}
+ if(c.year)return c.year+"-Q1";
+ return null;}
+function caseYear(c){
+ if(c.year)return c.year;
+ if(c.date_start){const m=String(c.date_start).match(/^(\d{4})/);if(m)return parseInt(m[1],10);}
+ return null;}
+function median(arr){if(!arr.length)return null;const a=[...arr].sort((x,y)=>x-y);const m=a.length>>1;
+ return a.length%2?a[m]:(a[m-1]+a[m])/2;}
+function fmtUSD(v){if(v==null)return "—";
+ if(v>=1e9)return "$"+(v/1e9).toFixed(2)+"B";
+ if(v>=1e6)return "$"+(v/1e6).toFixed(1)+"M";
+ if(v>=1e3)return "$"+(v/1e3).toFixed(0)+"K";
+ return "$"+v.toFixed(0);}
+function fmtSpeed(v){if(v==null)return "—";
+ if(v>=1e6)return (v/1e6).toFixed(1)+"M ₴/д";
+ if(v>=1e3)return (v/1e3).toFixed(0)+"K ₴/д";
+ return v.toFixed(0)+" ₴/д";}
+function fmtScore(v){return v==null?"—":v.toFixed(2);}
+
+// ── фільтрація ──
+function passesVerif(c){
+ const st=c.verification_status;
+ if(st==="conflict")return showConflict; // конфлікти контролює окремий чекбокс
+ if(verifMode==="all")return true;
+ if(verifMode==="verified")return st==="verified";
+ return (VERIF_RANK[st]??0)>=VERIF_RANK["cross-checked"]; // ≥ cross-checked
+}
+function filtered(){
+ return CASES.filter(c=>{
+  const y=caseYear(c);
+  if(y!=null&&(y<yFrom||y>yTo))return false;
+  if(SEL.goal.size&&!SEL.goal.has(goalCat(c.goal)))return false;
+  if(SEL.style.size&&!(c.style||[]).some(s=>SEL.style.has(s)))return false;
+  if(SEL.method.size&&!(c.method||[]).some(m=>SEL.method.has(m)))return false;
+  if(!passesVerif(c))return false;
+  return true;});
+}
+
+// ── клієнтська агрегація (дзеркало analyze.py) ──
+function metricOf(cases,metric){
+ if(metric==="count")return cases.length;
+ if(metric==="volume_usd"){const v=cases.filter(c=>c.amount_usd!=null);
+  return v.length?v.reduce((s,c)=>s+c.amount_usd,0):null;}
+ if(metric==="median_speed"){const s=cases.map(c=>c.speed).filter(x=>x!=null);
+  return median(s);}
+ return null;}
+function keysFor(c,split){
+ if(!split)return ["_total"];
+ if(split==="goal")return [goalCat(c.goal)];
+ if(split==="style")return (c.style&&c.style.length)?c.style:[];
+ if(split==="method")return (c.method&&c.method.length)?c.method:[];
+ return ["_total"];}
+function trendData(cases,metric,split){
+ // buckets[key][period] -> list
+ const buckets={};
+ cases.forEach(c=>{const p=caseQuarter(c);if(!p||!ALL_QUARTERS.includes(p))return;
+  keysFor(c,split).forEach(k=>{(buckets[k]=buckets[k]||{});(buckets[k][p]=buckets[k][p]||[]).push(c);});});
+ const keys=Object.keys(buckets).sort();
+ const series=keys.map(k=>{
+  const vals=ALL_QUARTERS.map(p=>metricOf(buckets[k][p]||[],metric));
+  const ns=ALL_QUARTERS.map(p=>(buckets[k][p]||[]).length);
+  return {key:k,vals,ns};});
+ return {keys,series};}
+function heatData(cases,metric){
+ const cells={}; // "goal|method" -> list
+ cases.forEach(c=>{const g=goalCat(c.goal);(c.method||[]).forEach(m=>{
+  const key=g+"|"+m;(cells[key]=cells[key]||[]).push(c);});});
+ const goals=GOAL_ORDER.filter(g=>cases.some(c=>goalCat(c.goal)===g));
+ const methods=METHOD_ORDER.filter(m=>cases.some(c=>(c.method||[]).includes(m)));
+ const data=[];
+ goals.forEach((g,gi)=>methods.forEach((m,mi)=>{
+  const cell=cells[g+"|"+m];
+  if(cell){const v=metricOf(cell,metric);data.push([mi,gi,v==null?0:v,cell.length]);}
+ }));
+ return {goals,methods,data};}
+
+// ── рендер фільтрів ──
+function tagCounts(field){ // підрахунок по ВСІХ кейсах (наскрізна магнітуда)
+ const cnt={};
+ CASES.forEach(c=>{
+  if(field==="goal"){const g=goalCat(c.goal);cnt[g]=(cnt[g]||0)+1;}
+  else (c[field]||[]).forEach(t=>cnt[t]=(cnt[t]||0)+1);});
+ return cnt;}
+function renderChips(boxId,order,field){
+ const box=document.getElementById(boxId);const cnt=tagCounts(field);
+ const present=order.filter(t=>cnt[t]);
+ box.innerHTML=present.map(t=>
+  `<span class="chip ${SEL[field].has(t)?"on":""}" data-f="${field}" data-t="${t}">${esc(t)}<span class="n">${cnt[t]}</span></span>`
+ ).join("")||'<span class="dash" style="font-size:11px">—</span>';
+}
+function bindChips(){
+ document.querySelectorAll(".chip[data-f]").forEach(el=>{
+  el.onclick=()=>{const f=el.dataset.f,t=el.dataset.t;
+   if(SEL[f].has(t))SEL[f].delete(t);else SEL[f].add(t);
+   el.classList.toggle("on");update();};});
+}
+function renderYears(){
+ const f=document.getElementById("y-from"),t=document.getElementById("y-to");
+ let years=[...new Set(CASES.map(caseYear).filter(y=>y!=null))].sort((a,b)=>a-b);
+ if(!years.length)years=[2022,2023,2024,2025,2026];
+ yFrom=years[0];yTo=years[years.length-1];
+ const opt=y=>`<option value="${y}">${y}</option>`;
+ f.innerHTML=years.map(opt).join("");t.innerHTML=years.map(opt).join("");
+ f.value=yFrom;t.value=yTo;
+ f.onchange=()=>{yFrom=+f.value;if(yFrom>yTo){yTo=yFrom;t.value=yTo;}update();};
+ t.onchange=()=>{yTo=+t.value;if(yTo<yFrom){yFrom=yTo;f.value=yFrom;}update();};
+}
+
+// ── KPI ──
+function renderKPIs(cases){
+ const withUsd=cases.filter(c=>c.amount_usd!=null);
+ const sumUsd=withUsd.reduce((s,c)=>s+c.amount_usd,0);
+ document.getElementById("k-usd").textContent=withUsd.length?fmtUSD(sumUsd):"—";
+ document.getElementById("k-usd-n").textContent="N="+withUsd.length+" з "+cases.length+" (із сумою)";
+ document.getElementById("k-count").textContent=cases.length;
+ const speeds=cases.map(c=>c.speed).filter(x=>x!=null);
+ document.getElementById("k-speed").textContent=speeds.length?fmtSpeed(median(speeds)):"—";
+ document.getElementById("k-speed-n").textContent="N="+speeds.length+" (із швидкістю)";
+ const nv=cases.filter(c=>c.verification_status==="verified"||c.verification_status==="cross-checked").length;
+ const nc=cases.filter(c=>c.verification_status==="conflict").length;
+ document.getElementById("k-verif").textContent=nv;
+ document.getElementById("k-verif-sub").textContent="≥ cross-checked"+(nc?(" · "+nc+" конфлікт"):"");
+}
+
+// ── TREND chart ──
+const PALETTE=["#ffb000","#33ff99","#8bb6df","#b58bdf","#ff6b6b","#e0c068","#68c0e0","#c0e068","#e068c0","#68e0a0"];
+function renderTrend(cases){
+ const {series}=trendData(cases,trendMetric,trendSplit);
+ const totalN=cases.filter(c=>caseQuarter(c)&&ALL_QUARTERS.includes(caseQuarter(c))).length;
+ document.getElementById("trend-n").textContent="N="+totalN;
+ const metricName={volume_usd:"обсяг USD",count:"к-сть",median_speed:"мед. швидкість ₴/д"}[trendMetric];
+ const ech=series.map((s,i)=>({
+  name:trendSplit?s.key:metricName,type:"line",smooth:true,symbol:"circle",symbolSize:5,
+  connectNulls:false,
+  lineStyle:{width:2},itemStyle:{color:PALETTE[i%PALETTE.length]},
+  data:s.vals,_ns:s.ns}));
+ chTrend.setOption({
+  backgroundColor:"transparent",
+  tooltip:{trigger:"axis",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
+   formatter:p=>{let out=esc(p[0].axisValue);p.forEach(s=>{
+    const n=(ech[s.seriesIndex]._ns||[])[s.dataIndex];
+    const v=s.value==null?"—":(trendMetric==="volume_usd"?fmtUSD(s.value):trendMetric==="median_speed"?fmtSpeed(s.value):s.value);
+    out+=`<br>${s.marker}${esc(s.seriesName)}: <b>${v}</b> <span style="color:#525c6b">N=${n??0}</span>`;});
+    return out;}},
+  legend:trendSplit?{show:true,top:0,textStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10},type:"scroll"}:{show:false},
+  grid:{left:60,right:18,top:trendSplit?28:12,bottom:48},
+  xAxis:{type:"category",data:ALL_QUARTERS,axisLine:{lineStyle:{color:"#222a35"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:45,fontSize:10}},
+  yAxis:{type:"value",axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,
+    formatter:v=>trendMetric==="volume_usd"?fmtUSD(v):trendMetric==="median_speed"?(v>=1e6?(v/1e6).toFixed(0)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":v):v}},
+  series:ech},true);
+}
+
+// ── HEATMAP ──
+function renderHeat(cases){
+ const {goals,methods,data}=heatData(cases,heatMetric);
+ document.getElementById("heat-n").textContent="N="+data.reduce((s,d)=>s+d[3],0)+" клітинок="+data.length;
+ if(!goals.length||!methods.length){
+  chHeat.clear();
+  chHeat.setOption({backgroundColor:"transparent",
+   graphic:{type:"text",left:"center",top:"center",style:{text:"немає даних для теплокарти",fill:"#8893a0",fontFamily:"monospace"}}});
+  return;}
+ const maxV=Math.max(1,...data.map(d=>d[2]));
+ chHeat.setOption({
+  backgroundColor:"transparent",
+  tooltip:{position:"top",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
+   formatter:p=>{const[mi,gi,v,n]=p.data;
+    const vs=heatMetric==="volume_usd"?fmtUSD(v):v;
+    return `${esc(goals[gi])} × ${esc(methods[mi])}<br><b>${vs}</b> <span style="color:#525c6b">N=${n}</span>`;}},
+  grid:{left:130,right:24,top:10,bottom:90},
+  xAxis:{type:"category",data:methods,splitArea:{show:true},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:45,fontSize:10},axisLine:{lineStyle:{color:"#222a35"}}},
+  yAxis:{type:"category",data:goals,splitArea:{show:true},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:11},axisLine:{lineStyle:{color:"#222a35"}}},
+  visualMap:{min:0,max:maxV,calculable:true,orient:"horizontal",left:"center",bottom:6,
+   inRange:{color:["#11151c","#1f3a2e","#2e6b4f","#33ff99"]},
+   textStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10}},
+  series:[{type:"heatmap",data:data.map(d=>[d[0],d[1],d[2],d[3]]),
+   label:{show:true,fontFamily:"monospace",fontSize:10,color:"#0a0c10",
+    formatter:p=>{const v=p.data[2];return heatMetric==="volume_usd"?(v>=1e6?(v/1e6).toFixed(0)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":v||""):v||"";}},
+   emphasis:{itemStyle:{borderColor:"#ffb000",borderWidth:1}}}]},true);
+}
+
+// ── LEADERBOARD ──
+function lbValue(c,axis){return c[axis];}
+function renderLB(cases){
+ document.getElementById("lb-n").textContent="N="+cases.length;
+ const cols=[
+  {a:"_t",l:"кейс"},{a:"goal",l:"ціль"},{a:"amount_usd",l:"обсяг $",num:1},
+  {a:"volume_score",l:"vol",num:1},{a:"speed",l:"speed",num:1},
+  {a:"virality_score",l:"viral",num:1},{a:"repeatability",l:"repeat",num:1},
+  {a:"verification_status",l:"верифікація"}];
+ document.getElementById("lb-head").innerHTML="<tr>"+cols.map(c=>
+  `<th data-a="${c.a}" class="${c.a===lbAxis?"sorted":""}${c.num?" num":""}">${c.l}${c.a===lbAxis?(lbDir<0?" ▾":" ▴"):""}</th>`
+ ).join("")+"</tr>";
+ document.querySelectorAll("#lb-head th[data-a]").forEach(th=>{
+  th.onclick=()=>{const a=th.dataset.a;if(a==="_t"||a==="goal"||a==="verification_status")return;
+   if(lbAxis===a)lbDir=-lbDir;else{lbAxis=a;lbDir=-1;}
+   document.querySelectorAll("#lb-axis button").forEach(b=>b.classList.toggle("on",b.dataset.a===lbAxis));
+   update();};});
+ // сортування: null завжди в кінці
+ const sorted=[...cases].sort((x,y)=>{
+  const vx=lbValue(x,lbAxis),vy=lbValue(y,lbAxis);
+  if(vx==null&&vy==null)return 0;if(vx==null)return 1;if(vy==null)return -1;
+  return (vx-vy)*lbDir;});
+ const body=document.getElementById("lb-body");
+ if(!sorted.length){body.innerHTML='<tr><td colspan="8" class="empty">нічого не знайдено за фільтрами</td></tr>';return;}
+ const fmtCell=(c,col)=>{
+  const v=c[col.a];
+  if(col.a==="amount_usd")return v==null?'<span class="dash">—</span>':fmtUSD(v);
+  if(col.a==="speed")return v==null?'<span class="dash">—</span>':fmtSpeed(v);
+  return v==null?'<span class="dash">—</span>':fmtScore(v);};
+ body.innerHTML=sorted.map(c=>{
+  const open=openRows.has(c.id);
+  const row=`<tr class="row" data-id="${esc(c.id)}">
+   <td><div class="title">${esc(c.title)}</div><div class="actor">${esc(c.actor_id)}</div></td>
+   <td class="goalt">${esc(c.goal)}</td>
+   <td class="num">${fmtCell(c,{a:"amount_usd"})}</td>
+   <td class="num">${fmtCell(c,{a:"volume_score"})}</td>
+   <td class="num">${fmtCell(c,{a:"speed"})}</td>
+   <td class="num">${fmtCell(c,{a:"virality_score"})}</td>
+   <td class="num">${fmtCell(c,{a:"repeatability"})}</td>
+   <td><span class="badge ${esc(c.verification_status)}">${esc(c.verification_status)}</span></td></tr>`;
+  const det=open?detailRow(c):"";
+  return row+det;}).join("");
+ document.querySelectorAll("#lb-body tr.row").forEach(tr=>{
+  tr.onclick=()=>{const id=tr.dataset.id;
+   if(openRows.has(id))openRows.delete(id);else openRows.add(id);
+   renderLB(cases);};});
+ // ініціалізуємо радари для відкритих рядків
+ sorted.forEach(c=>{if(openRows.has(c.id))drawRadar(c);});
+}
+function detailRow(c){
+ const amt=c.amount_uah!=null?(c.amount_uah.toLocaleString("uk-UA")+" ₴"):"—";
+ const dates=(c.date_start||"?")+" → "+(c.date_end||"?");
+ const styles=(c.style||[]).map(s=>`<span class="tag">${esc(s)}</span>`).join("")||'<span class="dash">—</span>';
+ const methods=(c.method||[]).map(m=>`<span class="tag">${esc(m)}</span>`).join("")||'<span class="dash">—</span>';
+ return `<tr class="detail"><td colspan="8"><div class="detgrid">
+   <div class="radar" id="radar-${esc(c.id)}"></div>
+   <div class="detmeta">
+    <div><span class="k">сума (грн):</span>${esc(amt)} <span class="dash">/ ${fmtUSD(c.amount_usd)}</span></div>
+    <div><span class="k">ціль (грн):</span>${c.goal_amount!=null?esc(c.goal_amount.toLocaleString("uk-UA"))+" ₴":'<span class="dash">—</span>'}</div>
+    <div><span class="k">період:</span>${esc(dates)}</div>
+    <div><span class="k">впевненість:</span>${fmtScore(c.confidence_overall)}</div>
+    <div><span class="k">стиль:</span></div><div class="tags">${styles}</div>
+    <div><span class="k">спосіб:</span></div><div class="tags">${methods}</div>
+    <div><span class="k">джерело:</span>${c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.url)}</a>`:'<span class="dash">—</span>'}</div>
+    ${c.verdict_reason?`<div class="reason">${esc(c.verdict_reason)}</div>`:""}
+   </div></div></td></tr>`;
+}
+function drawRadar(c){
+ const el=document.getElementById("radar-"+c.id);if(!el)return;
+ const ch=echarts.init(el,null,{renderer:"canvas"});
+ // speed нормалізуємо до 0..1 лог-шкалою серед усіх кейсів зі швидкістю
+ const speeds=CASES.map(x=>x.speed).filter(x=>x!=null&&x>0);
+ const maxLog=speeds.length?Math.log10(Math.max(...speeds)):1;
+ const speedNorm=(c.speed!=null&&c.speed>0&&maxLog>0)?Math.min(1,Math.log10(c.speed)/maxLog):(c.speed===0?0:null);
+ const axes=[
+  {name:"volume",v:c.volume_score},
+  {name:"speed*",v:speedNorm},
+  {name:"virality",v:c.virality_score},
+  {name:"repeat",v:c.repeatability}];
+ const indicator=axes.map(a=>({name:a.name+(a.v==null?" (—)":""),max:1}));
+ const values=axes.map(a=>a.v==null?0:a.v); // null показуємо як 0-точку, але підписуємо (—)
+ ch.setOption({
+  backgroundColor:"transparent",
+  tooltip:{backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
+   formatter:()=>axes.map(a=>`${a.name}: ${a.v==null?"— (нема даних)":a.v.toFixed(2)}`).join("<br>")},
+  radar:{indicator,radius:"62%",center:["50%","54%"],
+   axisName:{color:"#8893a0",fontFamily:"monospace",fontSize:10},
+   splitLine:{lineStyle:{color:"#222a35"}},splitArea:{areaStyle:{color:["#0c0f14","#11151c"]}},
+   axisLine:{lineStyle:{color:"#222a35"}}},
+  series:[{type:"radar",data:[{value:values,
+   areaStyle:{color:"rgba(255,176,0,0.18)"},lineStyle:{color:"#ffb000"},
+   itemStyle:{color:"#ffb000"}}]}]});
+}
+
+// ── головне оновлення ──
+function update(){
+ const cases=filtered();
+ document.getElementById("matchline").textContent="показано "+cases.length+" з "+CASES.length+" кейсів";
+ renderKPIs(cases);
+ renderTrend(cases);
+ renderHeat(cases);
+ renderLB(cases);
+}
+
+// ── seg-кнопки ──
+function bindSegs(){
+ document.querySelectorAll("#trend-metric button").forEach(b=>b.onclick=()=>{
+  trendMetric=b.dataset.m;document.querySelectorAll("#trend-metric button").forEach(x=>x.classList.toggle("on",x===b));update();});
+ document.querySelectorAll("#trend-split button").forEach(b=>b.onclick=()=>{
+  trendSplit=b.dataset.s;document.querySelectorAll("#trend-split button").forEach(x=>x.classList.toggle("on",x===b));update();});
+ document.querySelectorAll("#heat-metric button").forEach(b=>b.onclick=()=>{
+  heatMetric=b.dataset.m;document.querySelectorAll("#heat-metric button").forEach(x=>x.classList.toggle("on",x===b));update();});
+ document.querySelectorAll("#lb-axis button").forEach(b=>b.onclick=()=>{
+  lbAxis=b.dataset.a;lbDir=-1;document.querySelectorAll("#lb-axis button").forEach(x=>x.classList.toggle("on",x===b));update();});
+ document.getElementById("f-verif").onchange=e=>{verifMode=e.target.value;update();};
+ document.getElementById("f-conflict").onchange=e=>{showConflict=e.target.checked;update();};
+ document.getElementById("reset").onclick=()=>{
+  SEL.goal.clear();SEL.style.clear();SEL.method.clear();
+  verifMode="cross";showConflict=true;
+  document.getElementById("f-verif").value="cross";
+  document.getElementById("f-conflict").checked=true;
+  renderChips("f-goal",GOAL_ORDER,"goal");renderChips("f-style",STYLE_ORDER,"style");renderChips("f-method",METHOD_ORDER,"method");
+  bindChips();renderYears();update();};
+}
+
+function initCharts(){
+ chTrend=echarts.init(document.getElementById("trend-chart"));
+ chHeat=echarts.init(document.getElementById("heat-chart"));
+ window.addEventListener("resize",()=>{chTrend.resize();chHeat.resize();
+  CASES.forEach(c=>{if(openRows.has(c.id)){const el=document.getElementById("radar-"+c.id);
+   if(el){const ins=echarts.getInstanceByDom(el);if(ins)ins.resize();}}});});
+}
+
+async function load(){
+ let data;
+ try{const r=await fetch("./cases.json",{cache:"no-store"});data=await r.json();}
+ catch(e){data={count:0,cases:[],analytics:null};}
+ RAW=data;CASES=(data&&data.cases)||[];ANALYTICS=(data&&data.analytics)||null;
+ const meta=document.getElementById("meta");
+ if(!CASES.length){
+  document.getElementById("empty").style.display="block";
+  document.getElementById("dash").style.display="none";
+  meta.textContent="0 кейсів";
+  return;}
+ document.getElementById("empty").style.display="none";
+ document.getElementById("dash").style.display="block";
+ meta.textContent=CASES.length+" кейсів · джерело: cases.json";
+ const nConflict=CASES.filter(c=>c.verification_status==="conflict").length;
+ const nIll=CASES.filter(c=>(c.verdict_reason||"").includes("ILLUSTRATIVE")).length;
+ const w=[];
+ if(nIll)w.push("⚠ "+nIll+" ілюстративних (демо)");
+ if(nConflict)w.push(nConflict+" конфлікт(и)");
+ document.getElementById("warn").textContent=w.join(" · ");
+ document.getElementById("foot").textContent="чесна магнітуда: кожен віджет показує власне N · null≠0 · "
+  +"за замовч. показано ≥ cross-checked";
+ initCharts();
+ renderChips("f-goal",GOAL_ORDER,"goal");
+ renderChips("f-style",STYLE_ORDER,"style");
+ renderChips("f-method",METHOD_ORDER,"method");
+ bindChips();renderYears();bindSegs();
+ update();
+}
+load();
+</script>
+</body>
+</html>

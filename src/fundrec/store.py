@@ -2,6 +2,7 @@
 
 JSON-поля (links, style, method, provenance) серіалізуються в TEXT-колонки.
 """
+
 from __future__ import annotations
 
 import json
@@ -34,7 +35,13 @@ def upsert_actor(conn: sqlite3.Connection, actor: Actor) -> None:
         "INSERT INTO actors (id, name, type, founded, links) VALUES (?,?,?,?,?) "
         "ON CONFLICT(id) DO UPDATE SET name=excluded.name, type=excluded.type, "
         "founded=excluded.founded, links=excluded.links",
-        (actor.id, actor.name, actor.type, actor.founded, json.dumps(actor.links, ensure_ascii=False)),
+        (
+            actor.id,
+            actor.name,
+            actor.type,
+            actor.founded,
+            json.dumps(actor.links, ensure_ascii=False),
+        ),
     )
     conn.commit()
 
@@ -86,3 +93,27 @@ def load_cases(conn: sqlite3.Connection) -> list[Case]:
 def get_case(conn: sqlite3.Connection, case_id: str) -> Case | None:
     row = conn.execute("SELECT * FROM cases WHERE id = ?", (case_id,)).fetchone()
     return _row_to_case(row) if row else None
+
+
+def set_verification(
+    conn: sqlite3.Connection,
+    case_id: str,
+    status: str,
+    reason: str | None = None,
+    confidence_overall: float | None = None,
+) -> None:
+    """Update verification_status (always), verdict_reason and confidence_overall (if provided)."""
+    parts = ["verification_status = ?"]
+    values: list = [status]
+    if reason is not None:
+        parts.append("verdict_reason = ?")
+        values.append(reason)
+    if confidence_overall is not None:
+        parts.append("confidence_overall = ?")
+        values.append(confidence_overall)
+    values.append(case_id)
+    conn.execute(
+        f"UPDATE cases SET {', '.join(parts)} WHERE id = ?",
+        values,
+    )
+    conn.commit()
