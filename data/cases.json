@@ -6107,6 +6107,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6189,6 +6190,7 @@
         "fpv",
         "interceptors"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6261,6 +6263,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6335,6 +6338,7 @@
       "themes": [
         "comms"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6423,6 +6427,7 @@
       "themes": [
         "recon"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6506,6 +6511,7 @@
       "themes": [
         "fpv"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6570,6 +6576,7 @@
       "themes": [
         "fpv"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6637,6 +6644,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6705,6 +6713,7 @@
         "fpv",
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6780,6 +6789,7 @@
       "themes": [
         "interceptors"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6852,6 +6862,7 @@
       "themes": [
         "reb_ew"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6917,6 +6928,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6987,6 +6999,7 @@
       "themes": [
         "fpv"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7057,6 +7070,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7133,6 +7147,7 @@
         "fpv",
         "humanitarian"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7200,6 +7215,7 @@
       "themes": [
         "fpv"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7281,6 +7297,7 @@
       "themes": [
         "fpv"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7351,6 +7368,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7427,6 +7445,7 @@
         "energy",
         "humanitarian"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7501,6 +7520,7 @@
       "themes": [
         "interceptors"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7578,6 +7598,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7649,6 +7670,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7717,6 +7739,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7796,6 +7819,7 @@
         "fpv",
         "interceptors"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7879,6 +7903,7 @@
         "fpv",
         "interceptors"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7947,6 +7972,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8011,6 +8037,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8079,6 +8106,7 @@
         "fpv",
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8154,6 +8182,7 @@
         "vehicles",
         "humanitarian"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8224,6 +8253,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8300,6 +8330,7 @@
         "reb_ew",
         "vehicles"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8376,6 +8407,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8446,6 +8478,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8520,6 +8553,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8589,6 +8623,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8657,6 +8692,7 @@
       "themes": [
         "humanitarian"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8725,6 +8761,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8806,6 +8843,7 @@
       "themes": [
         "interceptors"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8881,6 +8919,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8957,6 +8996,7 @@
       "themes": [
         "humanitarian"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9029,6 +9069,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9108,6 +9149,7 @@
         "vehicles",
         "medical"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9181,6 +9223,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9252,6 +9295,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9324,6 +9368,7 @@
         "vehicles",
         "humanitarian"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9389,6 +9434,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9455,6 +9501,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9532,6 +9579,7 @@
         "reb_ew",
         "comms"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9611,6 +9659,7 @@
         "optics_electro",
         "energy"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9677,6 +9726,7 @@
       "themes": [
         "medical"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9760,6 +9810,7 @@
       "themes": [
         "fpv"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9830,6 +9881,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9902,6 +9954,7 @@
         "interceptors",
         "recon"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9971,6 +10024,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10042,6 +10096,7 @@
         "fpv",
         "reb_ew"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10115,6 +10170,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10187,6 +10243,7 @@
         "recon",
         "ammo"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10254,6 +10311,7 @@
       "themes": [
         "fpv"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10329,6 +10387,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10395,6 +10454,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10466,6 +10526,7 @@
       "themes": [
         "fpv"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10549,6 +10610,7 @@
         "fpv",
         "reb_ew"
       ],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10622,6 +10684,7 @@
       "themes": [
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10693,6 +10756,7 @@
         "fpv",
         "vehicles"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10763,6 +10827,7 @@
       "themes": [
         "fpv"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10836,6 +10901,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10904,6 +10970,7 @@
       "themes": [
         "interceptors"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10973,6 +11040,7 @@
         "fiber",
         "comms"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -11040,6 +11108,7 @@
       "themes": [
         "comms"
       ],
+      "has_destination": false,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -11114,6 +11183,7 @@
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
       "themes": [],
+      "has_destination": true,
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     }
