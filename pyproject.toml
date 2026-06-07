@@ -1,0 +1,25 @@
+[project]
+name = "fundrec"
+version = "0.0.1"
+description = "Ukrainian wartime fundraising case database (2022->2026)"
+requires-python = ">=3.12"
+dependencies = ["httpx>=0.27"]
+
+[project.optional-dependencies]
+live = ["claude-agent-sdk>=0.1", "anthropic>=0.40"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
