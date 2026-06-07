@@ -256,9 +256,9 @@ tr.detail td{background:#0c0f14}
   <h4>тип кампанії</h4><div class="chips" id="cf-type"></div>
   <h4>верифікація</h4>
   <select class="full" id="cf-verif">
-   <option value="cross">≥ cross-checked (за замовч.)</option>
+   <option value="all" selected>усі (вкл. auto) — за замовч.</option>
+   <option value="cross">≥ cross-checked</option>
    <option value="verified">тільки verified</option>
-   <option value="all">усі (включно з auto)</option>
   </select>
   <button class="resetbtn" id="c-reset">скинути фільтри</button>
   <div class="matchline" id="c-matchline"></div>
@@ -346,7 +346,7 @@ const HAS_ECHARTS=(typeof echarts!=="undefined");
 // ── стан КАМПАНІЙ ──
 let activeTab="cases";
 const CSEL={channels:new Set(),form_factor:new Set(),tone:new Set(),face:new Set(),type:new Set()};
-let cVerifMode="cross", saAxis="tone";
+let cVerifMode="all", saAxis="tone";
 const openCamps=new Set();
 let chSaBar=null, chSaFe=null, chSaGc=null, campChartsInit=false;
 
@@ -926,8 +926,8 @@ function setupCampaignView(){
   saAxis=b.dataset.a;document.querySelectorAll("#sa-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSaBar(filteredCamps());});
  document.getElementById("cf-verif").onchange=e=>{cVerifMode=e.target.value;updateCamp();};
  document.getElementById("c-reset").onclick=()=>{
-  Object.values(CSEL).forEach(s=>s.clear());cVerifMode="cross";
-  document.getElementById("cf-verif").value="cross";
+  Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";
+  document.getElementById("cf-verif").value="all";
   renderCampChips("cf-channels",CHANNEL_ORDER,"channels");renderCampChips("cf-form",FORM_ORDER,"form_factor");
   renderCampChips("cf-tone",TONE_ORDER,"tone");renderCampChips("cf-face",FACE_ORDER,"face");renderCampChips("cf-type",CTYPE_ORDER,"type");
   bindCampChips();updateCamp();};
