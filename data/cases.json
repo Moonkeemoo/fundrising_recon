@@ -1,0 +1,4280 @@
+{
+  "count": 18,
+  "cases": [
+    {
+      "id": "s-animals-feed",
+      "title": "Корм для притулків",
+      "actor_id": "uanimals",
+      "url": "https://uanimals.org/sample",
+      "goal": "animals",
+      "style": [
+        "emotional_personal"
+      ],
+      "method": [
+        "monobank_jar"
+      ],
+      "date_start": null,
+      "date_end": null,
+      "year": 2025,
+      "amount_uah": 2500000.0,
+      "amount_usd": 60240.96385542169,
+      "goal_amount": 2500000.0,
+      "currency_raw": "2.5 млн ₴",
+      "volume_score": 0.0,
+      "speed": null,
+      "virality_score": null,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://uanimals.org/sample",
+          "confidence": 0.4,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.4,
+      "verification_status": "auto",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-animals-shelter",
+      "title": "Порятунок тварин з-під обстрілів",
+      "actor_id": "uanimals",
+      "url": "https://uanimals.org/sample",
+      "goal": "animals/rescue",
+      "style": [
+        "emotional_personal",
+        "meme_satire"
+      ],
+      "method": [
+        "monobank_jar",
+        "nft_merch"
+      ],
+      "date_start": "2023-03-01",
+      "date_end": "2023-04-15",
+      "year": 2023,
+      "amount_uah": 8000000.0,
+      "amount_usd": 218579.2349726776,
+      "goal_amount": 10000000.0,
+      "currency_raw": "8 млн ₴",
+      "volume_score": 1.0,
+      "speed": 177777.77777777778,
+      "virality_score": 0.6749999999999999,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://uanimals.org/sample",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.6,
+      "verification_status": "cross-checked",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-comeback-fpv",
+      "title": "20 тисяч FPV-дронів",
+      "actor_id": "comeback",
+      "url": "https://savelife.in.ua/reports/sample",
+      "goal": "military/fpv",
+      "style": [
+        "data_transparent",
+        "urgency"
+      ],
+      "method": [
+        "bank_transfer",
+        "platform"
+      ],
+      "date_start": "2024-02-01",
+      "date_end": "2024-03-15",
+      "year": 2024,
+      "amount_uah": 235000000.0,
+      "amount_usd": 6025641.025641026,
+      "goal_amount": 235000000.0,
+      "currency_raw": "235 млн ₴",
+      "volume_score": 0.75,
+      "speed": 5465116.279069767,
+      "virality_score": 0.4873333333333333,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://savelife.in.ua/reports/sample",
+          "confidence": 0.8,
+          "tier": 1,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.8,
+      "verification_status": "cross-checked",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-conflict-meds",
+      "title": "Партія ліків (суперечливі суми)",
+      "actor_id": "medbat",
+      "url": "https://hospitallers.life/sample",
+      "goal": "medical/pharma",
+      "style": [
+        "urgency"
+      ],
+      "method": [
+        "monobank_jar",
+        "bank_transfer"
+      ],
+      "date_start": "2025-06-01",
+      "date_end": "2025-06-30",
+      "year": 2025,
+      "amount_uah": 10000000.0,
+      "amount_usd": 240963.85542168675,
+      "goal_amount": 10000000.0,
+      "currency_raw": "10 млн ₴ (≠ 25 млн у іншому джерелі)",
+      "volume_score": 0.5,
+      "speed": 344827.5862068966,
+      "virality_score": null,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://hospitallers.life/sample",
+          "confidence": 0.3,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.3,
+      "verification_status": "conflict",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс. КОНФЛІКТ: джерела не сходяться щодо суми."
+    },
+    {
+      "id": "s-corp-food",
+      "title": "Продуктові набори (корпоративний матч)",
+      "actor_id": "corp_monobank",
+      "url": "https://u24.gov.ua/news/sample",
+      "goal": "humanitarian/food",
+      "style": [
+        "data_transparent"
+      ],
+      "method": [
+        "corporate_match",
+        "platform"
+      ],
+      "date_start": "2026-01-10",
+      "date_end": "2026-02-10",
+      "year": 2026,
+      "amount_uah": 40000000.0,
+      "amount_usd": 952380.9523809524,
+      "goal_amount": 40000000.0,
+      "currency_raw": "40 млн ₴",
+      "volume_score": 0.5,
+      "speed": 1290322.5806451612,
+      "virality_score": null,
+      "repeatability": 0.1762914343888821,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.8,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.8,
+      "verification_status": "verified",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-diaspora-crypto",
+      "title": "Крипто-збір діаспори на РЕБ",
+      "actor_id": "diaspora_ca",
+      "url": "https://savelife.in.ua/reports/sample",
+      "goal": "military/ew",
+      "style": [
+        "data_transparent",
+        "grassroots"
+      ],
+      "method": [
+        "crypto",
+        "bank_transfer"
+      ],
+      "date_start": "2025-03-01",
+      "date_end": "2025-04-01",
+      "year": 2025,
+      "amount_uah": 30000000.0,
+      "amount_usd": 722891.5662650602,
+      "goal_amount": 28000000.0,
+      "currency_raw": "30 млн ₴",
+      "volume_score": 0.0,
+      "speed": 967741.9354838709,
+      "virality_score": null,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://savelife.in.ua/reports/sample",
+          "confidence": 0.7,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.7,
+      "verification_status": "cross-checked",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-energy-grid",
+      "title": "Трансформатори для енергосистеми",
+      "actor_id": "united24",
+      "url": "https://u24.gov.ua/news/sample",
+      "goal": "energy/grid",
+      "style": [
+        "data_transparent"
+      ],
+      "method": [
+        "platform",
+        "corporate_match"
+      ],
+      "date_start": "2023-12-01",
+      "date_end": "2024-02-01",
+      "year": 2023,
+      "amount_uah": 80000000.0,
+      "amount_usd": 2185792.3497267757,
+      "goal_amount": 75000000.0,
+      "currency_raw": "80 млн ₴",
+      "volume_score": 1.0,
+      "speed": 1290322.5806451612,
+      "virality_score": 0.3083333333333333,
+      "repeatability": 0.6093360343955374,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.8,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.8,
+      "verification_status": "verified",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-hum-winter",
+      "title": "Генератори на зиму",
+      "actor_id": "prytula",
+      "url": "https://send.monobank.ua/jar/sample",
+      "goal": "humanitarian",
+      "style": [
+        "urgency",
+        "grassroots"
+      ],
+      "method": [
+        "monobank_jar"
+      ],
+      "date_start": "2024-10-01",
+      "date_end": "2024-11-15",
+      "year": 2024,
+      "amount_uah": 22000000.0,
+      "amount_usd": 564102.5641025641,
+      "goal_amount": 25000000.0,
+      "currency_raw": "22 млн ₴",
+      "volume_score": 0.0,
+      "speed": 488888.8888888889,
+      "virality_score": null,
+      "repeatability": 0.5525828687777642,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/sample",
+          "confidence": 0.5,
+          "tier": 1,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.5,
+      "verification_status": "auto",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-info-counter",
+      "title": "Протидія дезінформації",
+      "actor_id": "sternenko",
+      "url": "https://t.me/ssternenko/sample",
+      "goal": "info_defense",
+      "style": [
+        "urgency",
+        "grassroots"
+      ],
+      "method": [
+        "stream",
+        "monobank_jar"
+      ],
+      "date_start": "2024-06-01",
+      "date_end": "2024-06-10",
+      "year": 2024,
+      "amount_uah": 6000000.0,
+      "amount_usd": 153846.15384615384,
+      "goal_amount": 5000000.0,
+      "currency_raw": "6 млн ₴",
+      "volume_score": 1.0,
+      "speed": 666666.6666666666,
+      "virality_score": null,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://t.me/ssternenko/sample",
+          "confidence": 0.6,
+          "tier": 3,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.6,
+      "verification_status": "cross-checked",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-med-tourniquets",
+      "title": "Турнікети для бригади",
+      "actor_id": "comeback",
+      "url": "https://savelife.in.ua/reports/sample",
+      "goal": "medical",
+      "style": [
+        "urgency"
+      ],
+      "method": [
+        "monobank_jar"
+      ],
+      "date_start": "2025-01-15",
+      "date_end": "2025-01-20",
+      "year": 2025,
+      "amount_uah": 3000000.0,
+      "amount_usd": 72289.15662650602,
+      "goal_amount": 3000000.0,
+      "currency_raw": "3 млн ₴",
+      "volume_score": 0.0,
+      "speed": 600000.0,
+      "virality_score": null,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://savelife.in.ua/reports/sample",
+          "confidence": 0.4,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.4,
+      "verification_status": "auto",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-medbat-ambulance",
+      "title": "Бронемашини для медиків",
+      "actor_id": "medbat",
+      "url": "https://hospitallers.life/sample",
+      "goal": "medical/evacuation",
+      "style": [
+        "emotional_personal",
+        "data_transparent"
+      ],
+      "method": [
+        "bank_transfer",
+        "monobank_jar"
+      ],
+      "date_start": "2023-05-10",
+      "date_end": "2023-07-10",
+      "year": 2023,
+      "amount_uah": 18000000.0,
+      "amount_usd": 491803.27868852456,
+      "goal_amount": 20000000.0,
+      "currency_raw": "18 млн ₴",
+      "volume_score": 1.0,
+      "speed": 295081.9672131148,
+      "virality_score": null,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://hospitallers.life/sample",
+          "confidence": 0.7,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.7,
+      "verification_status": "verified",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-other-auction",
+      "title": "Благодійний аукціон артефактів",
+      "actor_id": "diaspora_ca",
+      "url": "https://send.monobank.ua/jar/sample",
+      "goal": "other/auction",
+      "style": [
+        "gamification",
+        "celebrity"
+      ],
+      "method": [
+        "auction",
+        "nft_merch"
+      ],
+      "date_start": "2024-12-01",
+      "date_end": "2024-12-20",
+      "year": 2024,
+      "amount_uah": 15000000.0,
+      "amount_usd": 384615.3846153846,
+      "goal_amount": 10000000.0,
+      "currency_raw": "15 млн ₴",
+      "volume_score": 1.0,
+      "speed": 789473.6842105263,
+      "virality_score": null,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/sample",
+          "confidence": 0.5,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.5,
+      "verification_status": "auto",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-prytula-satellite",
+      "title": "Супутник ICEYE",
+      "actor_id": "prytula",
+      "url": "https://send.monobank.ua/jar/sample",
+      "goal": "military/recon",
+      "style": [
+        "data_transparent",
+        "celebrity"
+      ],
+      "method": [
+        "monobank_jar",
+        "platform"
+      ],
+      "date_start": "2022-06-23",
+      "date_end": "2022-06-26",
+      "year": 2022,
+      "amount_uah": 600000000.0,
+      "amount_usd": 20338983.050847456,
+      "goal_amount": 500000000.0,
+      "currency_raw": "600 млн ₴",
+      "volume_score": 1.0,
+      "speed": 200000000.0,
+      "virality_score": 0.9083333333333334,
+      "repeatability": 0.5525828687777642,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/sample",
+          "confidence": 0.9,
+          "tier": 1,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.9,
+      "verification_status": "verified",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-prytula-vehicles",
+      "title": "Пікапи для розвідки",
+      "actor_id": "prytula",
+      "url": "https://send.monobank.ua/jar/sample",
+      "goal": "military/logistics",
+      "style": [
+        "data_transparent",
+        "celebrity"
+      ],
+      "method": [
+        "monobank_jar",
+        "platform"
+      ],
+      "date_start": "2026-03-01",
+      "date_end": "2026-03-20",
+      "year": 2026,
+      "amount_uah": 90000000.0,
+      "amount_usd": 2142857.1428571427,
+      "goal_amount": 80000000.0,
+      "currency_raw": "90 млн ₴",
+      "volume_score": 0.5,
+      "speed": 4736842.105263158,
+      "virality_score": null,
+      "repeatability": 0.5525828687777642,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/sample",
+          "confidence": 0.8,
+          "tier": 1,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.8,
+      "verification_status": "verified",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-recon-school",
+      "title": "Відбудова школи на Чернігівщині",
+      "actor_id": "united24",
+      "url": "https://u24.gov.ua/news/sample",
+      "goal": "reconstruction/school",
+      "style": [
+        "data_transparent",
+        "emotional_personal"
+      ],
+      "method": [
+        "platform"
+      ],
+      "date_start": "2024-04-01",
+      "date_end": "2024-08-01",
+      "year": 2024,
+      "amount_uah": 45000000.0,
+      "amount_usd": 1153846.1538461538,
+      "goal_amount": 45000000.0,
+      "currency_raw": "45 млн ₴",
+      "volume_score": 1.0,
+      "speed": 368852.45901639346,
+      "virality_score": null,
+      "repeatability": 0.6093360343955374,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.7,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.7,
+      "verification_status": "cross-checked",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-sci-grant",
+      "title": "Гранти молодим науковцям",
+      "actor_id": "united24",
+      "url": "https://u24.gov.ua/news/sample",
+      "goal": "science_education",
+      "style": [
+        "data_transparent"
+      ],
+      "method": [
+        "platform"
+      ],
+      "date_start": "2025-02-01",
+      "date_end": "2025-05-01",
+      "year": 2025,
+      "amount_uah": 12000000.0,
+      "amount_usd": 289156.6265060241,
+      "goal_amount": 15000000.0,
+      "currency_raw": "12 млн ₴",
+      "volume_score": 1.0,
+      "speed": 134831.4606741573,
+      "virality_score": null,
+      "repeatability": 0.6093360343955374,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.4,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.4,
+      "verification_status": "auto",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-sternenko-drones",
+      "title": "Збір на дрони (стрім)",
+      "actor_id": "sternenko",
+      "url": "https://t.me/ssternenko/sample",
+      "goal": "military/fpv",
+      "style": [
+        "urgency",
+        "grassroots",
+        "meme_satire"
+      ],
+      "method": [
+        "monobank_jar",
+        "stream",
+        "challenge"
+      ],
+      "date_start": "2023-11-01",
+      "date_end": "2023-11-05",
+      "year": 2023,
+      "amount_uah": 50000000.0,
+      "amount_usd": 1366120.218579235,
+      "goal_amount": 40000000.0,
+      "currency_raw": "50 млн ₴",
+      "volume_score": 0.25,
+      "speed": 12500000.0,
+      "virality_score": 1.0,
+      "repeatability": 0.4794153127047222,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://t.me/ssternenko/sample",
+          "confidence": 0.6,
+          "tier": 3,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.6,
+      "verification_status": "cross-checked",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    },
+    {
+      "id": "s-u24-shelter",
+      "title": "Прихистки для переселенців",
+      "actor_id": "united24",
+      "url": "https://u24.gov.ua/news/sample",
+      "goal": "humanitarian/idp",
+      "style": [
+        "data_transparent"
+      ],
+      "method": [
+        "platform",
+        "corporate_match"
+      ],
+      "date_start": "2022-09-01",
+      "date_end": "2022-12-01",
+      "year": 2022,
+      "amount_uah": 120000000.0,
+      "amount_usd": 4067796.6101694917,
+      "goal_amount": 100000000.0,
+      "currency_raw": "120 млн ₴",
+      "volume_score": 1.0,
+      "speed": 1318681.3186813188,
+      "virality_score": null,
+      "repeatability": 0.6093360343955374,
+      "provenance": {
+        "amount_uah": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.8,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+        }
+      },
+      "confidence_overall": 0.8,
+      "verification_status": "verified",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-дані для перевірки кокпіта, НЕ реальний кейс."
+    }
+  ],
+  "analytics": {
+    "kpis": {
+      "total_usd": 41431906.28894824,
+      "count": 18,
+      "median_speed": 789473.6842105263,
+      "n_verified": 12
+    },
+    "trends": {
+      "count_by_quarter": [
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0
+        },
+        {
+          "period": "2022-Q2",
+          "value": 1,
+          "n": 1
+        },
+        {
+          "period": "2022-Q3",
+          "value": 1,
+          "n": 1
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0
+        },
+        {
+          "period": "2023-Q1",
+          "value": 1,
+          "n": 1
+        },
+        {
+          "period": "2023-Q2",
+          "value": 1,
+          "n": 1
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0
+        },
+        {
+          "period": "2023-Q4",
+          "value": 2,
+          "n": 2
+        },
+        {
+          "period": "2024-Q1",
+          "value": 1,
+          "n": 1
+        },
+        {
+          "period": "2024-Q2",
+          "value": 2,
+          "n": 2
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0
+        },
+        {
+          "period": "2024-Q4",
+          "value": 2,
+          "n": 2
+        },
+        {
+          "period": "2025-Q1",
+          "value": 4,
+          "n": 4
+        },
+        {
+          "period": "2025-Q2",
+          "value": 1,
+          "n": 1
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0
+        },
+        {
+          "period": "2026-Q1",
+          "value": 2,
+          "n": 2
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0
+        }
+      ],
+      "volume_by_quarter": [
+        {
+          "period": "2022-Q1",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2022-Q2",
+          "value": 20338983.050847456,
+          "n": 1
+        },
+        {
+          "period": "2022-Q3",
+          "value": 4067796.6101694917,
+          "n": 1
+        },
+        {
+          "period": "2022-Q4",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2023-Q1",
+          "value": 218579.2349726776,
+          "n": 1
+        },
+        {
+          "period": "2023-Q2",
+          "value": 491803.27868852456,
+          "n": 1
+        },
+        {
+          "period": "2023-Q3",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2023-Q4",
+          "value": 3551912.5683060107,
+          "n": 2
+        },
+        {
+          "period": "2024-Q1",
+          "value": 6025641.025641026,
+          "n": 1
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1307692.3076923075,
+          "n": 2
+        },
+        {
+          "period": "2024-Q3",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2024-Q4",
+          "value": 948717.9487179487,
+          "n": 2
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1144578.313253012,
+          "n": 4
+        },
+        {
+          "period": "2025-Q2",
+          "value": 240963.85542168675,
+          "n": 1
+        },
+        {
+          "period": "2025-Q3",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2025-Q4",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2026-Q1",
+          "value": 3095238.095238095,
+          "n": 2
+        },
+        {
+          "period": "2026-Q2",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2026-Q3",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2026-Q4",
+          "value": null,
+          "n": 0
+        }
+      ],
+      "median_speed_by_quarter": [
+        {
+          "period": "2022-Q1",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2022-Q2",
+          "value": 200000000.0,
+          "n": 1
+        },
+        {
+          "period": "2022-Q3",
+          "value": 1318681.3186813188,
+          "n": 1
+        },
+        {
+          "period": "2022-Q4",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2023-Q1",
+          "value": 177777.77777777778,
+          "n": 1
+        },
+        {
+          "period": "2023-Q2",
+          "value": 295081.9672131148,
+          "n": 1
+        },
+        {
+          "period": "2023-Q3",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2023-Q4",
+          "value": 6895161.29032258,
+          "n": 2
+        },
+        {
+          "period": "2024-Q1",
+          "value": 5465116.279069767,
+          "n": 1
+        },
+        {
+          "period": "2024-Q2",
+          "value": 517759.5628415301,
+          "n": 2
+        },
+        {
+          "period": "2024-Q3",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2024-Q4",
+          "value": 639181.2865497076,
+          "n": 2
+        },
+        {
+          "period": "2025-Q1",
+          "value": 600000.0,
+          "n": 4
+        },
+        {
+          "period": "2025-Q2",
+          "value": 344827.5862068966,
+          "n": 1
+        },
+        {
+          "period": "2025-Q3",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2025-Q4",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2026-Q1",
+          "value": 3013582.3429541597,
+          "n": 2
+        },
+        {
+          "period": "2026-Q2",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2026-Q3",
+          "value": null,
+          "n": 0
+        },
+        {
+          "period": "2026-Q4",
+          "value": null,
+          "n": 0
+        }
+      ],
+      "count_by_goal": [
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "military"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 1,
+          "n": 1,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "animals"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "medical"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "energy"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "military"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "military"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "info_defense"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "other"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "animals"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "medical"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "military"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "science_education"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "medical"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "military"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "animals"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "energy"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "humanitarian"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "info_defense"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "military"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "other"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "reconstruction"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "science_education"
+        }
+      ],
+      "count_by_method": [
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "platform"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 1,
+          "n": 1,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 1,
+          "n": 1,
+          "key": "platform"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "challenge"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "platform"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "stream"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "platform"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "platform"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "stream"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "auction"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "crypto"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 2,
+          "n": 2,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "platform"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 2,
+          "n": 2,
+          "key": "platform"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "auction"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "corporate_match"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "crypto"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "monobank_jar"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "nft_merch"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "platform"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "stream"
+        }
+      ],
+      "count_by_style": [
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "celebrity"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2022-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 1,
+          "n": 1,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2022-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2022-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2023-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2023-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2023-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "grassroots"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2023-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "urgency"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2024-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "urgency"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "grassroots"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2024-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "urgency"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2024-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "celebrity"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "gamification"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "grassroots"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2024-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "urgency"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 2,
+          "n": 2,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "grassroots"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2025-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "urgency"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2025-Q2",
+          "value": 1,
+          "n": 1,
+          "key": "urgency"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2025-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "celebrity"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 2,
+          "n": 2,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2026-Q3",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "celebrity"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "grassroots"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "meme_satire"
+        },
+        {
+          "period": "2026-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "urgency"
+        }
+      ]
+    },
+    "crosstabs": {
+      "goal_method": [
+        {
+          "a": "animals",
+          "b": "monobank_jar",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "animals",
+          "b": "nft_merch",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "energy",
+          "b": "corporate_match",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "energy",
+          "b": "platform",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "humanitarian",
+          "b": "corporate_match",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "humanitarian",
+          "b": "monobank_jar",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "humanitarian",
+          "b": "platform",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "info_defense",
+          "b": "monobank_jar",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "info_defense",
+          "b": "stream",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "medical",
+          "b": "bank_transfer",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "medical",
+          "b": "monobank_jar",
+          "value": 3.0,
+          "n": 3
+        },
+        {
+          "a": "military",
+          "b": "bank_transfer",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "military",
+          "b": "challenge",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "military",
+          "b": "crypto",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "military",
+          "b": "monobank_jar",
+          "value": 3.0,
+          "n": 3
+        },
+        {
+          "a": "military",
+          "b": "platform",
+          "value": 3.0,
+          "n": 3
+        },
+        {
+          "a": "military",
+          "b": "stream",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "other",
+          "b": "auction",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "other",
+          "b": "nft_merch",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "reconstruction",
+          "b": "platform",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "science_education",
+          "b": "platform",
+          "value": 1.0,
+          "n": 1
+        }
+      ],
+      "goal_style": [
+        {
+          "a": "animals",
+          "b": "emotional_personal",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "animals",
+          "b": "meme_satire",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "energy",
+          "b": "data_transparent",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "humanitarian",
+          "b": "data_transparent",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "humanitarian",
+          "b": "grassroots",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "humanitarian",
+          "b": "urgency",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "info_defense",
+          "b": "grassroots",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "info_defense",
+          "b": "urgency",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "medical",
+          "b": "data_transparent",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "medical",
+          "b": "emotional_personal",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "medical",
+          "b": "urgency",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "military",
+          "b": "celebrity",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "military",
+          "b": "data_transparent",
+          "value": 4.0,
+          "n": 4
+        },
+        {
+          "a": "military",
+          "b": "grassroots",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "military",
+          "b": "meme_satire",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "military",
+          "b": "urgency",
+          "value": 2.0,
+          "n": 2
+        },
+        {
+          "a": "other",
+          "b": "celebrity",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "other",
+          "b": "gamification",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "reconstruction",
+          "b": "data_transparent",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "reconstruction",
+          "b": "emotional_personal",
+          "value": 1.0,
+          "n": 1
+        },
+        {
+          "a": "science_education",
+          "b": "data_transparent",
+          "value": 1.0,
+          "n": 1
+        }
+      ]
+    },
+    "generated_for_counts": {
+      "total_cases": 18
+    }
+  }
+}

@@ -287,14 +287,14 @@ function trendData(cases,metric,split){
   return {key:k,vals,ns};});
  return {keys,series};}
 function heatData(cases,metric){
- const cells={}; // "goal method" -> list
+ const cells={}; // "goal|method" -> list
  cases.forEach(c=>{const g=goalCat(c.goal);(c.method||[]).forEach(m=>{
-  const key=g+" "+m;(cells[key]=cells[key]||[]).push(c);});});
+  const key=g+"|"+m;(cells[key]=cells[key]||[]).push(c);});});
  const goals=GOAL_ORDER.filter(g=>cases.some(c=>goalCat(c.goal)===g));
  const methods=METHOD_ORDER.filter(m=>cases.some(c=>(c.method||[]).includes(m)));
  const data=[];
  goals.forEach((g,gi)=>methods.forEach((m,mi)=>{
-  const cell=cells[g+" "+m];
+  const cell=cells[g+"|"+m];
   if(cell){const v=metricOf(cell,metric);data.push([mi,gi,v==null?0:v,cell.length]);}
  }));
  return {goals,methods,data};}
