@@ -197,6 +197,13 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
 .modal .mnote{color:var(--amber);font-family:var(--sans);font-size:12.5px;line-height:1.55;margin:8px 0;
  background:#0c0f14;border-left:2px solid var(--amber);padding:8px 11px;border-radius:2px}
 .modal h6{margin:14px 0 6px;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--faint);font-weight:700}
+.modal .mih-stats{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:8px;font-size:12px;color:var(--dim)}
+.modal .mih-stat b{color:var(--fg)}
+.modal .mih-list{display:flex;flex-direction:column;gap:2px;max-height:240px;overflow:auto}
+.modal .mih-row{display:block;font-size:11.5px;color:var(--dim);padding:3px 6px;border-radius:2px;text-decoration:none;font-family:var(--mono)}
+.modal a.mih-row:hover{background:#11161d;color:var(--fg)}
+.modal .mih-dt{color:var(--faint)} .modal .mih-ch{color:var(--green)} .modal .mih-vw{color:var(--dim)}
+.lf-reach{color:var(--faint);font-size:10px}
 .modal .mcrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}
 .modal .mcr{background:#000;border:1px solid var(--line);border-radius:2px;overflow:hidden;display:flex;flex-direction:column}
 .modal .mcr img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#0a0c10}
@@ -615,6 +622,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
      <div class="seg" id="ce-sort">
       <button data-s="rel_resonance" class="on">резонанс</button>
       <button data-s="engagement">залучення</button>
+      <button data-s="reach_total">охоплення</button>
       <button data-s="amount_uah">обсяг ₴</button>
       <button data-s="date">дата</button>
      </div>
@@ -1374,6 +1382,7 @@ function renderExplorer(camps){
     ${frontier?`<span class="res-frontier" title="охоплення × ER відомі">◎ ER ${(c.engagement_rate*100).toFixed(1)}%</span>`:''}
     ${c.rel_resonance!=null?`<span class="camt" style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}" title="actor-нормалізований резонанс">×${c.rel_resonance.toFixed(2)}</span>`:''}
     ${c.engagement!=null?`<span class="camt" style="color:var(--blue)" title="залучення">▲${c.engagement.toLocaleString("uk-UA")}</span>`:''}
+    ${c.reach_total!=null?`<span class="camt" style="color:var(--faint)" title="охоплення: Σ переглядів постів${c.post_count?', '+c.post_count+' постів':''}">👁 ${c.reach_total.toLocaleString("uk-UA")}${c.post_count?` · ${c.post_count}п`:''}</span>`:''}
     <span class="camt">${fmtUAH(c.amount_uah)}</span>
     ${c.is_campaign===null?'<span class="badge auto" title="релевантність невідома">?</span>':""}
     <span class="badge ${esc(c.verification_status)}">${esc(c.verification_status)}</span>
@@ -1510,6 +1519,8 @@ function renderLiveFeed(camps){
   const rrStr=c.rel_resonance!=null?`<span class="lf-rr${c.rel_resonance<1?" dim":""}">×${c.rel_resonance.toFixed(2)}</span>`:'<span class="dash">—</span>';
   // engagement
   const engStr=c.engagement!=null?`<span class="lf-eng">▲${c.engagement.toLocaleString("uk-UA")}</span>`:'<span class="dash">—</span>';
+  // охоплення (reach з постів)
+  const reachStr=c.reach_total!=null?`<span class="lf-reach" title="охоплення: Σ переглядів постів">👁 ${c.reach_total.toLocaleString("uk-UA")} переглядів, ${c.post_count||0} постів</span>`:"";
   // progress bar
   let barHtml="";
   if(c.amount_uah!=null&&c.goal_amount!=null&&c.goal_amount>0){
@@ -1527,6 +1538,7 @@ function renderLiveFeed(camps){
     ${chans}
     <span class="lf-days">${esc(daysStr)}</span>
     ${engStr}
+    ${reachStr}
     ${rrStr}
     ${barHtml}
     ${velHtml}
@@ -1877,6 +1889,29 @@ function renderMatrix(camps){
 // ── F4: деталь кампанії (модалка) ──
 // ════════════════════════════════════════════════════════════════════════════
 function campById(id){return CAMPAIGNS.find(c=>c.id===id)||null;}
+// ── «Інформаційна історія» (пости↔збір) у деталі кампанії ──
+function infoHistoryHtml(c){
+ const pc=c.post_count||0;
+ if(!pc)return `<h6>інформаційна історія</h6><div class="mnote dash">— постів не привʼязано</div>`;
+ const reach=c.reach_total!=null?c.reach_total.toLocaleString("uk-UA")+" переглядів":'<span class="dash">—</span>';
+ const stat=`<div class="mih-stats">`+
+  `<span class="mih-stat">постів: <b>${pc}</b></span>`+
+  `<span class="mih-stat">каналів: <b>${c.channel_count||0}</b></span>`+
+  `<span class="mih-stat">охоплення: <b>${reach}</b></span>`+
+  ((c.first_post||c.last_post)?`<span class="mih-stat">${esc(c.first_post||"—")} → ${esc(c.last_post||"—")}</span>`:"")+
+  `</div>`;
+ const posts=(c.posts||[]);
+ const rows=posts.map(p=>{
+  const dt=p.date?esc(p.date):"—";
+  const ch=p.channel?esc(p.channel):"—";
+  const vw=p.views!=null?p.views.toLocaleString("uk-UA"):"—";
+  const inner=`<span class="mih-dt">${dt}</span> · <span class="mih-ch">${ch}</span> · <span class="mih-vw">👁 ${vw}</span>`;
+  return p.url
+   ?`<a class="mih-row" href="${esc(p.url)}" target="_blank" rel="noopener" title="відкрити пост">${inner} ↗</a>`
+   :`<div class="mih-row">${inner}</div>`;
+ }).join("");
+ return `<h6>інформаційна історія</h6>${stat}<div class="mih-list">${rows}</div>`;
+}
 function openCampModal(id){
  const c=campById(id);if(!c)return;
  const bd=document.getElementById("camp-modal"),box=document.getElementById("camp-modal-box");
@@ -1919,6 +1954,7 @@ function openCampModal(id){
     `<div class="mrow full"><span class="k">джерело:</span>${src?`<a href="${esc(src)}" target="_blank" rel="noopener">${esc(src)} ↗</a>`:'<span class="dash">—</span>'}</div>`+
    `</div>`+
    `${c.playbook_note?`<div class="mnote">📝 ${esc(c.playbook_note)}</div>`:""}`+
+   infoHistoryHtml(c)+
    `<h6>креативи (${crs.length})</h6><div class="mcrs">${crHtml}</div>`+
   `</div>`;
  bd.classList.add("on");

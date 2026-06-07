@@ -33,6 +33,66 @@ def _load_jars_cache(cache_path: Path) -> dict[str, Any]:
         return {}
 
 
+def _aggregate_posts(conn: sqlite3.Connection, campaign_id: str) -> dict[str, Any]:
+    """Агрегує охоплення/таймлайн з постів, привʼязаних до збору.
+
+    Повертає dict з ключами:
+      reach_total      — Σ views привʼязаних постів (None якщо жоден view невідомий);
+      engagement_total — Σ engagement (None якщо жоден невідомий);
+      post_count       — кількість привʼязаних постів;
+      channel_count    — кількість унікальних каналів;
+      first_post/last_post — найраніша/найпізніша дата (None якщо дат немає);
+      post_channels    — список унікальних каналів (порядок появи);
+      posts            — компактний список {date, channel, views, url} за датою.
+
+    Honest null: суми = None якщо немає ЖОДНОГО відомого значення (не 0).
+    """
+    linked = store.load_posts(conn, campaign_id=campaign_id)
+    if not linked:
+        return {
+            "reach_total": None,
+            "engagement_total": None,
+            "post_count": 0,
+            "channel_count": 0,
+            "first_post": None,
+            "last_post": None,
+            "post_channels": [],
+            "posts": [],
+        }
+
+    views = [p.views for p in linked if p.views is not None]
+    eng = [p.engagement for p in linked if p.engagement is not None]
+    dates = [p.date for p in linked if p.date]
+    channels: list[str] = []
+    for p in linked:
+        if p.channel and p.channel not in channels:
+            channels.append(p.channel)
+
+    compact = sorted(
+        (
+            {
+                "date": p.date,
+                "channel": p.channel,
+                "views": p.views,
+                "url": p.source_url,
+            }
+            for p in linked
+        ),
+        key=lambda d: (d["date"] is None, d["date"] or ""),
+    )
+
+    return {
+        "reach_total": sum(views) if views else None,
+        "engagement_total": sum(eng) if eng else None,
+        "post_count": len(linked),
+        "channel_count": len(channels),
+        "first_post": min(dates) if dates else None,
+        "last_post": max(dates) if dates else None,
+        "post_channels": channels,
+        "posts": compact,
+    }
+
+
 def _campaign_has_destination(c, raw_dir: Path | None) -> bool:
     """Чи має кампанія БУДЬ-ЯКЕ призначення донату (jar/priv).
 
@@ -90,6 +150,9 @@ def export_cases(
 
         # has_destination: чи є куди донатити (jar/priv) — export-derived, не у схемі
         d["has_destination"] = _campaign_has_destination(c, rd)
+
+        # Інформаційна історія / охоплення: агрегат привʼязаних постів (export-derived)
+        d.update(_aggregate_posts(conn, c.id))
 
         # Velocity: збагачуємо якщо є jar-провенанс і кеш з ≥2 snapshots
         jar_id = campaign_jar_id(c)
