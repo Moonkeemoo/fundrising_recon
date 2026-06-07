@@ -1,4 +1,5 @@
 """Тести fundrec.jars — витяг jar-ids, парсинг jar-сторінки, fetch_jar_data."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -24,10 +25,7 @@ def test_extract_jar_ids_single():
 def test_extract_jar_ids_multiple():
     from fundrec.jars import extract_jar_ids
 
-    text = (
-        "Банка 1: send.monobank.ua/jar/AAA111 та "
-        "банка 2: send.monobank.ua/jar/BBB222"
-    )
+    text = "Банка 1: send.monobank.ua/jar/AAA111 та банка 2: send.monobank.ua/jar/BBB222"
     result = extract_jar_ids(text)
     assert "AAA111" in result
     assert "BBB222" in result
@@ -141,7 +139,9 @@ def test_parse_jar_page_honest_null_if_missing():
     """Якщо amount/goal не знайдено → None (honest null)."""
     from fundrec.jars import parse_jar_page
 
-    html_empty = "<html><head><title>Банка | Monobank</title></head><body><p>Текст</p></body></html>"
+    html_empty = (
+        "<html><head><title>Банка | Monobank</title></head><body><p>Текст</p></body></html>"
+    )
     result = parse_jar_page("EMPTY1", html_empty)
     assert result["amount_uah"] is None
     assert result["goal_amount"] is None
@@ -206,3 +206,98 @@ def test_fetch_jar_data_returns_none_on_http_error():
 
     result = fetch_jar_data("NOTFOUND", _client=_ErrorClient())
     assert result is None
+
+
+# ---------------------------------------------------------------------------
+# parse_rendered_jar — парсинг тексту body після JS-рендеру
+# ---------------------------------------------------------------------------
+
+_RENDERED_BODY_FULL = """\
+Постійна банка для закупівлі FPV. Наша мета — купувати мінімум 300 дронів
+2 000 837.29 ₴
+10 000 000 ₴
+0
+₴
+Minimum amount: 10 ₴. Maximum amount: 29 999 ₴
++100 ₴
+Monobank
+"""
+
+_RENDERED_BODY_NO_GOAL = """\
+Збір на авто для бригади
+125 000 ₴
+"""
+
+_RENDERED_BODY_GARBAGE = "404 not found"
+
+
+def test_parse_rendered_jar_amounts_full():
+    """Перший ₴-рядок = зібрано, другий = ціль."""
+    from fundrec.jars import parse_rendered_jar
+
+    result = parse_rendered_jar("JAR001", _RENDERED_BODY_FULL)
+    assert result["amount_uah"] == pytest.approx(2_000_837.29)
+    assert result["goal_amount"] == pytest.approx(10_000_000.0)
+
+
+def test_parse_rendered_jar_title():
+    """Title = перший не-порожній рядок, що не є сумою і не є boilerplate."""
+    from fundrec.jars import parse_rendered_jar
+
+    result = parse_rendered_jar("JAR001", _RENDERED_BODY_FULL)
+    assert result["title"] is not None
+    assert result["title"].startswith("Постійна банка")
+
+
+def test_parse_rendered_jar_url():
+    from fundrec.jars import parse_rendered_jar
+
+    result = parse_rendered_jar("JAR001", _RENDERED_BODY_FULL)
+    assert result["url"] == "https://send.monobank.ua/jar/JAR001"
+    assert result["jar_id"] == "JAR001"
+
+
+def test_parse_rendered_jar_no_goal():
+    """Лише одна ₴-сума — goal = None."""
+    from fundrec.jars import parse_rendered_jar
+
+    result = parse_rendered_jar("JAR002", _RENDERED_BODY_NO_GOAL)
+    assert result["amount_uah"] == pytest.approx(125_000.0)
+    assert result["goal_amount"] is None
+
+
+def test_parse_rendered_jar_garbage_all_none():
+    """Текст без сум — все None крім jar_id / url."""
+    from fundrec.jars import parse_rendered_jar
+
+    result = parse_rendered_jar("JARGARBAGE", _RENDERED_BODY_GARBAGE)
+    assert result["amount_uah"] is None
+    assert result["goal_amount"] is None
+    assert result["title"] is None
+
+
+def test_parse_rendered_jar_returns_required_keys():
+    from fundrec.jars import parse_rendered_jar
+
+    result = parse_rendered_jar("TEST", _RENDERED_BODY_FULL)
+    for key in ("jar_id", "url", "title", "amount_uah", "goal_amount"):
+        assert key in result
+
+
+def test_parse_rendered_jar_nbsp_thousands():
+    """Роздільник тисяч — nbsp (\\xa0) і звичайний пробіл."""
+    from fundrec.jars import parse_rendered_jar
+
+    body = "Збір\n1\xa0500\xa0000 ₴\n5\xa0000\xa0000 ₴\n"
+    result = parse_rendered_jar("NBSP", body)
+    assert result["amount_uah"] == pytest.approx(1_500_000.0)
+    assert result["goal_amount"] == pytest.approx(5_000_000.0)
+
+
+def test_parse_rendered_jar_comma_decimal():
+    """Десятковий роздільник — кома (напр. 1 234,56 ₴)."""
+    from fundrec.jars import parse_rendered_jar
+
+    body = "Збір\n1 234,56 ₴\n10 000 ₴\n"
+    result = parse_rendered_jar("COMMA", body)
+    assert result["amount_uah"] == pytest.approx(1_234.56)

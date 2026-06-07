@@ -11,6 +11,7 @@ fetch_jar_data(jar_id, *, _client=None) -> dict | None
     GET https://send.monobank.ua/jar/<jar_id>, повертає parse_jar_page або None.
     _client інжектується в тестах; live-шлях # pragma: no cover.
 """
+
 from __future__ import annotations
 
 import json
@@ -157,6 +158,78 @@ def parse_jar_page(jar_id: str, html: str) -> dict[str, Any]:
     }
 
 
+# Regex для ₴-суми у тексті body після JS-рендеру.
+# Захоплює числа з пробілами/nbsp як роздільниками тисяч + ./, десятковий.
+_RENDERED_AMOUNT_PAT = re.compile(
+    r"([\d][\d\s\xa0]*(?:[.,]\d+)?)\s*₴",
+)
+
+# Рядки-шум які ігноруємо при пошуку title
+_BOILERPLATE_PAT = re.compile(
+    r"minimum amount|maximum amount|\+\d+\s*₴|monobank",
+    re.IGNORECASE,
+)
+
+
+def _parse_rendered_amount(raw: str) -> float | None:
+    """Очищає рядок суми (nbsp, пробіли → пусто; кома→крапка) → float."""
+    cleaned = re.sub(r"[\s\xa0]", "", raw).replace(",", ".")
+    try:
+        return float(cleaned)
+    except ValueError:
+        return None
+
+
+def parse_rendered_jar(jar_id: str, body_text: str) -> dict[str, Any]:
+    """Парсить inner_text body після JS-рендеру сторінки банки Monobank.
+
+    Правило:
+    - Перша «…\\xa0₴» або «… ₴» сума = зібрано (amount_uah).
+    - Друга — ціль (goal_amount).
+    - Title = перший непорожній рядок, що не є сумою і не є boilerplate.
+
+    Повертає:
+        {jar_id, url, title, amount_uah, goal_amount}
+    Honest null: відсутні поля = None.
+    """
+    amounts: list[float] = []
+    title: str | None = None
+
+    for line in body_text.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+
+        # Перевіряємо чи рядок містить ₴-суму
+        m = _RENDERED_AMOUNT_PAT.search(stripped)
+        if m:
+            val = _parse_rendered_amount(m.group(1))
+            if val is not None and val >= 0:
+                amounts.append(val)
+            continue  # рядок з сумою — не title
+
+        # Ігноруємо boilerplate
+        if _BOILERPLATE_PAT.search(stripped):
+            continue
+
+        # Перший залишений рядок = title
+        if title is None:
+            title = stripped
+
+    amount_uah = amounts[0] if len(amounts) >= 1 else None
+    goal_amount = amounts[1] if len(amounts) >= 2 else None
+    # Title повертаємо лише якщо знайдено хоча б одну суму (є ₴ на сторінці = банка)
+    resolved_title = title if amount_uah is not None else None
+
+    return {
+        "jar_id": jar_id,
+        "url": JAR_URL.format(jar_id=jar_id),
+        "title": resolved_title,
+        "amount_uah": amount_uah,
+        "goal_amount": goal_amount,
+    }
+
+
 def fetch_jar_data(jar_id: str, *, _client: Any | None = None) -> dict[str, Any] | None:
     """GET https://send.monobank.ua/jar/<jar_id> → parse_jar_page або None.
 
@@ -165,6 +238,7 @@ def fetch_jar_data(jar_id: str, *, _client: Any | None = None) -> dict[str, Any]
     """
     if _client is None:  # pragma: no cover
         import httpx  # noqa: PLC0415  # pragma: no cover
+
         _client = httpx.Client(follow_redirects=True, timeout=20)  # pragma: no cover
     try:
         resp = _client.get(JAR_URL.format(jar_id=jar_id), timeout=20)
