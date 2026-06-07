@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>FUNDREC ◆ КОКПІТ ФАНДРАЙЗИНГУ</title>
+<title>FUNDREC ◆ РАДАР ПОТОЧНОГО ФАНДРАЙЗИНГУ</title>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
 <style>
 :root{
@@ -138,7 +138,7 @@ tr.detail td{background:#0c0f14}
 </head>
 <body>
 <header>
- <span class="logo">FUNDREC ◆ КОКПІТ</span>
+ <span class="logo">FUNDREC ◆ РАДАР ПОТОЧНОГО ФАНДРАЙЗИНГУ</span>
  <div class="tabs" id="tabs">
   <button data-tab="cases" class="on">Збори</button>
   <button data-tab="campaigns">Кампанії</button>
@@ -254,6 +254,12 @@ tr.detail td{background:#0c0f14}
   <h4>тон</h4><div class="chips" id="cf-tone"></div>
   <h4>обличчя</h4><div class="chips" id="cf-face"></div>
   <h4>тип кампанії</h4><div class="chips" id="cf-type"></div>
+  <h4>період</h4>
+  <div class="seg" id="recency-seg" style="margin-bottom:6px">
+   <button data-days="30" id="rec-30" class="on">30 днів</button>
+   <button data-days="90" id="rec-90">90 днів</button>
+   <button data-days="0" id="rec-all">усі</button>
+  </div>
   <h4>верифікація</h4>
   <select class="full" id="cf-verif">
    <option value="all" selected>усі (вкл. auto) — за замовч.</option>
@@ -289,14 +295,14 @@ tr.detail td{background:#0c0f14}
     <div id="gal-empty" class="empty" style="display:none"><div class="big">немає креативів за фільтрами</div></div>
    </div>
 
-   <!-- АНАЛІТИКА СТИЛЮ -->
+   <!-- АНАЛІТИКА СТИЛЮ / РЕЗОНАНС -->
    <div class="panel">
     <div class="head">
-     <h3>📊 Аналітика стилю</h3><span class="n" id="sa-bar-n"></span>
+     <h3>Що працює зараз (резонанс)</h3><span class="n" id="sa-bar-n"></span>
      <span class="spacer"></span>
      <div class="seg" id="sa-metric">
-      <button data-m="amount_uah" class="on">медіана ₴</button>
-      <button data-m="engagement">залучення</button>
+      <button data-m="engagement" class="on">залучення</button>
+      <button data-m="amount_uah">медіана ₴</button>
      </div>
      <div class="seg" id="sa-axis">
       <button data-a="tone" class="on">тон</button>
@@ -363,7 +369,8 @@ const HAS_ECHARTS=(typeof echarts!=="undefined");
 // ── стан КАМПАНІЙ ──
 let activeTab="cases";
 const CSEL={channels:new Set(),form_factor:new Set(),tone:new Set(),face:new Set(),type:new Set()};
-let cVerifMode="all", saAxis="tone", saMetric="amount_uah", srAxis="tone";
+let cVerifMode="all", saAxis="tone", saMetric="engagement", srAxis="tone";
+let recencyDays=30; // 0 = усі
 const openCamps=new Set();
 let chSaBar=null, chSaFe=null, chSaGc=null, chSrBar=null, campChartsInit=false;
 
@@ -720,6 +727,22 @@ function campCrosstabMedian(camps,axisA,axisB,metric){ // [{a,b,value(median),n}
   return {a,b,value,n:cs.length};});
 }
 
+function campDate(c){
+ // Повертає Date або null. date_start → парсимо YYYY-MM-DD або YYYY-MM...
+ // Fallback: year+"-01-01". Якщо нема — null (невідома дата).
+ if(c.date_start){const s=String(c.date_start);const m=s.match(/^(\d{4}-\d{2}-\d{2})/);
+  if(m)return new Date(m[1]);const m2=s.match(/^(\d{4}-\d{2})/);
+  if(m2)return new Date(m2[1]+"-01");const m3=s.match(/^(\d{4})/);
+  if(m3)return new Date(m3[1]+"-01-01");}
+ if(c.year)return new Date(c.year+"-01-01");
+ return null;}
+function passesRecency(c){
+ if(recencyDays===0)return true; // «усі»: включаємо всі кампанії
+ const d=campDate(c);
+ if(d===null)return false; // невідома дата: виключаємо з 30/90 вікон
+ const nowMs=Date.now();
+ const diffDays=(nowMs-d.getTime())/(1000*60*60*24);
+ return diffDays>=0&&diffDays<=recencyDays;}
 function passesVerifCamp(c){
  const st=c.verification_status;
  if(cVerifMode==="all")return true;
@@ -729,6 +752,7 @@ function passesVerifCamp(c){
 }
 function filteredCamps(){
  return CAMPAIGNS.filter(c=>{
+  if(!passesRecency(c))return false;
   if(CSEL.channels.size&&!(c.channels||[]).some(x=>CSEL.channels.has(x)))return false;
   if(CSEL.form_factor.size&&!(c.form_factor||[]).some(x=>CSEL.form_factor.has(x)))return false;
   if(CSEL.tone.size&&!(c.tone||[]).some(x=>CSEL.tone.has(x)))return false;
@@ -913,11 +937,16 @@ function renderStyleHeat(chart,nId,camps,axisA,axisB,metric,orderA,orderB){
    emphasis:{itemStyle:{borderColor:"#ffb000",borderWidth:1}}}]},true);
 }
 
-// ── дослідник кампаній ──
+// ── дослідник кампаній ── (сортування: engagement desc за замовч.)
 function renderExplorer(camps){
  document.getElementById("ce-n").textContent="N="+camps.length;
  const box=document.getElementById("cexplorer");
  if(!camps.length){box.innerHTML='<div class="empty">немає кампаній за фільтрами</div>';return;}
+ // Сортуємо за engagement desc (null в кінці)
+ camps=[...camps].sort((a,b)=>{
+  const ea=a.engagement,eb=b.engagement;
+  if(ea==null&&eb==null)return 0;if(ea==null)return 1;if(eb==null)return -1;
+  return eb-ea;});
  const partById={};PARTNERS.forEach(p=>partById[p.id]=p);
  const crByCamp={};CREATIVES.forEach(a=>{(crByCamp[a.campaign_id]=crByCamp[a.campaign_id]||[]).push(a);});
  box.innerHTML=camps.map(c=>{
@@ -935,6 +964,7 @@ function renderExplorer(camps){
     <span class="ctitle">${esc(c.title)} <span class="cactor">· ${esc(c.actor_id)}</span></span>
     <span class="ctag">${esc(c.type)}</span>
     ${chans}
+    ${c.engagement!=null?`<span class="camt" style="color:var(--green)" title="залучення">▲${c.engagement.toLocaleString("uk-UA")}</span>`:''}
     <span class="camt">${fmtUAH(c.amount_uah)}</span>
     <span class="badge ${esc(c.verification_status)}">${esc(c.verification_status)}</span>
    </div>
@@ -1006,9 +1036,15 @@ function setupCampaignView(){
  document.querySelectorAll("#sr-axis button").forEach(b=>b.onclick=()=>{
   srAxis=b.dataset.a;document.querySelectorAll("#sr-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSrBar(filteredCamps());});
  document.getElementById("cf-verif").onchange=e=>{cVerifMode=e.target.value;updateCamp();};
+ // Recency segmented control
+ document.querySelectorAll("#recency-seg button").forEach(b=>b.onclick=()=>{
+  recencyDays=parseInt(b.dataset.days,10);
+  document.querySelectorAll("#recency-seg button").forEach(x=>x.classList.toggle("on",x===b));
+  updateCamp();});
  document.getElementById("c-reset").onclick=()=>{
-  Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";
+  Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";recencyDays=30;
   document.getElementById("cf-verif").value="all";
+  document.querySelectorAll("#recency-seg button").forEach(b=>b.classList.toggle("on",b.dataset.days==="30"));
   renderCampChips("cf-channels",CHANNEL_ORDER,"channels");renderCampChips("cf-form",FORM_ORDER,"form_factor");
   renderCampChips("cf-tone",TONE_ORDER,"tone");renderCampChips("cf-face",FACE_ORDER,"face");renderCampChips("cf-type",CTYPE_ORDER,"type");
   bindCampChips();updateCamp();};
