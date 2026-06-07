@@ -260,3 +260,247 @@ def test_main_dry_run_cli(tmp_path, capsys):
     captured = capsys.readouterr()
     # dry-run output should mention the theme or sources
     assert "тест" in captured.err or "reports" in captured.err or "dry" in captured.err.lower()
+
+
+# ---------------------------------------------------------------------------
+# Search-based collection (youtube / meta) — нові тести
+# ---------------------------------------------------------------------------
+
+_FAKE_YOUTUBE_ITEMS = [
+    {
+        "source_url": "https://www.youtube.com/watch?v=aaa111",
+        "platform": "youtube",
+        "video_id": "aaa111",
+        "title": "FPV дрони для ЗСУ",
+        "description": "Збираємо кошти на FPV дрони",
+        "published": "2024-01-01T00:00:00Z",
+        "channel": "TestChannel",
+        "views": 10000,
+        "likes": 500,
+    },
+    {
+        "source_url": "https://www.youtube.com/watch?v=bbb222",
+        "platform": "youtube",
+        "video_id": "bbb222",
+        "title": "Збір на броньований автомобіль",
+        "description": "Допоможіть зібрати на авто",
+        "published": "2024-02-01T00:00:00Z",
+        "channel": "TestChannel",
+        "views": 5000,
+        "likes": 300,
+    },
+]
+
+
+def _make_components_youtube_only():
+    """_components без web-search (discovered_urls=[]), тільки youtube fake collector."""
+
+    def fake_youtube_collector(theme):
+        return list(_FAKE_YOUTUBE_ITEMS)
+
+    call_count = {"n": 0}
+
+    def fake_complete(prompt):
+        call_count["n"] += 1
+        if "creatives" in prompt:
+            return _FAKE_LLM_CAMPAIGN.copy()
+        return _FAKE_LLM_CASE.copy()
+
+    def fake_judge(prompt):
+        return {"supported": True, "confidence": 0.9, "reason": "ok"}
+
+    def fake_sleep(seconds):
+        pass
+
+    return {
+        # Без "search" — discovered_urls лишається порожнім
+        "collect": {
+            "youtube": fake_youtube_collector,
+        },
+        "complete": fake_complete,
+        "judge": fake_judge,
+        "sleep": fake_sleep,
+    }
+
+
+def test_youtube_search_based_collection_yields_campaigns(tmp_path):
+    """Search-based (youtube) збирає кампанії навіть без discovered_urls.
+
+    Доводить, що youtube-колектор не залежить від web-discovery.
+    """
+    from fundrec import ingest, store
+
+    components = _make_components_youtube_only()
+    summary = ingest.run_ingest(
+        "FPV дрони",
+        sources=["youtube"],
+        max_items=10,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+
+    # Нема жодного discovered URL
+    assert summary["discovered"] == 0
+
+    # Але 2 кампанії збережені через youtube search
+    assert summary["campaigns"] == 2
+    assert summary["collected_per_source"].get("youtube", 0) == 2
+
+    conn = store.connect(tmp_path / "test.sqlite")
+    campaigns = store.load_campaigns(conn)
+    assert len(campaigns) == 2
+
+
+def test_youtube_search_source_type_is_social(tmp_path):
+    """Джерело youtube зберігається з type='social' і tier=3."""
+    from fundrec import ingest, store
+
+    components = _make_components_youtube_only()
+    ingest.run_ingest(
+        "FPV дрони",
+        sources=["youtube"],
+        max_items=5,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+    conn = store.connect(tmp_path / "test.sqlite")
+    row = conn.execute(
+        "SELECT type, tier FROM sources WHERE url = ?",
+        ("https://www.youtube.com/watch?v=aaa111",),
+    ).fetchone()
+    assert row is not None
+    assert row[0] == "social"
+    assert row[1] == 3
+
+
+def test_youtube_search_writes_raw_cache(tmp_path):
+    """Сирі payload youtube-відео записуються у raw_dir."""
+    from fundrec import ingest
+
+    components = _make_components_youtube_only()
+    raw_dir = tmp_path / "raw"
+    ingest.run_ingest(
+        "FPV дрони",
+        sources=["youtube"],
+        max_items=5,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=raw_dir,
+        _components=components,
+    )
+    raw_files = list(raw_dir.glob("*.json"))
+    assert len(raw_files) == 2
+
+
+def test_youtube_search_resumable_no_duplicates(tmp_path):
+    """Повторний запуск з тими самими youtube-відео не дублює кампанії."""
+    from fundrec import ingest, store
+
+    db_path = tmp_path / "test.sqlite"
+    out_path = tmp_path / "cases.json"
+    raw_dir = tmp_path / "raw"
+
+    components = _make_components_youtube_only()
+    ingest.run_ingest("FPV", sources=["youtube"], max_items=10,
+                      db_path=db_path, out_path=out_path, raw_dir=raw_dir,
+                      _components=components)
+    ingest.run_ingest("FPV", sources=["youtube"], max_items=10,
+                      db_path=db_path, out_path=out_path, raw_dir=raw_dir,
+                      _components=components)
+
+    conn = store.connect(db_path)
+    campaigns = store.load_campaigns(conn)
+    ids = [c.id for c in campaigns]
+    assert len(set(ids)) == len(ids)
+    assert len(campaigns) == 2
+
+
+def test_search_and_url_based_collection_combined(tmp_path):
+    """Комбінований запуск: 1 URL (reports) + 2 youtube → 3 кампанії."""
+    from fundrec import ingest, store
+
+    def fake_search(query):
+        return ["https://example.com/zbir_combined"]
+
+    def fake_reports_fetch(url, *, _client=None):
+        return {**_FAKE_RAW, "url": url}
+
+    def fake_youtube_collector(theme):
+        return list(_FAKE_YOUTUBE_ITEMS)
+
+    call_count = {"n": 0}
+
+    def fake_complete(prompt):
+        call_count["n"] += 1
+        if "creatives" in prompt:
+            return _FAKE_LLM_CAMPAIGN.copy()
+        return _FAKE_LLM_CASE.copy()
+
+    components = {
+        "search": fake_search,
+        "collect": {
+            "reports": fake_reports_fetch,
+            "youtube": fake_youtube_collector,
+        },
+        "complete": fake_complete,
+        "judge": lambda p: {"supported": True, "confidence": 0.9, "reason": "ok"},
+        "sleep": lambda s: None,
+    }
+
+    summary = ingest.run_ingest(
+        "FPV дрони",
+        sources=["reports", "youtube"],
+        max_items=10,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+
+    assert summary["discovered"] == 1
+    assert summary["campaigns"] == 3
+    conn = store.connect(tmp_path / "test.sqlite")
+    campaigns = store.load_campaigns(conn)
+    assert len(campaigns) == 3
+
+
+def test_youtube_skipped_when_no_key_and_no_injected_collector(tmp_path):
+    """youtube без ключа і без ін'єктованого колектора → skipped_no_key."""
+    from fundrec import ingest
+
+    # Тільки reports, youtube БЕЗ ін'єкції — повинен бути в skipped_no_key
+    components = _make_components()
+    summary = ingest.run_ingest(
+        "FPV",
+        sources=["reports", "youtube"],
+        max_items=5,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+    assert "youtube" in summary["skipped_no_key"]
+
+
+def test_youtube_active_when_injected_collector_no_key(tmp_path):
+    """youtube з ін'єктованим колектором активний навіть без env-ключа."""
+    from fundrec import ingest
+
+    components = _make_components_youtube_only()
+    summary = ingest.run_ingest(
+        "FPV",
+        sources=["youtube"],
+        max_items=5,
+        db_path=tmp_path / "test.sqlite",
+        out_path=tmp_path / "cases.json",
+        raw_dir=tmp_path / "raw",
+        _components=components,
+    )
+    # Не в skipped_no_key
+    assert "youtube" not in summary["skipped_no_key"]
+    # Кампанії зібрано
+    assert summary["campaigns"] == 2
