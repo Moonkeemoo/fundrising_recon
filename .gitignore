@@ -22,3 +22,4 @@ venv/
 # os
 .DS_Store
 Thumbs.db
+data/jars_cache.json
