@@ -14,11 +14,13 @@ from typing import Callable
 
 
 def _live_search(query: str) -> list[str]:  # pragma: no cover
-    """Live-заглушка пошуку. Замінити на реальний пошук (Claude Agent SDK / httpx / DuckDuckGo API).
+    """Живий веб-пошук через DuckDuckGo HTML (без ключа).
 
-    Повертає порожній список поки не підключено.
+    Тонка обгортка навколо search.duckduckgo.search — тестується через
+    discover_sources з інжектованим _search; цей рядок # pragma: no cover.
     """
-    return []
+    from .search import duckduckgo  # noqa: PLC0415
+    return duckduckgo.search(query)
 
 
 def discover_sources(
