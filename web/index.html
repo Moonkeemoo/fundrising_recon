@@ -216,6 +216,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
 .lfbar-fill{height:100%;background:var(--amber);border-radius:3px;transition:width .2s}
 .lfbar-fill.done{background:var(--green)}
 .lfempty{padding:24px;text-align:center;color:var(--dim);font-size:12px}
+.lf-vel{color:var(--green);font-size:10px;font-weight:600}
 .ccard .crow .res-frontier{color:var(--amber);font-size:10px}
 @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.side{position:static;width:100%;height:auto}.layout{flex-direction:column}
  .insights{grid-template-columns:1fr}.modal .mgrid{grid-template-columns:1fr}}
@@ -607,6 +608,13 @@ function fmtSpeed(v){if(v==null)return "—";
  if(v>=1e3)return (v/1e3).toFixed(0)+"K ₴/д";
  return v.toFixed(0)+" ₴/д";}
 function fmtScore(v){return v==null?"—":v.toFixed(2);}
+function fmtVelocity(v){
+ // Форматує jar velocity (₴/день) у читабельний вигляд.
+ // null → повертає null (не показуємо)
+ if(v==null)return null;
+ if(Math.abs(v)>=1e6)return (v/1e6).toFixed(2)+" млн/д";
+ if(Math.abs(v)>=1e3)return (v/1e3).toFixed(0)+" тис/д";
+ return v.toFixed(0)+" ₴/д";}
 
 // ── фільтрація ──
 function passesVerif(c){
@@ -1398,6 +1406,9 @@ function renderLiveFeed(camps){
    barHtml=`<span class="lfbar"><span class="lfbar-track"><span class="lfbar-fill${done?" done":""}" style="width:${pct.toFixed(1)}%"></span></span>`+
     `банка: ${pct.toFixed(0)}% (${fmtUAH(c.amount_uah)} / ${fmtUAH(c.goal_amount)})</span>`;
   }
+  // jar velocity (тільки коли є дані ≥2 refreshes)
+  const velFmt=fmtVelocity(c.jar_velocity_uah_per_day);
+  const velHtml=velFmt!=null?`<span class="lf-vel" title="темп поповнення банки">темп: ${esc(velFmt)} ▲</span>`:"";
   return `<div class="lfrow" data-lfid="${esc(c.id)}">
    <span class="lftitle" title="${esc(c.title)}">${esc(c.title)}</span>
    <span class="lfmeta">
@@ -1406,6 +1417,7 @@ function renderLiveFeed(camps){
     ${engStr}
     ${rrStr}
     ${barHtml}
+    ${velHtml}
    </span>
   </div>`;
  }).join("");
@@ -1553,6 +1565,7 @@ function openCampModal(id){
     `<div class="mrow"><span class="k">резонанс:</span>${c.rel_resonance!=null?`<span style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}">×${c.rel_resonance.toFixed(2)} від медіани актора</span>`:'<span class="dash">—</span>'}</div>`+
     `<div class="mrow"><span class="k">рекл. бюджет:</span>${fmtUAH(c.spend)}</div>`+
     `<div class="mrow"><span class="k">ціль досягнуто:</span>${c.goal_reached==null?'<span class="dash">—</span>':(c.goal_reached?'<span class="pct-on">так</span>':'<span class="pct-off">ні</span>')}</div>`+
+    (fmtVelocity(c.jar_velocity_uah_per_day)!=null?`<div class="mrow"><span class="k">темп банки:</span><span style="color:var(--green);font-weight:600">${esc(fmtVelocity(c.jar_velocity_uah_per_day))} ▲</span>${c.jar_span_days!=null?` <span style="color:var(--faint);font-size:10px">за ${c.jar_span_days.toFixed(1)} д</span>`:""}</div>`:"")+
     `<div class="mrow full"><span class="k">партнери:</span>${parts}</div>`+
     `<div class="mrow full"><span class="k">джерело:</span>${src?`<a href="${esc(src)}" target="_blank" rel="noopener">${esc(src)} ↗</a>`:'<span class="dash">—</span>'}</div>`+
    `</div>`+
