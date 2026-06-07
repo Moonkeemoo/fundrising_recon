@@ -1,15 +1,19 @@
-"""ANALYZE: 4 осі успіху + нормалізація + тренди + крос-таби.
+"""ANALYZE: 4 осі успіху + нормалізація + тренди + крос-таби + модель успіху.
 
 Всі функції — чисті (приймають списки/словники, не звертаються до БД).
 Spec §6: порівнюємо подібне з подібним (в межах категорії цілі);
 обсяг у лог-шкалі (power-law); virality=null за відсутності даних;
 кожен агрегат несе N (чесна магнітуда).
+
+Модель успіху (SUCCESS-MODEL.md):
+    engagement_rate, actor_median_engagement_rate, rel_resonance_map,
+    parse_campaign_date, trend_momentum, what_works_now.
 """
 from __future__ import annotations
 
 import math
 import statistics
-from datetime import date
+from datetime import date, timedelta
 from typing import Sequence
 
 from .schema import Campaign, Case
@@ -555,6 +559,125 @@ def rel_resonance_map(campaigns: Sequence[Campaign]) -> dict[str, float | None]:
             result[c.id] = None
             continue
         result[c.id] = er / med
+    return result
+
+
+# ── TREND MOMENTUM (модель успіху) ───────────────────────────────────────────
+
+
+def parse_campaign_date(campaign: Campaign) -> str | None:
+    """ISO-рядок дати кампанії (YYYY-MM-DD) або None якщо невідома.
+
+    Пріоритет: date_start (YYYY-MM-DD / YYYY-MM / YYYY) → year (int) → None.
+    Не викликає datetime.now() — чиста функція.
+    """
+    ds = campaign.date_start
+    if ds:
+        s = str(ds).strip()
+        # YYYY-MM-DD
+        if len(s) >= 10 and s[4] == "-" and s[7] == "-":
+            return s[:10]
+        # YYYY-MM → перший день місяця
+        if len(s) >= 7 and s[4] == "-":
+            return s[:7] + "-01"
+        # YYYY → перший день року
+        if len(s) >= 4 and s[:4].isdigit():
+            return s[:4] + "-01-01"
+    if campaign.year is not None:
+        return str(campaign.year) + "-01-01"
+    return None
+
+
+def _camp_axis_values_momentum(c: Campaign, axis: str) -> list[str]:
+    """Значення осі для momentum/what_works_now (channel/tone/form_factor/goal/method/face)."""
+    if axis == "goal":
+        return [goal_category(c.goal)]
+    if axis in ("channels", "tone", "form_factor"):
+        vals = getattr(c, axis, None) or []
+        return list(vals)
+    if axis in ("method",):
+        # Campaign не має method — ігноруємо gracefully
+        vals = getattr(c, axis, None) or []
+        return list(vals)
+    if axis == "face":
+        v = c.face
+        return [v] if v else []
+    return []
+
+
+def trend_momentum(
+    campaigns: Sequence[Campaign],
+    *,
+    axis: str,
+    now: str,
+    window_days: int = 30,
+) -> list[dict]:
+    """Порівняння recent-вікна vs prior-вікна для кожного значення осі.
+
+    Args:
+        campaigns: список кампаній.
+        axis: 'channel' | 'tone' | 'form_factor' | 'goal' | 'face'.
+        now: ISO-рядок дати (YYYY-MM-DD) — референсна точка (не datetime.now).
+        window_days: розмір вікна в днях.
+
+    Returns:
+        [{key, recent_n, prior_n, momentum (recent-prior),
+          recent_resonance (mean er recent-кампаній | None)}]
+    """
+    now_date = date.fromisoformat(now)
+    recent_start = now_date - timedelta(days=window_days)
+    prior_start = now_date - timedelta(days=2 * window_days)
+
+    # Розподіляємо кампанії по вікнах і ключах
+    recent_buckets: dict[str, list[Campaign]] = {}
+    prior_buckets: dict[str, list[Campaign]] = {}
+
+    for c in campaigns:
+        ds = parse_campaign_date(c)
+        if ds is None:
+            continue
+        try:
+            d = date.fromisoformat(ds)
+        except ValueError:
+            continue
+
+        keys = _camp_axis_values_momentum(c, axis)
+        if not keys:
+            continue
+
+        if recent_start < d <= now_date:
+            for k in keys:
+                recent_buckets.setdefault(k, []).append(c)
+        elif prior_start < d <= recent_start:
+            for k in keys:
+                prior_buckets.setdefault(k, []).append(c)
+
+    # Збираємо всі ключі (з обох вікон)
+    all_keys = set(recent_buckets) | set(prior_buckets)
+    if not all_keys:
+        return []
+
+    result: list[dict] = []
+    for key in sorted(all_keys):
+        recent_camps = recent_buckets.get(key, [])
+        prior_camps = prior_buckets.get(key, [])
+        recent_n = len(recent_camps)
+        prior_n = len(prior_camps)
+
+        # recent_resonance = mean er recent-кампаній (None якщо нема сигналу)
+        ers = [engagement_rate(c) for c in recent_camps]
+        valid_ers = [e for e in ers if e is not None]
+        recent_resonance: float | None = (
+            sum(valid_ers) / len(valid_ers) if valid_ers else None
+        )
+
+        result.append({
+            "key": key,
+            "recent_n": recent_n,
+            "prior_n": prior_n,
+            "momentum": recent_n - prior_n,
+            "recent_resonance": recent_resonance,
+        })
     return result
 
 
