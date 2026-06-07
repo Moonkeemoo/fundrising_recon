@@ -6,7 +6,6 @@ TDD: написано ДО виправлення. Тестує що _campaign_m
 """
 from __future__ import annotations
 
-import pytest
 from fundrec.dedup import _campaign_merge_two, merge_campaigns
 from fundrec.schema import Campaign
 
