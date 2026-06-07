@@ -20,13 +20,14 @@ from typing import Any
 # Редагуйте вільно — це лише стартовий список; помилки скіпаються graceful.
 # ---------------------------------------------------------------------------
 SEED_CHANNELS: list[str] = [
-    "prytulafoundation",   # Фонд Прітули
-    "back_and_alive",      # Повернись живим
-    "serhii_sternenko",    # Сергій Стерненко
+    "prytulafoundation",   # Фонд Притули
     "u24_gov_ua",          # UNITED24
-    "monobank",            # Монобанк (jar-збори)
-    "ukrvolonteer",        # Волонтери
+    "backandalive",        # Повернись живим (Come Back Alive)
+    "ssternenko",          # Сергій Стерненко
+    "kpszsu",              # Сили підтримки/збори
+    "signal_dnipro",       # волонтерський збір
 ]
+# Перевірено живими (t.me/s) 2026-06-07. Список публічний і редагований.
 
 # Ключові слова, що сигналізують про збір коштів
 _FUNDRAISING_KEYWORDS = [

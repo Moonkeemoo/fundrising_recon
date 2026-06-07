@@ -7,7 +7,6 @@ build_campaign_critic_prompt / critique_campaign.
 
 from __future__ import annotations
 
-import json
 from typing import Callable
 
 from . import config
