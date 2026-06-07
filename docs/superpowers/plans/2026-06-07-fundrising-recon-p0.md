@@ -654,7 +654,7 @@ git commit -m "feat: Monobank jar collector (parse + injectable fetch)"
 - Create: `src/fundrec/validate.py`
 - Test: `tests/test_validate.py`
 
-Enforces spec §8 invariants without an LLM: provenance present for non-null numbers; year in range; non-negative amounts; goal category and style/method tags in vocabulary; virality is null not 0 when unknown (checked: a 0.0 virality with no provenance is flagged).
+Enforces spec §8 invariants without an LLM: provenance present for non-null numbers; year in range; non-negative amounts; goal category and style/method tags in vocabulary. (The §8 #5 "virality null not 0" rule belongs to ANALYZE/P3, where axes are computed — not validated here.)
 
 - [ ] **Step 1: Write the failing test**
 
@@ -1250,7 +1250,7 @@ git push
 - §4 модель `Case`/`Actor`/`Source` + provenance → Task 3, 4.
 - §5 COLLECT (Monobank) → Task 5; EXTRACT з обовʼязковим provenance → Task 7.
 - §5 «4 рубежі»: дедуп (P1), крос-чек (P2), **детерміновані валідатори → Task 6**, критик (P2). P0 покриває рубіж 3; решта — наступні плани (зафіксовано у scope-note).
-- §8 інваріанти 1,5 (provenance, virality null) → Task 6 валідатори; 3/4 (access/license) присутні в `Source` (наповнюються повноцінно в P1 разом із `probe_access`).
+- §8 інваріант 1 (provenance на непорожні числа) + рік/суми/словники → Task 6 валідатори; інваріант 5 (virality null) — у P3/ANALYZE, де рахуються осі; 3/4 (access/license) присутні в `Source` (наповнюються повноцінно в P1 разом із `probe_access`).
 - §6 осі/тренди, §7 кокпіт → P3/P4 (не в цьому плані; поля осей зарезервовані nullable у Task 3).
 - §9 P0 обсяг → весь план.
 
