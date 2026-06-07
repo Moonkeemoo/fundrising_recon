@@ -68,7 +68,7 @@ def run_refresh(  # pragma: no cover
         print(f"fundrec jar_refresh: знайдено {total} jar_id у кампаніях")
 
     for jar_id in jar_ids:
-        result = render_jar_cached(jar_id, cache_path=cache_path)
+        result = render_jar_cached(jar_id, cache_path=cache_path, force=True)
         if result is not None:
             ok += 1
             if verbose:

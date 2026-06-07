@@ -123,6 +123,7 @@ def render_jar_cached(
     _render: Callable[[str], str | None] | None = None,
     timeout: int = 30000,
     now: str | None = None,
+    force: bool = False,
 ) -> dict[str, Any] | None:
     """Повертає свіжі дані банки і оновлює кеш з history snapshot-ами.
 
@@ -144,7 +145,22 @@ def render_jar_cached(
         except (ValueError, OSError):
             cache = {}
 
-    # Рендеримо (завжди — щоб отримати свіжі дані і оновити history)
+    # Кеш-хіт: якщо є свіжий snapshot (молодший за інтервал) і не force —
+    # не рендеримо (економія; momentum накопичує jar_refresh з force=True).
+    if not force:
+        entry0 = cache.get(jar_id)
+        if isinstance(entry0, dict) and (entry0.get("history") or []):
+            last_ts = entry0["history"][-1].get("ts")
+            try:
+                from datetime import datetime  # noqa: PLC0415
+                age_h = (datetime.fromisoformat(now_iso)
+                         - datetime.fromisoformat(last_ts)).total_seconds() / 3600.0
+                if age_h < MIN_SNAPSHOT_INTERVAL_H:
+                    return dict(entry0)  # свіже — віддаємо кеш без рендеру
+            except (ValueError, TypeError):
+                pass
+
+    # Рендеримо (застаріле/force/немає кешу) — свіжі дані + оновлення history
     result = render_jar(jar_id, _render=_render, timeout=timeout)
 
     if result is None:

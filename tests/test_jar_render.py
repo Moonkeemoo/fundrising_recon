@@ -184,7 +184,7 @@ def test_second_render_changed_amount_adds_snapshot(tmp_path):
         _JAR_ID, cache_path=cache_file, _render=lambda j: _FIXTURE_BODY, now=_TS1
     )
     result2 = render_jar_cached(
-        _JAR_ID, cache_path=cache_file, _render=lambda j: _FIXTURE_BODY_V2, now=_TS2_SOON
+        _JAR_ID, cache_path=cache_file, _render=lambda j: _FIXTURE_BODY_V2, now=_TS2_SOON, force=True
     )
 
     assert result2 is not None
@@ -216,7 +216,7 @@ def test_history_persisted_in_cache_file(tmp_path):
 
     cache_file = tmp_path / "jars_cache.json"
     render_jar_cached(_JAR_ID, cache_path=cache_file, _render=lambda j: _FIXTURE_BODY, now=_TS1)
-    render_jar_cached(_JAR_ID, cache_path=cache_file, _render=lambda j: _FIXTURE_BODY_V2, now=_TS2_SOON)
+    render_jar_cached(_JAR_ID, cache_path=cache_file, _render=lambda j: _FIXTURE_BODY_V2, now=_TS2_SOON, force=True)
 
     data = json.loads(cache_file.read_text(encoding="utf-8"))
     assert "history" in data[_JAR_ID]
