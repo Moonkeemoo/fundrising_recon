@@ -92,10 +92,10 @@ def test_discover_result_is_list_of_strings():
 
 
 def test_discover_no_search_returns_empty():
-    """Без інжектованого _search і без live-підключення → порожній список (stub)."""
-    # Не передаємо _search — використовується live stub; очікуємо список (можливо порожній)
-    result = discover_sources("тест тема", existing_urls=set())
-    assert isinstance(result, list)
+    """Fake _search повертає [] → результат порожній список."""
+    # Інжектуємо _search що повертає [] — перевіряємо поведінку без мережі
+    result = discover_sources("тест тема", existing_urls=set(), _search=lambda q: [])
+    assert result == []
 
 
 def test_live_search_wired_to_duckduckgo():

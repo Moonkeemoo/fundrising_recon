@@ -293,7 +293,7 @@ _FAKE_YOUTUBE_ITEMS = [
 
 
 def _make_components_youtube_only():
-    """_components без web-search (discovered_urls=[]), тільки youtube fake collector."""
+    """_components з fake search (→ []) і тільки youtube fake collector."""
 
     def fake_youtube_collector(theme):
         return list(_FAKE_YOUTUBE_ITEMS)
@@ -313,7 +313,8 @@ def _make_components_youtube_only():
         pass
 
     return {
-        # Без "search" — discovered_urls лишається порожнім
+        # Порожній search — discovered_urls = [], але search_fn задано → no live DDG
+        "search": lambda q: [],
         "collect": {
             "youtube": fake_youtube_collector,
         },
@@ -533,7 +534,7 @@ _FAKE_TELEGRAM_ITEMS = [
 
 
 def _make_components_telegram_only():
-    """_components без web-search, тільки telegram fake collector."""
+    """_components з fake search (→ []) і тільки telegram fake collector."""
 
     def fake_telegram_collector(theme):
         return list(_FAKE_TELEGRAM_ITEMS)
@@ -553,6 +554,8 @@ def _make_components_telegram_only():
         pass
 
     return {
+        # Порожній search — discovered_urls = [], але search_fn задано → no live DDG
+        "search": lambda q: [],
         "collect": {
             "telegram": fake_telegram_collector,
         },
