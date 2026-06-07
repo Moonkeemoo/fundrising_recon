@@ -497,6 +497,67 @@ def goal_reached_rate(
     return result
 
 
+# ── ENGAGEMENT METRICS (модель успіху) ───────────────────────────────────────
+
+
+def engagement_rate(campaign: Campaign) -> float | None:
+    """Головна метрика резонансу: engagement / reach.
+
+    Повертає None (НЕ 0) якщо reach відсутній або == 0.
+    Нульове залучення при ненульовому охопленні — валідне 0.0.
+    """
+    if campaign.reach is None or campaign.reach <= 0:
+        return None
+    if campaign.engagement is None:
+        return None
+    return campaign.engagement / campaign.reach
+
+
+def actor_median_engagement_rate(campaigns: Sequence[Campaign]) -> float | None:
+    """Медіана engagement_rate для списку кампаній одного актора.
+
+    Ігнорує кампанії з None engagement_rate.
+    Повертає None якщо немає жодного валідного er.
+    """
+    ers = [engagement_rate(c) for c in campaigns]
+    valid = [e for e in ers if e is not None]
+    if not valid:
+        return None
+    return statistics.median(valid)
+
+
+def rel_resonance_map(campaigns: Sequence[Campaign]) -> dict[str, float | None]:
+    """Actor-нормалізований резонанс: {campaign.id: rel_resonance | None}.
+
+    rel_resonance = engagement_rate(кампанії) / median(engagement_rate актора).
+    > 1 → кампанія перевищує типовий рівень цього ж актора.
+    None якщо: немає er кампанії, немає медіани актора, або медіана == 0.
+    """
+    # групуємо за actor_id
+    by_actor: dict[str, list[Campaign]] = {}
+    for c in campaigns:
+        by_actor.setdefault(c.actor_id, []).append(c)
+
+    # медіана er по кожному актору
+    actor_median: dict[str, float | None] = {
+        aid: actor_median_engagement_rate(camps)
+        for aid, camps in by_actor.items()
+    }
+
+    result: dict[str, float | None] = {}
+    for c in campaigns:
+        er = engagement_rate(c)
+        if er is None:
+            result[c.id] = None
+            continue
+        med = actor_median.get(c.actor_id)
+        if med is None or med == 0.0:
+            result[c.id] = None
+            continue
+        result[c.id] = er / med
+    return result
+
+
 def campaign_axis_summary(
     campaigns: Sequence[Campaign],
     *,
