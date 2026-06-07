@@ -122,17 +122,40 @@ def extract_case(
 
 
 def _live_complete(prompt: str) -> dict:  # pragma: no cover - мережа/LLM
-    """Живий виклик через Claude Agent SDK (підписка). Повертає dict із JSON."""
-    import json
+    """Живий виклик через Claude Agent SDK (підписка, без ключа).
 
-    from claude_agent_sdk import query  # type: ignore
+    Запасний шлях — прямий Anthropic API якщо SDK не доступний.
+    Парсинг JSON через _json_from_text (чистий хелпер, тестується окремо).
+    """
+    import asyncio  # noqa: PLC0415
 
-    chunks: list[str] = []
-    for msg in query(prompt=prompt):
-        text = getattr(msg, "text", None)
-        if text:
-            chunks.append(text)
-    return json.loads("".join(chunks))
+    async def _async_sdk(p: str) -> dict:
+        from claude_agent_sdk import query as sdk_query  # noqa: PLC0415
+        chunks: list[str] = []
+        async for msg in sdk_query(prompt=p):
+            text = getattr(msg, "text", None)
+            if text:
+                chunks.append(text)
+        return _json_from_text("".join(chunks))
+
+    # Спроба 1: Agent SDK
+    try:
+        return asyncio.run(_async_sdk(prompt))
+    except Exception:  # noqa: BLE001
+        pass
+
+    # Запасний шлях: прямий Anthropic API
+    from . import config as _cfg  # noqa: PLC0415
+    import anthropic  # noqa: PLC0415
+    client = anthropic.Anthropic(api_key=_cfg.CRITIC_API_KEY)
+    message = client.messages.create(
+        model=_cfg.EXTRACT_MODEL,
+        max_tokens=2048,
+        temperature=0,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text = message.content[0].text
+    return _json_from_text(text)
 
 
 # ---------------------------------------------------------------------------
