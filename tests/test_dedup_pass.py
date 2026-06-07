@@ -232,12 +232,13 @@ def test_dedup_database_loser_campaign_deleted(tmp_conn):
 
 
 def test_dedup_database_unique_campaign_untouched(tmp_conn):
-    """Кампанія без дублів залишається без змін."""
+    """Кампанії з різними jar і різними назвами залишаються без змін."""
     upsert_actor(tmp_conn, _actor("a1"))
     prov1 = _jar_prov("JAR_UNIQUE_1")
     prov2 = _jar_prov("JAR_UNIQUE_2")
-    c1 = _campaign("c1", provenance=prov1)
-    c2 = _campaign("c2", provenance=prov2)
+    # Різні заголовки → fuzzy-прохід теж не зливає
+    c1 = _campaign("c1", title="Збір на броньований автомобіль", provenance=prov1)
+    c2 = _campaign("c2", title="Збір на FPV дрони для штурму", provenance=prov2)
     upsert_campaign(tmp_conn, c1)
     upsert_campaign(tmp_conn, c2)
 
@@ -250,13 +251,14 @@ def test_dedup_database_unique_campaign_untouched(tmp_conn):
 
 
 def test_dedup_database_three_campaigns_two_share_jar_one_unique(tmp_conn):
-    """3 кампанії: 2 зі спільним jar + 1 унікальна → 2 залишаються."""
+    """3 кампанії: 2 зі спільним jar + 1 з різним jar і різною назвою → 2 залишаються."""
     upsert_actor(tmp_conn, _actor("a1"))
     shared_prov = _jar_prov("JARSHARED3")
     unique_prov = _jar_prov("JAR_UNIQUE_99")
-    c1 = _campaign("c1", provenance=shared_prov, channels=["telegram"])
-    c2 = _campaign("c2", provenance=shared_prov, channels=["facebook"])
-    c3 = _campaign("c3", provenance=unique_prov, channels=["youtube"])
+    c1 = _campaign("c1", title="Збір на дрони підрозділу", provenance=shared_prov, channels=["telegram"])
+    c2 = _campaign("c2", title="Збір на дрони підрозділу", provenance=shared_prov, channels=["facebook"])
+    # Різна назва → fuzzy-прохід не зливає c3 з merged(c1+c2)
+    c3 = _campaign("c3", title="Збір на броньований автомобіль", provenance=unique_prov, channels=["youtube"])
     upsert_campaign(tmp_conn, c1)
     upsert_campaign(tmp_conn, c2)
     upsert_campaign(tmp_conn, c3)
@@ -302,6 +304,10 @@ def test_dedup_database_summary_keys_present(tmp_conn):
 
 
 def test_dedup_database_empty_db_returns_zeros(tmp_conn):
-    """Порожня БД → summary з нулями."""
+    """Порожня БД → summary з нулями (включно з fuzzy_merged)."""
     summary = dedup_database(tmp_conn)
-    assert summary == {"before": 0, "after": 0, "merged": 0, "groups_collapsed": 0}
+    assert summary["before"] == 0
+    assert summary["after"] == 0
+    assert summary["merged"] == 0
+    assert summary["groups_collapsed"] == 0
+    assert summary.get("fuzzy_merged", 0) == 0
