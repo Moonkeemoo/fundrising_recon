@@ -230,8 +230,63 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
 .lfempty{padding:24px;text-align:center;color:var(--dim);font-size:12px}
 .lf-vel{color:var(--green);font-size:10px;font-weight:600}
 .ccard .crow .res-frontier{color:var(--amber);font-size:10px}
-@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.side{position:static;width:100%;height:auto}.layout{flex-direction:column}
- .insights{grid-template-columns:1fr}.modal .mgrid{grid-template-columns:1fr}}
+/* ── мобільний тоглер фільтрів (схований на десктопі) ── */
+.filt-toggle{display:none}
+.tbl-scroll{width:100%}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.insights{grid-template-columns:1fr}.modal .mgrid{grid-template-columns:1fr}}
+/* ════════ МОБІЛЬНА АДАПТАЦІЯ ════════ */
+@media(max-width:820px){
+ body{font-size:13px}
+ header{padding:8px 12px;gap:8px}
+ header .logo{font-size:13px;letter-spacing:1px;flex-basis:100%}
+ .tabs{margin-left:0}
+ .tabs button{padding:7px 14px;font-size:13px}
+ /* тоглер фільтрів */
+ .filt-toggle{display:block;width:calc(100% - 24px);margin:10px 12px 0;background:#000;border:1px solid var(--amber);
+  color:var(--amber);padding:9px 12px;font:13px var(--mono);border-radius:3px;cursor:pointer;letter-spacing:.5px;text-align:left}
+ .filt-toggle.on{border-color:var(--blue);color:var(--blue)}
+ /* layout у колонку */
+ .layout{flex-direction:column}
+ /* сайдбар = розкривна панель, схована за замовч. */
+ .side{position:static;width:100%;flex:1 1 auto;height:auto;max-height:none;border-right:0;border-bottom:1px solid var(--line);
+  display:none;padding:10px 12px}
+ .side.open{display:block}
+ .main{padding:12px 12px 48px}
+ /* сітки в 1 колонку (KPI лишаємо 2) */
+ .kpis{grid-template-columns:repeat(2,1fr);gap:8px}
+ .kpi .val{font-size:20px}
+ .gallery{grid-template-columns:1fr}
+ .modal .mcrs{grid-template-columns:1fr}
+ .detgrid{flex-direction:column}
+ .radar{width:100%;flex:1 1 auto}
+ /* графіки нижчі на телефоні */
+ .chart{height:240px}
+ .chart.heat{height:300px}
+ #scatter-chart{height:260px!important}
+ /* таблиці — горизонтальний скрол замість ламання */
+ .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .tbl-scroll table{min-width:560px}
+ /* більші тач-таргети */
+ .chip{padding:7px 11px;font-size:12px}
+ .seg{flex-wrap:wrap}
+ .seg button{padding:8px 11px;font-size:12px}
+ .tabs button{min-height:34px}
+ .panel .head{gap:6px}
+ .panel .head .spacer{display:none;margin-left:0}
+ .searchbar input{min-width:0;width:100%}
+ /* модалка — майже на весь екран */
+ .modal-bd{padding:0;align-items:stretch}
+ .modal{max-width:100%;min-height:100vh;border-radius:0;border-left:0;border-right:0}
+ .modal .mhd{padding:12px}
+ .modal .mclose{padding:8px 14px;font-size:16px}
+ .modal .mbody{padding:12px}
+ .modal .mgrid{grid-template-columns:1fr}
+ .lfrow{gap:6px}
+ .lftitle{min-width:120px}
+}
+@media(max-width:420px){
+ .kpis{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -247,6 +302,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
 
 <!-- ════════ ВИГЛЯД: ЗБОРИ ════════ -->
 <div id="view-cases">
+<button class="filt-toggle" id="filt-toggle" aria-expanded="false">☰ Фільтри</button>
 <div class="layout">
  <!-- ── SIDEBAR ── -->
  <aside class="side" id="side">
@@ -344,7 +400,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
       <button data-a="repeatability">repeat</button>
      </div>
     </div>
-    <table class="lb"><thead id="lb-head"></thead><tbody id="lb-body"></tbody></table>
+    <div class="tbl-scroll"><table class="lb"><thead id="lb-head"></thead><tbody id="lb-body"></tbody></table></div>
    </div>
 
    <div class="foot" id="foot"></div>
@@ -355,6 +411,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
 
 <!-- ════════ ВИГЛЯД: КАМПАНІЇ ════════ -->
 <div id="view-campaigns" style="display:none">
+<button class="filt-toggle" id="filt-toggle-c" aria-expanded="false">☰ Фільтри</button>
 <div class="layout">
  <!-- ── SIDEBAR (фільтри кампаній) ── -->
  <aside class="side" id="side-c">
@@ -505,7 +562,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
       <button data-a="form_factor">формат</button>
      </div>
     </div>
-    <div id="mx-wrap"><table class="mx"><thead id="mx-head"></thead><tbody id="mx-body"></tbody></table></div>
+    <div id="mx-wrap" class="tbl-scroll"><table class="mx"><thead id="mx-head"></thead><tbody id="mx-body"></tbody></table></div>
     <div id="mx-empty" class="empty" style="display:none"><div class="big">нема даних</div></div>
    </div>
 
@@ -1970,6 +2027,27 @@ function setupCampaignView(){
   bindCampChips();updateCamp();};
 }
 
+// ── ресайз усіх графіків (після тоглу фільтрів / зміни орієнтації) ──
+function resizeAllCharts(){
+ [chTrend,chHeat,chSaBar,chSrBar,chSaFe,chSaGc,chScatter,chTimeline].forEach(c=>{if(c)c.resize();});
+ CASES.forEach(c=>{if(openRows.has(c.id)){const el=document.getElementById("radar-"+c.id);
+  if(el){const ins=echarts.getInstanceByDom(el);if(ins)ins.resize();}}});
+}
+// ── мобільний тоглер фільтрів (drawer) ──
+function bindFilterToggle(btnId,sideId){
+ const btn=document.getElementById(btnId),side=document.getElementById(sideId);
+ if(!btn||!side)return;
+ btn.onclick=()=>{
+  const open=side.classList.toggle("open");
+  btn.classList.toggle("on",open);
+  btn.setAttribute("aria-expanded",open?"true":"false");
+  // контейнери графіків змінили ширину → переобчислюємо
+  setTimeout(resizeAllCharts,30);
+ };
+}
+// орієнтація / зміна розміру вікна — синхронний ресайз графіків
+window.addEventListener("orientationchange",()=>setTimeout(resizeAllCharts,120));
+
 // ── перемикання вкладок ──
 function switchTab(tab){
  activeTab=tab;
@@ -1987,6 +2065,8 @@ function switchTab(tab){
 }
 function bindTabs(){
  document.querySelectorAll("#tabs button").forEach(b=>b.onclick=()=>switchTab(b.dataset.tab));
+ bindFilterToggle("filt-toggle","side");
+ bindFilterToggle("filt-toggle-c","side-c");
 }
 
 // ── seg-кнопки ──
