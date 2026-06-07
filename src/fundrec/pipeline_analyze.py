@@ -9,6 +9,8 @@ from typing import Callable
 
 from . import store
 from .analyze import (
+    campaign_axis_summary,
+    campaign_crosstab,
     compute_repeatability,
     compute_speed,
     compute_virality,
@@ -121,4 +123,53 @@ def build_analytics(conn: sqlite3.Connection) -> dict:
         "trends": trends,
         "crosstabs": crosstabs,
         "generated_for_counts": {"total_cases": len(cases)},
+        "campaign_analytics": _build_campaign_analytics(conn),
     }
+
+
+def _build_campaign_analytics(conn: sqlite3.Connection) -> dict:
+    """Блок глибокої аналітики кампаній (F5) для дашборда.
+
+    Returns:
+        {
+          kpis: {n_campaigns, n_creatives, n_partners, total_spend (nullable)},
+          crosstabs: {channel_volume, format_engagement, tone_virality,
+                      face_volume, goal_channel},
+          axis_summaries: {tone_amount, cta_amount, face_amount, channel_amount},
+        }
+    """
+    campaigns = store.load_campaigns(conn)
+    creatives = store.load_creatives(conn)
+    partners = store.load_partners(conn)
+
+    spends = [c.spend for c in campaigns if c.spend is not None]
+    total_spend = sum(spends) if spends else None
+
+    kpi_data = {
+        "n_campaigns": len(campaigns),
+        "n_creatives": len(creatives),
+        "n_partners": len(partners),
+        "total_spend": total_spend,
+    }
+
+    crosstabs = {
+        "channel_volume": campaign_crosstab(
+            campaigns, axis_a="channels", axis_b="goal_category", metric="amount_uah"),
+        "format_engagement": campaign_crosstab(
+            campaigns, axis_a="form_factor", axis_b="channels", metric="engagement"),
+        "tone_virality": campaign_crosstab(
+            campaigns, axis_a="tone", axis_b="channels", metric="engagement"),
+        "face_volume": campaign_crosstab(
+            campaigns, axis_a="face", axis_b="goal_category", metric="amount_uah"),
+        "goal_channel": campaign_crosstab(
+            campaigns, axis_a="goal_category", axis_b="channels", metric="count"),
+    }
+
+    axis_summaries = {
+        "tone_amount": campaign_axis_summary(campaigns, axis="tone", metric="amount_uah"),
+        "cta_amount": campaign_axis_summary(campaigns, axis="cta_type", metric="amount_uah"),
+        "face_amount": campaign_axis_summary(campaigns, axis="face", metric="amount_uah"),
+        "channel_amount": campaign_axis_summary(campaigns, axis="channels", metric="amount_uah"),
+    }
+
+    return {"kpis": kpi_data, "crosstabs": crosstabs, "axis_summaries": axis_summaries}
