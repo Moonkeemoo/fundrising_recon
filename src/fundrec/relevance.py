@@ -56,9 +56,9 @@ _URL_PAT = re.compile(r"https?://\S+", re.IGNORECASE)
 # ---------------------------------------------------------------------------
 
 def _all_text(raw: dict[str, Any]) -> str:
-    """Об'єднує text, title, description, links у один рядок для пошуку."""
+    """Об'єднує text/raw_text, title, description, links у один рядок для пошуку."""
     parts: list[str] = []
-    for field in ("text", "title", "description"):
+    for field in ("text", "raw_text", "title", "description"):
         val = raw.get(field)
         if val:
             parts.append(str(val))
@@ -83,7 +83,11 @@ def is_fundraising(raw: dict[str, Any]) -> bool:
         return False
 
     # ── 1. Jar-посилання ────────────────────────────────────────────────────
+    # jar_ids_from_raw перевіряє text/links/description; також перевіряємо raw_text
     if jar_ids_from_raw(raw):
+        return True
+    raw_text_val = raw.get("raw_text") or ""
+    if raw_text_val and jar_ids_from_raw({"text": raw_text_val}):
         return True
 
     # ── Об'єднаний текст для решти перевірок ────────────────────────────────
