@@ -22,6 +22,44 @@ _NUMERIC_FIELDS = ("amount_uah", "amount_usd", "goal_amount")
 _CAMPAIGN_NUMERIC_FIELDS = ("amount_uah", "amount_usd", "reach", "engagement", "spend", "assets_count")
 
 
+def _json_from_text(text: str) -> dict:
+    """Витягує JSON-об'єкт з тексту LLM-відповіді.
+
+    Підтримує:
+    - Сирий JSON: {"key": ...}
+    - Markdown-фенс: ```json\\n{...}\\n```
+    - Ведучий/завершальний прозовий текст — беремо перший {...} блок.
+
+    Raises ValueError якщо JSON не знайдено.
+    """
+    import json  # noqa: PLC0415
+
+    if not text:
+        raise ValueError("порожній текст — немає JSON")
+
+    # 1. Спробуємо знайти ```json ... ``` або ``` ... ``` фенс
+    fenced = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
+    if fenced:
+        return json.loads(fenced.group(1))
+
+    # 2. Знаходимо перший {...} блок (ігноруємо зовнішній прозовий текст)
+    brace_start = text.find("{")
+    if brace_start == -1:
+        raise ValueError(f"JSON-об'єкт не знайдено в тексті: {text[:200]!r}")
+
+    # Знаходимо відповідну закриваючу дужку
+    depth = 0
+    for i, ch in enumerate(text[brace_start:], start=brace_start):
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                return json.loads(text[brace_start: i + 1])
+
+    raise ValueError(f"Незакрита JSON-дужка в тексті: {text[:200]!r}")
+
+
 def build_prompt(raw: dict[str, Any], source: Source) -> str:
     return (
         "Витягни структуровані дані про збір коштів із сирого запису джерела.\n"
