@@ -40,6 +40,7 @@ from typing import Any
 from . import config, export, extract, jars, store, validate
 from .critic import critique_campaign
 from .discover import discover_sources
+from .extract import _TIER_CONFIDENCE
 from .pipeline_analyze import analyze_all
 from .pipeline_verify import verify_cases
 from .schema import Actor, Source
@@ -238,6 +239,52 @@ def _apply_jar_to_case(case: Any, jar_data: dict[str, Any]) -> None:
     }
 
 
+def _apply_signals(campaign: Any, raw_item: dict[str, Any], tier: int) -> None:
+    """Встановлює reach/engagement кампанії детерміновано з сирих платформних даних.
+
+    Telegram: reach = views; engagement = forwards якщо є, інакше views.
+    YouTube:  reach = views; engagement = likes якщо є, інакше views.
+    Встановлює лише якщо значення ненульове; перезаписує LLM-здогад реальним числом.
+    Кожне встановлене поле отримує provenance з tier та confidence.
+    """
+    platform = (raw_item.get("platform") or "").lower()
+    source_url = raw_item.get("source_url") or ""
+    confidence = _TIER_CONFIDENCE.get(tier, 0.35)
+
+    views = raw_item.get("views")
+    forwards = raw_item.get("forwards")
+    likes = raw_item.get("likes")
+
+    reach_val: int | float | None = None
+    engagement_val: int | float | None = None
+
+    if platform in ("telegram",):
+        if views is not None:
+            reach_val = views
+            engagement_val = forwards if forwards is not None else views
+    elif platform in ("youtube",):
+        if views is not None:
+            reach_val = views
+            engagement_val = likes if likes is not None else views
+
+    if reach_val is not None:
+        campaign.reach = reach_val
+        campaign.provenance["reach"] = {
+            "source_url": source_url,
+            "confidence": confidence,
+            "tier": tier,
+            "note": "platform signal",
+        }
+    if engagement_val is not None:
+        campaign.engagement = engagement_val
+        campaign.provenance["engagement"] = {
+            "source_url": source_url,
+            "confidence": confidence,
+            "tier": tier,
+            "note": "platform signal",
+        }
+
+
 def _ingest_one(
     conn: Any,
     raw_item: dict[str, Any],
@@ -288,6 +335,9 @@ def _ingest_one(
     except Exception as exc:  # noqa: BLE001
         print(f"ingest: extract_campaign failed for {url}: {exc}", file=sys.stderr)
         return False, False
+
+    # --- Детерміновані сигнали (reach/engagement) з сирих платформних даних ---
+    _apply_signals(campaign, raw_item, tier=source.tier)
 
     # --- Збагачення jar-даними (tier-1) ---
     jar_data: dict[str, Any] | None = None
