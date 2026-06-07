@@ -4825,7 +4825,7 @@
     },
     "campaign_analytics": {
       "kpis": {
-        "n_campaigns": 84,
+        "n_campaigns": 70,
         "n_creatives": 110,
         "n_partners": 99,
         "total_spend": null
@@ -4835,14 +4835,14 @@
           {
             "a": "facebook",
             "b": "military",
-            "value": 1368627.17,
-            "n": 9
+            "value": 368627.17,
+            "n": 8
           },
           {
             "a": "instagram",
             "b": "military",
-            "value": 1368627.17,
-            "n": 8
+            "value": 368627.17,
+            "n": 7
           },
           {
             "a": "irl",
@@ -4877,8 +4877,8 @@
           {
             "a": "telegram",
             "b": "military",
-            "value": 406347650.97,
-            "n": 67
+            "value": 405568484.13,
+            "n": 53
           },
           {
             "a": "telegram",
@@ -4895,8 +4895,8 @@
           {
             "a": "tiktok",
             "b": "military",
-            "value": 1073237.0,
-            "n": 3
+            "value": 73237.0,
+            "n": 2
           },
           {
             "a": "web",
@@ -4919,8 +4919,14 @@
           {
             "a": "youtube",
             "b": "military",
-            "value": 1454432.17,
-            "n": 12
+            "value": 454432.17,
+            "n": 10
+          },
+          {
+            "a": "youtube",
+            "b": "other",
+            "value": 3093085.56,
+            "n": 1
           }
         ],
         "format_engagement": [
@@ -4963,14 +4969,14 @@
           {
             "a": "text",
             "b": "facebook",
-            "value": 18632.0,
-            "n": 7
+            "value": 16542.0,
+            "n": 6
           },
           {
             "a": "text",
             "b": "instagram",
-            "value": 18632.0,
-            "n": 7
+            "value": 16542.0,
+            "n": 6
           },
           {
             "a": "text",
@@ -4981,8 +4987,8 @@
           {
             "a": "text",
             "b": "telegram",
-            "value": 4722000.0,
-            "n": 79
+            "value": 2106320.0,
+            "n": 65
           },
           {
             "a": "text",
@@ -4993,8 +4999,8 @@
           {
             "a": "text",
             "b": "tiktok",
-            "value": 5087.0,
-            "n": 3
+            "value": 2997.0,
+            "n": 2
           },
           {
             "a": "text",
@@ -5005,8 +5011,8 @@
           {
             "a": "text",
             "b": "youtube",
-            "value": 293505.0,
-            "n": 9
+            "value": 277415.0,
+            "n": 8
           },
           {
             "a": "video",
@@ -5029,8 +5035,8 @@
           {
             "a": "video",
             "b": "telegram",
-            "value": 781315.0,
-            "n": 12
+            "value": 537315.0,
+            "n": 11
           },
           {
             "a": "video",
@@ -5041,8 +5047,8 @@
           {
             "a": "video",
             "b": "youtube",
-            "value": 267383.0,
-            "n": 6
+            "value": 501383.0,
+            "n": 7
           }
         ],
         "tone_virality": [
@@ -5097,8 +5103,8 @@
           {
             "a": "emotional",
             "b": "telegram",
-            "value": 3000006.0,
-            "n": 50
+            "value": 1125069.0,
+            "n": 41
           },
           {
             "a": "emotional",
@@ -5115,20 +5121,20 @@
           {
             "a": "emotional",
             "b": "youtube",
-            "value": 513187.0,
+            "value": 499187.0,
             "n": 6
           },
           {
             "a": "gratitude",
             "b": "facebook",
-            "value": 4260.0,
-            "n": 2
+            "value": 2170.0,
+            "n": 1
           },
           {
             "a": "gratitude",
             "b": "instagram",
-            "value": 4260.0,
-            "n": 2
+            "value": 2170.0,
+            "n": 1
           },
           {
             "a": "gratitude",
@@ -5139,14 +5145,14 @@
           {
             "a": "gratitude",
             "b": "telegram",
-            "value": 545396.0,
-            "n": 27
+            "value": 547306.0,
+            "n": 26
           },
           {
             "a": "gratitude",
             "b": "tiktok",
-            "value": 4260.0,
-            "n": 2
+            "value": 2170.0,
+            "n": 1
           },
           {
             "a": "gratitude",
@@ -5157,20 +5163,20 @@
           {
             "a": "gratitude",
             "b": "youtube",
-            "value": 31960.0,
+            "value": 263870.0,
             "n": 4
           },
           {
             "a": "heroism",
             "b": "facebook",
-            "value": 26322.0,
-            "n": 9
+            "value": 24232.0,
+            "n": 8
           },
           {
             "a": "heroism",
             "b": "instagram",
-            "value": 22062.0,
-            "n": 8
+            "value": 19972.0,
+            "n": 7
           },
           {
             "a": "heroism",
@@ -5181,8 +5187,8 @@
           {
             "a": "heroism",
             "b": "telegram",
-            "value": 1948516.0,
-            "n": 40
+            "value": 1000773.0,
+            "n": 34
           },
           {
             "a": "heroism",
@@ -5193,8 +5199,8 @@
           {
             "a": "heroism",
             "b": "tiktok",
-            "value": 5087.0,
-            "n": 3
+            "value": 2997.0,
+            "n": 2
           },
           {
             "a": "heroism",
@@ -5205,7 +5211,7 @@
           {
             "a": "heroism",
             "b": "youtube",
-            "value": 278678.0,
+            "value": 510588.0,
             "n": 10
           },
           {
@@ -5223,8 +5229,8 @@
           {
             "a": "humor",
             "b": "telegram",
-            "value": 1466372.0,
-            "n": 11
+            "value": 757372.0,
+            "n": 8
           },
           {
             "a": "humor",
@@ -5236,6 +5242,12 @@
             "a": "humor",
             "b": "tiktok",
             "value": 827.0,
+            "n": 1
+          },
+          {
+            "a": "humor",
+            "b": "youtube",
+            "value": 234000.0,
             "n": 1
           },
           {
@@ -5253,8 +5265,8 @@
           {
             "a": "urgency",
             "b": "telegram",
-            "value": 2983970.0,
-            "n": 48
+            "value": 1087380.0,
+            "n": 38
           },
           {
             "a": "urgency",
@@ -5277,7 +5289,7 @@
           {
             "a": "urgency",
             "b": "youtube",
-            "value": 269136.0,
+            "value": 255136.0,
             "n": 7
           }
         ],
@@ -5291,8 +5303,8 @@
           {
             "a": "blogger",
             "b": "military",
-            "value": 8576829.6,
-            "n": 18
+            "value": 8797662.76,
+            "n": 8
           },
           {
             "a": "blogger",
@@ -5321,8 +5333,8 @@
           {
             "a": "brand",
             "b": "military",
-            "value": 43273043.980000004,
-            "n": 16
+            "value": 30757161.17,
+            "n": 15
           },
           {
             "a": "celebrity",
@@ -5345,8 +5357,8 @@
           {
             "a": "official",
             "b": "military",
-            "value": 354149845.04,
-            "n": 24
+            "value": 365665727.85,
+            "n": 22
           },
           {
             "a": "official",
@@ -5370,7 +5382,7 @@
             "a": "soldier",
             "b": "military",
             "value": 338222.3,
-            "n": 8
+            "n": 7
           }
         ],
         "goal_channel": [
@@ -5413,14 +5425,14 @@
           {
             "a": "military",
             "b": "facebook",
-            "value": 9.0,
-            "n": 9
+            "value": 8.0,
+            "n": 8
           },
           {
             "a": "military",
             "b": "instagram",
-            "value": 8.0,
-            "n": 8
+            "value": 7.0,
+            "n": 7
           },
           {
             "a": "military",
@@ -5431,8 +5443,8 @@
           {
             "a": "military",
             "b": "telegram",
-            "value": 67.0,
-            "n": 67
+            "value": 53.0,
+            "n": 53
           },
           {
             "a": "military",
@@ -5443,8 +5455,8 @@
           {
             "a": "military",
             "b": "tiktok",
-            "value": 3.0,
-            "n": 3
+            "value": 2.0,
+            "n": 2
           },
           {
             "a": "military",
@@ -5455,14 +5467,20 @@
           {
             "a": "military",
             "b": "youtube",
-            "value": 12.0,
-            "n": 12
+            "value": 10.0,
+            "n": 10
           },
           {
             "a": "other",
             "b": "telegram",
             "value": 5.0,
             "n": 5
+          },
+          {
+            "a": "other",
+            "b": "youtube",
+            "value": 1.0,
+            "n": 1
           }
         ]
       },
@@ -5475,48 +5493,43 @@
           },
           {
             "key": "emotional",
-            "value": 312055.0,
-            "n": 51
+            "value": 756027.5,
+            "n": 42
           },
           {
             "key": "gratitude",
-            "value": 2289418.475,
-            "n": 27
+            "value": 3093085.56,
+            "n": 26
           },
           {
             "key": "heroism",
             "value": 3438756.84,
-            "n": 42
+            "n": 36
           },
           {
             "key": "humor",
-            "value": 118750.475,
-            "n": 11
+            "value": 220471.22,
+            "n": 8
           },
           {
             "key": "urgency",
-            "value": 220471.22,
-            "n": 49
+            "value": 220652.19,
+            "n": 39
           }
         ],
         "cta_amount": [
           {
             "key": "donate_link",
             "value": null,
-            "n": 12
+            "n": 11
           },
           {
             "key": "jar",
-            "value": 220471.22,
-            "n": 49
+            "value": 220652.19,
+            "n": 38
           },
           {
             "key": "merch",
-            "value": null,
-            "n": 1
-          },
-          {
-            "key": "qr",
             "value": null,
             "n": 1
           },
@@ -5534,13 +5547,13 @@
           },
           {
             "key": "blogger",
-            "value": 1572404.28,
-            "n": 21
+            "value": 220833.16,
+            "n": 11
           },
           {
             "key": "brand",
-            "value": 188577.11,
-            "n": 20
+            "value": 156683.0,
+            "n": 19
           },
           {
             "key": "celebrity",
@@ -5549,25 +5562,25 @@
           },
           {
             "key": "official",
-            "value": 7634856.0,
-            "n": 29
+            "value": 10012711.62,
+            "n": 27
           },
           {
             "key": "soldier",
             "value": 35000.0,
-            "n": 10
+            "n": 9
           }
         ],
         "channel_amount": [
           {
             "key": "facebook",
-            "value": 183171.085,
-            "n": 9
+            "value": 70952.0,
+            "n": 8
           },
           {
             "key": "instagram",
-            "value": 183171.085,
-            "n": 8
+            "value": 70952.0,
+            "n": 7
           },
           {
             "key": "irl",
@@ -5576,8 +5589,8 @@
           },
           {
             "key": "telegram",
-            "value": 312055.0,
-            "n": 82
+            "value": 295390.17,
+            "n": 68
           },
           {
             "key": "threads",
@@ -5586,8 +5599,8 @@
           },
           {
             "key": "tiktok",
-            "value": 70952.0,
-            "n": 3
+            "value": 36618.5,
+            "n": 2
           },
           {
             "key": "web",
@@ -5597,7 +5610,7 @@
           {
             "key": "youtube",
             "value": 70952.0,
-            "n": 13
+            "n": 12
           }
         ],
         "tone_engagement": [
@@ -5608,40 +5621,40 @@
           },
           {
             "key": "emotional",
-            "value": 880.0,
-            "n": 51
+            "value": 769.0,
+            "n": 42
           },
           {
             "key": "gratitude",
             "value": 772.0,
-            "n": 27
+            "n": 26
           },
           {
             "key": "heroism",
-            "value": 1880.0,
-            "n": 42
+            "value": 922.5,
+            "n": 36
           },
           {
             "key": "humor",
-            "value": 215000.0,
-            "n": 11
+            "value": 3940.0,
+            "n": 8
           },
           {
             "key": "urgency",
-            "value": 2170.0,
-            "n": 49
+            "value": 880.0,
+            "n": 39
           }
         ],
         "channel_engagement": [
           {
             "key": "facebook",
-            "value": 2460.0,
-            "n": 9
+            "value": 2945.0,
+            "n": 8
           },
           {
             "key": "instagram",
-            "value": 2315.0,
-            "n": 8
+            "value": 2460.0,
+            "n": 7
           },
           {
             "key": "irl",
@@ -5650,8 +5663,8 @@
           },
           {
             "key": "telegram",
-            "value": 1880.0,
-            "n": 82
+            "value": 868.0,
+            "n": 68
           },
           {
             "key": "threads",
@@ -5660,8 +5673,8 @@
           },
           {
             "key": "tiktok",
-            "value": 2090.0,
-            "n": 3
+            "value": 1498.5,
+            "n": 2
           },
           {
             "key": "web",
@@ -5670,8 +5683,8 @@
           },
           {
             "key": "youtube",
-            "value": 3430.0,
-            "n": 13
+            "value": 3740.0,
+            "n": 12
           }
         ]
       },
@@ -5685,39 +5698,39 @@
           {
             "key": "emotional",
             "value": 1.0,
-            "n": 51
+            "n": 42
           },
           {
             "key": "gratitude",
             "value": 1.0,
-            "n": 27
+            "n": 26
           },
           {
             "key": "heroism",
             "value": 1.0,
-            "n": 42
+            "n": 36
           },
           {
             "key": "humor",
             "value": null,
-            "n": 11
+            "n": 8
           },
           {
             "key": "urgency",
             "value": 1.0,
-            "n": 49
+            "n": 39
           }
         ],
         "channels": [
           {
             "key": "facebook",
             "value": 1.0,
-            "n": 9
+            "n": 8
           },
           {
             "key": "instagram",
             "value": 1.0,
-            "n": 8
+            "n": 7
           },
           {
             "key": "irl",
@@ -5727,7 +5740,7 @@
           {
             "key": "telegram",
             "value": 1.0,
-            "n": 82
+            "n": 68
           },
           {
             "key": "threads",
@@ -5737,7 +5750,7 @@
           {
             "key": "tiktok",
             "value": 1.0,
-            "n": 3
+            "n": 2
           },
           {
             "key": "web",
@@ -5747,7 +5760,7 @@
           {
             "key": "youtube",
             "value": 1.0,
-            "n": 13
+            "n": 12
           }
         ]
       }
@@ -5759,7 +5772,7 @@
           {
             "key": "telegram",
             "score": 1.0,
-            "n": 57
+            "n": 43
           },
           {
             "key": "web",
@@ -5769,17 +5782,17 @@
           {
             "key": "facebook",
             "score": 1.0,
-            "n": 6
+            "n": 5
           },
           {
             "key": "instagram",
             "score": 1.0,
-            "n": 5
+            "n": 4
           },
           {
             "key": "tiktok",
             "score": 1.0,
-            "n": 3
+            "n": 2
           },
           {
             "key": "threads",
@@ -5793,20 +5806,25 @@
           },
           {
             "key": "youtube",
-            "score": 0.9903555237804818,
-            "n": 8
+            "score": 0.9889777414634077,
+            "n": 7
           }
         ],
         "tone": [
           {
             "key": "urgency",
             "score": 1.0,
-            "n": 36
+            "n": 26
+          },
+          {
+            "key": "humor",
+            "score": 1.0,
+            "n": 6
           },
           {
             "key": "gratitude",
             "score": 1.0,
-            "n": 14
+            "n": 13
           },
           {
             "key": "data_transparent",
@@ -5814,26 +5832,21 @@
             "n": 4
           },
           {
-            "key": "humor",
-            "score": 1.0,
-            "n": 9
-          },
-          {
             "key": "emotional",
-            "score": 0.9977307114777603,
-            "n": 34
+            "score": 0.9969137676097541,
+            "n": 25
           },
           {
             "key": "heroism",
-            "score": 0.997339454835995,
-            "n": 29
+            "score": 0.9966453995758198,
+            "n": 23
           }
         ],
         "form_factor": [
           {
             "key": "text",
             "score": 1.0,
-            "n": 54
+            "n": 40
           },
           {
             "key": "image",
@@ -5842,8 +5855,8 @@
           },
           {
             "key": "video",
-            "score": 0.992985835476714,
-            "n": 11
+            "score": 0.9922844190243854,
+            "n": 10
           }
         ],
         "goal": [
@@ -5855,7 +5868,7 @@
           {
             "key": "military",
             "score": 1.0,
-            "n": 45
+            "n": 31
           },
           {
             "key": "medical",
@@ -5899,9 +5912,9 @@
           },
           {
             "key": "military",
-            "recent_n": 45,
+            "recent_n": 31,
             "prior_n": 23,
-            "momentum": 22,
+            "momentum": 8,
             "recent_resonance": 1.0
           },
           {
@@ -5915,16 +5928,16 @@
         "channel": [
           {
             "key": "facebook",
-            "recent_n": 6,
+            "recent_n": 5,
             "prior_n": 3,
-            "momentum": 3,
+            "momentum": 2,
             "recent_resonance": 1.0
           },
           {
             "key": "instagram",
-            "recent_n": 5,
+            "recent_n": 4,
             "prior_n": 3,
-            "momentum": 2,
+            "momentum": 1,
             "recent_resonance": 1.0
           },
           {
@@ -5936,9 +5949,9 @@
           },
           {
             "key": "telegram",
-            "recent_n": 57,
+            "recent_n": 43,
             "prior_n": 25,
-            "momentum": 32,
+            "momentum": 18,
             "recent_resonance": 1.0
           },
           {
@@ -5950,9 +5963,9 @@
           },
           {
             "key": "tiktok",
-            "recent_n": 3,
+            "recent_n": 2,
             "prior_n": 0,
-            "momentum": 3,
+            "momentum": 2,
             "recent_resonance": 1.0
           },
           {
@@ -5964,10 +5977,10 @@
           },
           {
             "key": "youtube",
-            "recent_n": 8,
+            "recent_n": 7,
             "prior_n": 5,
-            "momentum": 3,
-            "recent_resonance": 0.8767131308344263
+            "momentum": 2,
+            "recent_resonance": 0.85910072095363
           }
         ],
         "tone": [
@@ -5980,37 +5993,37 @@
           },
           {
             "key": "emotional",
-            "recent_n": 34,
+            "recent_n": 25,
             "prior_n": 17,
-            "momentum": 17,
-            "recent_resonance": 0.970991324902218
+            "momentum": 8,
+            "recent_resonance": 0.9605482018670165
           },
           {
             "key": "gratitude",
-            "recent_n": 14,
+            "recent_n": 13,
             "prior_n": 13,
-            "momentum": 1,
+            "momentum": 0,
             "recent_resonance": 1.0
           },
           {
             "key": "heroism",
-            "recent_n": 29,
+            "recent_n": 23,
             "prior_n": 13,
-            "momentum": 16,
-            "recent_resonance": 0.9659898291957039
+            "momentum": 10,
+            "recent_resonance": 0.9571176107250179
           },
           {
             "key": "humor",
-            "recent_n": 9,
+            "recent_n": 6,
             "prior_n": 2,
-            "momentum": 7,
+            "momentum": 4,
             "recent_resonance": 1.0
           },
           {
             "key": "urgency",
-            "recent_n": 36,
+            "recent_n": 26,
             "prior_n": 13,
-            "momentum": 23,
+            "momentum": 13,
             "recent_resonance": 1.0
           }
         ]
@@ -6025,19 +6038,23 @@
       "goal": "other",
       "type": "jar",
       "channels": [
-        "telegram"
+        "telegram",
+        "youtube"
       ],
       "date_start": "2026-06-03",
       "date_end": "2026-06-08",
       "year": 2026,
       "form_factor": [
-        "text"
+        "text",
+        "video"
       ],
       "cta_type": "jar",
       "tone": [
         "urgency",
         "emotional",
-        "heroism"
+        "heroism",
+        "humor",
+        "gratitude"
       ],
       "face": "blogger",
       "cadence": "one_off",
@@ -6053,7 +6070,8 @@
       "is_campaign": true,
       "case_id": null,
       "partner_ids": [
-        "partner"
+        "partner",
+        "requiem_group"
       ],
       "provenance": {
         "reach": {
@@ -6162,7 +6180,7 @@
       },
       "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": null,
+      "verdict_reason": "relink: monobank jar tier-1",
       "extracted_at": "2026-06-07T13:08:33.065023+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
@@ -6404,75 +6422,6 @@
       "rel_resonance": 1.0,
       "themes": [
         "recon"
-      ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
-      "id": "camp-0697afba5ebc",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Глибокий Русоріз",
-      "goal": "military",
-      "type": "organic_social",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-03",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "heroism",
-        "urgency"
-      ],
-      "face": "blogger",
-      "cadence": "one_off",
-      "playbook_note": "Короткий мобілізуючий пост у Telegram-каналі з великою аудиторією (252k переглядів). Кампанія подана через сильний бойовий образ — «дорога смерті» та знищення ворожої логістики дронами Турета на відстані 50+ км. CTA прямий і конкретний: донат на іменний збір «Глибокий Русоріз». Підхід — емоційна героїзація дій операторів БпЛА для обґрунтування необхідності фінансування.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 252000.0,
-      "engagement": 252000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [
-        "requiem_group"
-      ],
-      "provenance": {
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59001",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59001",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59001",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T14:20:49.522745+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [
-        "fpv"
       ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
@@ -7267,8 +7216,8 @@
         "tiktok",
         "youtube"
       ],
-      "date_start": "2026-06-01",
-      "date_end": null,
+      "date_start": "2026-05-31",
+      "date_end": "2026-05-31",
       "year": 2026,
       "form_factor": [
         "text"
@@ -7285,12 +7234,12 @@
       "playbook_note": "Офіційний канал прикордонного підрозділу «Фенікс» оголосив збір на 1 млн грн на комплектуючі для дронів у символічну дату — перший день літа. Пост побудований на конкретизації доната (пропелер, батарея, камера) і риториці наближення Перемоги. CTA — пряме посилання на банку Monobank і номер картки; крос-посилання на Facebook, TikTok, YouTube, Instagram розширюють охоплення за межі Telegram.",
       "amount_uah": 70952.0,
       "amount_usd": null,
-      "goal_amount": 1000000.0,
+      "goal_amount": null,
       "reach": 2170.0,
       "engagement": 2170.0,
       "spend": null,
       "assets_count": null,
-      "goal_reached": null,
+      "goal_reached": true,
       "is_campaign": true,
       "case_id": null,
       "partner_ids": [
@@ -7505,9 +7454,9 @@
       "face": "blogger",
       "cadence": "one_off",
       "playbook_note": "Пост у Telegram-каналі активіста Сергія Стерненка побудований за схемою «результат → заклик»: спочатку повідомляються конкретні бойові успіхи підрозділу (збито Zala, 5 Герберів, 12 Шахедів), що слугує доказом ефективності збору, а потім аудиторія закликається задонатити на продовження роботи. Охоплення — 242k переглядів органічно, без платної реклами.",
-      "amount_uah": null,
+      "amount_uah": 220833.16,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 10000000.0,
       "reach": 242000.0,
       "engagement": 242000.0,
       "spend": null,
@@ -7534,11 +7483,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/8VKoiC3p6q",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "relink: monobank jar tier-1",
       "extracted_at": "2026-06-07T14:21:42.621237+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
@@ -7756,72 +7711,6 @@
       "verification_status": "auto",
       "verdict_reason": null,
       "extracted_at": "2026-06-07T19:05:19.996198+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [
-        "vehicles"
-      ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
-      "id": "camp-4416e0695a2a",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Русоріз",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-03",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "qr",
-      "tone": [
-        "humor"
-      ],
-      "face": "blogger",
-      "cadence": "ongoing",
-      "playbook_note": "Публікація є гумористичним спостереженням автора: російська пропагандистка Скабєєва несвідомо транслює контент українського блогера ssternenko у своєму ефірі, однак замазує QR-код на збір 'Русоріз' та додає власний підпис. Автор іронічно коментує ситуацію, зазначаючи, що ворожий медійник мимоволі став майданчиком для поширення українського контенту.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 239000.0,
-      "engagement": 239000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": false,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "reach": {
-          "source_url": "https://t.me/ssternenko/58997",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/58997",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/58997",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T14:19:25.528659+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
@@ -8194,72 +8083,6 @@
       "jar_span_days": null
     },
     {
-      "id": "camp-64ebd0069ebf",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Ранковий донат — щоб росіяни горіли більше",
-      "goal": "military",
-      "type": "organic_social",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-06",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "donate_link",
-      "tone": [
-        "emotional",
-        "urgency",
-        "humor"
-      ],
-      "face": "blogger",
-      "cadence": "one_off",
-      "playbook_note": "Короткий емоційний заклик до ранкового донату у форматі одного речення з гумористично-агресивним фреймінгом ('щоб росіяни горіли більше'). Публікація зроблена вранці, що вказує на свідоме використання часового слоту для максимального охоплення аудиторії каналу. Без конкретної суми, банки чи посилання у тексті — ймовірно, посилання містилося в закріпленому повідомленні або профілі каналу.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 215000.0,
-      "engagement": 215000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59066",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59066",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59066",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T13:12:00.705557+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
       "id": "camp-6917f8ba9bf8",
       "actor_id": "auto-0c58a8e1",
       "title": "EcoFlow DELTA 3 Max для підрозділів ДССТ — гуманітарне розмінування",
@@ -8401,72 +8224,6 @@
       "themes": [
         "vehicles"
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
-      "id": "camp-7125ff9a684f",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Перегляди в YouTube конвертуються у русоріз",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram",
-        "youtube"
-      ],
-      "date_start": "2026-06-04",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "emotional",
-        "urgency"
-      ],
-      "face": "blogger",
-      "cadence": "one_off",
-      "playbook_note": "Блогер (ssternenko) зв'язує монетизацію YouTube-переглядів із поповненням банки на русоріз: публічно кидає донат від себе і від імені підписника, закликаючи аудиторію повторити дію. Механіка peer-pressure через особистий приклад лідера думок.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 248000.0,
-      "engagement": 248000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59016",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59016",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59016",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T14:13:12.316196+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8836,72 +8593,6 @@
       "jar_span_days": null
     },
     {
-      "id": "camp-828b0b736a42",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Глибокий Русоріз — збір на оператори Турета",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-06",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "urgency",
-        "heroism",
-        "emotional"
-      ],
-      "face": "blogger",
-      "cadence": "one_off",
-      "playbook_note": "Короткий емоційний пост у Telegram-каналі ssternenko з акцентом на конкретний підрозділ (оператори Турета) та їхній вплив на ворожу логістику на Донеччині. Кампанія використовує бойовий слоган 'Глибокий Русоріз' як бренд збору, апелює до відчуття причетності аудиторії ('з вашою допомогою') та закликає до негайного донату через jar. Тон агресивно-мотиваційний, без розкриття фінансових деталей чи дедлайну.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 215000.0,
-      "engagement": 215000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59081",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59081",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59081",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T13:11:13.442000+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
       "id": "camp-8d533b4a86e9",
       "actor_id": "auto-0c58a8e1",
       "title": "Удар по АЗС у Херсонській області — заклик до підтримки",
@@ -9119,220 +8810,6 @@
       "jar_span_days": null
     },
     {
-      "id": "camp-9423f9714a3a",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Єдинозбір: дрони-перехоплювачі для Сил Оборони України",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-05-14",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "urgency",
-        "emotional"
-      ],
-      "face": "official",
-      "cadence": "ongoing",
-      "playbook_note": "Пост публікується вранці після важкої ночі масованої атаки ракетами та шахедами. Фонд використовує актуальний бойовий контекст, щоб нагадати аудиторії про регулярні закупівлі дронів-перехоплювачів у рамках програми Єдинозбір. Підхід поєднує емоційну напругу моменту з конкретним прикладом ефективності зібраних коштів, спонукаючи до донату через прямий заклик.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 937.0,
-      "engagement": 937.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/prytulafoundation/4153",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/prytulafoundation/4153",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/prytulafoundation/4153",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T13:09:06.829354+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [
-        "fpv",
-        "interceptors"
-      ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
-      "id": "camp-9463238af7c2",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Розіграш тенісного м'ячика з автографом Марти Костюк",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-04",
-      "date_end": "2026-06-05",
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "emotional",
-        "urgency"
-      ],
-      "face": "blogger",
-      "cadence": "one_off",
-      "playbook_note": "Кампанія використовує спортивний інфопривід — вихід Марти Костюк до півфіналу Roland Garros — як механіку розіграшу: донат від 100 грн на діючу банку збору 'Поточний Русоріз' дає шанс виграти м'ячик з автографом спортсменки. Більший донат = більше шансів. Переможця оголошують наступного дня після матчу. Пост веде блогер ssternenko у своєму Telegram-каналі, органічне охоплення — 242 тис. переглядів.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 242000.0,
-      "engagement": 242000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [
-        "partner"
-      ],
-      "provenance": {
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59020",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59020",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59020",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T14:15:04.706695+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [
-        "vehicles"
-      ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
-      "id": "camp-9489d3c0e826",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Збір 1 млн грн на комплектуючі для дронів — підрозділ «Фенікс»",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram",
-        "facebook",
-        "tiktok",
-        "youtube",
-        "instagram"
-      ],
-      "date_start": "2026-05-31",
-      "date_end": "2026-05-31",
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": null,
-      "tone": [
-        "gratitude",
-        "heroism"
-      ],
-      "face": "official",
-      "cadence": "one_off",
-      "playbook_note": "Пост-звіт про успішно завершений збір коштів на дронові комплектуючі для прикордонного підрозділу 'Фенікс' ДПСУ. Текст побудований як подяка донорам із акцентом на бойовий ефект: кожна гривня конвертується в удари дронів по ворогу. Цільова сума 1 млн грн досягнута і оголошується публічно. Пост розміщено в день закриття збору.",
-      "amount_uah": 1000000.0,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 2090.0,
-      "engagement": 2090.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": true,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "amount_uah": {
-          "source_url": "https://t.me/feniksdpsu/1994",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://t.me/feniksdpsu/1994",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/feniksdpsu/1994",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal"
-        },
-        "engagement": {
-          "source_url": "https://t.me/feniksdpsu/1994",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T18:14:22.874384+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [
-        "fpv"
-      ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
       "id": "camp-94947e2e646e",
       "actor_id": "auto-0c58a8e1",
       "title": "Меморіал Героя України Павла Петриченка",
@@ -9507,7 +8984,7 @@
       "face": "official",
       "cadence": "ongoing",
       "playbook_note": "Пост публікується як звіт про результат попереднього збору «Щелепи»: донори отримують конкретний бойовий результат — знищення ворожого РЛС «Небо-СВУ» вартістю ~100 млн доларів. Підхід поєднує звітність перед донорами з негайним закликом до нового збору («убивчий тандем»), використовуючи ефект підтвердженої ефективності як мотиватор для повторного донату.",
-      "amount_uah": null,
+      "amount_uah": 12515882.81,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 744.0,
@@ -9536,11 +9013,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/Rmhzf7Ktw",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "confidence_overall": 0.95,
+      "verification_status": "verified",
+      "verdict_reason": "relink: monobank jar tier-1",
       "extracted_at": "2026-06-07T13:07:48.271550+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
@@ -10053,208 +9536,6 @@
       "jar_span_days": null
     },
     {
-      "id": "camp-b4b36f17ff43",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Донат на русоріз",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-06",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "emotional",
-        "gratitude",
-        "urgency"
-      ],
-      "face": "blogger",
-      "cadence": "one_off",
-      "playbook_note": "Короткий емоційний заклик у Telegram-каналі ssternenko з подякою військовим за бойові успіхи (удари по росії, знищення окупантів) як мотивацією для донату на збір 'русоріз'. Пост апелює до почуття вдячності та важливості підтримки, підсилюючи це словом 'ДУЖЕ' великими літерами для акцентування терміновості.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 230000.0,
-      "engagement": 230000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59073",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59073",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59073",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T13:10:54.918444+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
-      "id": "camp-b5faa2a5e18f",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Русоріз — Група Радість",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-05",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text",
-        "video"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "heroism",
-        "emotional",
-        "humor"
-      ],
-      "face": "blogger",
-      "cadence": "ongoing",
-      "playbook_note": "Пост-звіт від блогера ssternenko про бойові результати групи «Радість»: знищено 2 танки, баггі, автівку, 3 окупантів, гармату з укриттями. Гумористична ремарка про собаку на відео пом'якшує воєнний контекст. Структура «доведені конкретні результати → заклик донатити» підвищує довіру і конвертує перегляди у донати на збір «Русоріз».",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 242000.0,
-      "engagement": 242000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59045",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59045",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59045",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T14:10:36.979175+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [
-        "vehicles"
-      ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
-      "id": "camp-bc179bc4bb07",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Збір іде тяжко — заклик до донату від ssternenko",
-      "goal": "military",
-      "type": "organic_social",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-04",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "emotional",
-        "urgency"
-      ],
-      "face": "blogger",
-      "cadence": "one_off",
-      "playbook_note": "Короткий емоційний пост від автора каналу ssternenko: фіксує, що поточний збір іде повільно, і апелює до аудиторії через образ ворога («це вигідно тільки росіянам»). CTA мінімалістичний — «зробіть гарний донат» без конкретного посилання в тексті поста. Підхід тримається на особистому авторитеті та емоційному тиску, а не на деталях кампанії.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 246000.0,
-      "engagement": 246000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59018",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59018",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59018",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T14:14:09.023494+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [
-        "vehicles"
-      ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
       "id": "camp-c11d1c510859",
       "actor_id": "auto-0c58a8e1",
       "title": "Недільний донат — зарядні станції та батареї для дронів Black Guards 72-ї ОМБр та РУБпАК 59-ї ОШБр",
@@ -10621,74 +9902,6 @@
         "interceptors",
         "recon"
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
-      "id": "camp-d0fac08c90dc",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Донат на Русоріз — оператори Перун, Новопавлівський напрямок",
-      "goal": "military",
-      "type": "organic_social",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-04",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "video",
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "emotional",
-        "heroism"
-      ],
-      "face": "soldier",
-      "cadence": "one_off",
-      "playbook_note": "Короткий органічний пост у Telegram-каналі блогера (~236k перегляди). Підхід: бойовий відеодоказ ефективності (знищення 3 мотоциклістів, квадроциклістів та 2 окупантів) слугує соціальним доказом перед CTA. Заклик 'задонатити на Русоріз' подається як логічний наслідок побаченого результату, не як абстрактне прохання. Інтрига ('радимо додивитися до кінця') підвищує досмотр відео перед CTA.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 236000.0,
-      "engagement": 236000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [
-        "partner"
-      ],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59022",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59022",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59022",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T14:15:49.068877+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -11340,71 +10553,6 @@
       "jar_span_days": null
     },
     {
-      "id": "camp-e0824d336484",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Донат на русоріз — червень 2026",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-04",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "humor",
-        "urgency"
-      ],
-      "face": "blogger",
-      "cadence": "one_off",
-      "playbook_note": "Короткий текстовий пост-заклик у Telegram-каналі блогера ssternenko. Апелює до моменту виплати авансу в червні як тригеру для донату. Слово «русоріз» виступає неформальним маркером мети — збір на військове обладнання. Без зазначення конкретної банки, суми чи дедлайну — чистий органічний CTA на аудиторію каналу.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 247000.0,
-      "engagement": 247000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/59015",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/ssternenko/59015",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/59015",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T14:12:21.928988+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
-    },
-    {
       "id": "camp-e48650f529f8",
       "actor_id": "auto-0c58a8e1",
       "title": "Логістика 8-ї артилерійської бригади «Гармаш» — транспорт для передової",
@@ -11968,77 +11116,6 @@
       "themes": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
-    },
-    {
-      "id": "camp-f40e0b51190d",
-      "actor_id": "auto-800587d3",
-      "title": "За кожен вибух ворог має чути відповідь",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-01",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "urgency",
-        "heroism"
-      ],
-      "face": "brand",
-      "cadence": "one_off",
-      "playbook_note": "Коротке емоційне повідомлення з одним реченням-гаслом і прямим посиланням на банку monobank. Фонд Притули використовує мінімалістичний текстовий формат у Telegram без медіа-вкладень, спираючись на силу лаконічного бойового меседжу для спонукання до донату.",
-      "amount_uah": 12515882.81,
-      "amount_usd": null,
-      "goal_amount": 800000000.0,
-      "reach": 653.0,
-      "engagement": 653.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "is_campaign": true,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/prytulafoundation/4200",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/prytulafoundation/4200",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/prytulafoundation/4200",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "amount_uah": {
-          "source_url": "https://send.monobank.ua/jar/Rmhzf7Ktw",
-          "confidence": 0.95,
-          "tier": 1,
-          "note": "monobank jar tier-1"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "verified",
-      "verdict_reason": "relink: monobank jar tier-1",
-      "extracted_at": "2026-06-07T12:22:28.963025+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
-      "themes": [],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
     }
   ],
   "creatives": [
@@ -12159,7 +11236,7 @@
     },
     {
       "id": "camp-0697afba5ebc-a0",
-      "campaign_id": "camp-0697afba5ebc",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Справжня дорога смерті утворюється на одній з трас Донеччини ☄️ Оператори Турета знищують ворожий транспорт, залітаючи на відстань 50+ кілометрів! Допоможіть створити кілл-зону для російської логістики. Донатьте на Глибокий Русоріз!",
@@ -12710,7 +11787,7 @@
     },
     {
       "id": "camp-4416e0695a2a-a0",
-      "campaign_id": "camp-4416e0695a2a",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Скабєєва поступово починає штовхати у себе в етері українську пропаганду. Ось вже і мої випуски транслює.  Тільки чомусь QR на Русоріз замазала і підпис додала.   Наступного разу хай закликає донатити.",
@@ -12894,7 +11971,7 @@
     },
     {
       "id": "camp-64ebd0069ebf-a0",
-      "campaign_id": "camp-64ebd0069ebf",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Кому подобається, як горить росія, обов'язково зробіть ранковий донат! Щоб росіяни горіли більше !",
@@ -13009,7 +12086,7 @@
     },
     {
       "id": "camp-7125ff9a684f-a0",
-      "campaign_id": "camp-7125ff9a684f",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Перегляди в YouTube конвертуються у русоріз 🚀 Кидаю донат від себе та за когось з вас. Робіть так само !",
@@ -13186,7 +12263,7 @@
     },
     {
       "id": "camp-828b0b736a42-a0",
-      "campaign_id": "camp-828b0b736a42",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "На Донеччині у росіян стабільність. Оператори Турета планомірно вирізають російську логістику з вашою допомогою ☄️ Ворожий транспорт має горіти! Донатьте на Глибокий Русоріз!",
@@ -13301,7 +12378,7 @@
     },
     {
       "id": "camp-9423f9714a3a-a0",
-      "campaign_id": "camp-9423f9714a3a",
+      "campaign_id": "camp-02dcaa6af241",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Важка ніч і не менш важкий ранок. Багато ракет і ще більше шахедів. 🐲 🐲 Значна кількість шахедів зараз знищується дронами перехоплювачами, які в рамках Єдинозбору, ми регулярно закуповуємо і передаємо Силам Оборони України Донать на свою безпеку",
@@ -13324,7 +12401,7 @@
     },
     {
       "id": "camp-9463238af7c2-a0",
-      "campaign_id": "camp-9463238af7c2",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "РОЗІГРАШ ТЕНІСНОГО М'ЯЧИКА З АВТОГРАФОМ МАРТИ КОСТЮК Історична подія для українського тенісу: Марта Костюк вийшла до півфіналу Roland Garros і стала першою українкою в історії Відкритої ери, яка дійшла до цієї стадії турніру в одиночному розряді. Матч відбудеться сьогодні, 4 червня. На честь цього розігруємо тенісний м'ячик з автографом Марти 🥰 Щоб взяти участь, донатьте від 100 грн на банку Поточного Русорізу . Більше донатів — більше шансів виграти. Якщо донатите не з карти моно, вказуйте номер телефону в призначенні платежу. Переможця оголосимо наступного дня після матчу. Підтримуйте Марту. Підтримуйте військо. Примножуйте Русоріз 🔪",
@@ -13347,7 +12424,7 @@
     },
     {
       "id": "camp-9489d3c0e826-a0",
-      "campaign_id": "camp-9489d3c0e826",
+      "campaign_id": "camp-2654e4792a42",
       "platform": "telegram",
       "format": "text",
       "copy_text": "👑 1 мільйон гривень на те, щоб ворог не просувався углиб нашої Держави. 1 мільйон гривень на те, що прикордонний підрозділ \"Фенікс\" міг якісно виконувати свою бойову роботу й відкинути ворога за українські кордони. Ви це зробили — спільними зусиллями ми зібрали 1 мільйон гривень на комплектуючі для дронів. Для того, щоб кожен наш борт бив ще сильніше, летів ще вище та ще глибше у тил противника. Дякуємо кожному, хто долучився до цього збору! Ваш донат — наша зброя! Слава Україні!",
@@ -13715,7 +12792,7 @@
     },
     {
       "id": "camp-b4b36f17ff43-a0",
-      "campaign_id": "camp-b4b36f17ff43",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Подякуйте нашим військовим за удари по росії та за винищення окупантів на фронті донатом на русоріз! Це ДУЖЕ важливо!",
@@ -13761,7 +12838,7 @@
     },
     {
       "id": "camp-b5faa2a5e18f-a0",
-      "campaign_id": "camp-b5faa2a5e18f",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "video",
       "copy_text": "Група Радість розносить усе вороже, що трапляється на її шляху! З вашою допомогою воїни уразили 2 танки, баггі, автівку, 3 окупантів та гармату з укриттями 💥 Жодна собака, на відміну від росіян, на відео не постраждала. Донатьте на Русоріз !",
@@ -13784,7 +12861,7 @@
     },
     {
       "id": "camp-bc179bc4bb07-a0",
-      "campaign_id": "camp-bc179bc4bb07",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "🥲 Якось в нас сьогодні тяжко йде збір, а це вигідно тільки сраним росіянам! Не засмучуйте мене, зробіть гарний донат !",
@@ -13945,7 +13022,7 @@
     },
     {
       "id": "camp-cb718cbb4acf-a0",
-      "campaign_id": "camp-0697afba5ebc",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Російська логістика в небезпеці навіть вночі! Requiem Group відпрацювала по ворожій техніці, серед якої навіть два БТРи, на відстані 45+ кілометрів ☄️ Українську довгу руку не спинити! Донатьте на Глибокий Русоріз!",
@@ -13991,7 +13068,7 @@
     },
     {
       "id": "camp-d0fac08c90dc-a0",
-      "campaign_id": "camp-d0fac08c90dc",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "video",
       "copy_text": "Дуже гарний Русоріз на Новопавлівському напрямку! Оператори Перун знищили трьох мотоциклістів, квадроциклістів та ще двох окупантів з вашою допомогою 💥 Радимо вам додивитися відео до кінця 🤭 І на Русоріз задонатити!",
@@ -14244,7 +13321,7 @@
     },
     {
       "id": "camp-e0824d336484-a0",
-      "campaign_id": "camp-e0824d336484",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Ви вже донатили цього літа? Хто в червні отримав аванс, діліться на русоріз!",
@@ -14526,7 +13603,7 @@
     },
     {
       "id": "camp-f40e0b51190d-a0",
-      "campaign_id": "camp-f40e0b51190d",
+      "campaign_id": "camp-970d9f195370",
       "platform": "telegram",
       "format": "text",
       "copy_text": "За кожен вибух ворог має чути відповідь. https://send.monobank.ua/jar/Rmhzf7Ktw",
