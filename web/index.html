@@ -439,6 +439,11 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
    <button data-relev="all" id="relev-all">усі</button>
    <button data-relev="topical" id="relev-topical">тільки топічне</button>
   </div>
+  <h4>призначення донату</h4>
+  <div class="seg" id="dest-seg" style="margin-bottom:6px">
+   <button data-dest="with" id="dest-with" class="on">лише з призначенням</button>
+   <button data-dest="all" id="dest-all">усі</button>
+  </div>
   <button class="resetbtn" id="c-reset">скинути фільтри</button>
   <div class="matchline" id="c-matchline"></div>
  </aside>
@@ -646,6 +651,7 @@ const CSEL={themes:new Set(),channels:new Set(),form_factor:new Set(),tone:new S
 let cVerifMode="all", saAxis="tone", saMetric="engagement", srAxis="tone";
 let recencyDays=30; // 0 = усі
 let campRelevMode="zbory"; // "zbory" | "all" | "topical"
+let campDestMode="with"; // "with" = лише з призначенням (за замовч.) | "all"
 const openCamps=new Set();
 let chSaBar=null, chSaFe=null, chSaGc=null, chSrBar=null, campChartsInit=false;
 let chScatter=null;
@@ -1126,6 +1132,8 @@ function filteredCamps(){
   // is_campaign фільтр: false=топічний прихований за замовч.; null=невідомо -> видимий
   if(campRelevMode==="zbory"&&c.is_campaign===false)return false;
   if(campRelevMode==="topical"&&c.is_campaign!==false)return false;
+  // призначення донату: за замовч. ховаємо лише ті, де has_destination===false (null/true видимі)
+  if(campDestMode==="with"&&c.has_destination===false)return false;
   if(CSEL.themes.size&&!(c.themes||[]).some(x=>CSEL.themes.has(x)))return false;
   if(CSEL.channels.size&&!(c.channels||[]).some(x=>CSEL.channels.has(x)))return false;
   if(CSEL.form_factor.size&&!(c.form_factor||[]).some(x=>CSEL.form_factor.has(x)))return false;
@@ -2009,8 +2017,13 @@ function setupCampaignView(){
   campRelevMode=b.dataset.relev;
   document.querySelectorAll("#relev-seg button").forEach(x=>x.classList.toggle("on",x===b));
   updateCamp();});
+ // Dest segmented control (лише з призначенням / усі)
+ document.querySelectorAll("#dest-seg button").forEach(b=>b.onclick=()=>{
+  campDestMode=b.dataset.dest;
+  document.querySelectorAll("#dest-seg button").forEach(x=>x.classList.toggle("on",x===b));
+  updateCamp();});
  document.getElementById("c-reset").onclick=()=>{
-  Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";recencyDays=30;campRelevMode="zbory";
+  Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";recencyDays=30;campRelevMode="zbory";campDestMode="with";
   ceSearch="";ceSort="rel_resonance";mxAxis="channels";corrAxis="tone";timelineMetric="count";timelineSplit="total";
   document.querySelectorAll("#corr-axis button").forEach(b=>b.classList.toggle("on",b.dataset.ax==="tone"));
   document.querySelectorAll("#timeline-metric button").forEach(b=>b.classList.toggle("on",b.dataset.m==="count"));
@@ -2021,6 +2034,7 @@ function setupCampaignView(){
   document.getElementById("cf-verif").value="all";
   document.querySelectorAll("#recency-seg button").forEach(b=>b.classList.toggle("on",b.dataset.days==="30"));
   document.querySelectorAll("#relev-seg button").forEach(b=>b.classList.toggle("on",b.dataset.relev==="zbory"));
+  document.querySelectorAll("#dest-seg button").forEach(b=>b.classList.toggle("on",b.dataset.dest==="with"));
   renderCampChipsTheme();
   renderCampChips("cf-channels",CHANNEL_ORDER,"channels");renderCampChips("cf-form",FORM_ORDER,"form_factor");
   renderCampChips("cf-tone",TONE_ORDER,"tone");renderCampChips("cf-face",FACE_ORDER,"face");renderCampChips("cf-type",CTYPE_ORDER,"type");
