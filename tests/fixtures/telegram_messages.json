@@ -1,0 +1,38 @@
+[
+  {
+    "id": 12345,
+    "channel": "povernys_zhyvym",
+    "message": "Збираємо на броньований автомобіль для медиків. Сума: 1 500 000 грн. Банка: https://send.monobank.ua/jar/abc. Реквізити в коментарях.",
+    "date": "2023-08-15T12:00:00",
+    "views": 85000,
+    "forwards": 3200,
+    "reactions": {
+      "results": [
+        {"emoticon": "❤️", "count": 12000},
+        {"emoticon": "🔥", "count": 4500}
+      ]
+    }
+  },
+  {
+    "id": 12346,
+    "channel": "povernys_zhyvym",
+    "message": "ЗВІТ: зібрали 750 000 грн за 3 дні! Дякуємо всім донатерам. Залишилось ще 250 000 грн до цілі.",
+    "date": "2023-08-18T09:30:00",
+    "views": 42000,
+    "forwards": 1100,
+    "reactions": {
+      "results": [
+        {"emoticon": "👏", "count": 8900}
+      ]
+    }
+  },
+  {
+    "id": 12347,
+    "channel": "united24media",
+    "message": "Телетон UNITED24 — збір на FPV дрони. Мета: 5 000 000 грн.",
+    "date": "2023-07-01T10:00:00",
+    "views": null,
+    "forwards": null,
+    "reactions": null
+  }
+]

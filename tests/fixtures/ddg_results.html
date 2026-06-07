@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div class="results">
+  <!-- Real result -->
+  <div class="result">
+    <a class="result__a" href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fexample.com%2Fpage1&rut=abc">Page 1</a>
+  </div>
+  <!-- Another real result -->
+  <div class="result">
+    <a class="result__a" href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fexample.org%2Fpage2&rut=def">Page 2</a>
+  </div>
+  <!-- Ad result — should be skipped -->
+  <div class="result result--ad">
+    <a class="result__a" href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fads.example.com%2F&rut=ghi">Ad</a>
+  </div>
+  <!-- Internal DDG link — should be skipped -->
+  <div class="result">
+    <a class="result__a" href="https://duckduckgo.com/settings">DDG internal</a>
+  </div>
+  <!-- Duplicate of page1 — should be deduped -->
+  <div class="result">
+    <a class="result__a" href="//duckduckgo.com/l/?uddg=https%3A%2F%2Fexample.com%2Fpage1&rut=zzz">Page 1 dup</a>
+  </div>
+</div>
+</body>
+</html>

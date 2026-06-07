@@ -12,7 +12,7 @@ import statistics
 from datetime import date
 from typing import Sequence
 
-from .schema import Case
+from .schema import Campaign, Case
 
 # ── утилітки ──────────────────────────────────────────────────────────────────
 
@@ -345,3 +345,123 @@ def kpis(cases: Sequence[Case]) -> dict:
         "median_speed": median_speed,
         "n_verified": n_verified,
     }
+
+
+# ── CAMPAIGN ANALYTICS (F5) ─────────────────────────────────────────────────
+#
+# Глибока аналітика стилю/каналу/формату над сутністю Campaign. Ті самі
+# принципи, що й вище: мульти-теги вносять внесок у кожен тег; honest null
+# (None-метрика пропускається, ніколи не 0); кожна клітинка несе N.
+
+# Скалярні осі: одне значення на кампанію (None → кампанія не потрапляє в жодну клітинку).
+_CAMPAIGN_SCALAR_AXES = {"type", "cta_type", "face", "cadence", "goal_category"}
+# Мульти-значні осі: список тегів на кампанію (кампанія вносить внесок у кожен тег).
+_CAMPAIGN_MULTI_AXES = {"channels", "form_factor", "tone"}
+
+
+def _campaign_axis_values(c: Campaign, axis: str) -> list[str]:
+    """Повертає список значень осі для кампанії (0..N).
+
+    Скалярна вісь → [value] або [] якщо None.
+    Мульти-вісь → список тегів (може бути []).
+    """
+    if axis == "goal_category":
+        return [goal_category(c.goal)]
+    if axis in _CAMPAIGN_SCALAR_AXES:
+        val = getattr(c, axis, None)
+        return [val] if val is not None else []
+    if axis in _CAMPAIGN_MULTI_AXES:
+        vals = getattr(c, axis, None) or []
+        return list(vals)
+    return []
+
+
+def _campaign_metric_value(c: Campaign, metric: str) -> float | None:
+    """Значення метрики кампанії (None якщо немає даних — honest null)."""
+    if metric == "count":
+        return 1.0
+    val = getattr(c, metric, None)
+    return float(val) if val is not None else None
+
+
+def _aggregate_metric(camps: list[Campaign], metric: str) -> float | None:
+    """Агрегує метрику над кампаніями клітинки.
+
+    count → сума (тобто N з метрикою). amount_uah/reach/engagement → сума
+    лише непорожніх значень; якщо всіх None → None (НЕ 0).
+    """
+    if metric == "count":
+        return float(len(camps))
+    vals = [v for v in (_campaign_metric_value(c, metric) for c in camps) if v is not None]
+    return sum(vals) if vals else None
+
+
+def campaign_crosstab(
+    campaigns: Sequence[Campaign],
+    *,
+    axis_a: str,
+    axis_b: str,
+    metric: str,
+) -> list[dict]:
+    """Крос-таб кампаній: клітинки {a, b, value, n}.
+
+    Args:
+        campaigns: список кампаній.
+        axis_a, axis_b: осі — скалярні (type, cta_type, face, cadence,
+            goal_category) або мульти-значні (channels, form_factor, tone).
+        metric: "amount_uah" | "count" | "reach" | "engagement".
+
+    Мульти-значна вісь → кампанія вносить внесок у кожен тег. `n` рахує
+    кампанії за клітинкою; `value` агрегує метрику (None-значення метрики
+    пропускаються — honest null, не 0). Якщо всі метрики None → value=None.
+    """
+    cells: dict[tuple[str, str], list[Campaign]] = {}
+    for c in campaigns:
+        a_vals = _campaign_axis_values(c, axis_a)
+        b_vals = _campaign_axis_values(c, axis_b)
+        for a in a_vals:
+            for b in b_vals:
+                cells.setdefault((a, b), []).append(c)
+
+    result: list[dict] = []
+    for (a, b), cell_camps in sorted(cells.items()):
+        result.append(
+            {
+                "a": a,
+                "b": b,
+                "value": _aggregate_metric(cell_camps, metric),
+                "n": len(cell_camps),
+            }
+        )
+    return result
+
+
+def campaign_axis_summary(
+    campaigns: Sequence[Campaign],
+    *,
+    axis: str,
+    metric: str,
+) -> list[dict]:
+    """Однією віссю: {key, value, n} для барів стиль-аналітики.
+
+    count → value = N (кількість кампаній під ключем).
+    Інші метрики (amount_uah/reach/engagement) → value = МЕДІАНА непорожніх
+    значень (None якщо всі порожні — honest null). `n` рахує всі кампанії під
+    ключем (включно з тими, що мають None-метрику).
+    """
+    buckets: dict[str, list[Campaign]] = {}
+    for c in campaigns:
+        for key in _campaign_axis_values(c, axis):
+            buckets.setdefault(key, []).append(c)
+
+    result: list[dict] = []
+    for key, camps in sorted(buckets.items()):
+        if metric == "count":
+            value: float | None = float(len(camps))
+        else:
+            vals = [
+                v for v in (_campaign_metric_value(c, metric) for c in camps) if v is not None
+            ]
+            value = statistics.median(vals) if vals else None
+        result.append({"key": key, "value": value, "n": len(camps)})
+    return result

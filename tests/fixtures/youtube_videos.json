@@ -1,0 +1,50 @@
+{
+  "kind": "youtube#videoListResponse",
+  "etag": "test_etag_videos",
+  "pageInfo": {
+    "totalResults": 2,
+    "resultsPerPage": 50
+  },
+  "items": [
+    {
+      "kind": "youtube#video",
+      "etag": "etag_v1",
+      "id": "abc123XYZ",
+      "snippet": {
+        "publishedAt": "2023-08-15T10:00:00Z",
+        "channelId": "UCchannel1",
+        "title": "Телетон UNITED24: збір на дрони для ЗСУ",
+        "description": "Збираємо на FPV дрони. Банка: https://send.monobank.ua/jar/abc",
+        "channelTitle": "UNITED24 Media",
+        "tags": ["telethon", "ukraine", "fpv"],
+        "categoryId": "25"
+      },
+      "statistics": {
+        "viewCount": "1500000",
+        "likeCount": "45000",
+        "dislikeCount": "0",
+        "favoriteCount": "0",
+        "commentCount": "3200"
+      }
+    },
+    {
+      "kind": "youtube#video",
+      "etag": "etag_v2",
+      "id": "def456QRS",
+      "snippet": {
+        "publishedAt": "2023-09-01T08:30:00Z",
+        "channelId": "UCchannel2",
+        "title": "Збір на броньований евакуаційний автомобіль",
+        "description": "Допоможіть зібрати на MRAP для медиків",
+        "channelTitle": "Повернись живим",
+        "tags": ["збір", "армія"],
+        "categoryId": "25"
+      },
+      "statistics": {
+        "viewCount": "320000",
+        "likeCount": "12000",
+        "commentCount": "890"
+      }
+    }
+  ]
+}

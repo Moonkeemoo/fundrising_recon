@@ -1,4 +1,4 @@
-"""Дедуплікація і злиття кейсів: dedup_key + merge_cases.
+"""Дедуплікація і злиття кейсів: dedup_key + merge_cases + campaign_dedup_key + merge_campaigns.
 
 dedup_key(case) -> str:
   Нормалізований ключ: host+path URL (без query/fragment) або slug actor_id+title.
@@ -10,6 +10,18 @@ merge_cases(cases) -> list[Case]:
   - провенанс: зберігається переможець кожного поля;
   - date_start: найраніша; date_end: найпізніша;
   - confidence_overall: max confidence збережених числових полів.
+
+campaign_dedup_key(campaign) -> str:
+  Аналогічно до dedup_key, але для Campaign (використовує url якщо є, інакше actor_id+title).
+
+merge_campaigns(campaigns) -> list[Campaign]:
+  Кампанії з однаковим ключем зливаються:
+  - числові метрики: перемагає провенанс з найвищим tier;
+  - channels / tone / form_factor: union;
+  - date_start: найраніша; date_end: найпізніша;
+  - confidence_overall: max confidence збережених числових полів.
+  ПРИМІТКА: Креативи зберігаються окремо по campaign_id; re-pointing при злитті
+  виконується на рівні store (поза scоpом цієї функції).
 """
 from __future__ import annotations
 
@@ -17,7 +29,7 @@ import re
 import unicodedata
 from urllib.parse import urlparse
 
-from .schema import Case
+from .schema import Campaign, Case
 
 # Числові поля, які конкурують за провенанс
 _NUMERIC_FIELDS = ("amount_uah", "amount_usd", "goal_amount")
@@ -164,6 +176,145 @@ def merge_cases(cases: list[Case]) -> list[Case]:
         merged = group[0]
         for other in group[1:]:
             merged = _merge_two(merged, other)
+        result.append(merged)
+
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Campaign dedup (F3)
+# ---------------------------------------------------------------------------
+
+# Числові метрики кампанії, що конкурують за провенанс
+_CAMPAIGN_NUMERIC_FIELDS = ("amount_uah", "amount_usd", "reach", "engagement", "spend", "assets_count")
+
+
+def _stable_key(text: str) -> str:
+    """Будує стабільний ключ: ASCII-slug + sha256-хеш (8 hex) оригіналу.
+
+    sha256-хеш завжди додається щоб зберегти унікальність для Cyrillic-текстів,
+    де slug деградує до actor_id і не розрізняє різні назви.
+    """
+    import hashlib
+
+    slug = _slugify(text)
+    h = hashlib.sha256(text.lower().encode("utf-8")).hexdigest()[:8]
+    return f"{slug}_{h}" if slug else h
+
+
+def campaign_dedup_key(campaign: Campaign) -> str:
+    """Повертає нормалізований ключ кампанії для дедуплікації.
+
+    Campaign не має поля url, тому ключ будується як slug з actor_id + title.
+    Для тестів на Cyrillic-текстах додається sha256-хеш (8 hex) щоб зберегти унікальність.
+    Це стабільний ключ: кампанія того самого актора з тією самою назвою — один запис.
+    """
+    return _stable_key(f"{campaign.actor_id}_{campaign.title}")
+
+
+def _campaign_merge_two(a: Campaign, b: Campaign) -> Campaign:
+    """Зливає дві кампанії. Повертає новий об'єкт Campaign."""
+    new_provenance: dict = dict(a.provenance)
+    new_values: dict = {}
+
+    for field in _CAMPAIGN_NUMERIC_FIELDS:
+        tier_a = _tier_of(a.provenance, field)
+        tier_b = _tier_of(b.provenance, field)
+        val_a = getattr(a, field)
+        val_b = getattr(b, field)
+
+        if val_b is not None and (val_a is None or tier_b < tier_a):
+            new_values[field] = val_b
+            new_provenance[field] = b.provenance[field]
+        elif val_a is not None:
+            new_values[field] = val_a
+            if field in a.provenance:
+                new_provenance[field] = a.provenance[field]
+        else:
+            new_values[field] = None
+
+        if val_a is not None and val_b is not None and tier_a == tier_b:
+            conf_a = _confidence_of(a.provenance, field)
+            conf_b = _confidence_of(b.provenance, field)
+            if conf_b > conf_a:
+                new_values[field] = val_b
+                if field in b.provenance:
+                    new_provenance[field] = b.provenance[field]
+
+    # channels / tone / form_factor: union (зберігаємо порядок)
+    merged_channels = list(dict.fromkeys((a.channels or []) + (b.channels or [])))
+    merged_tone = list(dict.fromkeys((a.tone or []) + (b.tone or [])))
+    merged_form_factor = list(dict.fromkeys((a.form_factor or []) + (b.form_factor or [])))
+
+    # Дати
+    dates_start = [d for d in (a.date_start, b.date_start) if d]
+    dates_end = [d for d in (a.date_end, b.date_end) if d]
+    merged_date_start = min(dates_start) if dates_start else None
+    merged_date_end = max(dates_end) if dates_end else None
+
+    # confidence_overall
+    confidences = [
+        _confidence_of(new_provenance, f)
+        for f in _CAMPAIGN_NUMERIC_FIELDS
+        if new_values.get(f) is not None and f in new_provenance
+    ]
+    new_confidence = max(confidences) if confidences else max(a.confidence_overall, b.confidence_overall)
+
+    # id: менший за алфавітом для детермінізму
+    merged_id = a.id if a.id <= b.id else b.id
+
+    return Campaign(
+        id=merged_id,
+        actor_id=a.actor_id or b.actor_id,
+        title=a.title or b.title,
+        goal=a.goal or b.goal,
+        type=a.type or b.type,
+        channels=merged_channels,
+        date_start=merged_date_start,
+        date_end=merged_date_end,
+        year=a.year or b.year,
+        form_factor=merged_form_factor,
+        cta_type=a.cta_type or b.cta_type,
+        tone=merged_tone,
+        face=a.face or b.face,
+        cadence=a.cadence or b.cadence,
+        playbook_note=a.playbook_note or b.playbook_note,
+        amount_uah=new_values.get("amount_uah"),
+        amount_usd=new_values.get("amount_usd"),
+        reach=new_values.get("reach"),
+        engagement=new_values.get("engagement"),
+        spend=new_values.get("spend"),
+        assets_count=new_values.get("assets_count"),
+        case_id=a.case_id or b.case_id,
+        partner_ids=list(dict.fromkeys((a.partner_ids or []) + (b.partner_ids or []))),
+        provenance=new_provenance,
+        confidence_overall=new_confidence,
+        verification_status=a.verification_status,
+        extracted_at=a.extracted_at or b.extracted_at,
+        extracted_by_model=a.extracted_by_model or b.extracted_by_model,
+    )
+
+
+def merge_campaigns(campaigns: list[Campaign]) -> list[Campaign]:
+    """Дедуплікує і зливає кампанії за ключем campaign_dedup_key.
+
+    Для кожного унікального ключа послідовно зливає всі кампанії з цим ключем.
+    ПРИМІТКА: Злиття Campaign не переприв'язує CreativeAsset — це відповідальність
+    store. Surviving campaign зберігає менший id (алфавітно) для детермінізму.
+    """
+    if not campaigns:
+        return []
+
+    groups: dict[str, list[Campaign]] = {}
+    for c in campaigns:
+        key = campaign_dedup_key(c)
+        groups.setdefault(key, []).append(c)
+
+    result: list[Campaign] = []
+    for group in groups.values():
+        merged = group[0]
+        for other in group[1:]:
+            merged = _campaign_merge_two(merged, other)
         result.append(merged)
 
     return result

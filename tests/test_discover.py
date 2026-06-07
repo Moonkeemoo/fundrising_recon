@@ -96,3 +96,11 @@ def test_discover_no_search_returns_empty():
     # Не передаємо _search — використовується live stub; очікуємо список (можливо порожній)
     result = discover_sources("тест тема", existing_urls=set())
     assert isinstance(result, list)
+
+
+def test_live_search_wired_to_duckduckgo():
+    """_live_search imports search.duckduckgo — wiring is testable via source inspection."""
+    import inspect
+    from fundrec import discover
+    src = inspect.getsource(discover._live_search)
+    assert "duckduckgo" in src

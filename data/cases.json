@@ -4275,6 +4275,1818 @@
     },
     "generated_for_counts": {
       "total_cases": 18
+    },
+    "campaign_analytics": {
+      "kpis": {
+        "n_campaigns": 12,
+        "n_creatives": 18,
+        "n_partners": 5,
+        "total_spend": 2720000.0
+      },
+      "crosstabs": {
+        "channel_volume": [
+          {
+            "a": "facebook",
+            "b": "energy",
+            "value": 80000000.0,
+            "n": 1
+          },
+          {
+            "a": "facebook",
+            "b": "humanitarian",
+            "value": 160000000.0,
+            "n": 2
+          },
+          {
+            "a": "facebook",
+            "b": "military",
+            "value": 600000000.0,
+            "n": 1
+          },
+          {
+            "a": "facebook",
+            "b": "reconstruction",
+            "value": 45000000.0,
+            "n": 1
+          },
+          {
+            "a": "instagram",
+            "b": "animals",
+            "value": 8000000.0,
+            "n": 1
+          },
+          {
+            "a": "instagram",
+            "b": "humanitarian",
+            "value": 22000000.0,
+            "n": 1
+          },
+          {
+            "a": "instagram",
+            "b": "medical",
+            "value": 18000000.0,
+            "n": 1
+          },
+          {
+            "a": "instagram",
+            "b": "military",
+            "value": 600000000.0,
+            "n": 1
+          },
+          {
+            "a": "irl",
+            "b": "medical",
+            "value": 18000000.0,
+            "n": 1
+          },
+          {
+            "a": "irl",
+            "b": "other",
+            "value": 15000000.0,
+            "n": 1
+          },
+          {
+            "a": "telegram",
+            "b": "humanitarian",
+            "value": 62000000.0,
+            "n": 2
+          },
+          {
+            "a": "telegram",
+            "b": "military",
+            "value": 285000000.0,
+            "n": 2
+          },
+          {
+            "a": "tiktok",
+            "b": "animals",
+            "value": 8000000.0,
+            "n": 1
+          },
+          {
+            "a": "web",
+            "b": "humanitarian",
+            "value": 160000000.0,
+            "n": 2
+          },
+          {
+            "a": "web",
+            "b": "military",
+            "value": 235000000.0,
+            "n": 1
+          },
+          {
+            "a": "web",
+            "b": "other",
+            "value": 15000000.0,
+            "n": 1
+          },
+          {
+            "a": "web",
+            "b": "reconstruction",
+            "value": 45000000.0,
+            "n": 1
+          },
+          {
+            "a": "web",
+            "b": "science_education",
+            "value": 12000000.0,
+            "n": 1
+          },
+          {
+            "a": "youtube",
+            "b": "energy",
+            "value": 80000000.0,
+            "n": 1
+          },
+          {
+            "a": "youtube",
+            "b": "military",
+            "value": 50000000.0,
+            "n": 1
+          }
+        ],
+        "format_engagement": [
+          {
+            "a": "banner",
+            "b": "facebook",
+            "value": 165000.0,
+            "n": 2
+          },
+          {
+            "a": "banner",
+            "b": "telegram",
+            "value": 70000.0,
+            "n": 1
+          },
+          {
+            "a": "banner",
+            "b": "web",
+            "value": 165000.0,
+            "n": 2
+          },
+          {
+            "a": "carousel",
+            "b": "facebook",
+            "value": 310000.0,
+            "n": 1
+          },
+          {
+            "a": "carousel",
+            "b": "instagram",
+            "value": 310000.0,
+            "n": 2
+          },
+          {
+            "a": "carousel",
+            "b": "telegram",
+            "value": null,
+            "n": 1
+          },
+          {
+            "a": "image",
+            "b": "instagram",
+            "value": 210000.0,
+            "n": 3
+          },
+          {
+            "a": "image",
+            "b": "irl",
+            "value": null,
+            "n": 2
+          },
+          {
+            "a": "image",
+            "b": "telegram",
+            "value": null,
+            "n": 2
+          },
+          {
+            "a": "image",
+            "b": "tiktok",
+            "value": 210000.0,
+            "n": 1
+          },
+          {
+            "a": "image",
+            "b": "web",
+            "value": null,
+            "n": 2
+          },
+          {
+            "a": "longread",
+            "b": "facebook",
+            "value": 40000.0,
+            "n": 1
+          },
+          {
+            "a": "longread",
+            "b": "telegram",
+            "value": null,
+            "n": 1
+          },
+          {
+            "a": "longread",
+            "b": "web",
+            "value": 40000.0,
+            "n": 3
+          },
+          {
+            "a": "stream",
+            "b": "telegram",
+            "value": 420000.0,
+            "n": 1
+          },
+          {
+            "a": "stream",
+            "b": "youtube",
+            "value": 420000.0,
+            "n": 1
+          },
+          {
+            "a": "text",
+            "b": "irl",
+            "value": null,
+            "n": 1
+          },
+          {
+            "a": "text",
+            "b": "web",
+            "value": null,
+            "n": 1
+          },
+          {
+            "a": "video",
+            "b": "facebook",
+            "value": 645000.0,
+            "n": 5
+          },
+          {
+            "a": "video",
+            "b": "instagram",
+            "value": 520000.0,
+            "n": 2
+          },
+          {
+            "a": "video",
+            "b": "telegram",
+            "value": 70000.0,
+            "n": 1
+          },
+          {
+            "a": "video",
+            "b": "tiktok",
+            "value": 210000.0,
+            "n": 1
+          },
+          {
+            "a": "video",
+            "b": "web",
+            "value": 205000.0,
+            "n": 3
+          },
+          {
+            "a": "video",
+            "b": "youtube",
+            "value": 130000.0,
+            "n": 1
+          }
+        ],
+        "tone_virality": [
+          {
+            "a": "data_transparent",
+            "b": "facebook",
+            "value": 645000.0,
+            "n": 5
+          },
+          {
+            "a": "data_transparent",
+            "b": "instagram",
+            "value": 310000.0,
+            "n": 1
+          },
+          {
+            "a": "data_transparent",
+            "b": "telegram",
+            "value": 70000.0,
+            "n": 2
+          },
+          {
+            "a": "data_transparent",
+            "b": "web",
+            "value": 205000.0,
+            "n": 5
+          },
+          {
+            "a": "data_transparent",
+            "b": "youtube",
+            "value": 130000.0,
+            "n": 1
+          },
+          {
+            "a": "emotional",
+            "b": "facebook",
+            "value": 40000.0,
+            "n": 1
+          },
+          {
+            "a": "emotional",
+            "b": "instagram",
+            "value": 210000.0,
+            "n": 2
+          },
+          {
+            "a": "emotional",
+            "b": "irl",
+            "value": null,
+            "n": 1
+          },
+          {
+            "a": "emotional",
+            "b": "tiktok",
+            "value": 210000.0,
+            "n": 1
+          },
+          {
+            "a": "emotional",
+            "b": "web",
+            "value": 40000.0,
+            "n": 1
+          },
+          {
+            "a": "gratitude",
+            "b": "facebook",
+            "value": 70000.0,
+            "n": 1
+          },
+          {
+            "a": "gratitude",
+            "b": "instagram",
+            "value": null,
+            "n": 2
+          },
+          {
+            "a": "gratitude",
+            "b": "irl",
+            "value": null,
+            "n": 2
+          },
+          {
+            "a": "gratitude",
+            "b": "telegram",
+            "value": 70000.0,
+            "n": 2
+          },
+          {
+            "a": "gratitude",
+            "b": "web",
+            "value": 70000.0,
+            "n": 2
+          },
+          {
+            "a": "heroism",
+            "b": "facebook",
+            "value": 440000.0,
+            "n": 2
+          },
+          {
+            "a": "heroism",
+            "b": "instagram",
+            "value": 310000.0,
+            "n": 1
+          },
+          {
+            "a": "heroism",
+            "b": "irl",
+            "value": null,
+            "n": 1
+          },
+          {
+            "a": "heroism",
+            "b": "web",
+            "value": null,
+            "n": 1
+          },
+          {
+            "a": "heroism",
+            "b": "youtube",
+            "value": 130000.0,
+            "n": 1
+          },
+          {
+            "a": "humor",
+            "b": "instagram",
+            "value": 210000.0,
+            "n": 1
+          },
+          {
+            "a": "humor",
+            "b": "telegram",
+            "value": 420000.0,
+            "n": 1
+          },
+          {
+            "a": "humor",
+            "b": "tiktok",
+            "value": 210000.0,
+            "n": 1
+          },
+          {
+            "a": "humor",
+            "b": "youtube",
+            "value": 420000.0,
+            "n": 1
+          },
+          {
+            "a": "urgency",
+            "b": "instagram",
+            "value": null,
+            "n": 1
+          },
+          {
+            "a": "urgency",
+            "b": "telegram",
+            "value": 420000.0,
+            "n": 3
+          },
+          {
+            "a": "urgency",
+            "b": "web",
+            "value": null,
+            "n": 1
+          },
+          {
+            "a": "urgency",
+            "b": "youtube",
+            "value": 420000.0,
+            "n": 1
+          }
+        ],
+        "face_volume": [
+          {
+            "a": "anonymous",
+            "b": "animals",
+            "value": 8000000.0,
+            "n": 1
+          },
+          {
+            "a": "blogger",
+            "b": "military",
+            "value": 50000000.0,
+            "n": 1
+          },
+          {
+            "a": "brand",
+            "b": "energy",
+            "value": 80000000.0,
+            "n": 1
+          },
+          {
+            "a": "brand",
+            "b": "humanitarian",
+            "value": 40000000.0,
+            "n": 1
+          },
+          {
+            "a": "brand",
+            "b": "military",
+            "value": 235000000.0,
+            "n": 1
+          },
+          {
+            "a": "celebrity",
+            "b": "humanitarian",
+            "value": 22000000.0,
+            "n": 1
+          },
+          {
+            "a": "celebrity",
+            "b": "military",
+            "value": 600000000.0,
+            "n": 1
+          },
+          {
+            "a": "celebrity",
+            "b": "other",
+            "value": 15000000.0,
+            "n": 1
+          },
+          {
+            "a": "official",
+            "b": "humanitarian",
+            "value": 120000000.0,
+            "n": 1
+          },
+          {
+            "a": "official",
+            "b": "medical",
+            "value": 18000000.0,
+            "n": 1
+          },
+          {
+            "a": "official",
+            "b": "reconstruction",
+            "value": 45000000.0,
+            "n": 1
+          },
+          {
+            "a": "official",
+            "b": "science_education",
+            "value": 12000000.0,
+            "n": 1
+          }
+        ],
+        "goal_channel": [
+          {
+            "a": "animals",
+            "b": "instagram",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "animals",
+            "b": "tiktok",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "energy",
+            "b": "facebook",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "energy",
+            "b": "youtube",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "humanitarian",
+            "b": "facebook",
+            "value": 2.0,
+            "n": 2
+          },
+          {
+            "a": "humanitarian",
+            "b": "instagram",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "humanitarian",
+            "b": "telegram",
+            "value": 2.0,
+            "n": 2
+          },
+          {
+            "a": "humanitarian",
+            "b": "web",
+            "value": 2.0,
+            "n": 2
+          },
+          {
+            "a": "medical",
+            "b": "instagram",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "medical",
+            "b": "irl",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "military",
+            "b": "facebook",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "military",
+            "b": "instagram",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "military",
+            "b": "telegram",
+            "value": 2.0,
+            "n": 2
+          },
+          {
+            "a": "military",
+            "b": "web",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "military",
+            "b": "youtube",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "other",
+            "b": "irl",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "other",
+            "b": "web",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "reconstruction",
+            "b": "facebook",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "reconstruction",
+            "b": "web",
+            "value": 1.0,
+            "n": 1
+          },
+          {
+            "a": "science_education",
+            "b": "web",
+            "value": 1.0,
+            "n": 1
+          }
+        ]
+      },
+      "axis_summaries": {
+        "tone_amount": [
+          {
+            "key": "data_transparent",
+            "value": 80000000.0,
+            "n": 7
+          },
+          {
+            "key": "emotional",
+            "value": 18000000.0,
+            "n": 3
+          },
+          {
+            "key": "gratitude",
+            "value": 20000000.0,
+            "n": 4
+          },
+          {
+            "key": "heroism",
+            "value": 80000000.0,
+            "n": 3
+          },
+          {
+            "key": "humor",
+            "value": 29000000.0,
+            "n": 2
+          },
+          {
+            "key": "urgency",
+            "value": 50000000.0,
+            "n": 3
+          }
+        ],
+        "cta_amount": [
+          {
+            "key": "auction",
+            "value": 15000000.0,
+            "n": 1
+          },
+          {
+            "key": "donate_link",
+            "value": 100000000.0,
+            "n": 4
+          },
+          {
+            "key": "jar",
+            "value": 36000000.0,
+            "n": 4
+          },
+          {
+            "key": "merch",
+            "value": 40000000.0,
+            "n": 1
+          },
+          {
+            "key": "qr",
+            "value": 18000000.0,
+            "n": 1
+          },
+          {
+            "key": "subscription",
+            "value": 12000000.0,
+            "n": 1
+          }
+        ],
+        "face_amount": [
+          {
+            "key": "anonymous",
+            "value": 8000000.0,
+            "n": 1
+          },
+          {
+            "key": "blogger",
+            "value": 50000000.0,
+            "n": 1
+          },
+          {
+            "key": "brand",
+            "value": 80000000.0,
+            "n": 3
+          },
+          {
+            "key": "celebrity",
+            "value": 22000000.0,
+            "n": 3
+          },
+          {
+            "key": "official",
+            "value": 31500000.0,
+            "n": 4
+          }
+        ],
+        "channel_amount": [
+          {
+            "key": "facebook",
+            "value": 80000000.0,
+            "n": 5
+          },
+          {
+            "key": "instagram",
+            "value": 20000000.0,
+            "n": 4
+          },
+          {
+            "key": "irl",
+            "value": 16500000.0,
+            "n": 2
+          },
+          {
+            "key": "telegram",
+            "value": 45000000.0,
+            "n": 4
+          },
+          {
+            "key": "tiktok",
+            "value": 8000000.0,
+            "n": 1
+          },
+          {
+            "key": "web",
+            "value": 42500000.0,
+            "n": 6
+          },
+          {
+            "key": "youtube",
+            "value": 65000000.0,
+            "n": 2
+          }
+        ]
+      }
     }
-  }
+  },
+  "campaigns": [
+    {
+      "id": "k-comeback-fpv-tg",
+      "actor_id": "comeback",
+      "title": "FPV-дрони: телеграм-збір",
+      "goal": "military/fpv",
+      "type": "organic_social",
+      "channels": [
+        "telegram",
+        "web"
+      ],
+      "date_start": "2024-02-01",
+      "date_end": "2024-03-15",
+      "year": 2024,
+      "form_factor": [
+        "longread",
+        "image"
+      ],
+      "cta_type": "jar",
+      "tone": [
+        "urgency",
+        "data_transparent"
+      ],
+      "face": "brand",
+      "cadence": "series",
+      "playbook_note": "Серійні апдейти з лічильником; банка як основний CTA.",
+      "amount_uah": 235000000.0,
+      "amount_usd": null,
+      "reach": 1800000.0,
+      "engagement": null,
+      "spend": null,
+      "assets_count": null,
+      "case_id": "s-comeback-fpv",
+      "partner_ids": [
+        "p-novapay"
+      ],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://savelife.in.ua/reports/sample",
+          "confidence": 0.7,
+          "tier": 1,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.7,
+      "verification_status": "cross-checked",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-corp-food-2026",
+      "actor_id": "corp_monobank",
+      "title": "Продуктові набори: корп-матч",
+      "goal": "humanitarian/food",
+      "type": "mixed",
+      "channels": [
+        "facebook",
+        "web",
+        "telegram"
+      ],
+      "date_start": "2026-01-10",
+      "date_end": "2026-02-10",
+      "year": 2026,
+      "form_factor": [
+        "banner",
+        "video"
+      ],
+      "cta_type": "merch",
+      "tone": [
+        "data_transparent",
+        "gratitude"
+      ],
+      "face": "brand",
+      "cadence": "ongoing",
+      "playbook_note": "Корпоративний матч; мерч як винагорода донора.",
+      "amount_uah": 40000000.0,
+      "amount_usd": null,
+      "reach": 1500000.0,
+      "engagement": 70000.0,
+      "spend": 300000.0,
+      "assets_count": null,
+      "case_id": "s-corp-food",
+      "partner_ids": [
+        "p-brand-rozetka",
+        "p-monobank"
+      ],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.7,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.7,
+      "verification_status": "verified",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-diaspora-auction",
+      "actor_id": "diaspora_ca",
+      "title": "Аукціон артефактів",
+      "goal": "other/auction",
+      "type": "event_irl",
+      "channels": [
+        "irl",
+        "web"
+      ],
+      "date_start": "2024-12-01",
+      "date_end": "2024-12-20",
+      "year": 2024,
+      "form_factor": [
+        "image",
+        "text"
+      ],
+      "cta_type": "auction",
+      "tone": [
+        "heroism",
+        "gratitude"
+      ],
+      "face": "celebrity",
+      "cadence": "one_off",
+      "playbook_note": "Аукціонна гейміфікація; діаспорна аудиторія.",
+      "amount_uah": 15000000.0,
+      "amount_usd": null,
+      "reach": null,
+      "engagement": null,
+      "spend": 80000.0,
+      "assets_count": null,
+      "case_id": "s-other-auction",
+      "partner_ids": [
+        "p-celeb-usyk"
+      ],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://send.monobank.ua/jar/sample",
+          "confidence": 0.5,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.5,
+      "verification_status": "auto",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-energy-grid-ad",
+      "actor_id": "united24",
+      "title": "Трансформатори: відео-кампанія",
+      "goal": "energy/grid",
+      "type": "online_ad",
+      "channels": [
+        "youtube",
+        "facebook"
+      ],
+      "date_start": "2023-12-01",
+      "date_end": "2024-02-01",
+      "year": 2023,
+      "form_factor": [
+        "video"
+      ],
+      "cta_type": "donate_link",
+      "tone": [
+        "data_transparent",
+        "heroism"
+      ],
+      "face": "brand",
+      "cadence": "series",
+      "playbook_note": "Корпоративний матч; відео про критичну інфраструктуру.",
+      "amount_uah": 80000000.0,
+      "amount_usd": null,
+      "reach": 2700000.0,
+      "engagement": 130000.0,
+      "spend": 620000.0,
+      "assets_count": null,
+      "case_id": "s-energy-grid",
+      "partner_ids": [
+        "p-monobank",
+        "p-novapay"
+      ],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.7,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.7,
+      "verification_status": "verified",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-medbat-irl",
+      "actor_id": "medbat",
+      "title": "Благодійний забіг (офлайн)",
+      "goal": "medical/evacuation",
+      "type": "event_irl",
+      "channels": [
+        "irl",
+        "instagram"
+      ],
+      "date_start": "2023-05-10",
+      "date_end": "2023-05-10",
+      "year": 2023,
+      "form_factor": [
+        "image"
+      ],
+      "cta_type": "qr",
+      "tone": [
+        "emotional",
+        "gratitude"
+      ],
+      "face": "official",
+      "cadence": "one_off",
+      "playbook_note": "Офлайн-подія з QR-донатами; емоційні історії медиків.",
+      "amount_uah": 18000000.0,
+      "amount_usd": null,
+      "reach": null,
+      "engagement": null,
+      "spend": 120000.0,
+      "assets_count": null,
+      "case_id": "s-medbat-ambulance",
+      "partner_ids": [
+        "p-brand-rozetka",
+        "p-org-uarmy"
+      ],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://hospitallers.life/sample",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.6,
+      "verification_status": "verified",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-prytula-sat-ad",
+      "actor_id": "prytula",
+      "title": "Супутник: рекламна кампанія",
+      "goal": "military/recon",
+      "type": "online_ad",
+      "channels": [
+        "facebook",
+        "instagram"
+      ],
+      "date_start": "2022-06-20",
+      "date_end": "2022-06-26",
+      "year": 2022,
+      "form_factor": [
+        "video",
+        "carousel"
+      ],
+      "cta_type": "donate_link",
+      "tone": [
+        "data_transparent",
+        "heroism"
+      ],
+      "face": "celebrity",
+      "cadence": "one_off",
+      "playbook_note": "Прозорі цифри + публічна особа; короткий дедлайн підсилює терміновість.",
+      "amount_uah": 600000000.0,
+      "amount_usd": null,
+      "reach": 4200000.0,
+      "engagement": 310000.0,
+      "spend": 850000.0,
+      "assets_count": null,
+      "case_id": "s-prytula-satellite",
+      "partner_ids": [
+        "p-celeb-usyk",
+        "p-monobank"
+      ],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://www.facebook.com/ads/library/sample1",
+          "confidence": 0.8,
+          "tier": 1,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.8,
+      "verification_status": "verified",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-prytula-winter",
+      "actor_id": "prytula",
+      "title": "Генератори: зимовий збір",
+      "goal": "humanitarian",
+      "type": "jar",
+      "channels": [
+        "instagram",
+        "telegram"
+      ],
+      "date_start": "2024-10-01",
+      "date_end": "2024-11-15",
+      "year": 2024,
+      "form_factor": [
+        "carousel",
+        "image"
+      ],
+      "cta_type": "jar",
+      "tone": [
+        "urgency",
+        "gratitude"
+      ],
+      "face": "celebrity",
+      "cadence": "one_off",
+      "playbook_note": "Сезонна терміновість (зима/блекаути); банка-CTA.",
+      "amount_uah": 22000000.0,
+      "amount_usd": null,
+      "reach": null,
+      "engagement": null,
+      "spend": null,
+      "assets_count": null,
+      "case_id": "s-hum-winter",
+      "partner_ids": [],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://send.monobank.ua/jar/sample",
+          "confidence": 0.5,
+          "tier": 1,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.5,
+      "verification_status": "auto",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-sci-grants",
+      "actor_id": "united24",
+      "title": "Гранти науковцям: вебсторінка",
+      "goal": "science_education",
+      "type": "platform",
+      "channels": [
+        "web"
+      ],
+      "date_start": "2025-02-01",
+      "date_end": "2025-05-01",
+      "year": 2025,
+      "form_factor": [
+        "longread"
+      ],
+      "cta_type": "subscription",
+      "tone": [
+        "data_transparent"
+      ],
+      "face": "official",
+      "cadence": "ongoing",
+      "playbook_note": "Підписна модель регулярних внесків на гранти.",
+      "amount_uah": 12000000.0,
+      "amount_usd": null,
+      "reach": null,
+      "engagement": null,
+      "spend": null,
+      "assets_count": null,
+      "case_id": "s-sci-grant",
+      "partner_ids": [],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.4,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.4,
+      "verification_status": "auto",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-sternenko-stream",
+      "actor_id": "sternenko",
+      "title": "Стрім-марафон на дрони",
+      "goal": "military/fpv",
+      "type": "telethon",
+      "channels": [
+        "youtube",
+        "telegram"
+      ],
+      "date_start": "2023-11-01",
+      "date_end": "2023-11-05",
+      "year": 2023,
+      "form_factor": [
+        "stream"
+      ],
+      "cta_type": "jar",
+      "tone": [
+        "urgency",
+        "humor"
+      ],
+      "face": "blogger",
+      "cadence": "series",
+      "playbook_note": "Лайв-стрім із гейміфікацією донатів; мемна подача.",
+      "amount_uah": 50000000.0,
+      "amount_usd": null,
+      "reach": 2500000.0,
+      "engagement": 420000.0,
+      "spend": null,
+      "assets_count": null,
+      "case_id": "s-sternenko-drones",
+      "partner_ids": [],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://t.me/ssternenko/sample",
+          "confidence": 0.6,
+          "tier": 3,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.6,
+      "verification_status": "cross-checked",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-u24-school",
+      "actor_id": "united24",
+      "title": "Відбудова школи: лонгрід",
+      "goal": "reconstruction/school",
+      "type": "platform",
+      "channels": [
+        "web",
+        "facebook"
+      ],
+      "date_start": "2024-04-01",
+      "date_end": "2024-08-01",
+      "year": 2024,
+      "form_factor": [
+        "longread",
+        "video"
+      ],
+      "cta_type": "donate_link",
+      "tone": [
+        "data_transparent",
+        "emotional"
+      ],
+      "face": "official",
+      "cadence": "one_off",
+      "playbook_note": "Платформний лонгрід «до/після»; прогрес відбудови.",
+      "amount_uah": 45000000.0,
+      "amount_usd": null,
+      "reach": 900000.0,
+      "engagement": 40000.0,
+      "spend": 210000.0,
+      "assets_count": null,
+      "case_id": "s-recon-school",
+      "partner_ids": [
+        "p-brand-rozetka"
+      ],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.7,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.7,
+      "verification_status": "cross-checked",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-u24-shelter-ad",
+      "actor_id": "united24",
+      "title": "Прихистки: банерна кампанія",
+      "goal": "humanitarian/idp",
+      "type": "online_ad",
+      "channels": [
+        "facebook",
+        "web"
+      ],
+      "date_start": "2022-09-01",
+      "date_end": "2022-12-01",
+      "year": 2022,
+      "form_factor": [
+        "banner",
+        "video"
+      ],
+      "cta_type": "donate_link",
+      "tone": [
+        "data_transparent"
+      ],
+      "face": "official",
+      "cadence": "ongoing",
+      "playbook_note": "Державний бренд; банери з чіткою статистикою потреб.",
+      "amount_uah": 120000000.0,
+      "amount_usd": null,
+      "reach": 3100000.0,
+      "engagement": 95000.0,
+      "spend": 540000.0,
+      "assets_count": null,
+      "case_id": "s-u24-shelter",
+      "partner_ids": [
+        "p-monobank"
+      ],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://u24.gov.ua/news/sample",
+          "confidence": 0.7,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.7,
+      "verification_status": "verified",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    },
+    {
+      "id": "k-uanimals-rescue",
+      "actor_id": "uanimals",
+      "title": "Порятунок тварин: емоційна серія",
+      "goal": "animals/rescue",
+      "type": "organic_social",
+      "channels": [
+        "instagram",
+        "tiktok"
+      ],
+      "date_start": "2023-03-01",
+      "date_end": "2023-04-15",
+      "year": 2023,
+      "form_factor": [
+        "video",
+        "image"
+      ],
+      "cta_type": "jar",
+      "tone": [
+        "emotional",
+        "humor"
+      ],
+      "face": "anonymous",
+      "cadence": "series",
+      "playbook_note": "Емоційні відео порятунку; мерч/NFT як додатковий CTA.",
+      "amount_uah": 8000000.0,
+      "amount_usd": null,
+      "reach": 1200000.0,
+      "engagement": 210000.0,
+      "spend": null,
+      "assets_count": null,
+      "case_id": "s-animals-shelter",
+      "partner_ids": [],
+      "provenance": {
+        "campaign": {
+          "source_url": "https://uanimals.org/sample",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      },
+      "confidence_overall": 0.6,
+      "verification_status": "cross-checked",
+      "verdict_reason": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна.",
+      "extracted_at": null,
+      "extracted_by_model": "ILLUSTRATIVE-SAMPLE"
+    }
+  ],
+  "creatives": [
+    {
+      "id": "cr-animals-1",
+      "campaign_id": "k-uanimals-rescue",
+      "platform": "tiktok",
+      "format": "video",
+      "copy_text": "Витягли песика з-під завалів — дивись до кінця.",
+      "hook": "Він чекав на порятунок 3 дні",
+      "cta": "Банка у профілі",
+      "media_url": "https://picsum.photos/seed/91/320/180",
+      "published": "2023-03-03",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": 2100000.0,
+      "likes": 410000.0,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/91",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-animals-2",
+      "campaign_id": "k-uanimals-rescue",
+      "platform": "instagram",
+      "format": "image",
+      "copy_text": "До/після: притулок отримав корм на місяць.",
+      "hook": "Твій донат = миска корму",
+      "cta": "Підтримати",
+      "media_url": "https://picsum.photos/seed/92/320/180",
+      "published": "2023-04-01",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": null,
+      "likes": 55000.0,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/92",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-auction-1",
+      "campaign_id": "k-diaspora-auction",
+      "platform": "web",
+      "format": "image",
+      "copy_text": "Лот №1: шеврон із автографом. Торги відкрито.",
+      "hook": "Володій історією — підтримай фронт",
+      "cta": "Зробити ставку",
+      "media_url": "https://picsum.photos/seed/111/320/180",
+      "published": "2024-12-02",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": null,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/111",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-food-1",
+      "campaign_id": "k-corp-food-2026",
+      "platform": "facebook",
+      "format": "banner",
+      "copy_text": "Купуєш — компанія подвоює. Продуктові набори родинам.",
+      "hook": "Твій внесок × 2",
+      "cta": "Замовити з мерчем",
+      "media_url": "https://picsum.photos/seed/121/320/180",
+      "published": "2026-01-12",
+      "impressions_range": "500K-1M",
+      "spend_range": "$50K-100K",
+      "views": null,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/121",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-food-2",
+      "campaign_id": "k-corp-food-2026",
+      "platform": "telegram",
+      "format": "video",
+      "copy_text": "Як виглядає набір на місяць для родини.",
+      "hook": "Один набір — місяць спокою",
+      "cta": "Долучитись",
+      "media_url": "https://picsum.photos/seed/122/320/180",
+      "published": "2026-01-20",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": 140000.0,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/122",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-fpv-1",
+      "campaign_id": "k-comeback-fpv-tg",
+      "platform": "telegram",
+      "format": "text",
+      "copy_text": "20 000 FPV — лічильник оновлюється щогодини. Доєднуйся.",
+      "hook": "20 тисяч дронів — реально",
+      "cta": "Банка ⬇",
+      "media_url": "https://picsum.photos/seed/21/320/180",
+      "published": "2024-02-02",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": null,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/21",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-fpv-2",
+      "campaign_id": "k-comeback-fpv-tg",
+      "platform": "web",
+      "format": "image",
+      "copy_text": "Інфографіка: скільки дронів вже зібрано.",
+      "hook": "Прозорий звіт по кожній партії",
+      "cta": "Підтримати",
+      "media_url": "https://picsum.photos/seed/22/320/180",
+      "published": "2024-02-20",
+      "impressions_range": "500K-1M",
+      "spend_range": null,
+      "views": null,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/22",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-grants-1",
+      "campaign_id": "k-sci-grants",
+      "platform": "web",
+      "format": "text",
+      "copy_text": "Підпишись на щомісячний внесок у науку.",
+      "hook": "Майбутнє починається з гранту",
+      "cta": "Оформити підписку",
+      "media_url": "https://picsum.photos/seed/101/320/180",
+      "published": "2025-02-01",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": null,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/101",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-grid-1",
+      "campaign_id": "k-energy-grid-ad",
+      "platform": "youtube",
+      "format": "video",
+      "copy_text": "Один трансформатор — світло для цілого району.",
+      "hook": "Темрява не пройде",
+      "cta": "Зробити внесок",
+      "media_url": "https://picsum.photos/seed/81/320/180",
+      "published": "2023-12-05",
+      "impressions_range": "1M-5M",
+      "spend_range": "$100K-500K",
+      "views": 900000.0,
+      "likes": 72000.0,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/81",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-irl-1",
+      "campaign_id": "k-medbat-irl",
+      "platform": "instagram",
+      "format": "image",
+      "copy_text": "Забіг на підтримку медиків — скануй QR на старті.",
+      "hook": "Біжимо за тих, хто рятує",
+      "cta": "QR на місці",
+      "media_url": "https://picsum.photos/seed/41/320/180",
+      "published": "2023-05-09",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": null,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/41",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-sat-1",
+      "campaign_id": "k-prytula-sat-ad",
+      "platform": "facebook",
+      "format": "video",
+      "copy_text": "За 3 дні зберемо на супутник — кожна гривня бачить ціль.",
+      "hook": "Україна стане першою країною з власним бойовим супутником",
+      "cta": "Зробити внесок",
+      "media_url": "https://picsum.photos/seed/11/320/180",
+      "published": "2022-06-21",
+      "impressions_range": "1M-5M",
+      "spend_range": "$50K-100K",
+      "views": 820000.0,
+      "likes": 64000.0,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/11",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-sat-2",
+      "campaign_id": "k-prytula-sat-ad",
+      "platform": "instagram",
+      "format": "carousel",
+      "copy_text": "Карусель: як працює супутникова розвідка ICEYE.",
+      "hook": "Дивись, що ти фінансуєш",
+      "cta": "Донат за посиланням",
+      "media_url": "https://picsum.photos/seed/12/320/180",
+      "published": "2022-06-23",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": 410000.0,
+      "likes": 33000.0,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/12",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-school-1",
+      "campaign_id": "k-u24-school",
+      "platform": "web",
+      "format": "text",
+      "copy_text": "Лонгрід: школа на Чернігівщині — до і після.",
+      "hook": "Діти повертаються за парти",
+      "cta": "Долучитись до відбудови",
+      "media_url": "https://picsum.photos/seed/71/320/180",
+      "published": "2024-04-05",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": null,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/71",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-school-2",
+      "campaign_id": "k-u24-school",
+      "platform": "facebook",
+      "format": "video",
+      "copy_text": "Тайм-лапс відбудови за 4 місяці.",
+      "hook": "Руїни → клас за 120 днів",
+      "cta": "Підтримати проєкт",
+      "media_url": "https://picsum.photos/seed/72/320/180",
+      "published": "2024-07-15",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": 220000.0,
+      "likes": 18000.0,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/72",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-shelter-1",
+      "campaign_id": "k-u24-shelter-ad",
+      "platform": "facebook",
+      "format": "banner",
+      "copy_text": "2,3 млн переселенців потребують прихистку цієї зими.",
+      "hook": "Дім для тих, хто втратив свій",
+      "cta": "Допомогти зараз",
+      "media_url": "https://picsum.photos/seed/51/320/180",
+      "published": "2022-09-05",
+      "impressions_range": "1M-5M",
+      "spend_range": "$100K-500K",
+      "views": null,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/51",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-shelter-2",
+      "campaign_id": "k-u24-shelter-ad",
+      "platform": "web",
+      "format": "video",
+      "copy_text": "Відео: як облаштовуються модульні містечка.",
+      "hook": "Від намету до теплого дому",
+      "cta": "Внести депозит надії",
+      "media_url": "https://picsum.photos/seed/52/320/180",
+      "published": "2022-10-01",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": 300000.0,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/52",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-stream-1",
+      "campaign_id": "k-sternenko-stream",
+      "platform": "youtube",
+      "format": "stream",
+      "copy_text": "Стрім-марафон: ставимо ціль і ламаємо її разом.",
+      "hook": "Лайв до перемоги цілі",
+      "cta": "Кидай у банку",
+      "media_url": "https://picsum.photos/seed/31/320/180",
+      "published": "2023-11-01",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": 1400000.0,
+      "likes": 180000.0,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/31",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    },
+    {
+      "id": "cr-winter-1",
+      "campaign_id": "k-prytula-winter",
+      "platform": "instagram",
+      "format": "carousel",
+      "copy_text": "Генератор = світло в укритті. Закриваємо потребу.",
+      "hook": "Зима близько — світло потрібне зараз",
+      "cta": "Банка ⬇",
+      "media_url": "https://picsum.photos/seed/61/320/180",
+      "published": "2024-10-02",
+      "impressions_range": null,
+      "spend_range": null,
+      "views": null,
+      "likes": null,
+      "provenance": {
+        "creative": {
+          "source_url": "https://www.facebook.com/ads/library/61",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "ILLUSTRATIVE SAMPLE — демо-кампанія для перевірки дашборда стилю, НЕ реальна."
+        }
+      }
+    }
+  ],
+  "partners": [
+    {
+      "id": "p-brand-rozetka",
+      "name": "Rozetka",
+      "role": "brand",
+      "links": [
+        "https://rozetka.com.ua"
+      ]
+    },
+    {
+      "id": "p-celeb-usyk",
+      "name": "Олександр Усик",
+      "role": "celebrity",
+      "links": [
+        "https://example.org/usyk"
+      ]
+    },
+    {
+      "id": "p-monobank",
+      "name": "monobank",
+      "role": "sponsor",
+      "links": [
+        "https://monobank.ua"
+      ]
+    },
+    {
+      "id": "p-novapay",
+      "name": "NovaPay",
+      "role": "sponsor",
+      "links": [
+        "https://novapay.ua"
+      ]
+    },
+    {
+      "id": "p-org-uarmy",
+      "name": "Армія Дронів",
+      "role": "organizer",
+      "links": [
+        "https://example.org/uarmy"
+      ]
+    }
+  ]
 }
