@@ -266,6 +266,12 @@ tr.detail td{background:#0c0f14}
    <option value="cross">≥ cross-checked</option>
    <option value="verified">тільки verified</option>
   </select>
+  <h4>тип контенту</h4>
+  <div class="seg" id="relev-seg" style="margin-bottom:6px">
+   <button data-relev="zbory" id="relev-zbory" class="on">лише збори</button>
+   <button data-relev="all" id="relev-all">усі</button>
+   <button data-relev="topical" id="relev-topical">тільки топічне</button>
+  </div>
   <button class="resetbtn" id="c-reset">скинути фільтри</button>
   <div class="matchline" id="c-matchline"></div>
  </aside>
@@ -371,6 +377,7 @@ let activeTab="cases";
 const CSEL={channels:new Set(),form_factor:new Set(),tone:new Set(),face:new Set(),type:new Set()};
 let cVerifMode="all", saAxis="tone", saMetric="engagement", srAxis="tone";
 let recencyDays=30; // 0 = усі
+let campRelevMode="zbory"; // "zbory" | "all" | "topical"
 const openCamps=new Set();
 let chSaBar=null, chSaFe=null, chSaGc=null, chSrBar=null, campChartsInit=false;
 
@@ -753,6 +760,9 @@ function passesVerifCamp(c){
 function filteredCamps(){
  return CAMPAIGNS.filter(c=>{
   if(!passesRecency(c))return false;
+  // is_campaign фільтр: false=топічний прихований за замовч.; null=невідомо -> видимий
+  if(campRelevMode==="zbory"&&c.is_campaign===false)return false;
+  if(campRelevMode==="topical"&&c.is_campaign!==false)return false;
   if(CSEL.channels.size&&!(c.channels||[]).some(x=>CSEL.channels.has(x)))return false;
   if(CSEL.form_factor.size&&!(c.form_factor||[]).some(x=>CSEL.form_factor.has(x)))return false;
   if(CSEL.tone.size&&!(c.tone||[]).some(x=>CSEL.tone.has(x)))return false;
@@ -984,6 +994,7 @@ function renderExplorer(camps){
     ${c.rel_resonance!=null?`<span class="camt" style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}" title="actor-нормалізований резонанс">×${c.rel_resonance.toFixed(2)}</span>`:''}
     ${c.engagement!=null?`<span class="camt" style="color:var(--blue)" title="залучення">▲${c.engagement.toLocaleString("uk-UA")}</span>`:''}
     <span class="camt">${fmtUAH(c.amount_uah)}</span>
+    ${c.is_campaign===null?'<span class="badge auto" title="релевантність невідома">?</span>':""}
     <span class="badge ${esc(c.verification_status)}">${esc(c.verification_status)}</span>
    </div>
    <div class="cdet">
@@ -1061,10 +1072,16 @@ function setupCampaignView(){
   recencyDays=parseInt(b.dataset.days,10);
   document.querySelectorAll("#recency-seg button").forEach(x=>x.classList.toggle("on",x===b));
   updateCamp();});
+ // Relev segmented control
+ document.querySelectorAll("#relev-seg button").forEach(b=>b.onclick=()=>{
+  campRelevMode=b.dataset.relev;
+  document.querySelectorAll("#relev-seg button").forEach(x=>x.classList.toggle("on",x===b));
+  updateCamp();});
  document.getElementById("c-reset").onclick=()=>{
-  Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";recencyDays=30;
+  Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";recencyDays=30;campRelevMode="zbory";
   document.getElementById("cf-verif").value="all";
   document.querySelectorAll("#recency-seg button").forEach(b=>b.classList.toggle("on",b.dataset.days==="30"));
+  document.querySelectorAll("#relev-seg button").forEach(b=>b.classList.toggle("on",b.dataset.relev==="zbory"));
   renderCampChips("cf-channels",CHANNEL_ORDER,"channels");renderCampChips("cf-form",FORM_ORDER,"form_factor");
   renderCampChips("cf-tone",TONE_ORDER,"tone");renderCampChips("cf-face",FACE_ORDER,"face");renderCampChips("cf-type",CTYPE_ORDER,"type");
   bindCampChips();updateCamp();};
