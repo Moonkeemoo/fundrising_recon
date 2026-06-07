@@ -194,6 +194,8 @@ class Campaign:
     assets_count: float | None = None
     # прапор успіху
     goal_reached: bool | None = None
+    # прапор релевантності
+    is_campaign: bool | None = None
     # звʼязки
     case_id: str | None = None
     partner_ids: list[str] = field(default_factory=list)

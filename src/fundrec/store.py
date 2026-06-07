@@ -142,6 +142,12 @@ def _row_to_campaign(row: sqlite3.Row, partner_ids: list[str] | None = None) -> 
         data["goal_reached"] = None
     else:
         data["goal_reached"] = bool(gr)
+    # INTEGER NULL → bool | None for is_campaign
+    ic = data.get("is_campaign")
+    if ic is None:
+        data["is_campaign"] = None
+    else:
+        data["is_campaign"] = bool(ic)
     return Campaign(**data)
 
 
@@ -325,5 +331,21 @@ def set_campaign_verification(
     conn.execute(
         f"UPDATE campaigns SET {', '.join(parts)} WHERE id = ?",
         values,
+    )
+    conn.commit()
+
+
+def set_campaign_relevance(
+    conn: sqlite3.Connection,
+    campaign_id: str,
+    is_campaign: bool,
+) -> None:
+    """Встановлює прапор релевантності кампанії (чи це збір).
+
+    Аналог set_campaign_verification — точкове UPDATE однієї колонки.
+    """
+    conn.execute(
+        "UPDATE campaigns SET is_campaign = ? WHERE id = ?",
+        (int(is_campaign), campaign_id),
     )
     conn.commit()
