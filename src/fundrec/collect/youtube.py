@@ -56,10 +56,10 @@ def search_fundraising(
     Якщо api_key не задано (або порожній рядок) — graceful-skip: [] + лог.
     _client інжектиться в тестах (має метод .get(url, params=..., timeout=...)).
     """
-    from fundrec import config  # pylint: disable=import-outside-toplevel
+    import os  # pylint: disable=import-outside-toplevel
 
     if api_key is None:
-        api_key = config.YOUTUBE_API_KEY
+        api_key = os.environ.get("YOUTUBE_API_KEY", "")
 
     if not api_key:
         print("youtube: нема ключа, пропускаю", file=sys.stderr)

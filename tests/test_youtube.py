@@ -135,9 +135,8 @@ def test_search_fundraising_injected_client_returns_videos():
 
 
 def test_search_fundraising_default_api_key_from_config(monkeypatch):
-    """Якщо api_key не передано — бере з config.YOUTUBE_API_KEY."""
-    import fundrec.config as cfg
-    monkeypatch.setattr(cfg, "YOUTUBE_API_KEY", "")
+    """Якщо api_key не передано — бере з env YOUTUBE_API_KEY."""
+    monkeypatch.delenv("YOUTUBE_API_KEY", raising=False)
     # Без ключа — graceful-skip
     result = youtube.search_fundraising("test")
     assert result == []

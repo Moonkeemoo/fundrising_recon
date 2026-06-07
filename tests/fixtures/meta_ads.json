@@ -1,0 +1,65 @@
+{
+  "data": [
+    {
+      "id": "ad_001",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=ad_001&access_token=xxx",
+      "page_name": "Повернись живим",
+      "ad_creative_bodies": [
+        "Допомога пораненим бійцям. Зберемо на реабілітаційне обладнання. Банка: https://send.monobank.ua/jar/xyz"
+      ],
+      "ad_delivery_start_time": "2023-08-01",
+      "ad_delivery_stop_time": "2023-08-31",
+      "publisher_platforms": ["facebook", "instagram"],
+      "impressions": {
+        "lower_bound": "10000",
+        "upper_bound": "49999"
+      },
+      "spend": {
+        "lower_bound": "1000",
+        "upper_bound": "4999",
+        "currency": "UAH"
+      },
+      "currency": "UAH"
+    },
+    {
+      "id": "ad_002",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=ad_002&access_token=xxx",
+      "page_name": "UNITED24",
+      "ad_creative_bodies": [
+        "Збір на FPV дрони для 3-ї бригади. Мета: 1 000 000 грн.",
+        "Donate for FPV drones for Ukrainian army. Goal: 1 000 000 UAH."
+      ],
+      "ad_delivery_start_time": "2023-07-15",
+      "ad_delivery_stop_time": null,
+      "publisher_platforms": ["facebook", "instagram", "threads"],
+      "impressions": {
+        "lower_bound": "100000",
+        "upper_bound": "499999"
+      },
+      "spend": {
+        "lower_bound": "10000",
+        "upper_bound": "49999",
+        "currency": "UAH"
+      },
+      "currency": "UAH"
+    },
+    {
+      "id": "ad_003",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=ad_003&access_token=xxx",
+      "page_name": "Волонтер Іванов",
+      "ad_creative_bodies": [],
+      "ad_delivery_start_time": "2023-06-01",
+      "ad_delivery_stop_time": "2023-06-30",
+      "publisher_platforms": ["facebook"],
+      "impressions": null,
+      "spend": null,
+      "currency": "UAH"
+    }
+  ],
+  "paging": {
+    "cursors": {
+      "before": "cursor_before",
+      "after": "cursor_after"
+    }
+  }
+}
