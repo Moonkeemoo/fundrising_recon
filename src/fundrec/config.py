@@ -3,6 +3,7 @@
 Використання:
     python -m fundrec.config --check-keys   # показати статус ключів (значення НЕ друкуються)
 """
+
 from __future__ import annotations
 
 import os
@@ -14,11 +15,13 @@ RAW_DIR = DATA_DIR / "raw"
 SEEDS_DIR = DATA_DIR / "seeds"
 DB_PATH = DATA_DIR / "fundrec.sqlite"
 CASES_JSON = DATA_DIR / "cases.json"
+JARS_CACHE_PATH = DATA_DIR / "jars_cache.json"
 
 
 # ---------------------------------------------------------------------------
 # .env — завантажуємо до зчитування ключів (якщо є)
 # ---------------------------------------------------------------------------
+
 
 def _load_dotenv() -> None:
     """Завантажує KEY=VALUE з ROOT/.env (не перебиває вже задані змінні).
@@ -90,7 +93,7 @@ def check_keys() -> None:
     out = sys.stdout
     out.write("fundrec API keys status:\n")
     out.write(f"  {'Key':<30} {'Status'}\n")
-    out.write(f"  {'-'*30} {'-'*10}\n")
+    out.write(f"  {'-' * 30} {'-' * 10}\n")
     for key, is_set in status.items():
         label = "zadano" if is_set else "ne zadano"
         out.write(f"  {key:<30} {label}\n")
