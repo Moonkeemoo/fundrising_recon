@@ -129,10 +129,14 @@ def claude_cli(prompt: str, model: str = "sonnet", *, timeout: int = 180) -> dic
     без TTY (на відміну від Agent SDK query(), що зависає на авторизації).
     """
     import json as _json  # noqa: PLC0415
+    import shutil  # noqa: PLC0415
     import subprocess  # noqa: PLC0415
 
+    # На Windows `claude` — це .CMD-шім; subprocess(["claude"]) дає WinError 2.
+    # Резолвимо повний шлях через which (знаходить claude.CMD/.exe).
+    exe = shutil.which("claude") or "claude"
     proc = subprocess.run(
-        ["claude", "-p", prompt, "--output-format", "json", "--model", model],
+        [exe, "-p", prompt, "--output-format", "json", "--model", model],
         capture_output=True, text=True, encoding="utf-8", timeout=timeout,
     )
     if proc.returncode != 0:
