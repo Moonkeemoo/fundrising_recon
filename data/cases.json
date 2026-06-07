@@ -6108,6 +6108,35 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 385400,
+      "engagement_total": null,
+      "post_count": 3,
+      "channel_count": 1,
+      "first_post": "2026-06-03",
+      "last_post": "2026-06-07",
+      "post_channels": [
+        "ssternenko"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-03",
+          "channel": "ssternenko",
+          "views": 234000,
+          "url": "https://t.me/ssternenko/58987"
+        },
+        {
+          "date": "2026-06-07",
+          "channel": "ssternenko",
+          "views": 131000,
+          "url": "https://t.me/ssternenko/59106"
+        },
+        {
+          "date": "2026-06-07",
+          "channel": "ssternenko",
+          "views": 20400,
+          "url": "https://t.me/ssternenko/59120"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6191,6 +6220,35 @@
         "interceptors"
       ],
       "has_destination": true,
+      "reach_total": 2077,
+      "engagement_total": null,
+      "post_count": 3,
+      "channel_count": 1,
+      "first_post": "2026-05-12",
+      "last_post": "2026-06-02",
+      "post_channels": [
+        "prytulafoundation"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-12",
+          "channel": "prytulafoundation",
+          "views": 766,
+          "url": "https://t.me/prytulafoundation/4143"
+        },
+        {
+          "date": "2026-05-13",
+          "channel": "prytulafoundation",
+          "views": 701,
+          "url": "https://t.me/prytulafoundation/4144"
+        },
+        {
+          "date": "2026-06-02",
+          "channel": "prytulafoundation",
+          "views": 610,
+          "url": "https://t.me/prytulafoundation/4201"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6264,6 +6322,35 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 4944,
+      "engagement_total": null,
+      "post_count": 3,
+      "channel_count": 1,
+      "first_post": "2026-06-01",
+      "last_post": "2026-06-06",
+      "post_channels": [
+        "aronets_live"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-01",
+          "channel": "aronets_live",
+          "views": 2960,
+          "url": "https://t.me/aronets_live/9853"
+        },
+        {
+          "date": "2026-06-03",
+          "channel": "aronets_live",
+          "views": 1220,
+          "url": "https://t.me/aronets_live/9861"
+        },
+        {
+          "date": "2026-06-06",
+          "channel": "aronets_live",
+          "views": 764,
+          "url": "https://t.me/aronets_live/9867"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6339,6 +6426,23 @@
         "comms"
       ],
       "has_destination": true,
+      "reach_total": 633,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-05-01",
+      "last_post": "2026-05-01",
+      "post_channels": [
+        "prytulafoundation"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-01",
+          "channel": "prytulafoundation",
+          "views": 633,
+          "url": "https://t.me/prytulafoundation/4128"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6428,6 +6532,35 @@
         "recon"
       ],
       "has_destination": true,
+      "reach_total": 5360,
+      "engagement_total": null,
+      "post_count": 3,
+      "channel_count": 1,
+      "first_post": "2026-04-24",
+      "last_post": "2026-05-25",
+      "post_channels": [
+        "sylasvobody"
+      ],
+      "posts": [
+        {
+          "date": "2026-04-24",
+          "channel": "sylasvobody",
+          "views": 2460,
+          "url": "https://t.me/sylasvobody/291"
+        },
+        {
+          "date": "2026-05-17",
+          "channel": "sylasvobody",
+          "views": 1440,
+          "url": "https://t.me/sylasvobody/305"
+        },
+        {
+          "date": "2026-05-25",
+          "channel": "sylasvobody",
+          "views": 1460,
+          "url": "https://t.me/sylasvobody/307"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6512,6 +6645,14 @@
         "fpv"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6577,6 +6718,14 @@
         "fpv"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6645,6 +6794,23 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 859,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-05-11",
+      "last_post": "2026-05-11",
+      "post_channels": [
+        "prytulafoundation"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-11",
+          "channel": "prytulafoundation",
+          "views": 859,
+          "url": "https://t.me/prytulafoundation/4140"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6714,6 +6880,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6790,6 +6964,29 @@
         "interceptors"
       ],
       "has_destination": true,
+      "reach_total": 1364,
+      "engagement_total": null,
+      "post_count": 2,
+      "channel_count": 1,
+      "first_post": "2026-05-19",
+      "last_post": "2026-05-28",
+      "post_channels": [
+        "prytulafoundation"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-19",
+          "channel": "prytulafoundation",
+          "views": 779,
+          "url": "https://t.me/prytulafoundation/4155"
+        },
+        {
+          "date": "2026-05-28",
+          "channel": "prytulafoundation",
+          "views": 585,
+          "url": "https://t.me/prytulafoundation/4196"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6863,6 +7060,14 @@
         "reb_ew"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -6929,6 +7134,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7000,6 +7213,14 @@
         "fpv"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7071,6 +7292,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7148,6 +7377,23 @@
         "humanitarian"
       ],
       "has_destination": true,
+      "reach_total": 574,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-05-25",
+      "last_post": "2026-05-25",
+      "post_channels": [
+        "prytulafoundation"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-25",
+          "channel": "prytulafoundation",
+          "views": 574,
+          "url": "https://t.me/prytulafoundation/4173"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7216,6 +7462,23 @@
         "fpv"
       ],
       "has_destination": false,
+      "reach_total": 181466,
+      "engagement_total": 2487,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-06-01",
+      "last_post": "2026-06-01",
+      "post_channels": [
+        "З Україною 🇺🇦"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-01",
+          "channel": "З Україною 🇺🇦",
+          "views": 181466,
+          "url": "https://www.youtube.com/watch?v=4Jcjrsg3tFk"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7298,6 +7561,41 @@
         "fpv"
       ],
       "has_destination": true,
+      "reach_total": 7820,
+      "engagement_total": null,
+      "post_count": 4,
+      "channel_count": 1,
+      "first_post": "2026-06-01",
+      "last_post": "2026-06-04",
+      "post_channels": [
+        "feniksdpsu"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-01",
+          "channel": "feniksdpsu",
+          "views": 2170,
+          "url": "https://t.me/feniksdpsu/1997"
+        },
+        {
+          "date": "2026-06-01",
+          "channel": "feniksdpsu",
+          "views": 1970,
+          "url": "https://t.me/feniksdpsu/1999"
+        },
+        {
+          "date": "2026-06-03",
+          "channel": "feniksdpsu",
+          "views": 1810,
+          "url": "https://t.me/feniksdpsu/2007"
+        },
+        {
+          "date": "2026-06-04",
+          "channel": "feniksdpsu",
+          "views": 1870,
+          "url": "https://t.me/feniksdpsu/2008"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7369,6 +7667,23 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 409,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-05-23",
+      "last_post": "2026-05-23",
+      "post_channels": [
+        "sptua"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-23",
+          "channel": "sptua",
+          "views": 409,
+          "url": "https://t.me/sptua/2443"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7446,6 +7761,14 @@
         "humanitarian"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7521,6 +7844,14 @@
         "interceptors"
       ],
       "has_destination": true,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7599,6 +7930,29 @@
         "vehicles"
       ],
       "has_destination": true,
+      "reach_total": 1543,
+      "engagement_total": null,
+      "post_count": 2,
+      "channel_count": 1,
+      "first_post": "2026-05-01",
+      "last_post": "2026-05-08",
+      "post_channels": [
+        "prytulafoundation"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-01",
+          "channel": "prytulafoundation",
+          "views": 695,
+          "url": "https://t.me/prytulafoundation/4127"
+        },
+        {
+          "date": "2026-05-08",
+          "channel": "prytulafoundation",
+          "views": 848,
+          "url": "https://t.me/prytulafoundation/4139"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7671,6 +8025,23 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 62,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-04-11",
+      "last_post": "2026-04-11",
+      "post_channels": [
+        "sptzbir"
+      ],
+      "posts": [
+        {
+          "date": "2026-04-11",
+          "channel": "sptzbir",
+          "views": 62,
+          "url": "https://t.me/sptzbir/116"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7740,6 +8111,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7820,6 +8199,23 @@
         "interceptors"
       ],
       "has_destination": true,
+      "reach_total": 827,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-05-30",
+      "last_post": "2026-05-30",
+      "post_channels": [
+        "radisnyi_93"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-30",
+          "channel": "radisnyi_93",
+          "views": 827,
+          "url": "https://t.me/Radisnyi_93/502"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7904,6 +8300,14 @@
         "interceptors"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -7973,6 +8377,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8038,6 +8450,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8107,6 +8527,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8183,6 +8611,23 @@
         "humanitarian"
       ],
       "has_destination": true,
+      "reach_total": 698,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-05-01",
+      "last_post": "2026-05-01",
+      "post_channels": [
+        "prytulafoundation"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-01",
+          "channel": "prytulafoundation",
+          "views": 698,
+          "url": "https://t.me/prytulafoundation/4129"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8254,6 +8699,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8331,6 +8784,23 @@
         "vehicles"
       ],
       "has_destination": true,
+      "reach_total": 2640,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-06-05",
+      "last_post": "2026-06-05",
+      "post_channels": [
+        "korchynskiy"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-05",
+          "channel": "korchynskiy",
+          "views": 2640,
+          "url": "https://t.me/korchynskiy/12262"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8408,6 +8878,41 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 5442,
+      "engagement_total": null,
+      "post_count": 4,
+      "channel_count": 1,
+      "first_post": "2026-05-04",
+      "last_post": "2026-06-05",
+      "post_channels": [
+        "sylasvobody"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-04",
+          "channel": "sylasvobody",
+          "views": 1970,
+          "url": "https://t.me/sylasvobody/304"
+        },
+        {
+          "date": "2026-05-19",
+          "channel": "sylasvobody",
+          "views": 1790,
+          "url": "https://t.me/sylasvobody/306"
+        },
+        {
+          "date": "2026-06-03",
+          "channel": "sylasvobody",
+          "views": 909,
+          "url": "https://t.me/sylasvobody/309"
+        },
+        {
+          "date": "2026-06-05",
+          "channel": "sylasvobody",
+          "views": 773,
+          "url": "https://t.me/sylasvobody/310"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8479,6 +8984,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8554,6 +9067,23 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 66,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-04-26",
+      "last_post": "2026-04-26",
+      "post_channels": [
+        "sptzbir"
+      ],
+      "posts": [
+        {
+          "date": "2026-04-26",
+          "channel": "sptzbir",
+          "views": 66,
+          "url": "https://t.me/sptzbir/117"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8624,6 +9154,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8693,6 +9231,14 @@
         "humanitarian"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8762,6 +9308,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8844,6 +9398,14 @@
         "interceptors"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8920,6 +9482,23 @@
         "vehicles"
       ],
       "has_destination": true,
+      "reach_total": 681,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-04-13",
+      "last_post": "2026-04-13",
+      "post_channels": [
+        "prytulafoundation"
+      ],
+      "posts": [
+        {
+          "date": "2026-04-13",
+          "channel": "prytulafoundation",
+          "views": 681,
+          "url": "https://t.me/prytulafoundation/4077"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -8997,6 +9576,23 @@
         "humanitarian"
       ],
       "has_destination": true,
+      "reach_total": 406,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-06-04",
+      "last_post": "2026-06-04",
+      "post_channels": [
+        "prytulafoundation"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-04",
+          "channel": "prytulafoundation",
+          "views": 406,
+          "url": "https://t.me/prytulafoundation/4205"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9070,6 +9666,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9150,6 +9754,14 @@
         "medical"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9224,6 +9836,23 @@
         "vehicles"
       ],
       "has_destination": true,
+      "reach_total": 5800,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-06-05",
+      "last_post": "2026-06-05",
+      "post_channels": [
+        "bihusinfo"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-05",
+          "channel": "bihusinfo",
+          "views": 5800,
+          "url": "https://t.me/bihusinfo/15714"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9296,6 +9925,23 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 3510,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-06-07",
+      "last_post": "2026-06-07",
+      "post_channels": [
+        "d7_channel"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-07",
+          "channel": "d7_channel",
+          "views": 3510,
+          "url": "https://t.me/D7_channel/83203"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9369,6 +10015,14 @@
         "humanitarian"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9435,6 +10089,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9502,6 +10164,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9580,6 +10250,23 @@
         "comms"
       ],
       "has_destination": true,
+      "reach_total": 5380,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-06-06",
+      "last_post": "2026-06-06",
+      "post_channels": [
+        "bihusinfo"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-06",
+          "channel": "bihusinfo",
+          "views": 5380,
+          "url": "https://t.me/bihusinfo/15729"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9660,6 +10347,23 @@
         "energy"
       ],
       "has_destination": true,
+      "reach_total": 61600,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-06-07",
+      "last_post": "2026-06-07",
+      "post_channels": [
+        "operativnoZSU"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-07",
+          "channel": "operativnoZSU",
+          "views": 61600,
+          "url": "https://t.me/operativnoZSU/212780"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9727,6 +10431,14 @@
         "medical"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9811,6 +10523,14 @@
         "fpv"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9882,6 +10602,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -9955,6 +10683,14 @@
         "recon"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10025,6 +10761,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10097,6 +10841,14 @@
         "reb_ew"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10171,6 +10923,23 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 243000,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-06-05",
+      "last_post": "2026-06-05",
+      "post_channels": [
+        "ssternenko"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-05",
+          "channel": "ssternenko",
+          "views": 243000,
+          "url": "https://t.me/ssternenko/59036"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10244,6 +11013,14 @@
         "ammo"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10312,6 +11089,14 @@
         "fpv"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10388,6 +11173,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10455,6 +11248,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10527,6 +11328,14 @@
         "fpv"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10611,6 +11420,23 @@
         "reb_ew"
       ],
       "has_destination": true,
+      "reach_total": 8900,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-05-31",
+      "last_post": "2026-05-31",
+      "post_channels": [
+        "e_drones"
+      ],
+      "posts": [
+        {
+          "date": "2026-05-31",
+          "channel": "e_drones",
+          "views": 8900,
+          "url": "https://t.me/e_drones/529"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10685,6 +11511,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10757,6 +11591,14 @@
         "vehicles"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10828,6 +11670,14 @@
         "fpv"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10902,6 +11752,14 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -10971,6 +11829,14 @@
         "interceptors"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -11041,6 +11907,23 @@
         "comms"
       ],
       "has_destination": false,
+      "reach_total": 184788,
+      "engagement_total": 2956,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-04-09",
+      "last_post": "2026-04-09",
+      "post_channels": [
+        "Пресслужба ДПСУ"
+      ],
+      "posts": [
+        {
+          "date": "2026-04-09",
+          "channel": "Пресслужба ДПСУ",
+          "views": 184788,
+          "url": "https://www.youtube.com/watch?v=6QD3YYuiE4w"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -11109,6 +11992,14 @@
         "comms"
       ],
       "has_destination": false,
+      "reach_total": null,
+      "engagement_total": null,
+      "post_count": 0,
+      "channel_count": 0,
+      "first_post": null,
+      "last_post": null,
+      "post_channels": [],
+      "posts": [],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     },
@@ -11184,6 +12075,23 @@
       "rel_resonance": 1.0,
       "themes": [],
       "has_destination": true,
+      "reach_total": 4370,
+      "engagement_total": null,
+      "post_count": 1,
+      "channel_count": 1,
+      "first_post": "2026-06-07",
+      "last_post": "2026-06-07",
+      "post_channels": [
+        "d7_channel"
+      ],
+      "posts": [
+        {
+          "date": "2026-06-07",
+          "channel": "d7_channel",
+          "views": 4370,
+          "url": "https://t.me/D7_channel/83196"
+        }
+      ],
       "jar_velocity_uah_per_day": null,
       "jar_span_days": null
     }
