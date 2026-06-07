@@ -45,6 +45,34 @@ def extract_jar_ids(text: str) -> list[str]:
     return result
 
 
+def jar_ids_from_raw(raw: dict) -> list[str]:
+    """Витягує унікальні jar-id з усіх полів raw-запису.
+
+    Сканує raw.get('text'), кожен елемент raw.get('links') і
+    raw.get('description'). Порядок: text → links → description.
+    Дублікати (між полями) видаляються; зберігається порядок першої появи.
+
+    Повертає [] якщо jar-id не знайдено або raw порожній.
+    """
+    seen: set[str] = set()
+    result: list[str] = []
+
+    def _add_from(text: str | None) -> None:
+        if not text:
+            return
+        for jar_id in extract_jar_ids(text):
+            if jar_id not in seen:
+                seen.add(jar_id)
+                result.append(jar_id)
+
+    _add_from(raw.get("text"))
+    for link in raw.get("links") or []:
+        _add_from(link)
+    _add_from(raw.get("description"))
+
+    return result
+
+
 def _parse_number(num_str: str) -> float:
     """Очищає рядок числа (пробіли, коми) і повертає float."""
     return float(re.sub(r"[\s,]", "", num_str))
