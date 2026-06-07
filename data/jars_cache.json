@@ -17,8 +17,15 @@
     "jar_id": "3w8JTb7xhE",
     "url": "https://send.monobank.ua/jar/3w8JTb7xhE",
     "title": "Serhii Prytula Charity Foundation created a fundraiser",
-    "amount_uah": 271799829.86,
-    "goal_amount": 1000000000.0
+    "amount_uah": 271806270.84,
+    "goal_amount": 1000000000.0,
+    "history": [
+      {
+        "ts": "2026-06-07T19:57:34.574946+00:00",
+        "amount_uah": 271806270.84,
+        "goal_amount": 1000000000.0
+      }
+    ]
   },
   "3p2m4M5GwW": {
     "jar_id": "3p2m4M5GwW",
@@ -633,6 +640,20 @@
         "ts": "2026-06-07T19:06:30.150570+00:00",
         "amount_uah": 5547.13,
         "goal_amount": 10.0
+      }
+    ]
+  },
+  "8VKoiC3p6q": {
+    "jar_id": "8VKoiC3p6q",
+    "url": "https://send.monobank.ua/jar/8VKoiC3p6q",
+    "title": "СПІЛЬНОТА СТЕРНЕНКА created a fundraiser",
+    "amount_uah": 220833.16,
+    "goal_amount": 10000000.0,
+    "history": [
+      {
+        "ts": "2026-06-07T19:57:23.628703+00:00",
+        "amount_uah": 220833.16,
+        "goal_amount": 10000000.0
       }
     ]
   }
