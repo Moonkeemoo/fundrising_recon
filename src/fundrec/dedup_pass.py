@@ -12,9 +12,13 @@ CLI: python -m fundrec.dedup_pass [--db PATH]
 """
 from __future__ import annotations
 
+import hashlib
+import json
 import sqlite3
+from pathlib import Path
 
 from .dedup import _campaign_merge_two, campaign_identity, campaign_jar_id, fuzzy_merge_groups
+from .destinations import extract_destinations
 from .store import (
     delete_campaign,
     load_campaigns,
@@ -74,7 +78,141 @@ def _apply_group_merge(
     return merged_count, groups_collapsed
 
 
-def dedup_database(conn: sqlite3.Connection, *, min_sim: float = 0.6) -> dict:
+def _repoint_creatives(conn: sqlite3.Connection, creatives: list, canonical_map: dict[str, str]) -> None:
+    """Переприв'язує креативи loser-кампаній до canonical згідно canonical_map."""
+    for creative in creatives:
+        if creative.campaign_id in canonical_map:
+            new_cid = canonical_map[creative.campaign_id]
+            updated = type(creative)(
+                id=creative.id,
+                campaign_id=new_cid,
+                platform=creative.platform,
+                format=creative.format,
+                copy_text=creative.copy_text,
+                hook=creative.hook,
+                cta=creative.cta,
+                media_url=creative.media_url,
+                published=creative.published,
+                impressions_range=creative.impressions_range,
+                spend_range=creative.spend_range,
+                views=creative.views,
+                likes=creative.likes,
+                provenance=creative.provenance,
+            )
+            upsert_creative(conn, updated)
+
+
+def _find_raw_for_campaign(campaign, raw_dir: Path) -> dict | None:
+    """Знаходить і завантажує raw-файл кампанії (backfill-style lookup).
+
+    Пріоритет: source_url з provenance['campaign'] → sha256[:16].json.
+    Fallback: glob по префіксу id (camp-<sha256[:12]>).
+    Повертає dict raw-поста або None.
+    """
+    raw_file: Path | None = None
+
+    source_url = (campaign.provenance.get("campaign") or {}).get("source_url") or ""
+    if source_url:
+        file_id = hashlib.sha256(source_url.encode()).hexdigest()[:16]
+        candidate = raw_dir / f"{file_id}.json"
+        if candidate.exists():
+            raw_file = candidate
+
+    if raw_file is None:
+        id_suffix = campaign.id[5:] if campaign.id.startswith("camp-") else campaign.id
+        if len(id_suffix) >= 12:  # noqa: PLR2004
+            candidates = list(raw_dir.glob(f"{id_suffix[:12]}*.json"))
+            if candidates:
+                raw_file = candidates[0]
+
+    if raw_file is None:
+        return None
+    try:
+        return json.loads(raw_file.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _regroup_by_destination(conn: sqlite3.Connection, raw_dir: Path) -> int:
+    """Колапсує кампанії, що ділять БУДЬ-ЯКЕ призначення донату (jar/priv).
+
+    Для кожної кампанії завантажує raw → extract_destinations (offline, _client=None:
+    лише прямі + вже захоплені лінки). Union-Find об'єднує кампанії зі спільним
+    ключем призначення. Для кожної групи >1: обирає canonical (_sort_key_canonical),
+    зливає решту (_campaign_merge_two — jar amount/verified переходять), переприв'язує
+    креативи, видаляє losers. Повертає кількість злитих (loser) кампаній.
+
+    Консервативно: зливаємо лише за ТОЧНИМ спільним ключем (jar:id / priv:id).
+    """
+    campaigns = load_campaigns(conn)
+    n = len(campaigns)
+    if n == 0:
+        return 0
+
+    # campaign index → список ключів призначень
+    camp_dests: list[list[str]] = []
+    for c in campaigns:
+        raw = _find_raw_for_campaign(c, raw_dir)
+        dests = extract_destinations(raw, _client=None) if raw else []
+        camp_dests.append(dests)
+
+    # Union-Find за спільним призначенням
+    parent = list(range(n))
+
+    def find(x: int) -> int:
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(x: int, y: int) -> None:
+        rx, ry = find(x), find(y)
+        if rx != ry:
+            parent[ry] = rx
+
+    dest_to_first: dict[str, int] = {}
+    for i, dests in enumerate(camp_dests):
+        for d in dests:
+            if d in dest_to_first:
+                union(dest_to_first[d], i)
+            else:
+                dest_to_first[d] = i
+
+    # Збираємо групи
+    root_to_group: dict[int, list] = {}
+    for i, c in enumerate(campaigns):
+        root_to_group.setdefault(find(i), []).append(c)
+
+    creatives = load_creatives(conn)
+    dest_merged = 0
+    canonical_map: dict[str, str] = {}
+    losers: list[str] = []
+
+    for group in root_to_group.values():
+        if len(group) == 1:
+            continue
+        sorted_group = sorted(group, key=_sort_key_canonical)
+        canonical = sorted_group[0]
+        for loser in sorted_group[1:]:
+            canonical = _campaign_merge_two(canonical, loser)
+        canonical_id = canonical.id
+        for c in group:
+            if c.id != canonical_id:
+                losers.append(c.id)
+                canonical_map[c.id] = canonical_id
+                dest_merged += 1
+        upsert_campaign(conn, canonical)
+
+    _repoint_creatives(conn, creatives, canonical_map)
+    for loser_id in losers:
+        delete_campaign(conn, loser_id)
+
+    return dest_merged
+
+
+def dedup_database(
+    conn: sqlite3.Connection, *, min_sim: float = 0.6, raw_dir: Path | str | None = None
+) -> dict:
     """Пост-інгест дедуплікаційний прохід.
 
     Прохід 1 (identity-based):
@@ -86,14 +224,23 @@ def dedup_database(conn: sqlite3.Connection, *, min_sim: float = 0.6) -> dict:
       fuzzy_merge_groups (same actor + same goal_category + title_similarity ≥ min_sim).
       Зливає fuzzy-групи →  jar amount та verified status переходять до survivor.
 
-    Повертає summary {"before", "after", "merged", "groups_collapsed", "fuzzy_merged"}.
+    Прохід 3 (destination-centric, лише якщо передано raw_dir):
+      Колапсує кампанії, що ділять БУДЬ-ЯКЕ призначення донату (jar:id / priv:id),
+      витягнуте з raw-постів. Це ловить дублі, де банка/конверт є лише в тексті
+      поста, а не в provenance source_url. Консервативно: точний спільний ключ.
+
+    Повертає summary {"before", "after", "merged", "groups_collapsed",
+    "fuzzy_merged", "dest_merged"}.
     """
     campaigns = load_campaigns(conn)
     creatives = load_creatives(conn)
     before = len(campaigns)
 
     if before == 0:
-        return {"before": 0, "after": 0, "merged": 0, "groups_collapsed": 0, "fuzzy_merged": 0}
+        return {
+            "before": 0, "after": 0, "merged": 0,
+            "groups_collapsed": 0, "fuzzy_merged": 0, "dest_merged": 0,
+        }
 
     # --- Прохід 1: identity-based ---
     groups: dict[str, list] = {}
@@ -189,7 +336,12 @@ def dedup_database(conn: sqlite3.Connection, *, min_sim: float = 0.6) -> dict:
     for loser_id in fuzzy_losers:
         delete_campaign(conn, loser_id)
 
-    total_merged = merged_count + fuzzy_merged_count
+    # --- Прохід 3: destination-centric (лише якщо передано raw_dir) ---
+    dest_merged = 0
+    if raw_dir is not None:
+        dest_merged = _regroup_by_destination(conn, Path(raw_dir))
+
+    total_merged = merged_count + fuzzy_merged_count + dest_merged
     after = before - total_merged
     return {
         "before": before,
@@ -197,6 +349,7 @@ def dedup_database(conn: sqlite3.Connection, *, min_sim: float = 0.6) -> dict:
         "merged": merged_count,
         "groups_collapsed": groups_collapsed,
         "fuzzy_merged": fuzzy_merged_count,
+        "dest_merged": dest_merged,
     }
 
 
@@ -218,12 +371,17 @@ def _main() -> None:  # pragma: no cover
         default=str(config.DB_PATH),
         help="Шлях до SQLite БД (default: config.DB_PATH)",
     )
+    parser.add_argument(
+        "--raw-dir",
+        default=str(config.RAW_DIR),
+        help="Директорія raw-кешу для destination-centric проходу (default: config.RAW_DIR)",
+    )
     args = parser.parse_args()
 
     conn = store.connect(args.db)
     store.init_db(conn)
 
-    summary = dedup_database(conn)
+    summary = dedup_database(conn, raw_dir=args.raw_dir)
     print(f"Dedup pass complete: {summary}")
 
     count = export.export_cases(conn)
