@@ -9789,7 +9789,7 @@
     },
     "campaign_analytics": {
       "kpis": {
-        "n_campaigns": 189,
+        "n_campaigns": 182,
         "n_creatives": 196,
         "n_partners": 73,
         "total_spend": null
@@ -9811,8 +9811,8 @@
           {
             "a": "facebook",
             "b": "military",
-            "value": 9240000.0,
-            "n": 18
+            "value": 5890900.91,
+            "n": 16
           },
           {
             "a": "instagram",
@@ -9823,7 +9823,7 @@
           {
             "a": "instagram",
             "b": "military",
-            "value": 545000.0,
+            "value": 784958.16,
             "n": 13
           },
           {
@@ -9841,7 +9841,7 @@
           {
             "a": "telegram",
             "b": "humanitarian",
-            "value": 69038571.31,
+            "value": 19050651.37,
             "n": 8
           },
           {
@@ -9853,14 +9853,14 @@
           {
             "a": "telegram",
             "b": "medical",
-            "value": null,
+            "value": 2678.96,
             "n": 3
           },
           {
             "a": "telegram",
             "b": "military",
-            "value": 668163214.5,
-            "n": 93
+            "value": 426287651.94,
+            "n": 86
           },
           {
             "a": "telegram",
@@ -9895,7 +9895,7 @@
           {
             "a": "web",
             "b": "military",
-            "value": 546810494.48,
+            "value": 363592096.51,
             "n": 8
           },
           {
@@ -9913,14 +9913,14 @@
           {
             "a": "youtube",
             "b": "medical",
-            "value": null,
+            "value": 2678.96,
             "n": 12
           },
           {
             "a": "youtube",
             "b": "military",
-            "value": 13776000.0,
-            "n": 68
+            "value": 89681022.16,
+            "n": 66
           },
           {
             "a": "youtube",
@@ -9987,13 +9987,13 @@
           {
             "a": "text",
             "b": "telegram",
-            "value": 5586048.0,
-            "n": 87
+            "value": 5452304.0,
+            "n": 82
           },
           {
             "a": "text",
             "b": "web",
-            "value": 4000.0,
+            "value": 4065.0,
             "n": 6
           },
           {
@@ -10005,8 +10005,8 @@
           {
             "a": "video",
             "b": "facebook",
-            "value": 81575.0,
-            "n": 23
+            "value": 81541.0,
+            "n": 21
           },
           {
             "a": "video",
@@ -10023,8 +10023,8 @@
           {
             "a": "video",
             "b": "telegram",
-            "value": 899669.0,
-            "n": 38
+            "value": 899090.0,
+            "n": 35
           },
           {
             "a": "video",
@@ -10035,14 +10035,14 @@
           {
             "a": "video",
             "b": "web",
-            "value": 1873.0,
+            "value": 1940.0,
             "n": 4
           },
           {
             "a": "video",
             "b": "youtube",
-            "value": 767339.0,
-            "n": 104
+            "value": 767305.0,
+            "n": 102
           }
         ],
         "tone_virality": [
@@ -10085,8 +10085,8 @@
           {
             "a": "emotional",
             "b": "facebook",
-            "value": 53526.0,
-            "n": 18
+            "value": 53492.0,
+            "n": 16
           },
           {
             "a": "emotional",
@@ -10103,8 +10103,8 @@
           {
             "a": "emotional",
             "b": "telegram",
-            "value": 3261995.0,
-            "n": 70
+            "value": 3364263.0,
+            "n": 67
           },
           {
             "a": "emotional",
@@ -10115,14 +10115,14 @@
           {
             "a": "emotional",
             "b": "web",
-            "value": 2353.0,
+            "value": 2420.0,
             "n": 6
           },
           {
             "a": "emotional",
             "b": "youtube",
-            "value": 742926.0,
-            "n": 62
+            "value": 742892.0,
+            "n": 60
           },
           {
             "a": "gratitude",
@@ -10169,8 +10169,8 @@
           {
             "a": "heroism",
             "b": "facebook",
-            "value": 79991.0,
-            "n": 19
+            "value": 79957.0,
+            "n": 17
           },
           {
             "a": "heroism",
@@ -10187,8 +10187,8 @@
           {
             "a": "heroism",
             "b": "telegram",
-            "value": 2233006.0,
-            "n": 68
+            "value": 2231842.0,
+            "n": 64
           },
           {
             "a": "heroism",
@@ -10199,14 +10199,14 @@
           {
             "a": "heroism",
             "b": "web",
-            "value": 2884.0,
+            "value": 2951.0,
             "n": 5
           },
           {
             "a": "heroism",
             "b": "youtube",
-            "value": 711087.0,
-            "n": 76
+            "value": 711053.0,
+            "n": 74
           },
           {
             "a": "humor",
@@ -10223,8 +10223,8 @@
           {
             "a": "humor",
             "b": "telegram",
-            "value": 1456847.0,
-            "n": 9
+            "value": 1455999.0,
+            "n": 8
           },
           {
             "a": "humor",
@@ -10235,8 +10235,8 @@
           {
             "a": "urgency",
             "b": "facebook",
-            "value": 29681.0,
-            "n": 11
+            "value": 29647.0,
+            "n": 9
           },
           {
             "a": "urgency",
@@ -10253,8 +10253,8 @@
           {
             "a": "urgency",
             "b": "telegram",
-            "value": 3913194.0,
-            "n": 68
+            "value": 3780117.0,
+            "n": 62
           },
           {
             "a": "urgency",
@@ -10265,14 +10265,14 @@
           {
             "a": "urgency",
             "b": "web",
-            "value": 3066.0,
-            "n": 5
+            "value": 3834.0,
+            "n": 6
           },
           {
             "a": "urgency",
             "b": "youtube",
-            "value": 338064.0,
-            "n": 36
+            "value": 338030.0,
+            "n": 34
           }
         ],
         "face_volume": [
@@ -10309,8 +10309,8 @@
           {
             "a": "blogger",
             "b": "military",
-            "value": 8960512.32,
-            "n": 28
+            "value": 9463104.43,
+            "n": 27
           },
           {
             "a": "blogger",
@@ -10321,7 +10321,7 @@
           {
             "a": "brand",
             "b": "humanitarian",
-            "value": 50121067.08,
+            "value": 133147.14,
             "n": 5
           },
           {
@@ -10339,8 +10339,8 @@
           {
             "a": "brand",
             "b": "military",
-            "value": 77839806.95,
-            "n": 46
+            "value": 146033130.66,
+            "n": 42
           },
           {
             "a": "brand",
@@ -10369,8 +10369,8 @@
           {
             "a": "official",
             "b": "military",
-            "value": 585362895.23,
-            "n": 36
+            "value": 352736195.69,
+            "n": 35
           },
           {
             "a": "official",
@@ -10399,14 +10399,14 @@
           {
             "a": "soldier",
             "b": "medical",
-            "value": null,
+            "value": 2678.96,
             "n": 2
           },
           {
             "a": "soldier",
             "b": "military",
-            "value": 416000.0,
-            "n": 22
+            "value": 1791230.6900000002,
+            "n": 21
           },
           {
             "a": "soldier",
@@ -10491,8 +10491,8 @@
           {
             "a": "military",
             "b": "facebook",
-            "value": 18.0,
-            "n": 18
+            "value": 16.0,
+            "n": 16
           },
           {
             "a": "military",
@@ -10509,8 +10509,8 @@
           {
             "a": "military",
             "b": "telegram",
-            "value": 93.0,
-            "n": 93
+            "value": 86.0,
+            "n": 86
           },
           {
             "a": "military",
@@ -10527,8 +10527,8 @@
           {
             "a": "military",
             "b": "youtube",
-            "value": 68.0,
-            "n": 68
+            "value": 66.0,
+            "n": 66
           },
           {
             "a": "other",
@@ -10560,33 +10560,33 @@
         "tone_amount": [
           {
             "key": "data_transparent",
-            "value": 11563500.0,
+            "value": 5963426.875,
             "n": 36
           },
           {
             "key": "emotional",
-            "value": 1200000.0,
-            "n": 107
+            "value": 244979.08000000002,
+            "n": 104
           },
           {
             "key": "gratitude",
-            "value": 12711750.0,
+            "value": 11563500.0,
             "n": 30
           },
           {
             "key": "heroism",
-            "value": 2500000.0,
-            "n": 120
+            "value": 1025994.0,
+            "n": 116
           },
           {
             "key": "humor",
             "value": 4960512.32,
-            "n": 10
+            "n": 9
           },
           {
             "key": "urgency",
-            "value": 1730754.6,
-            "n": 87
+            "value": 961578.06,
+            "n": 81
           }
         ],
         "cta_amount": [
@@ -10597,8 +10597,8 @@
           },
           {
             "key": "jar",
-            "value": 2261509.2,
-            "n": 74
+            "value": 414240.89,
+            "n": 67
           },
           {
             "key": "qr",
@@ -10619,34 +10619,34 @@
           },
           {
             "key": "blogger",
-            "value": 3030754.6,
-            "n": 32
+            "value": 1272495.4900000002,
+            "n": 31
           },
           {
             "key": "brand",
-            "value": 2500000.0,
-            "n": 61
+            "value": 1025994.0,
+            "n": 57
           },
           {
             "key": "official",
-            "value": 11563500.0,
-            "n": 59
+            "value": 10788105.809999999,
+            "n": 58
           },
           {
             "key": "soldier",
-            "value": 70500.0,
-            "n": 30
+            "value": 150007.845,
+            "n": 29
           }
         ],
         "channel_amount": [
           {
             "key": "facebook",
-            "value": 1750000.0,
-            "n": 24
+            "value": 392479.08,
+            "n": 22
           },
           {
             "key": "instagram",
-            "value": 545000.0,
+            "value": 392479.08,
             "n": 15
           },
           {
@@ -10656,8 +10656,8 @@
           },
           {
             "key": "telegram",
-            "value": 3835417.35,
-            "n": 117
+            "value": 2820173.075,
+            "n": 110
           },
           {
             "key": "tiktok",
@@ -10666,13 +10666,13 @@
           },
           {
             "key": "web",
-            "value": 18218666.87,
+            "value": 18273621.84,
             "n": 9
           },
           {
             "key": "youtube",
-            "value": 250000.0,
-            "n": 105
+            "value": 239031.6,
+            "n": 103
           }
         ],
         "tone_engagement": [
@@ -10683,8 +10683,8 @@
           },
           {
             "key": "emotional",
-            "value": 564.0,
-            "n": 107
+            "value": 569.0,
+            "n": 104
           },
           {
             "key": "gratitude",
@@ -10693,25 +10693,25 @@
           },
           {
             "key": "heroism",
-            "value": 574.0,
-            "n": 120
+            "value": 586.5,
+            "n": 116
           },
           {
             "key": "humor",
-            "value": 227000.0,
-            "n": 10
+            "value": 239000.0,
+            "n": 9
           },
           {
             "key": "urgency",
-            "value": 626.0,
-            "n": 87
+            "value": 653.0,
+            "n": 81
           }
         ],
         "channel_engagement": [
           {
             "key": "facebook",
-            "value": 131.0,
-            "n": 24
+            "value": 180.0,
+            "n": 22
           },
           {
             "key": "instagram",
@@ -10725,8 +10725,8 @@
           },
           {
             "key": "telegram",
-            "value": 703.0,
-            "n": 117
+            "value": 727.5,
+            "n": 110
           },
           {
             "key": "tiktok",
@@ -10735,13 +10735,13 @@
           },
           {
             "key": "web",
-            "value": 701.0,
+            "value": 766.0,
             "n": 9
           },
           {
             "key": "youtube",
-            "value": 166.0,
-            "n": 105
+            "value": 200.0,
+            "n": 103
           }
         ]
       },
@@ -10755,7 +10755,7 @@
           {
             "key": "emotional",
             "value": 1.0,
-            "n": 107
+            "n": 104
           },
           {
             "key": "gratitude",
@@ -10765,24 +10765,24 @@
           {
             "key": "heroism",
             "value": null,
-            "n": 120
+            "n": 116
           },
           {
             "key": "humor",
             "value": null,
-            "n": 10
+            "n": 9
           },
           {
             "key": "urgency",
             "value": null,
-            "n": 87
+            "n": 81
           }
         ],
         "channels": [
           {
             "key": "facebook",
             "value": null,
-            "n": 24
+            "n": 22
           },
           {
             "key": "instagram",
@@ -10797,7 +10797,7 @@
           {
             "key": "telegram",
             "value": 1.0,
-            "n": 117
+            "n": 110
           },
           {
             "key": "tiktok",
@@ -10812,7 +10812,7 @@
           {
             "key": "youtube",
             "value": null,
-            "n": 105
+            "n": 103
           }
         ]
       }
@@ -10824,7 +10824,7 @@
           {
             "key": "telegram",
             "score": 1.0,
-            "n": 47
+            "n": 43
           },
           {
             "key": "web",
@@ -10841,7 +10841,7 @@
           {
             "key": "urgency",
             "score": 1.0,
-            "n": 33
+            "n": 30
           },
           {
             "key": "gratitude",
@@ -10860,37 +10860,37 @@
           },
           {
             "key": "emotional",
-            "score": 0.9809297680045077,
-            "n": 30
+            "score": 0.9802721737977665,
+            "n": 29
           },
           {
             "key": "heroism",
-            "score": 0.9751257843537057,
-            "n": 23
+            "score": 0.972756811435011,
+            "n": 21
           }
         ],
         "form_factor": [
           {
             "key": "text",
             "score": 1.0,
-            "n": 46
+            "n": 42
           },
           {
             "key": "video",
-            "score": 0.9182704343050332,
-            "n": 7
+            "score": 0.9046488400225386,
+            "n": 6
           }
         ],
         "goal": [
           {
-            "key": "military",
-            "score": 1.0,
-            "n": 38
-          },
-          {
             "key": "other",
             "score": 1.0,
             "n": 5
+          },
+          {
+            "key": "military",
+            "score": 1.0,
+            "n": 34
           },
           {
             "key": "medical",
@@ -10934,9 +10934,9 @@
           },
           {
             "key": "military",
-            "recent_n": 38,
-            "prior_n": 15,
-            "momentum": 23,
+            "recent_n": 34,
+            "prior_n": 14,
+            "momentum": 20,
             "recent_resonance": 1.0
           },
           {
@@ -10957,9 +10957,9 @@
           },
           {
             "key": "telegram",
-            "recent_n": 47,
-            "prior_n": 17,
-            "momentum": 30,
+            "recent_n": 43,
+            "prior_n": 16,
+            "momentum": 27,
             "recent_resonance": 1.0
           },
           {
@@ -10987,10 +10987,10 @@
           },
           {
             "key": "emotional",
-            "recent_n": 30,
+            "recent_n": 29,
             "prior_n": 12,
-            "momentum": 18,
-            "recent_resonance": 0.967123501555847
+            "momentum": 17,
+            "recent_resonance": 0.9659898291957039
           },
           {
             "key": "gratitude",
@@ -11001,23 +11001,23 @@
           },
           {
             "key": "heroism",
-            "recent_n": 23,
+            "recent_n": 21,
             "prior_n": 8,
-            "momentum": 15,
-            "recent_resonance": 0.9571176107250179
+            "momentum": 13,
+            "recent_resonance": 0.9530335736512101
           },
           {
             "key": "humor",
             "recent_n": 6,
-            "prior_n": 2,
-            "momentum": 4,
+            "prior_n": 1,
+            "momentum": 5,
             "recent_resonance": 1.0
           },
           {
             "key": "urgency",
-            "recent_n": 33,
-            "prior_n": 7,
-            "momentum": 26,
+            "recent_n": 30,
+            "prior_n": 6,
+            "momentum": 24,
             "recent_resonance": 1.0
           }
         ]
@@ -11055,6 +11055,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -11118,6 +11119,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -11153,14 +11155,14 @@
     },
     {
       "id": "camp-011d7b831bd7",
-      "actor_id": "auto-800587d3",
-      "title": "Розіграш набору Fox + Olight за донат від 300 грн",
-      "goal": "military",
+      "actor_id": "auto-0c58a8e1",
+      "title": "Розіграш ножа за донат від 300 грн",
+      "goal": "other",
       "type": "jar",
       "channels": [
         "telegram"
       ],
-      "date_start": "2026-06-07",
+      "date_start": "2026-06-03",
       "date_end": "2026-06-08",
       "year": 2026,
       "form_factor": [
@@ -11173,41 +11175,48 @@
       ],
       "face": "blogger",
       "cadence": "one_off",
-      "playbook_note": "Кампанія побудована на механіці розіграшу призів (ніж Fox + ліхтарик Olight) серед донорів, які задонатили від 300 грн на банку Monobank. Переможців обіцяють визначити наступного дня, що створює короткостроковий стимул і відчуття терміновості. Публікація зроблена в Telegram-каналі автора з охопленням 131 000 переглядів.",
-      "amount_uah": null,
+      "playbook_note": "Короткий допис у телеграм-каналі блогера Сергія Стерненка анонсує фінальні години розіграшу ножа як призу для донорів від 300 грн через Monobank jar. Кампанія побудована на gamification-механіці (матеріальний приз як стимул до донату) та urgency-тригері (обмежений час до 11:00 поточного дня). Цільове призначення коштів у пості не вказано.",
+      "amount_uah": 2261509.2,
       "amount_usd": null,
       "goal_amount": null,
-      "reach": 131000.0,
-      "engagement": 131000.0,
+      "reach": 234000.0,
+      "engagement": 234000.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": null,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
         "reach": {
-          "source_url": "https://t.me/ssternenko/59106",
+          "source_url": "https://t.me/ssternenko/58987",
           "confidence": 0.35,
           "tier": 3,
           "note": ""
         },
         "campaign": {
-          "source_url": "https://t.me/ssternenko/59106",
+          "source_url": "https://t.me/ssternenko/58987",
           "confidence": 0.35,
           "tier": 3,
           "note": ""
         },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/2JbpBYkhMv",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
+        },
         "engagement": {
-          "source_url": "https://t.me/ssternenko/59106",
+          "source_url": "https://t.me/ssternenko/58987",
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
         }
       },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": "Посилання на канал Сергія Стерненка в Telegram є реальним і активним джерелом фандрайзингових кампаній військової тематики. Канал має аудиторію понад 100 тис. підписників, що узгоджується з reach 131 000. Однак без прямого доступу до конкретного повідомлення №59106 неможливо верифікувати точні метрики (суму зборів, витрати), тип jar та деталі розіграшу Fox + Olight. Типізація 'military', тон 'urgency/emotional' та канал Telegram відповідають типовому патерну таких кампаній. Відсутність даних про amount_uah та spend знижує впевненість у повній верифікації.",
-      "extracted_at": "2026-06-07T12:26:48.218043+00:00",
+      "confidence_overall": 0.95,
+      "verification_status": "verified",
+      "verdict_reason": null,
+      "extracted_at": "2026-06-07T14:17:51.376670+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0
@@ -11243,6 +11252,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "dw_ukrainian"
@@ -11278,71 +11288,75 @@
     {
       "id": "camp-02dcaa6af241",
       "actor_id": "auto-0c58a8e1",
-      "title": "Єдинозбір — перехоплювачі ППО (1020 ЗРАП / ЦССО «Схід»)",
+      "title": "Донат на антишахедні дрони",
       "goal": "military",
       "type": "jar",
       "channels": [
         "telegram",
         "web"
       ],
-      "date_start": "2026-05-13",
+      "date_start": "2026-05-12",
       "date_end": null,
       "year": 2026,
       "form_factor": [
-        "video",
-        "text"
+        "text",
+        "video"
       ],
       "cta_type": "jar",
       "tone": [
+        "urgency",
         "emotional",
         "heroism"
       ],
       "face": "official",
-      "cadence": "ongoing",
-      "playbook_note": "Пост у Telegram-каналі Фонду Притули публікує бойове відео, зняте 1020-м зенітним ракетно-артилерійським полком та ЦССО «Схід», де демонструється робота перехоплювачів, придбаних коштами Єдинозбору. Підхід: proof-of-impact — донори бачать реальний результат своїх внесків у форматі ефектного оперативного кліпу з сильною операторською роботою. Jar-посилання Monobank додається без окремого заклику — як природне продовження контенту.",
+      "cadence": "one_off",
+      "playbook_note": "Короткий текстовий пост у Telegram-каналі фонду Притули, опублікований у контексті новин про перемир'я. Використовує провокативний заголовок ('Перемир'я — всьо') як гачок для мотивації донатів на антишахедні дрони, одразу надаючи пряме посилання на банку Monobank.",
       "amount_uah": 271799829.86,
       "amount_usd": null,
-      "goal_amount": 1000000000.0,
-      "reach": 701.0,
-      "engagement": 701.0,
+      "goal_amount": null,
+      "reach": 766.0,
+      "engagement": 766.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": null,
       "case_id": null,
       "partner_ids": [
         "1020",
+        "15",
+        "monobank",
         "partner"
       ],
       "provenance": {
         "campaign": {
-          "source_url": "https://t.me/prytulafoundation/4144",
+          "source_url": "https://t.me/prytulafoundation/4143",
           "confidence": 0.35,
           "tier": 3,
           "note": ""
+        },
+        "reach": {
+          "source_url": "https://t.me/prytulafoundation/4143",
+          "confidence": 0.35,
+          "tier": 3,
+          "note": "platform signal backfill"
+        },
+        "engagement": {
+          "source_url": "https://t.me/prytulafoundation/4143",
+          "confidence": 0.35,
+          "tier": 3,
+          "note": "platform signal backfill"
         },
         "amount_uah": {
           "source_url": "https://send.monobank.ua/jar/3w8JTb7xhE",
           "confidence": 0.95,
           "tier": 1,
           "note": "monobank jar tier-1"
-        },
-        "reach": {
-          "source_url": "https://t.me/prytulafoundation/4144",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/prytulafoundation/4144",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
         }
       },
-      "confidence_overall": 0.35,
+      "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "monobank jar tier-1",
-      "extracted_at": "2026-06-07T13:48:44.625229+00:00",
+      "verdict_reason": null,
+      "extracted_at": "2026-06-07T13:08:33.065023+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0
@@ -11379,6 +11393,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -11452,6 +11467,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "kvertus",
@@ -11521,6 +11537,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -11582,6 +11599,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "requiem_group"
@@ -11644,6 +11662,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -11707,6 +11726,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "united24"
@@ -11781,6 +11801,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "uf_pro"
@@ -11843,6 +11864,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -11903,6 +11925,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -11964,6 +11987,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -12027,6 +12051,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -12082,7 +12107,7 @@
       "face": "official",
       "cadence": "ongoing",
       "playbook_note": "Пост є milestone-апдейтом ongoing-кампанії «Чисте небо» — повідомляє про досягнення позначки 1000 збиттів ворожих БПЛА. Використовується підхід звітності з конкретними цифрами (59 підрозділів, 1867 літаків-перехоплювачів, 1099 використаних, 1000 збитих) для підтвердження ефективності та мотивації до подальших донатів. Пост завершується нагадуванням про загальну ціль збору — 250 млн грн — і прямими посиланнями на банку monobank та liqpay.",
-      "amount_uah": 250000000.0,
+      "amount_uah": 18328576.81,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 779.0,
@@ -12090,14 +12115,15 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": null,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://t.me/prytulafoundation/4155",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/LuUHJiHc5",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "campaign": {
           "source_url": "https://t.me/prytulafoundation/4155",
@@ -12118,8 +12144,8 @@
           "note": "platform signal backfill"
         }
       },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
+      "confidence_overall": 0.95,
+      "verification_status": "verified",
       "verdict_reason": null,
       "extracted_at": "2026-06-07T13:05:49.330445+00:00",
       "extracted_by_model": "claude-opus-4-8",
@@ -12158,6 +12184,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -12223,6 +12250,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "brezitskiy",
@@ -12290,6 +12318,7 @@
       "spend": null,
       "assets_count": 1.0,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "live",
@@ -12364,6 +12393,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "6",
@@ -12428,6 +12458,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -12490,6 +12521,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -12531,7 +12563,8 @@
       "channels": [
         "youtube",
         "facebook",
-        "telegram"
+        "telegram",
+        "web"
       ],
       "date_start": "2024-06-04",
       "date_end": null,
@@ -12548,7 +12581,7 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Телеканал «Еспресо» спільно з Благодійним фондом Ірини Коваль публікує короткий відеозбір на YouTube із чітко визначеною ціллю — 2 500 000 грн на дрони (8 покращених Мавіків та 5 стандартних) для арт-розвідки 100-ї бригади ЗСУ. Опис містить кілька платіжних інструментів: посилання на банку Monobank, номери карток Monobank і ПриватБанку, а також повні реквізити фонду в двох банках. На момент публікації вже зібрано 174 000 грн, що використовується як соціальний доказ і елемент терміновості. Емоційний меседж будується навколо конвертації «люті від обстрілів» у донати, а дрони позиціонуються як «очі в небі», що рятують життя військових.",
-      "amount_uah": 2500000.0,
+      "amount_uah": 4034546.22,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 487.0,
@@ -12556,17 +12589,19 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": null,
       "case_id": null,
       "partner_ids": [
         "espresotv",
-        "partner"
+        "partner",
+        "tv"
       ],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=PgLYmJhyktw",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/5Qxg2dyZZV",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "campaign": {
           "source_url": "https://www.youtube.com/watch?v=PgLYmJhyktw",
@@ -12587,13 +12622,13 @@
           "note": "platform signal backfill"
         }
       },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
+      "confidence_overall": 0.95,
+      "verification_status": "verified",
       "verdict_reason": null,
       "extracted_at": "2026-06-07T11:58:52.447364+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.03490759753593429,
-      "rel_resonance": 0.9382673551348251
+      "rel_resonance": 0.4158845254633551
     },
     {
       "id": "camp-14b412b007ff",
@@ -12618,14 +12653,15 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Журналістський репортаж BIHUS Info з передової про роботу FPV-дронів слугує органічним носієм збору коштів: донат-лінки вбудовані в опис відео без окремої рекламної кампанії. Контент будується на ефекті присутності (POV-зйомка бліндажів), розповіді бійців і тезі про лідерство України у дронових технологіях — це формує довіру і мотивує підтримку без прямого тиску.",
-      "amount_uah": null,
+      "amount_uah": 30497947.34,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 30436397.41,
       "reach": 863267.0,
       "engagement": 16534.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "bihus_info"
@@ -12648,11 +12684,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": ""
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/9LbwdnWSch",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T14:51:00.899646+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.019152822938905346,
@@ -12689,6 +12731,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -12751,6 +12794,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "laba",
@@ -12815,6 +12859,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "paramedicua"
@@ -12873,24 +12918,25 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Медіаканал Espreso.TV опублікував відеозвернення на підтримку парамедиків із зони бойових дій. Ворог знищив евакуаційну автівку — потрібно 195 000 грн на нову. Наратив будується на емоційному образі парамедиків, що щодня рятують поранених «на нулі». Збір реалізований через MonoJar, картку ПриватБанку та PayPal; медіаохоплення забезпечує аудиторія каналу.",
-      "amount_uah": 195000.0,
+      "amount_uah": 25320.88,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 30000.0,
       "reach": 539.0,
       "engagement": 10.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "espresotv"
       ],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=BFiEe5h8jU4",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/98LvvS7jDn",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "reach": {
           "source_url": "https://www.youtube.com/watch?v=BFiEe5h8jU4",
@@ -12912,8 +12958,8 @@
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:04:19.538021+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.01855287569573284,
@@ -12952,6 +12998,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "bps_knives",
@@ -13011,7 +13058,7 @@
       "face": "blogger",
       "cadence": "one_off",
       "playbook_note": "Власник бізнесу з прокату квадроциклів (Квадро Гараж), який з початку повномасштабного вторгнення передав усю прокатну техніку захисникам Київщини, публікує волонтерський відеозвіт про ремонт квадроциклів ЗСУ та попутно веде збір на баггі. Кампанія органічно вбудована в контент каналу — відео про волонтерство є частиною загального ютуб-контенту про техніку. Банка Monobank і номер картки розміщені у першому абзаці опису. Збір підкріплений особистою репутацією та бізнес-експертизою автора, а не масовим охопленням.",
-      "amount_uah": null,
+      "amount_uah": 198432.58,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 138.0,
@@ -13019,6 +13066,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -13039,11 +13087,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": ""
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/8sbboyw3as",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:31:28.522767+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.06521739130434782,
@@ -13081,6 +13135,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "combatfootageua"
@@ -13145,6 +13200,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -13213,6 +13269,7 @@
       "spend": null,
       "assets_count": 1.0,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "1",
@@ -13283,6 +13340,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -13344,6 +13402,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -13405,6 +13464,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "wb_volunteer_association_of_ukrainians"
@@ -13460,24 +13520,25 @@
       "face": "official",
       "cadence": "one_off",
       "playbook_note": "Кампанія Фонду Притули збирає 1 000 000 грн на дооснащення розміновувача КНРО «Змій v2.0» — електричного НРК із захистом від FPV-скидів для гуманітарного розмінування та роботи у зонах підвищеного ризику. Як механізм залучення донорів використовується розіграш ювелірного виробу (золота підвіска «Козак» з діамантами від бренду Dukachi) серед усіх, хто задонатив від 100 грн у визначений період. Збір реалізовано через банку Monobank із прямим посиланням у Telegram-каналі фонду.",
-      "amount_uah": 1000000.0,
+      "amount_uah": 24642.0,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 1000000.0,
       "reach": 574.0,
       "engagement": 574.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "dukachi"
       ],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://t.me/prytulafoundation/4173",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/AbbEKfgbg7",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "campaign": {
           "source_url": "https://t.me/prytulafoundation/4173",
@@ -13499,8 +13560,8 @@
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T13:06:42.308161+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
@@ -13537,6 +13598,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -13600,6 +13662,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -13663,6 +13726,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "4_c4"
@@ -13726,6 +13790,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -13788,6 +13853,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -13852,6 +13918,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -13916,6 +13983,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -13979,6 +14047,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "darek_pro_putina"
@@ -14053,6 +14122,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "127"
@@ -14117,6 +14187,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -14178,6 +14249,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -14207,66 +14279,6 @@
       "verification_status": "auto",
       "verdict_reason": "Джерело вказує на пост у Telegram-каналі фонду Притули, однак без доступу до актуального вмісту посилання неможливо верифікувати конкретні метрики (amount_uah, reach, spend — всі відсутні). Типізація 'jar' (збір через банку) потребує підтвердження реквізитів, а партнерство з VIDI та умови розіграшу Volvo XC40 не підкріплені жодним додатковим незалежним джерелом. Ціль 'military' та тональність відповідають профілю фонду, але цього недостатньо для повної валідації кампанії.",
       "extracted_at": "2026-06-07T12:23:13.683925+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0
-    },
-    {
-      "id": "camp-368409cc0841",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Донат на антишахедні дрони",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-05-12",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "urgency"
-      ],
-      "face": "official",
-      "cadence": "one_off",
-      "playbook_note": "Короткий текстовий пост у Telegram-каналі фонду Притули, опублікований у контексті новин про перемир'я. Використовує провокативний заголовок ('Перемир'я — всьо') як гачок для мотивації донатів на антишахедні дрони, одразу надаючи пряме посилання на банку Monobank.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 766.0,
-      "engagement": 766.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/prytulafoundation/4143",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/prytulafoundation/4143",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/prytulafoundation/4143",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T13:08:33.065023+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0
@@ -14305,6 +14317,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -14368,6 +14381,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "12"
@@ -14438,6 +14452,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -14499,6 +14514,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "techmentor",
@@ -14564,6 +14580,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -14625,6 +14642,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "93",
@@ -14688,6 +14706,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -14753,6 +14772,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "live"
@@ -14786,80 +14806,6 @@
       "rel_resonance": 2.481679008345135
     },
     {
-      "id": "camp-465e46afdfe9",
-      "actor_id": "auto-a7298ed5",
-      "title": "ВАЖЛИВИЙ ЗБІР на дрони для ЗСУ",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "youtube",
-        "telegram",
-        "facebook",
-        "web"
-      ],
-      "date_start": "2024-07-15",
-      "date_end": null,
-      "year": 2024,
-      "form_factor": [
-        "video"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "emotional",
-        "urgency",
-        "heroism"
-      ],
-      "face": "brand",
-      "cadence": "one_off",
-      "playbook_note": "Кампанія телеканалу «Еспресо» спільно з Благодійним фондом Ірини Коваль на збір 2,5 млн грн для закупівлі дронів (8 покращених Мавіків та 5 стандартних) для арт-розвідки 100-ї бригади ЗСУ. Відео публікується на YouTube-каналі медіа з описом, що містить усі реквізити: посилання на банку Monobank, номери карток ПриватБанку та Monobank, а також повні банківські реквізити фонду. Наратив будується на конвертації емоційного болю від ворожих обстрілів у конкретну дію — донат. Дрони позиціонуються як «очі в небі», що рятують життя військових. На момент публікації вже зібрано 174 тис. грн із 2,5 млн цільових.",
-      "amount_uah": 2500000.0,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 535.0,
-      "engagement": 15.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "case_id": null,
-      "partner_ids": [
-        "espresotv",
-        "partner"
-      ],
-      "provenance": {
-        "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=5Fj1xYAgTpE",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://www.youtube.com/watch?v=5Fj1xYAgTpE",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://www.youtube.com/watch?v=5Fj1xYAgTpE",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://www.youtube.com/watch?v=5Fj1xYAgTpE",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": "Єдине джерело — посилання на YouTube-відео, яке не містить верифікованих даних про суму збору 2 500 000 грн, охоплення чи витрати на просування. Відео може підтверджувати факт існування кампанії, але не метрики. Відсутні посилання на банківські реквізити, звіти про використання коштів, офіційні підтвердження від ЗСУ або волонтерських організацій. Типізація 'jar' (банка) та канали поширення не підкріплені жодними аналітичними даними. Confidence низький через мінімальну доказову базу.",
-      "extracted_at": "2026-06-07T11:58:26.423640+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 0.028037383177570093,
-      "rel_resonance": 0.7536056106937765
-    },
-    {
       "id": "camp-4699a6fbdde4",
       "actor_id": "auto-0c58a8e1",
       "title": "100 перехоплювачів «Тарас+» для підрозділів ЗСУ від ФК «Металіст 1925»",
@@ -14891,6 +14837,7 @@
       "spend": null,
       "assets_count": 100.0,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "1925"
@@ -14965,6 +14912,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -15027,6 +14975,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -15088,6 +15037,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -15142,14 +15092,15 @@
       "face": "brand",
       "cadence": "ongoing",
       "playbook_note": "Організація «Твій Крок» публікує YouTube-відео, що анонсує продовження збору коштів на обладнання ремонтних майстерень для 151-ої ОМБр. Кампанія поєднує органічний відеоконтент на YouTube з кількома точками входу для донатів: Monobank-банку, PayPal та проєктною сторінкою на власному сайті. Відео набрало понад 75 тис. переглядів, що свідчить про широке органічне охоплення без очевидної платної реклами.",
-      "amount_uah": null,
+      "amount_uah": 46918479.0,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 46877658.45,
       "reach": 75703.0,
       "engagement": 1157.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -15172,11 +15123,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/9nJmjXLDu4",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:29:53.091547+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.015283410168685521,
@@ -15213,6 +15170,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "ictv"
@@ -15276,6 +15234,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -15324,19 +15283,21 @@
       "cta_type": "jar",
       "tone": [
         "urgency",
-        "humor"
+        "humor",
+        "emotional"
       ],
       "face": "official",
       "cadence": "one_off",
       "playbook_note": "Гейміфікована донат-кампанія: кожні 50 грн до банки «Вагон знань» (навчання військових у школі «Боривітер») = 1 шанс виграти Volvo XC40 від партнера VIDI. Поріг входу знижено з 300 до 50 грн для ширшого охоплення; донатери ≥300 грн автоматично отримали 6 шансів. Розіграш — 8 липня 2026 р. на стрімі «Телебачення Торонто». КАСКО-покриття воєнних ризиків для переможця від ТДВ «СК «ВІДІ-Страхування».",
       "amount_uah": 10012711.62,
       "amount_usd": null,
-      "goal_amount": 50000000.0,
+      "goal_amount": null,
       "reach": 695.0,
       "engagement": 695.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": null,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -15368,9 +15329,9 @@
           "note": "platform signal backfill"
         }
       },
-      "confidence_overall": 0.35,
+      "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "monobank jar tier-1",
+      "verdict_reason": null,
       "extracted_at": "2026-06-07T13:54:44.291117+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
@@ -15406,6 +15367,7 @@
       "spend": null,
       "assets_count": 1.0,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -15477,6 +15439,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -15540,6 +15503,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "53",
@@ -15605,6 +15569,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "56",
@@ -15676,6 +15641,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -15739,6 +15705,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -15801,6 +15768,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -15867,6 +15835,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "3"
@@ -15929,6 +15898,7 @@
       "spend": null,
       "assets_count": 1.0,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -15988,7 +15958,7 @@
       "face": "soldier",
       "cadence": "ongoing",
       "playbook_note": "Боєць 79-ї бригади звертається особисто до аудиторії YouTube із закликом зібрати кошти на автомобіль. Апеляція будується на реаліях війни — автомобілі є витратним матеріалом, і підрозділ не може дозволити собі постійно їх купувати самостійно. Використовується формула прямого особистого звернення ('вкотре звертаюсь'), що вказує на повторювані збори одного й того ж автора. CTA — донат на банку Монобанк або переказ на картки Монобанк/ПриватБанк. Акцент на тому, що 'малих сум немає' — зниження бар'єру для входу малих донорів.",
-      "amount_uah": null,
+      "amount_uah": 254636.92,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 1252.0,
@@ -15996,6 +15966,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -16016,11 +15987,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/5XcmGy5bif",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:18:33.376999+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.07587859424920128,
@@ -16061,6 +16038,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "bluebird_tech"
@@ -16124,6 +16102,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -16191,6 +16170,7 @@
       "spend": null,
       "assets_count": 1.0,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -16252,14 +16232,15 @@
       "face": "soldier",
       "cadence": "one_off",
       "playbook_note": "Відео-контент від учасника бойових дій (2 САДн 93 ОМБр «Холодний Яр») з демонстрацією тренувань з тактичної медицини. Кампанія поєднує освітній контент (навчання першої допомоги) з прямим закликом до донатів через кілька каналів: дві банки Monobank, картка ПриватБанку та PayPal. Автор просить не лише донатити, а й поширювати відео — вірусна механіка через органічне охоплення. Telegram-канал використовується як додатковий майданчик для комунікації з аудиторією.",
-      "amount_uah": null,
+      "amount_uah": 2678.96,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 220000.0,
       "reach": 45418.0,
       "engagement": 4388.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "moto_life_babichev_andrii"
@@ -16282,11 +16263,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/4U54e31BsM",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T13:14:54.961462+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.09661367739662689,
@@ -16322,6 +16309,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -16384,6 +16372,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -16448,6 +16437,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -16481,73 +16471,6 @@
       "rel_resonance": 0.0
     },
     {
-      "id": "camp-6e93b2adadf2",
-      "actor_id": "auto-1e59023d",
-      "title": "Чисте небо",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-05-28",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "heroism",
-        "urgency"
-      ],
-      "face": "brand",
-      "cadence": "ongoing",
-      "playbook_note": "Пост використовує конкретні результати як соціальний доказ (3,7 млрд грн збитків ворогу, 59 підрозділів), після чого направляє до monobank-банки збору «Чисте небо» з кількома альтернативними платіжними реквізитами (jar, liqpay, сайт).",
-      "amount_uah": 18328576.81,
-      "amount_usd": null,
-      "goal_amount": 250000000.0,
-      "reach": 585.0,
-      "engagement": 585.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/prytulafoundation/4196",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "amount_uah": {
-          "source_url": "https://send.monobank.ua/jar/LuUHJiHc5",
-          "confidence": 0.95,
-          "tier": 1,
-          "note": "monobank jar tier-1"
-        },
-        "reach": {
-          "source_url": "https://t.me/prytulafoundation/4196",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/prytulafoundation/4196",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "verified",
-      "verdict_reason": "monobank jar tier-1",
-      "extracted_at": "2026-06-07T13:45:43.369598+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0
-    },
-    {
       "id": "camp-7125ff9a684f",
       "actor_id": "auto-0c58a8e1",
       "title": "Перегляди в YouTube конвертуються у русоріз",
@@ -16579,6 +16502,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -16632,22 +16556,23 @@
       "face": "soldier",
       "cadence": "one_off",
       "playbook_note": "Бійці 110 ОМБр звертаються напряму до аудиторії через відео на YouTube. Кампанія побудована на особистому зверненні військових з передової (Покровський напрямок), обґрунтуванням конкретної потреби — ремонт авто після втрат під час евакуацій з Авдіївки (березень 2024). Фокус на конкретній цільовій сумі (41 000 ₴) та аргументі, що мобільність рятує життя. Залучення через monobank jar + номери карток.",
-      "amount_uah": 41000.0,
+      "amount_uah": 0.02,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 20000.0,
       "reach": 540.0,
       "engagement": 118.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=WHwJ6f9gDtI",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/2uU5rZToih",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "reach": {
           "source_url": "https://www.youtube.com/watch?v=WHwJ6f9gDtI",
@@ -16669,8 +16594,8 @@
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:33:57.148393+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.21851851851851853,
@@ -16706,6 +16631,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -16769,6 +16695,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -16832,6 +16759,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -16891,7 +16819,7 @@
       "face": "soldier",
       "cadence": "one_off",
       "playbook_note": "Персональний збір від імені екіпажу FPV-пілотів ЗСУ, автомобіль яких постраждав у ДТП під час бойового виходу на Запорізькому напрямку. Кампанія ведеться через один YouTube-ролик з коротким описом ситуації та прямим посиланням на банку Monobank і номером картки. Звернення від першої особи, без медіапартнерів і реклами, розрахований на органічне поширення серед підписників каналу GoodFood.",
-      "amount_uah": 100000.0,
+      "amount_uah": 60057.53,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 538.0,
@@ -16899,14 +16827,15 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=P9VkocFoL1c",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/2VbpoF4uuV",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "campaign": {
           "source_url": "https://www.youtube.com/watch?v=P9VkocFoL1c",
@@ -16928,8 +16857,8 @@
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:03:38.274699+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.007434944237918215,
@@ -16965,6 +16894,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -17029,6 +16959,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": true,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -17092,6 +17023,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -17155,6 +17087,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -17215,6 +17148,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -17278,6 +17212,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -17340,6 +17275,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -17401,6 +17337,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": null,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -17468,6 +17405,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "1",
@@ -17531,6 +17469,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -17593,6 +17532,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -17658,6 +17598,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -17720,6 +17661,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -17746,72 +17688,6 @@
       "verification_status": "auto",
       "verdict_reason": null,
       "extracted_at": "2026-06-07T14:33:04.675595+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0
-    },
-    {
-      "id": "camp-91a65877abef",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Розіграш ножа за донат від 300 грн",
-      "goal": "other",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-03",
-      "date_end": "2026-06-03",
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "urgency"
-      ],
-      "face": "blogger",
-      "cadence": "one_off",
-      "playbook_note": "Короткий допис у телеграм-каналі блогера Сергія Стерненка анонсує фінальні години розіграшу ножа як призу для донорів від 300 грн через Monobank jar. Кампанія побудована на gamification-механіці (матеріальний приз як стимул до донату) та urgency-тригері (обмежений час до 11:00 поточного дня). Цільове призначення коштів у пості не вказано.",
-      "amount_uah": 2261509.2,
-      "amount_usd": null,
-      "goal_amount": 10000000.0,
-      "reach": 234000.0,
-      "engagement": 234000.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "case_id": null,
-      "partner_ids": [],
-      "provenance": {
-        "reach": {
-          "source_url": "https://t.me/ssternenko/58987",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://t.me/ssternenko/58987",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "amount_uah": {
-          "source_url": "https://send.monobank.ua/jar/2JbpBYkhMv",
-          "confidence": 0.95,
-          "tier": 1,
-          "note": "monobank jar tier-1"
-        },
-        "engagement": {
-          "source_url": "https://t.me/ssternenko/58987",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "verified",
-      "verdict_reason": "monobank jar tier-1",
-      "extracted_at": "2026-06-07T14:17:51.376670+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0
@@ -17850,6 +17726,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "centaruro_srl",
@@ -17917,6 +17794,7 @@
       "spend": null,
       "assets_count": 110.0,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "darek_pro_putina"
@@ -17986,14 +17864,15 @@
       "face": "blogger",
       "cadence": "one_off",
       "playbook_note": "Блогер каналу Moto LIFE спочатку задокументував вручення автомобіля бійцю Івану (Бахмутський напрям), а потім одразу відкрив новий збір на вантажний трак для доставки та ремонту важкої техніки на позиціях. CTA побудований навколо monobank-банки з дублюванням через ПриватБанк, МоноБанк-картку та PayPal. Аудиторію явно просять не лише донатити, а й репостити відео — вірусна механіка як частина збору. Telegram-канал використовується як паралельний майданчик для комʼюніті.",
-      "amount_uah": null,
+      "amount_uah": 3988.72,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 240000.0,
       "reach": 18919.0,
       "engagement": 3361.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "babichev_andrii"
@@ -18016,11 +17895,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": ""
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/3oMaFiM4Q6",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:33:09.965935+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.17765209577673238,
@@ -18057,6 +17942,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -18118,6 +18004,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -18183,6 +18070,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -18243,24 +18131,25 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Кампанія приурочена до Дня пам'яті дітей, загиблих від збройної агресії Росії (4 червня). Фонд Притули спільно з цифровою платформою Strichka запускає онлайн-кампанію для привернення уваги світу до злочинів Росії проти дітей. Пост спирається на офіційну статистику жертв (705 загиблих, 2527 поранених, понад 20 тисяч вивезених) як емоційний і фактологічний якір. Основний заклик — підтримати проєкт Safe&Smart Гуманітарного фонду, який займається облаштуванням шкільних укриттів. За три роки проєкт залучив понад 50 млн грн донатів. CTA веде на банку monobank.",
-      "amount_uah": 50000000.0,
+      "amount_uah": 12080.06,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 12080.06,
       "reach": 406.0,
       "engagement": 406.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "strichka"
       ],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://t.me/prytulafoundation/4205",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/8Npn8bcPKB",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "campaign": {
           "source_url": "https://t.me/prytulafoundation/4205",
@@ -18282,8 +18171,8 @@
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": "Єдине джерело — пост у Telegram-каналі фонду Притули, який є власним каналом організатора кампанії, а не незалежним підтвердженням. Метрика reach відсутня, spend відсутній, сума 50 млн грн не верифікована зовнішніми джерелами. Посилання не дає змоги перевірити фактичний збір, охоплення чи витрати — лише декларацію самого фонду. Типізація 'organic_social' через один Telegram-пост є правдоподібною, але humanitarian-ціль і заявлена сума потребують додаткових незалежних підтверджень (звіти, банківські виписки, верифіковані медіа).",
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T12:23:33.618545+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
@@ -18319,6 +18208,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -18380,6 +18270,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -18444,6 +18335,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -18501,14 +18393,15 @@
       "face": "soldier",
       "cadence": "ongoing",
       "playbook_note": "Батальйон К-2 (54 ОМБр) веде власний YouTube-канал, де публікує відеозвіти бойової роботи FPV-дронів — влучання по танках, автомобілях, зенітних установках і гарматах. Відео слугує одночасно документуванням бойових дій і фандрайзинговим інструментом: у описі розміщені реквізити для підтримки (PayPal, банківська картка, Monobank-банка, Patreon, криптовалюта). Підрозділ самостійно керує мультиплатформною присутністю (YouTube, Telegram, Facebook, Instagram, Twitter, Reddit), формуючи лояльну аудиторію навколо реального бойового контенту без залучення зовнішніх амбасадорів чи медіапартнерів.",
-      "amount_uah": null,
+      "amount_uah": 239958.16,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 10.0,
       "reach": 1680239.0,
       "engagement": 27614.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -18529,11 +18422,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/28o1edDVvu",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T13:13:27.178422+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.016434566749135092,
@@ -18571,6 +18470,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "1_autocomua",
@@ -18635,6 +18535,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -18699,6 +18600,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -18761,6 +18663,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "european_defense_tech_hub_edth"
@@ -18825,6 +18728,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -18894,6 +18798,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -18954,6 +18859,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19015,6 +18921,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "dw"
@@ -19078,6 +18985,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "uf_pro_ufprogear"
@@ -19111,73 +19019,6 @@
       "rel_resonance": 1.6904461387872856
     },
     {
-      "id": "camp-aa682d201614",
-      "actor_id": "auto-800587d3",
-      "title": "Антишахедні засоби для ББлС «Роніни» та 15 БРоП «Кара-Даг»",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-06-02",
-      "date_end": null,
-      "year": 2026,
-      "form_factor": [
-        "video",
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "urgency",
-        "heroism",
-        "emotional"
-      ],
-      "face": "soldier",
-      "cadence": "one_off",
-      "playbook_note": "Пост у Telegram-каналі фонду Притули демонструє відео знищення ворожих шахедів дронами бійців ББлС «Роніни» та 15 БРоП «Кара-Даг». Кампанія побудована на поєднанні реального бойового контенту з прямим закликом до донату через банку monobank. Акцент на загрозі для всіх громадян («під прицілом ми всі») формує відчуття особистої причетності та підсилює urgency.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 610.0,
-      "engagement": 610.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "case_id": null,
-      "partner_ids": [
-        "15",
-        "monobank",
-        "partner"
-      ],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/prytulafoundation/4201",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/prytulafoundation/4201",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/prytulafoundation/4201",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": "Джерело — пост у Telegram-каналі фонду Притули, який є первинним публікатором кампанії, а не незалежним підтвердженням. Метрики amount_uah, reach та spend відсутні, тому перевірити фінансові показники неможливо. Сам пост може підтверджувати існування кампанії та її мету (антишахедні засоби для ББлС 'Роніни' та 15 БРоП 'Кара-Даг'), проте не є незалежним джерелом верифікації — це самореференція. Типізація 'jar' і канал 'telegram' правдоподібні для фонду Притули, але без доступу до актуального вмісту посилання та незалежних джерел впевненість залишається низькою.",
-      "extracted_at": "2026-06-07T12:22:45.249549+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0
-    },
-    {
       "id": "camp-ac32b01da728",
       "actor_id": "auto-fe39df11",
       "title": "Евакуаційне авто Mitsubishi Delica",
@@ -19200,7 +19041,7 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Фонд «Колеса Перемоги» публікує відеоісторію конкретного переобладнаного авто — Mitsubishi L400 Delica — з акцентом на тактичні переваги машини на бездоріжжі та в зонах бойових дій. Головний меседж: звичайна швидка не дістанеться, тому потрібні спеціальні машини. CTA двоступеневий — репост відео для охоплення + пряме посилання на Монобанку-банку для збору коштів на додаткові авто. У описі — повні банківські реквізити фонду для прямого переказу.",
-      "amount_uah": null,
+      "amount_uah": 31602.23,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 146.0,
@@ -19208,6 +19049,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -19230,11 +19072,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/3eNx4oNDhj",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:00:36.682664+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.0547945205479452,
@@ -19270,6 +19118,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19332,6 +19181,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -19395,6 +19245,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19455,6 +19306,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19481,71 +19333,6 @@
       "verification_status": "auto",
       "verdict_reason": null,
       "extracted_at": "2026-06-07T14:08:00.027569+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 1.0,
-      "rel_resonance": 1.0
-    },
-    {
-      "id": "camp-b3768cfaa3f3",
-      "actor_id": "auto-0c58a8e1",
-      "title": "Вагон знань",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "telegram"
-      ],
-      "date_start": "2026-05-08",
-      "date_end": "2026-07-08",
-      "year": 2026,
-      "form_factor": [
-        "text"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "emotional",
-        "urgency",
-        "humor"
-      ],
-      "face": "brand",
-      "cadence": "one_off",
-      "playbook_note": "Кампанія поєднує донат через банку monobank із розіграшем автомобіля Volvo XC40 від партнера VIDI як стимул для залучення донорів. Механіка «50 грн = 1 шанс» геймифікує збір коштів і мотивує до більших внесків. Розіграш відбувається наживо на стрімі «Телебачення Торонто» 8 липня, що створює подієву точку кульмінації. На момент публікації збір перебував на екваторі. Мета — фінансування професійної підготовки 5 000 військових.",
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 848.0,
-      "engagement": 848.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "case_id": null,
-      "partner_ids": [
-        "partner",
-        "vidi"
-      ],
-      "provenance": {
-        "campaign": {
-          "source_url": "https://t.me/prytulafoundation/4139",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://t.me/prytulafoundation/4139",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://t.me/prytulafoundation/4139",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
-      "extracted_at": "2026-06-07T13:08:03.753721+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0
@@ -19582,6 +19369,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19643,6 +19431,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19703,6 +19492,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19766,6 +19556,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19827,6 +19618,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19887,6 +19679,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -19949,6 +19742,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -20006,7 +19800,7 @@
       "face": "blogger",
       "cadence": "one_off",
       "playbook_note": "Відеоблогер ANDREEV запустив збір 3 800 000 грн на закупівлю автомобілів для ЗСУ через YouTube-відео. Кампанія поєднує пряму донацію з ігровою механікою залучення: кожен донат від 500 грн дає шанс виграти мотоцикл Kawasaki (наданий партнером @stand_up_battle_club) або автомобіль Opel Corsa (наданий підписником каналу). Розіграш прив'язаний до досягнення цільової суми — стимулює донорів поширювати збір. Мультиканальний CTA: jar Monobank, картки Mono та ПриватБанку, PayPal для міжнародних донорів.",
-      "amount_uah": 3800000.0,
+      "amount_uah": 4016689.03,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 685.0,
@@ -20014,16 +19808,17 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "stand_up_battle_club"
       ],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=htu6ehfpqY8",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/9YocE4WyEZ",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "reach": {
           "source_url": "https://www.youtube.com/watch?v=htu6ehfpqY8",
@@ -20045,8 +19840,8 @@
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:17:42.083726+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.0364963503649635,
@@ -20082,6 +19877,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": null,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -20144,6 +19940,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -20205,6 +20002,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "11",
@@ -20268,6 +20066,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -20330,6 +20129,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -20393,6 +20193,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -20448,24 +20249,25 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Канал «Військовi волонтери» публікує терміновий збір на кросовер Land Rover Freelander 2002 (160 тис. грн) для бійців Луганського напрямку — з 40 тис. вже наявних потрібно додатково 120 тис. грн. Кілька паралельних каналів оплати (Monobank jar, Privatbank, PayPal) для зниження бар'єру входу. Залучення аудиторії через розіграш срібної каблучки від київської ювелірки Mari Simmon — умова участі: коментар із телефоном під час переводу або підписка на Telegram-канал.",
-      "amount_uah": 120000.0,
+      "amount_uah": 50123.0,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 64000.0,
       "reach": 436.0,
       "engagement": 3.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "mari_simmon"
       ],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=SnSJJEG4KgU",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/5hcTqJf8BL",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "reach": {
           "source_url": "https://www.youtube.com/watch?v=SnSJJEG4KgU",
@@ -20487,8 +20289,8 @@
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:21:33.964464+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.006880733944954129,
@@ -20520,7 +20322,7 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Медіаканал Еспресо разом із двома благодійними фондами (Авто Ангел Львів та Цивілізація Європа) запустив збір на чотири конкретні позиції: мікроавтобус для 79-ї бригади (200 тис.), два пікапи для спецбатальйонів (240 тис. і 260 тис.) та банно-пральний комплекс (300 тис.) — разом рівно 1 млн грн. Прозора розбивка цілей по підрозділах і конкретних потребах підвищує довіру; CTA — монобанківська банка з прямим посиланням. Розповсюдження через YouTube із крос-посилками на Facebook і Telegram-канали Еспресо.",
-      "amount_uah": 1000000.0,
+      "amount_uah": 1025994.0,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 730.0,
@@ -20528,6 +20330,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -20535,10 +20338,10 @@
       ],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=capvmQSYvvw",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/7dre3dgkJK",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "reach": {
           "source_url": "https://www.youtube.com/watch?v=capvmQSYvvw",
@@ -20560,8 +20363,8 @@
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:19:29.599767+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.02054794520547945,
@@ -20599,6 +20402,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "dignitas",
@@ -20664,6 +20468,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -20727,6 +20532,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -20795,6 +20601,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -20826,79 +20633,6 @@
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0
-    },
-    {
-      "id": "camp-d25fe495b00d",
-      "actor_id": "auto-a7298ed5",
-      "title": "Збір на дрони для ЗСУ (сота бригада) — Еспресо та БФ Ірини Коваль",
-      "goal": "military",
-      "type": "jar",
-      "channels": [
-        "youtube",
-        "telegram",
-        "facebook"
-      ],
-      "date_start": "2024-06-09",
-      "date_end": null,
-      "year": 2024,
-      "form_factor": [
-        "video"
-      ],
-      "cta_type": "jar",
-      "tone": [
-        "emotional",
-        "urgency",
-        "heroism"
-      ],
-      "face": "brand",
-      "cadence": "one_off",
-      "playbook_note": "Кампанія побудована на емоційній конвертації суспільного гніву від ворожих обстрілів у конкретну донаційну дію. Телеканал «Еспресо» спільно з Благодійним фондом Ірини Коваль публікують відеозвернення на YouTube із чітко сформульованою ціллю — 2 500 000 грн на 8 покращених Мавіків та 5 стандартних квадрокоптерів для арт-розвідки сотої бригади ЗСУ. У описі відео наведено кілька платіжних інструментів: банка Monobank, картки Monobank і ПриватБанку, а також повні реквізити фонду в двох банках. На момент публікації вже зібрано 174 000 грн, що слугує соціальним доказом і підсилює відчуття терміновості. Хештеги #Очі_Перемоги та #ЗСУ прив'язують кампанію до ширшого патріотичного дискурсу.",
-      "amount_uah": 2500000.0,
-      "amount_usd": null,
-      "goal_amount": null,
-      "reach": 481.0,
-      "engagement": 19.0,
-      "spend": null,
-      "assets_count": null,
-      "goal_reached": null,
-      "case_id": null,
-      "partner_ids": [
-        "partner",
-        "tv"
-      ],
-      "provenance": {
-        "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=AwDT-euBfXQ",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "campaign": {
-          "source_url": "https://www.youtube.com/watch?v=AwDT-euBfXQ",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
-        },
-        "reach": {
-          "source_url": "https://www.youtube.com/watch?v=AwDT-euBfXQ",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        },
-        "engagement": {
-          "source_url": "https://www.youtube.com/watch?v=AwDT-euBfXQ",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": "platform signal backfill"
-        }
-      },
-      "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": "Єдине джерело — відео на YouTube, яке не є верифікованим фінансовим документом і не підтверджує суму збору 2 500 000 грн, охоплення чи витрати. Відсутні звіти БФ Ірини Коваль, банківські реквізити з підтвердженням транзакцій, офіційні документи від 100-ї бригади ЗСУ або незалежний аудит. Одного медіа-посилання недостатньо для валідації фінансових метрик кампанії.",
-      "extracted_at": "2026-06-07T11:58:05.817051+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "engagement_rate": 0.0395010395010395,
-      "rel_resonance": 1.0617326448651752
     },
     {
       "id": "camp-d28628b8ead8",
@@ -20934,6 +20668,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -20998,6 +20733,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "81",
@@ -21057,14 +20793,15 @@
       "face": "official",
       "cadence": "ongoing",
       "playbook_note": "Канал '5 канал' публікує репортажний відеосюжет про волинянина з Польщі, який придбав і переобладнав автомобіль для медичної евакуації поранених. Відео слугує одночасно журналістським матеріалом і фандрайзинговим інструментом: в описі розміщено посилання на банку monobank, картку, Patreon та PayPal для підтримки журналістів на передовій і закупівлі спорядження для ЗСУ. Підхід поєднує сторітелінг реальної людини-донора з прямим закликом до пожертв.",
-      "amount_uah": null,
+      "amount_uah": 20081.65,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 10.0,
       "reach": 3641.0,
       "engagement": 104.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "5",
@@ -21088,11 +20825,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/88Pg9HLZMQ",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": "YouTube-посилання існує і відповідає тематиці (волинянин з Польщі, авто для ЗСУ/евакуації), що підтверджує органічний соціальний контент з емоційним/героїчним тоном та військовою ціллю. Однак верифікувати фактичний вміст відео без прямого доступу неможливо; фінансові метрики (amount_uah, reach, spend) відсутні повністю, тому підтвердити їх джерелами неможливо. Типізація organic_social і канали (YouTube/Telegram/Facebook) правдоподібні для такого контенту, але не доведені додатковими джерелами.",
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T12:42:27.996728+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.028563581433672068,
@@ -21129,6 +20872,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "ssternenko"
@@ -21198,6 +20942,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -21259,6 +21004,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "8_1"
@@ -21327,6 +21073,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -21380,7 +21127,7 @@
       "face": "blogger",
       "cadence": "one_off",
       "playbook_note": "Канал Joystick_FPV розмістив відео-збір на YouTube із чітко визначеною ціллю — 200 000 ₴ на FPV-дрони різних розмірів (10\", 8\", 7\") та акумулятори для підрозділів ЗСУ. Основний інструмент збору — посилання на банку Monobank та номер картки, вказані безпосередньо в описі відео. Підхід мінімалістичний: без партнерів, без медіапідтримки, з опорою на невелику але залучену аудиторію каналу.",
-      "amount_uah": 200000.0,
+      "amount_uah": 283481.78,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 722.0,
@@ -21388,14 +21135,15 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
         "amount_uah": {
-          "source_url": "https://www.youtube.com/watch?v=ylYeef_1bs0",
-          "confidence": 0.35,
-          "tier": 3,
-          "note": ""
+          "source_url": "https://send.monobank.ua/jar/25Uk4VZ4FP",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         },
         "campaign": {
           "source_url": "https://www.youtube.com/watch?v=ylYeef_1bs0",
@@ -21417,12 +21165,12 @@
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": "Надано лише одне джерело — посилання на YouTube-відео, яке недоступне для автоматичної перевірки вмісту. Метрики reach та spend відсутні, сума 200 000 грн не підкріплена верифікованими звітами чи скріншотами банки/збору. Типізація 'jar' і канал 'youtube' правдоподібні для UA-фандрайзингу, але без перевірки відео неможливо підтвердити відповідність тону, цілі та заявленої суми реальному контенту кампанії.",
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T11:59:07.231128+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.1329639889196676,
-      "rel_resonance": 3.57388588783309
+      "rel_resonance": 1.584115474536645
     },
     {
       "id": "camp-dbb20453dbb9",
@@ -21455,6 +21203,7 @@
       "spend": null,
       "assets_count": 1.0,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -21523,6 +21272,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "outlaw_garage_kyiv",
@@ -21588,6 +21338,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "81",
@@ -21652,6 +21403,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -21705,14 +21457,15 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Новинний сюжет 5 каналу про волонтерів із Варшави, які переобладнують евакуаційні автівки для бойових медиків, використовується як нативний емоційний контент для просування власного збору каналу на рації для ЗСУ. CTA-блок у description поєднує monobank-банку, пряму карту та PayPal; альтернативна форма підтримки — покупка фірмового календаря 5 каналу. Паралельно в описі ведеться окремий збір на підтримку журналістів, які працюють на передовій (окремий jar та Patreon).",
-      "amount_uah": null,
+      "amount_uah": 238105.04,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 1000000.0,
       "reach": 682.0,
       "engagement": 27.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "5"
@@ -21735,11 +21488,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": ""
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/5AEPyNCvkG",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:05:51.149031+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.039589442815249266,
@@ -21776,6 +21535,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -21838,6 +21598,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -21898,6 +21659,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": null,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -21958,6 +21720,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner",
@@ -22022,6 +21785,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -22090,6 +21854,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -22152,6 +21917,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -22214,6 +21980,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "feniksdpsu"
@@ -22279,6 +22046,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -22346,6 +22114,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "taf_drones"
@@ -22408,6 +22177,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "protect_ukraine"
@@ -22471,6 +22241,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -22532,6 +22303,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -22594,6 +22366,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -22657,6 +22430,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "live"
@@ -22720,6 +22494,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -22773,14 +22548,15 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Коротке емоційне повідомлення з одним реченням-гаслом і прямим посиланням на банку monobank. Фонд Притули використовує мінімалістичний текстовий формат у Telegram без медіа-вкладень, спираючись на силу лаконічного бойового меседжу для спонукання до донату.",
-      "amount_uah": null,
+      "amount_uah": 12514782.81,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 800000000.0,
       "reach": 653.0,
       "engagement": 653.0,
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -22801,11 +22577,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/Rmhzf7Ktw",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": "Джерело — одне посилання на Telegram-канал фонду Притули, яке недоступне для незалежної верифікації без прямого доступу до посту. Метрики amount_uah, reach та spend відсутні, тому підтвердити фінансові показники неможливо. Заголовок і тон відповідають стилю фонду, але без перевірки вмісту конкретного поста (#4200) не можна підтвердити, що саме це джерело підтверджує дану кампанію з вказаними параметрами.",
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T12:22:28.963025+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
@@ -22843,6 +22625,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": false,
       "case_id": null,
       "partner_ids": [
         "dignitas",
@@ -22907,6 +22690,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -22960,7 +22744,7 @@
       "face": "soldier",
       "cadence": "one_off",
       "playbook_note": "Відеозвернення діючого офіцера 12-ї бригади спеціального призначення «Азов» НГУ (Богдан, позивний «Пугач»), розміщене на YouTube-каналі Телеканал Рада. Кампанія побудована на особистому авторитеті військовослужбовця: обличчя — солдат із бойовим позивним та приналежністю до відомого підрозділу. Єдиний CTA — посилання на monobank-банку для ремонту техніки. Відео зібрало 97 переглядів і 9 лайків, що вказує на органічне поширення без рекламного бюджету.",
-      "amount_uah": null,
+      "amount_uah": 961578.06,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 97.0,
@@ -22968,6 +22752,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -22990,11 +22775,17 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/nbPQzGmRy",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "monobank jar tier-1",
       "extracted_at": "2026-06-07T15:32:20.283566+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.09278350515463918,
@@ -23031,6 +22822,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "partner"
@@ -23094,6 +22886,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [],
       "provenance": {
@@ -23163,6 +22956,7 @@
       "spend": null,
       "assets_count": null,
       "goal_reached": null,
+      "is_campaign": true,
       "case_id": null,
       "partner_ids": [
         "dignitas_fund",
@@ -24513,7 +24307,7 @@
     },
     {
       "id": "camp-368409cc0841-a0",
-      "campaign_id": "camp-368409cc0841",
+      "campaign_id": "camp-02dcaa6af241",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Перемирʼя — всьо Донатимо на антишахедні дрони: https://send.monobank.ua/jar/3w8JTb7xhE",
@@ -24738,7 +24532,7 @@
     },
     {
       "id": "camp-465e46afdfe9-a0",
-      "campaign_id": "camp-465e46afdfe9",
+      "campaign_id": "camp-13318504bcab",
       "platform": "youtube",
       "format": "video",
       "copy_text": "Нашу лють через ворожі обстріли конвертуємо у донати. Телеканал «Еспресо» та Благодійний фонд Ірини Коваль закликають долучитися до збору на дрони та комплектуючі для арт-розвідки сотої бригади ЗСУ. Маємо зібрати 2 з половиною мільйони гривень. На рахунках вже 174 тисячі гривень.",
@@ -25461,7 +25255,7 @@
     },
     {
       "id": "camp-6e93b2adadf2-a0",
-      "campaign_id": "camp-6e93b2adadf2",
+      "campaign_id": "camp-0eeaaee54c92",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Продовжуємо підсилювати наше військо, щоб у небі було менше ворожої розвідки Понад 3,7 млрд грн збитків ворогу завдяки влучним збиттям, які здійснили 59 підрозділів Сил Оборони Долучайтеся донатом на збір «Чисте небо». mono банка: https://send.monobank.ua/jar/LuUHJiHc5 liqpay: https://prytu.la/chuste-nebo Інші реквізити: https://prytulafoundation.org/about/projects/actual/chyste-nebo",
@@ -25999,7 +25793,7 @@
     },
     {
       "id": "camp-91a65877abef-a0",
-      "campaign_id": "camp-91a65877abef",
+      "campaign_id": "camp-011d7b831bd7",
       "platform": "telegram",
       "format": "text",
       "copy_text": "🔪 До речі, розіграш цього крутого ножа триває до 11:00 сьогодні, тому ви ще маєте шанс взяти участь.  За донат від 300 грн сюди https://send.monobank.ua/jar/2JbpBYkhMv",
@@ -26571,7 +26365,7 @@
     },
     {
       "id": "camp-aa682d201614-a0",
-      "campaign_id": "camp-aa682d201614",
+      "campaign_id": "camp-02dcaa6af241",
       "platform": "telegram",
       "format": "video",
       "copy_text": "Ворог продовжує безжально атакувати. Антишахедні засоби — необхідність для кожного з нас. Адже під прицілом ми всі. Дивіться відео — саме так бійці ББлС «Роніни» та 15 БРоП «Кара-Даг» за допомогою дронів знищують ворожі шахеди під час аналогічних повітряних атак. Підтримай Сили Оборони — це найнадійніша гарантія безпеки: https://send.monobank.ua/jar/3w8JTb7xhE",
@@ -26738,7 +26532,7 @@
     },
     {
       "id": "camp-b3768cfaa3f3-a0",
-      "campaign_id": "camp-b3768cfaa3f3",
+      "campaign_id": "camp-52394e838014",
       "platform": "telegram",
       "format": "text",
       "copy_text": "Кава, булочка чи… ключі від Volvo XC40? Ваш донат на «Вагон знань» перетворюється на: 1️⃣ Шанс виграти новеньке авто від нашого партнера VIDI. 2️⃣ Професійну підготовку 5 000 військових. Ми вже на екваторі збору, дотиснемо разом? Розіграш авто 8 липня на стрімі «Телебачення Торонто»! 50 грн = 1 шанс на виграш. Більше донатів — більше шансів. 👉 Зроби свій внесок у фаховість Сил оборони України за посиланням: https://send.monobank.ua/jar/3p2m4M5GwW",
@@ -27327,7 +27121,7 @@
     },
     {
       "id": "camp-d25fe495b00d-a0",
-      "campaign_id": "camp-d25fe495b00d",
+      "campaign_id": "camp-13318504bcab",
       "platform": "youtube",
       "format": "video",
       "copy_text": "Нашу лють через ворожі обстріли конвертуємо у донати. Телеканал «Еспресо» та Благодійний фонд Ірини Коваль закликають долучитися до збору на дрони та комплектуючі для арт-розвідки сотої бригади ЗСУ. Маємо зібрати 2 з половиною мільйони гривень. На рахунках вже 174 тисячі гривень. Не гайте час, долучайтеся до збору для наших захисників.",
