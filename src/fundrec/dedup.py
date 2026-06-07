@@ -278,6 +278,11 @@ def _campaign_merge_two(a: Campaign, b: Campaign) -> Campaign:
     # id: менший за алфавітом для детермінізму
     merged_id = a.id if a.id <= b.id else b.id
 
+    # Coalesce: canonical (a) wins якщо не None; інакше береться b
+    merged_is_campaign = a.is_campaign if a.is_campaign is not None else b.is_campaign
+    merged_goal_reached = a.goal_reached if a.goal_reached is not None else b.goal_reached
+    merged_verdict_reason = a.verdict_reason if a.verdict_reason is not None else b.verdict_reason
+
     return Campaign(
         id=merged_id,
         actor_id=a.actor_id or b.actor_id,
@@ -300,11 +305,14 @@ def _campaign_merge_two(a: Campaign, b: Campaign) -> Campaign:
         engagement=new_values.get("engagement"),
         spend=new_values.get("spend"),
         assets_count=new_values.get("assets_count"),
+        goal_reached=merged_goal_reached,
+        is_campaign=merged_is_campaign,
         case_id=a.case_id or b.case_id,
         partner_ids=list(dict.fromkeys((a.partner_ids or []) + (b.partner_ids or []))),
         provenance=new_provenance,
         confidence_overall=new_confidence,
         verification_status=a.verification_status,
+        verdict_reason=merged_verdict_reason,
         extracted_at=a.extracted_at or b.extracted_at,
         extracted_by_model=a.extracted_by_model or b.extracted_by_model,
     )
