@@ -260,6 +260,18 @@ def load_partners(conn: sqlite3.Connection) -> list[Partner]:
     return [_row_to_partner(r) for r in rows]
 
 
+def delete_campaign(conn: sqlite3.Connection, campaign_id: str) -> None:
+    """Видаляє кампанію та її рядки campaign_partners з БД.
+
+    Ідемпотентно: якщо кампанія не існує — не падає.
+    Примітка: CreativeAsset мають бути переприв'язані до іншої кампанії
+    (через upsert_creative) ДО виклику цієї функції.
+    """
+    conn.execute("DELETE FROM campaign_partners WHERE campaign_id = ?", (campaign_id,))
+    conn.execute("DELETE FROM campaigns WHERE id = ?", (campaign_id,))
+    conn.commit()
+
+
 def set_verification(
     conn: sqlite3.Connection,
     case_id: str,
