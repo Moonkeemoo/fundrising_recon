@@ -1,0 +1,28 @@
+{
+  "kind": "youtube#searchListResponse",
+  "etag": "test_etag_search",
+  "nextPageToken": "CAUQAA",
+  "regionCode": "UA",
+  "pageInfo": {
+    "totalResults": 2,
+    "resultsPerPage": 5
+  },
+  "items": [
+    {
+      "kind": "youtube#searchResult",
+      "etag": "etag1",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "abc123XYZ"
+      }
+    },
+    {
+      "kind": "youtube#searchResult",
+      "etag": "etag2",
+      "id": {
+        "kind": "youtube#video",
+        "videoId": "def456QRS"
+      }
+    }
+  ]
+}
