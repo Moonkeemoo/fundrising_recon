@@ -11,7 +11,7 @@ from dataclasses import fields
 from pathlib import Path
 
 from . import config
-from .schema import Actor, Campaign, Case, CreativeAsset, Partner, Source
+from .schema import Actor, Campaign, Case, CreativeAsset, Partner, Post, Source
 
 _SCHEMA_SQL = (Path(__file__).parent / "db" / "schema.sql").read_text(encoding="utf-8")
 _JSON_CASE_FIELDS = ("style", "method", "provenance")
@@ -281,6 +281,55 @@ def delete_campaign(conn: sqlite3.Connection, campaign_id: str) -> None:
     """
     conn.execute("DELETE FROM campaign_partners WHERE campaign_id = ?", (campaign_id,))
     conn.execute("DELETE FROM campaigns WHERE id = ?", (campaign_id,))
+    conn.commit()
+
+
+# --- Post CRUD (POSTS↔CAMPAIGN linkage) ---
+
+
+def _post_columns() -> list[str]:
+    return [f.name for f in fields(Post)]
+
+
+def upsert_post(conn: sqlite3.Connection, p: Post) -> None:
+    """Зберігає Post (ON CONFLICT id → update). Без JSON-полів."""
+    cols = _post_columns()
+    values = [getattr(p, name) for name in cols]
+    placeholders = ",".join("?" for _ in cols)
+    updates = ",".join(f"{col}=excluded.{col}" for col in cols if col != "id")
+    conn.execute(
+        f"INSERT INTO posts ({','.join(cols)}) VALUES ({placeholders}) "
+        f"ON CONFLICT(id) DO UPDATE SET {updates}",
+        values,
+    )
+    conn.commit()
+
+
+def _row_to_post(row: sqlite3.Row) -> Post:
+    return Post(**dict(row))
+
+
+def load_posts(conn: sqlite3.Connection, campaign_id: str | None = None) -> list[Post]:
+    """Завантажує пости; якщо campaign_id задано — лише привʼязані до цього збору.
+
+    Сортування за date (NULL останні), потім id для детермінізму.
+    """
+    if campaign_id is not None:
+        rows = conn.execute(
+            "SELECT * FROM posts WHERE campaign_id = ? "
+            "ORDER BY date IS NULL, date, id",
+            (campaign_id,),
+        ).fetchall()
+    else:
+        rows = conn.execute(
+            "SELECT * FROM posts ORDER BY date IS NULL, date, id"
+        ).fetchall()
+    return [_row_to_post(r) for r in rows]
+
+
+def clear_posts(conn: sqlite3.Connection) -> None:
+    """Видаляє всі рядки з posts (повна перебудова перед build_posts)."""
+    conn.execute("DELETE FROM posts")
     conn.commit()
 
 

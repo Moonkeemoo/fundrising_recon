@@ -238,6 +238,26 @@ class Partner:
     links: list[str] = field(default_factory=list)
 
 
+@dataclass
+class Post:
+    """Зібраний raw-пост — одиниця інформаційної історії збору.
+
+    Пости, що згадують/промотують один збір, формують його охоплення (reach).
+    campaign_id nullable: None = вільна згадка (не привʼязано до жодного збору).
+    views/engagement nullable (honest null — не вигадуємо невідомі метрики).
+    """
+
+    id: str
+    campaign_id: str | None = None
+    source_url: str | None = None
+    channel: str | None = None
+    platform: str | None = None
+    date: str | None = None
+    views: int | None = None
+    engagement: int | None = None
+    text_snippet: str | None = None
+
+
 # --- серіалізація кампаній ---
 
 
@@ -263,3 +283,11 @@ def partner_to_dict(p: Partner) -> dict:
 
 def partner_from_dict(d: dict) -> Partner:
     return Partner(**d)
+
+
+def post_to_dict(p: Post) -> dict:
+    return asdict(p)
+
+
+def post_from_dict(d: dict) -> Post:
+    return Post(**d)

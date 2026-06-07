@@ -108,3 +108,17 @@ CREATE TABLE IF NOT EXISTS campaign_partners (
     partner_id  TEXT NOT NULL REFERENCES partners(id),
     PRIMARY KEY (campaign_id, partner_id)
 );
+
+-- POSTS↔CAMPAIGN: пости = інформаційна історія збору (охоплення) ----------
+-- Один рядок на зібраний raw-пост. campaign_id nullable (вільна згадка).
+CREATE TABLE IF NOT EXISTS posts (
+    id           TEXT PRIMARY KEY,
+    campaign_id  TEXT,
+    source_url   TEXT,
+    channel      TEXT,
+    platform     TEXT,
+    date         TEXT,
+    views        INTEGER,
+    engagement   INTEGER,
+    text_snippet TEXT
+);
