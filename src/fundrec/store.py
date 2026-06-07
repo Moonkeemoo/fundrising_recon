@@ -282,3 +282,30 @@ def set_verification(
         values,
     )
     conn.commit()
+
+
+def set_campaign_verification(
+    conn: sqlite3.Connection,
+    campaign_id: str,
+    status: str,
+    reason: str | None = None,
+    confidence_overall: float | None = None,
+) -> None:
+    """Оновлює verification_status кампанії (завжди), verdict_reason і confidence_overall (якщо надано).
+
+    Дзеркало set_verification для кейсів — та сама семантика, але для таблиці campaigns.
+    """
+    parts = ["verification_status = ?"]
+    values: list = [status]
+    if reason is not None:
+        parts.append("verdict_reason = ?")
+        values.append(reason)
+    if confidence_overall is not None:
+        parts.append("confidence_overall = ?")
+        values.append(confidence_overall)
+    values.append(campaign_id)
+    conn.execute(
+        f"UPDATE campaigns SET {', '.join(parts)} WHERE id = ?",
+        values,
+    )
+    conn.commit()
