@@ -79,6 +79,7 @@ class _TmeParser(HTMLParser):
         self._text_depth: int = 0     # глибина div коли ввійшли в text
         self._in_views: bool = False
         self._text_parts: list[str] = []
+        self._links_seen: set[str] = set()   # для дедупу посилань поточного поста
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attrs_dict = dict(attrs)
@@ -103,12 +104,14 @@ class _TmeParser(HTMLParser):
                     "channel": self._channel,
                     "message_id": message_id,
                     "text": None,
+                    "links": [],
                     "views": None,
                     "date": None,
                     "source_url": None,
                 }
                 self._msg_depth = self._div_depth
                 self._text_parts = []
+                self._links_seen = set()
 
             elif "tgme_widget_message_text" in classes and self._current is not None:
                 self._in_text = True
@@ -119,6 +122,13 @@ class _TmeParser(HTMLParser):
 
         if self._in_text and tag in ("br", "p"):
             self._text_parts.append(" ")
+
+        elif self._in_text and tag == "a":
+            # Збираємо href з посилань всередині тексту повідомлення (дедуп)
+            href = attrs_dict.get("href")
+            if href and href not in self._links_seen:
+                self._links_seen.add(href)
+                self._current["links"].append(href)
 
         elif tag == "span" and "tgme_widget_message_views" in classes:
             self._in_views = True
@@ -177,6 +187,7 @@ class _TmeParser(HTMLParser):
         self._in_text = False
         self._in_views = False
         self._text_parts = []
+        self._links_seen = set()
 
     def close(self) -> None:
         if self._current is not None:
@@ -231,6 +242,7 @@ def parse_tme_html(channel: str, html: str) -> list[dict[str, Any]]:
             "platform": "telegram",
             "channel": channel,
             "text": post.get("text"),
+            "links": post.get("links") or [],
             "views": post.get("views"),
             "date": post.get("date"),
             "message_id": message_id,
