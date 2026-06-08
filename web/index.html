@@ -362,7 +362,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
     <div class="kpi acc-a"><div class="lbl">Зборів</div><div class="val" id="ck-camp">—</div><div class="sub">після фільтрів</div></div>
     <div class="kpi acc-b"><div class="lbl">Σ зібрано (verified)</div><div class="val" id="ck-raised">—</div><div class="sub" id="ck-raised-n"></div></div>
     <div class="kpi acc-v"><div class="lbl">Σ охоплення</div><div class="val" id="ck-reach">—</div><div class="sub" id="ck-reach-n"></div></div>
-    <div class="kpi acc-g"><div class="lbl">Медіанний резонанс</div><div class="val" id="ck-res">—</div><div class="sub">rel. резонанс</div></div>
+    <div class="kpi acc-g"><div class="lbl">Медіана зібрано ₴</div><div class="val" id="ck-medamt">—</div><div class="sub" id="ck-medamt-n"></div></div>
    </div>
 
    <!-- ЖИВЕ ЗАРАЗ: стрічка поточних зборів -->
@@ -375,7 +375,8 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
    </div>
 
    <!-- ═══ 🎯 ЩО ПРАЦЮЄ ЗАРАЗ ═══ -->
-   <div class="section-h">🎯 Що працює зараз<span class="sh-sub">резонанс · % цілі · ефективні зрізи</span></div>
+   <div class="section-h">🎯 Що працює зараз<span class="sh-sub">reach-резонанс (увага) · зібрано ₴ (гроші) · % цілі</span></div>
+   <div style="font-size:11px;color:var(--dim);margin:-4px 0 10px">reach-резонанс = охоплення збору ÷ медіана каналу — &gt;1 краще за норму каналу, &lt;1 нижче</div>
 
    <!-- F1: інсайт-картки «Що працює зараз» -->
    <div class="insights" id="insights">
@@ -388,18 +389,18 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
      <div id="ins-mom"></div>
     </div>
     <div class="icard">
-     <h5>⭐ Лідери резонансу <span class="n" id="ins-lead-n"></span></h5>
+     <h5>⭐ Лідери reach-резонансу <span class="n" id="ins-lead-n"></span></h5>
      <div id="ins-lead"></div>
     </div>
    </div>
 
-   <!-- АНАЛІТИКА СТИЛЮ / РЕЗОНАНС -->
+   <!-- АНАЛІТИКА СТИЛЮ / REACH-РЕЗОНАНС -->
    <div class="panel">
     <div class="head">
-     <h3>резонанс за зрізом стилю</h3><span class="n" id="sa-bar-n"></span>
+     <h3>reach-резонанс за зрізом стилю</h3><span class="n" id="sa-bar-n"></span>
      <span class="spacer"></span>
      <div class="seg" id="sa-metric">
-      <button data-m="engagement" class="on">залучення</button>
+      <button data-m="resonance" class="on">reach-резонанс</button>
       <button data-m="amount_uah">медіана ₴</button>
      </div>
      <div class="seg" id="sa-axis">
@@ -412,10 +413,25 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
     <div class="chart" id="sa-bar"></div>
    </div>
 
+   <!-- 💰 ЩО ЗБИРАЄ НАЙБІЛЬШЕ (грошова вісь) -->
+   <div class="panel">
+    <div class="head">
+     <h3>💰 Що збирає найбільше (медіана зібрано ₴)</h3><span class="n" id="rm-bar-n"></span>
+     <span class="spacer"></span>
+     <div class="seg" id="rm-axis">
+      <button data-a="channel" class="on">канал</button>
+      <button data-a="tone">тон</button>
+      <button data-a="form_factor">формат</button>
+      <button data-a="goal">ціль</button>
+     </div>
+    </div>
+    <div class="chart" id="rm-bar"></div>
+   </div>
+
    <!-- % ДОСЯГНЕННЯ ЦІЛІ -->
    <div class="panel">
     <div class="head">
-     <h3>📊 % досягнення цілі</h3><span class="n" id="sr-bar-n"></span>
+     <h3>📊 % досягнення цілі (зібрано ≥ цілі, де n≥3)</h3><span class="n" id="sr-bar-n"></span>
      <span class="spacer"></span>
      <div class="seg" id="sr-axis">
       <button data-a="tone" class="on">тон</button>
@@ -427,7 +443,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
 
    <div class="panel">
     <div class="head">
-     <h3>📊 формат × канал — залучення (медіана)</h3><span class="n" id="sa-fe-n"></span>
+     <h3>📊 формат × канал — охоплення (медіана)</h3><span class="n" id="sa-fe-n"></span>
     </div>
     <div class="chart heat" id="sa-fe"></div>
    </div>
@@ -442,13 +458,13 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
    <!-- ═══ 📈 ТРЕНДИ ═══ -->
    <div class="section-h">📈 Тренди<span class="sh-sub">фронтир · матриця · кореляції · таймлайн</span></div>
 
-   <!-- F2: SCATTER охоплення × engagement rate -->
+   <!-- F2: SCATTER охоплення × reach-резонанс -->
    <div class="panel">
     <div class="head">
-     <h3>🎯 Резонансний фронтир: охоплення × engagement rate</h3><span class="n" id="scatter-n"></span>
+     <h3>🎯 Фронтир: охоплення × reach-резонанс</h3><span class="n" id="scatter-n"></span>
     </div>
     <div class="chart" id="scatter-chart" style="height:340px"></div>
-    <div id="scatter-empty" class="empty" style="display:none"><div class="big">нема даних</div><div>немає зборів з охопленням і engagement rate</div></div>
+    <div id="scatter-empty" class="empty" style="display:none"><div class="big">нема даних</div><div>немає зборів з охопленням і reach-резонансом</div></div>
    </div>
 
    <!-- F3: МАТРИЦЯ ЕФЕКТИВНОСТІ -->
@@ -469,7 +485,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
    <!-- КОРЕЛЯЦІЇ СТИЛЮ → УСПІХ -->
    <div class="panel" id="corr-panel">
     <div class="head">
-     <h3>Кореляції: що корелює з вищим резонансом</h3><span class="n" id="corr-n"></span>
+     <h3>Кореляції: що корелює з вищим reach-резонансом</h3><span class="n" id="corr-n"></span>
      <span class="spacer"></span>
      <div class="seg" id="corr-axis">
       <button data-ax="tone" class="on">тон</button>
@@ -520,8 +536,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
      <span class="spacer"></span>
      <span style="color:var(--faint);font-size:11px">сортувати:</span>
      <div class="seg" id="ce-sort">
-      <button data-s="rel_resonance" class="on">резонанс</button>
-      <button data-s="engagement">залучення</button>
+      <button data-s="rel_resonance" class="on">reach-резонанс</button>
       <button data-s="reach_total">охоплення</button>
       <button data-s="amount_uah">обсяг ₴</button>
       <button data-s="date">дата</button>
@@ -550,12 +565,12 @@ let CAMPAIGNS=[], CREATIVES=[], PARTNERS=[];
 const HAS_ECHARTS=(typeof echarts!=="undefined");
 // ── стан КАМПАНІЙ ──
 const CSEL={themes:new Set(),channels:new Set(),form_factor:new Set(),tone:new Set(),face:new Set(),type:new Set()};
-let cVerifMode="all", saAxis="tone", saMetric="engagement", srAxis="tone";
+let cVerifMode="all", saAxis="tone", saMetric="resonance", srAxis="tone", rmAxis="channel";
 let recencyDays=30; // 0 = усі
 let campRelevMode="zbory"; // "zbory" | "all" | "topical"
 let campDestMode="with"; // "with" = лише з призначенням (за замовч.) | "all"
 const openCamps=new Set();
-let chSaBar=null, chSaFe=null, chSaGc=null, chSrBar=null, campChartsInit=false;
+let chSaBar=null, chSaFe=null, chSaGc=null, chSrBar=null, chRmBar=null, campChartsInit=false;
 let chScatter=null;
 let ceSort="rel_resonance", ceSearch="", mxAxis="channels";
 
@@ -718,9 +733,10 @@ function renderCampKPIs(camps,crs){
  const reach=camps.map(c=>c.reach_total).filter(x=>x!=null);
  document.getElementById("ck-reach").textContent=reach.length?reach.reduce((s,x)=>s+x,0).toLocaleString("uk-UA"):"—";
  document.getElementById("ck-reach-n").textContent="N="+reach.length+" з охопленням";
- // G: медіанний rel_resonance
- const res=camps.map(c=>c.rel_resonance).filter(x=>x!=null);
- document.getElementById("ck-res").textContent=res.length?fmtScore(median(res)):"—";
+ // D: медіана зібрано ₴ (по зборах із сумою; чесний «—» якщо немає)
+ const amts=camps.map(c=>c.amount_uah).filter(x=>x!=null);
+ document.getElementById("ck-medamt").textContent=amts.length?fmtUAH(median(amts)):"—";
+ document.getElementById("ck-medamt-n").textContent=amts.length?(amts.length+" з сумою"):"немає сум";
 }
 
 // ── галерея креативів ──
@@ -753,24 +769,32 @@ function renderGallery(crs){
  }).join("");
 }
 
-// ── аналітика стилю: бари (резонанс або медіана ₴/engagement) ──
-// Якщо radar.what_works_now доступний і метрика=engagement — показуємо actor-нормалізований резонанс.
+// ── аналітика стилю: бари (reach-резонанс або медіана ₴) ──
+// При метриці=resonance показуємо канал-нормалізований reach-резонанс
+// (radar.what_works_now scores = mean reach-резонанс; fallback — медіана rel_resonance по зрізу).
 function renderSaBar(camps){
  const axis=SA_AXIS_FIELD[saAxis]||saAxis;
  // Mapper: saAxis → radar.what_works_now key
  const RADAR_AXIS_MAP={tone:"tone",channels:"channel",cta_type:null,face:"face"};
  const radarAxisKey=RADAR_AXIS_MAP[saAxis];
  const radar=ANALYTICS&&ANALYTICS.radar&&ANALYTICS.radar.what_works_now;
- const useRadar=(saMetric==="engagement")&&radar&&radarAxisKey&&radar[radarAxisKey]&&radar[radarAxisKey].length>0;
+ const wantRes=(saMetric==="resonance");
+ const useRadar=wantRes&&!extraFiltersActive()&&radar&&radarAxisKey&&radar[radarAxisKey]&&radar[radarAxisKey].length>0;
  let rows, isResonance=false, metricLabel;
  if(useRadar){
-  // radar rows: {key, score (mean rel_resonance), n}
+  // radar rows: {key, score (mean reach-резонанс), n}
   rows=radar[radarAxisKey].filter(r=>r.score!=null&&r.n>0).map(r=>({key:r.key,value:r.score,n:r.n}));
   isResonance=true;
-  metricLabel="резонанс (×актора)";
+  metricLabel="reach-резонанс (сер.)";
+ } else if(wantRes){
+  // клієнтський перерахунок: медіана rel_resonance по зрізу (null≠0)
+  const b={};camps.forEach(c=>{if(c.rel_resonance==null)return;campAxisVals(c,axis).forEach(k=>{(b[k]=b[k]||[]).push(c.rel_resonance);});});
+  rows=Object.keys(b).map(k=>({key:k,value:median(b[k]),n:b[k].length})).filter(r=>r.value!=null);
+  isResonance=true;
+  metricLabel="reach-резонанс (медіана)";
  } else {
   rows=campAxisSummary(camps,axis,saMetric).filter(r=>r.value!=null);
-  metricLabel=(saMetric==="amount_uah")?"медіана ₴":"медіана залучення";
+  metricLabel="медіана ₴";
  }
  document.getElementById("sa-bar-n").textContent="N="+rows.reduce((s,r)=>s+r.n,0)+" кат.="+rows.length+(useRadar?" · radar":"");
  if(!chSaBar)return;
@@ -789,6 +813,30 @@ function renderSaBar(camps){
    axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:fmtY}},
   series:[{type:"bar",data:rows.map((r,i)=>({value:r.value,itemStyle:{color:isResonance&&r.value>=1?"#33ff99":PALETTE[i%PALETTE.length]}})),
    label:{show:true,position:"top",color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:p=>"N="+rows[p.dataIndex].n}}]},true);
+}
+
+// ── 💰 що збирає найбільше: бари (медіана зібрано ₴) з radar.what_raises_most ──
+// Грошова вісь. n_with_amount/n_total у бейджі. Чесний empty-state.
+function renderRmBar(){
+ const wrm=ANALYTICS&&ANALYTICS.radar&&ANALYTICS.radar.what_raises_most;
+ const nEl=document.getElementById("rm-bar-n");
+ let rows=(wrm&&wrm[rmAxis])?wrm[rmAxis].filter(r=>r.median_amount_uah!=null).map(r=>(
+  {key:r.key,value:r.median_amount_uah,nA:r.n_with_amount,nT:r.n_total})):[];
+ nEl.textContent=rows.length?("кат.="+rows.length+" · radar"):"";
+ if(!chRmBar)return;
+ if(!rows.length){chRmBar.clear();chRmBar.setOption({backgroundColor:"transparent",
+  graphic:{type:"text",left:"center",top:"center",style:{text:"недостатньо даних про суми",fill:"#8893a0",fontFamily:"monospace"}}});return;}
+ rows.sort((a,b)=>b.value-a.value);
+ chRmBar.setOption({backgroundColor:"transparent",
+  tooltip:{trigger:"axis",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
+   formatter:p=>{const i=p[0].dataIndex;return `${esc(rows[i].key)}<br><b>${fmtUAH(rows[i].value)}</b> медіана зібрано <span style="color:#525c6b">${rows[i].nA}/${rows[i].nT} із сумою</span>`;}},
+  grid:{left:70,right:18,top:14,bottom:60},
+  xAxis:{type:"category",data:rows.map(r=>r.key),axisLine:{lineStyle:{color:"#222a35"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",rotate:35,fontSize:10}},
+  yAxis:{type:"value",axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:fmtUAH}},
+  series:[{type:"bar",data:rows.map((r,i)=>({value:r.value,itemStyle:{color:PALETTE[i%PALETTE.length]}})),
+   label:{show:true,position:"top",color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:p=>rows[p.dataIndex].nA+"/"+rows[p.dataIndex].nT}}]},true);
 }
 
 // ── % досягнення цілі: бари ──
@@ -830,7 +878,7 @@ function renderSrBar(camps){
  document.getElementById("sr-bar-n").textContent="N="+totalN+" кат.="+rows.length;
  if(!chSrBar)return;
  if(!rows.length){chSrBar.clear();chSrBar.setOption({backgroundColor:"transparent",
-  graphic:{type:"text",left:"center",top:"center",style:{text:"немає даних про досягнення цілі",fill:"#8893a0",fontFamily:"monospace"}}});return;}
+  graphic:{type:"text",left:"center",top:"center",style:{text:"недостатньо даних для % цілі (потрібно n≥3)",fill:"#8893a0",fontFamily:"monospace"}}});return;}
  rows.sort((a,b)=>b.value-a.value);
  chSrBar.setOption({backgroundColor:"transparent",
   tooltip:{trigger:"axis",backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
@@ -876,7 +924,7 @@ function renderStyleHeat(chart,nId,camps,axisA,axisB,metric,orderA,orderB){
    emphasis:{itemStyle:{borderColor:"#ffb000",borderWidth:1}}}]},true);
 }
 
-// ── дослідник кампаній ── (сортування: engagement desc за замовч.)
+// ── дослідник кампаній ── (сортування: reach-резонанс desc за замовч.)
 function explorerSort(camps){
  const byNull=(a,b,fa,fb)=>{if(fa==null&&fb==null)return 0;if(fa==null)return 1;if(fb==null)return -1;return null;};
  return [...camps].sort((a,b)=>{
@@ -899,15 +947,12 @@ function renderExplorer(camps){
  camps=explorerSort(camps);
  box.innerHTML=camps.map(c=>{
   const chans=(c.channels||[]).map(t=>`<span class="ctag chan">${esc(t)}</span>`).join(" ");
-  const frontier=(c.reach!=null&&c.engagement_rate!=null);
   return `<div class="ccard" data-cid="${esc(c.id)}">
    <div class="crow">
     <span class="ctitle">${esc(c.title)} <span class="cactor">· ${esc(c.actor_id)}</span></span>
     <span class="ctag">${esc(c.type)}</span>
     ${chans}
-    ${frontier?`<span class="res-frontier" title="охоплення × ER відомі">◎ ER ${(c.engagement_rate*100).toFixed(1)}%</span>`:''}
-    ${c.rel_resonance!=null?`<span class="camt" style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}" title="actor-нормалізований резонанс">×${c.rel_resonance.toFixed(2)}</span>`:''}
-    ${c.engagement!=null?`<span class="camt" style="color:var(--blue)" title="залучення">▲${c.engagement.toLocaleString("uk-UA")}</span>`:''}
+    ${c.rel_resonance!=null?`<span class="camt" style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}" title="reach-резонанс: охоплення ÷ медіана каналу">×${c.rel_resonance.toFixed(2)}</span>`:''}
     ${c.reach_total!=null?`<span class="camt" style="color:var(--faint)" title="охоплення: Σ переглядів постів${c.post_count?', '+c.post_count+' постів':''}">👁 ${c.reach_total.toLocaleString("uk-UA")}${c.post_count?` · ${c.post_count}п`:''}</span>`:''}
     <span class="camt">${fmtUAH(c.amount_uah)}</span>
     ${c.is_campaign===null?'<span class="badge auto" title="релевантність невідома">?</span>':""}
@@ -925,7 +970,7 @@ function renderCoverage(camps){
  const box=document.getElementById("coverage");if(!box)return;
  const Y=camps.length;
  const nAmt=camps.filter(c=>c.amount_uah!=null).length;
- const nEng=camps.filter(c=>c.engagement_rate!=null).length;
+ const nRes=camps.filter(c=>c.rel_resonance!=null).length;
  const nReach=camps.filter(c=>c.reach!=null).length;
  const nGoal=camps.filter(c=>c.goal_reached!=null).length;
  const nVer=camps.filter(c=>c.verification_status==="verified").length;
@@ -934,7 +979,7 @@ function renderCoverage(camps){
  box.innerHTML=
   `<span class="covpill"><span class="lk">зборів</span> <b>${Y}</b></span>`+
   pill("обсяг ₴ відомо",nAmt)+
-  pill("engagement rate",nEng)+
+  pill("reach-резонанс",nRes)+
   pill("охоплення",nReach)+
   pill("ціль (так/ні)",nGoal)+
   pill("банка-verified",nVer);
@@ -999,7 +1044,7 @@ function renderInsLeaders(camps){
  const wrap=document.getElementById("ins-lead"),nEl=document.getElementById("ins-lead-n");
  const rows=camps.filter(c=>c.rel_resonance!=null).sort((a,b)=>b.rel_resonance-a.rel_resonance).slice(0,5);
  nEl.textContent=rows.length?("N="+rows.length):"";
- if(!rows.length){wrap.innerHTML='<div class="iempty">немає зборів з резонансом</div>';return;}
+ if(!rows.length){wrap.innerHTML='<div class="iempty">немає зборів з reach-резонансом</div>';return;}
  wrap.innerHTML=rows.map(c=>
   `<div class="irow clk" data-lead="${esc(c.id)}" title="відкрити деталь"><span class="ik">${esc(c.title)}</span>`+
   `<span class="iv" style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}">×${c.rel_resonance.toFixed(2)}</span></div>`).join("");
@@ -1041,10 +1086,8 @@ function renderLiveFeed(camps){
   const daysStr=daysAgo!=null?(daysAgo===0?"сьогодні":daysAgo+"д тому"):"—";
   // channels
   const chans=(c.channels||[]).slice(0,3).map(t=>`<span class="ctag chan" style="font-size:10px">${esc(t)}</span>`).join(" ")||"—";
-  // resonance
-  const rrStr=c.rel_resonance!=null?`<span class="lf-rr${c.rel_resonance<1?" dim":""}">×${c.rel_resonance.toFixed(2)}</span>`:'<span class="dash">—</span>';
-  // engagement
-  const engStr=c.engagement!=null?`<span class="lf-eng">▲${c.engagement.toLocaleString("uk-UA")}</span>`:'<span class="dash">—</span>';
+  // reach-резонанс
+  const rrStr=c.rel_resonance!=null?`<span class="lf-rr${c.rel_resonance<1?" dim":""}" title="reach-резонанс: охоплення ÷ медіана каналу">×${c.rel_resonance.toFixed(2)}</span>`:'<span class="dash">—</span>';
   // охоплення (reach з постів)
   const reachStr=c.reach_total!=null?`<span class="lf-reach" title="охоплення: Σ переглядів постів">👁 ${c.reach_total.toLocaleString("uk-UA")} переглядів, ${c.post_count||0} постів</span>`:"";
   // progress bar
@@ -1063,7 +1106,6 @@ function renderLiveFeed(camps){
    <span class="lfmeta">
     ${chans}
     <span class="lf-days">${esc(daysStr)}</span>
-    ${engStr}
     ${reachStr}
     ${rrStr}
     ${barHtml}
@@ -1080,12 +1122,12 @@ function renderInsights(camps){
 }
 
 // ════════════════════════════════════════════════════════════════════════════
-// ── F2: scatter охоплення × engagement rate ──
+// ── F2: scatter охоплення × reach-резонанс ──
 // ════════════════════════════════════════════════════════════════════════════
 const CHAN_COLOR={facebook:"#8bb6df",instagram:"#b58bdf",threads:"#d7dce2",youtube:"#ff6b6b",
  telegram:"#33ff99",tiktok:"#e068c0",web:"#ffb000",irl:"#e0c068"};
 function renderScatter(camps){
- const pts=camps.filter(c=>c.reach!=null&&c.reach>0&&c.engagement_rate!=null);
+ const pts=camps.filter(c=>c.reach!=null&&c.reach>0&&c.rel_resonance!=null);
  const nEl=document.getElementById("scatter-n");
  nEl.textContent="N="+pts.length+" · "+pts.length+" зборів з даними";
  const empty=document.getElementById("scatter-empty");
@@ -1098,7 +1140,7 @@ function renderScatter(camps){
  // групуємо за основним каналом для кольору+легенди
  const byChan={};
  pts.forEach(c=>{const ch=(c.channels&&c.channels[0])||"—";
-  (byChan[ch]=byChan[ch]||[]).push([c.reach,c.engagement_rate,sizeOf(c.amount_uah),c.title,ch,c.amount_uah,c.id]);});
+  (byChan[ch]=byChan[ch]||[]).push([c.reach,c.rel_resonance,sizeOf(c.amount_uah),c.title,ch,c.amount_uah,c.id]);});
  const series=Object.keys(byChan).map(ch=>({
   name:ch,type:"scatter",data:byChan[ch],
   symbolSize:d=>d[2],
@@ -1107,16 +1149,16 @@ function renderScatter(camps){
   tooltip:{backgroundColor:"#11151c",borderColor:"#222a35",textStyle:{color:"#d7dce2",fontFamily:"monospace"},
    formatter:p=>{const d=p.data;return `${esc(d[3])}<br><span style="color:#8bb6df">${esc(d[4])}</span>`+
     `<br>охоплення: <b>${d[0].toLocaleString("uk-UA")}</b>`+
-    `<br>ER: <b>${(d[1]*100).toFixed(2)}%</b>`+
+    `<br>reach-резонанс: <b>×${d[1].toFixed(2)}</b>`+
     `<br>обсяг: <b>${fmtUAH(d[5])}</b>`;}},
   legend:{show:true,top:0,type:"scroll",textStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10}},
   grid:{left:60,right:24,top:30,bottom:50},
   xAxis:{type:"log",name:"охоплення (log)",nameLocation:"middle",nameGap:32,nameTextStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10},
    axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
    axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:v=>v>=1e6?(v/1e6)+"M":v>=1e3?(v/1e3)+"K":v}},
-  yAxis:{type:"value",name:"engagement rate",nameLocation:"middle",nameGap:46,nameTextStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10},
+  yAxis:{type:"value",name:"reach-резонанс",nameLocation:"middle",nameGap:46,nameTextStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10},
    axisLine:{lineStyle:{color:"#222a35"}},splitLine:{lineStyle:{color:"#161b24"}},
-   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:v=>(v*100).toFixed(1)+"%"}},
+   axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:10,formatter:v=>"×"+v.toFixed(1)}},
   series},true);
  chScatter.off("click");
  chScatter.on("click",p=>{if(p.data&&p.data[6])openCampModal(p.data[6]);});
@@ -1175,7 +1217,7 @@ function renderCorr(camps){
  rows.sort((a,b)=>b.lift-a.lift);
 
  nEl.textContent="N="+withRR.length+" по осі: "+ax+" · "+rows.length+" значень";
- baselineEl.textContent="базовий рівень (середнє резонансу): "+baseline.toFixed(3)+" · N="+withRR.length;
+ baselineEl.textContent="базовий рівень (середнє reach-резонансу): "+baseline.toFixed(3)+" · N="+withRR.length;
 
  if(!rows.length){body.innerHTML='<div class="iempty">—</div>';return;}
 
@@ -1380,7 +1422,7 @@ function renderMatrix(camps){
  wrap.style.display="block";empty.style.display="none";
  const rows=keys.map(k=>{
   const cs=b[k];
-  const ers=cs.map(c=>c.engagement_rate).filter(x=>x!=null);
+  const ers=cs.map(c=>c.rel_resonance).filter(x=>x!=null);
   const amts=cs.map(c=>c.amount_uah).filter(x=>x!=null);
   const grNonNull=cs.filter(c=>c.goal_reached!=null);
   const grYes=grNonNull.filter(c=>c.goal_reached===true).length;
@@ -1395,11 +1437,11 @@ function renderMatrix(camps){
  const grVals=rows.map(r=>r.gr).filter(x=>x!=null);const maxGr=grVals.length?Math.max(...grVals):0;
  const amtVals=rows.map(r=>r.amt).filter(x=>x!=null);const maxAmt=amtVals.length?Math.max(...amtVals):0;
  document.getElementById("mx-head").innerHTML=
-  `<tr><th>${MX_LABEL[axis]}</th><th>к-сть</th><th>мед. ER</th><th>% цілі</th><th>мед. ₴</th></tr>`;
+  `<tr><th>${MX_LABEL[axis]}</th><th>к-сть</th><th>мед. reach-рез.</th><th>% цілі</th><th>мед. ₴</th></tr>`;
  const cell=(v,disp,t)=>`<td style="background:${heatColor(t)}">${disp}</td>`;
  document.getElementById("mx-body").innerHTML=rows.map(r=>{
   const low=r.n<2?" lown":"";
-  const erD=r.er!=null?(r.er*100).toFixed(2)+"%"+`<span class="mn">N=${r.erN}</span>`:'<span class="dash">—</span>';
+  const erD=r.er!=null?"×"+r.er.toFixed(2)+`<span class="mn">N=${r.erN}</span>`:'<span class="dash">—</span>';
   const grD=r.gr!=null?(r.gr*100).toFixed(0)+"%"+`<span class="mn">N=${r.grN}</span>`:'<span class="dash">—</span>';
   const amtD=r.amt!=null?fmtUAH(r.amt)+`<span class="mn">N=${r.amtN}</span>`:'<span class="dash">—</span>';
   return `<tr class="${low.trim()}"><td>${esc(r.key)}</td>`+
@@ -1470,9 +1512,7 @@ function openCampModal(id){
     `<div class="mrow"><span class="k">ціль ₴:</span>${c.goal_amount!=null?fmtUAH(c.goal_amount):'<span class="dash">—</span>'}`+
      `${pct!=null?` <span class="${pct>=100?"pct-on":"pct-off"}">(${pct.toFixed(0)}%)</span>`:""}</div>`+
     `<div class="mrow"><span class="k">охоплення:</span>${c.reach!=null?c.reach.toLocaleString("uk-UA"):'<span class="dash">—</span>'}</div>`+
-    `<div class="mrow"><span class="k">залучення:</span>${c.engagement!=null?c.engagement.toLocaleString("uk-UA"):'<span class="dash">—</span>'}</div>`+
-    `<div class="mrow"><span class="k">engagement rate:</span>${c.engagement_rate!=null?(c.engagement_rate*100).toFixed(2)+"%":'<span class="dash">—</span>'}</div>`+
-    `<div class="mrow"><span class="k">резонанс:</span>${c.rel_resonance!=null?`<span style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}">×${c.rel_resonance.toFixed(2)} від медіани актора</span>`:'<span class="dash">—</span>'}</div>`+
+    `<div class="mrow"><span class="k">reach-резонанс:</span>${c.rel_resonance!=null?`<span style="color:${c.rel_resonance>=1?'var(--green)':'var(--dim)'}">×${c.rel_resonance.toFixed(2)} vs медіана каналу</span>`:'<span class="dash">—</span>'}</div>`+
     `<div class="mrow"><span class="k">рекл. бюджет:</span>${fmtUAH(c.spend)}</div>`+
     `<div class="mrow"><span class="k">ціль досягнуто:</span>${c.goal_reached==null?'<span class="dash">—</span>':(c.goal_reached?'<span class="pct-on">так</span>':'<span class="pct-off">ні</span>')}</div>`+
     (fmtVelocity(c.jar_velocity_uah_per_day)!=null?`<div class="mrow"><span class="k">темп банки:</span><span style="color:var(--green);font-weight:600">${esc(fmtVelocity(c.jar_velocity_uah_per_day))} ▲</span>${c.jar_span_days!=null?` <span style="color:var(--faint);font-size:10px">за ${c.jar_span_days.toFixed(1)} д</span>`:""}</div>`:"")+
@@ -1505,8 +1545,9 @@ function updateCamp(){
  renderCampKPIs(camps,crs);
  renderGallery(crs);
  renderSaBar(camps);
+ renderRmBar();
  renderSrBar(camps);
- renderStyleHeat(chSaFe,"sa-fe-n",camps,"form_factor","channels","engagement",FORM_ORDER,CHANNEL_ORDER);
+ renderStyleHeat(chSaFe,"sa-fe-n",camps,"form_factor","channels","reach",FORM_ORDER,CHANNEL_ORDER);
  renderStyleHeat(chSaGc,"sa-gc-n",camps,"goal_category","channels","count",GOAL_ORDER,CHANNEL_ORDER);
  renderScatter(camps);
  renderMatrix(camps);
@@ -1519,16 +1560,17 @@ function initCampCharts(){
  if(campChartsInit)return;
  campChartsInit=true;
  if(!HAS_ECHARTS){
-  ["sa-bar","sr-bar","sa-fe","sa-gc","scatter-chart","timeline-chart"].forEach(id=>{const el=document.getElementById(id);
+  ["sa-bar","rm-bar","sr-bar","sa-fe","sa-gc","scatter-chart","timeline-chart"].forEach(id=>{const el=document.getElementById(id);
    if(el)el.innerHTML="<div style='padding:24px;color:#8893a0'>графіки недоступні (ECharts не завантажився) — таблиці, картки й дослідник нижче працюють</div>";});
   return;}
  chSaBar=echarts.init(document.getElementById("sa-bar"));
+ chRmBar=echarts.init(document.getElementById("rm-bar"));
  chSrBar=echarts.init(document.getElementById("sr-bar"));
  chSaFe=echarts.init(document.getElementById("sa-fe"));
  chSaGc=echarts.init(document.getElementById("sa-gc"));
  chScatter=echarts.init(document.getElementById("scatter-chart"));
  chTimeline=echarts.init(document.getElementById("timeline-chart"));
- window.addEventListener("resize",()=>{[chSaBar,chSrBar,chSaFe,chSaGc,chScatter,chTimeline].forEach(c=>{if(c)c.resize();});});
+ window.addEventListener("resize",()=>{[chSaBar,chRmBar,chSrBar,chSaFe,chSaGc,chScatter,chTimeline].forEach(c=>{if(c)c.resize();});});
 }
 
 function setupCampaignView(){
@@ -1548,6 +1590,8 @@ function setupCampaignView(){
   saMetric=b.dataset.m;document.querySelectorAll("#sa-metric button").forEach(x=>x.classList.toggle("on",x===b));renderSaBar(filteredCamps());});
  document.querySelectorAll("#sa-axis button").forEach(b=>b.onclick=()=>{
   saAxis=b.dataset.a;document.querySelectorAll("#sa-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSaBar(filteredCamps());});
+ document.querySelectorAll("#rm-axis button").forEach(b=>b.onclick=()=>{
+  rmAxis=b.dataset.a;document.querySelectorAll("#rm-axis button").forEach(x=>x.classList.toggle("on",x===b));renderRmBar();});
  document.querySelectorAll("#sr-axis button").forEach(b=>b.onclick=()=>{
   srAxis=b.dataset.a;document.querySelectorAll("#sr-axis button").forEach(x=>x.classList.toggle("on",x===b));renderSrBar(filteredCamps());});
  // Кореляції: axis toggle
@@ -1587,6 +1631,11 @@ function setupCampaignView(){
  document.getElementById("c-reset").onclick=()=>{
   Object.values(CSEL).forEach(s=>s.clear());cVerifMode="all";recencyDays=30;campRelevMode="zbory";campDestMode="with";
   ceSearch="";ceSort="rel_resonance";mxAxis="channels";corrAxis="tone";timelineMetric="count";timelineSplit="total";
+  saAxis="tone";saMetric="resonance";rmAxis="channel";srAxis="tone";
+  document.querySelectorAll("#sa-metric button").forEach(b=>b.classList.toggle("on",b.dataset.m==="resonance"));
+  document.querySelectorAll("#sa-axis button").forEach(b=>b.classList.toggle("on",b.dataset.a==="tone"));
+  document.querySelectorAll("#rm-axis button").forEach(b=>b.classList.toggle("on",b.dataset.a==="channel"));
+  document.querySelectorAll("#sr-axis button").forEach(b=>b.classList.toggle("on",b.dataset.a==="tone"));
   document.querySelectorAll("#corr-axis button").forEach(b=>b.classList.toggle("on",b.dataset.ax==="tone"));
   document.querySelectorAll("#timeline-metric button").forEach(b=>b.classList.toggle("on",b.dataset.m==="count"));
   document.querySelectorAll("#timeline-themes button").forEach(b=>b.classList.toggle("on",b.dataset.t==="total"));
@@ -1605,7 +1654,7 @@ function setupCampaignView(){
 
 // ── ресайз усіх графіків (після тоглу фільтрів / зміни орієнтації) ──
 function resizeAllCharts(){
- [chSaBar,chSrBar,chSaFe,chSaGc,chScatter,chTimeline].forEach(c=>{if(c)c.resize();});
+ [chSaBar,chRmBar,chSrBar,chSaFe,chSaGc,chScatter,chTimeline].forEach(c=>{if(c)c.resize();});
 }
 // ── мобільний тоглер фільтрів (drawer) ──
 function bindFilterToggle(btnId,sideId){
