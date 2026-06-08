@@ -40,13 +40,15 @@ def test_telegram_sets_engagement_from_forwards():
     assert campaign.engagement == 50
 
 
-def test_telegram_sets_engagement_from_views_when_no_forwards():
+def test_telegram_engagement_none_when_no_forwards():
+    """Telegram без forwards: engagement лишається None (НЕ fallback на views)."""
     from fundrec.ingest import _apply_signals
 
     campaign = _base_campaign()
     raw = {"views": 800, "platform": "telegram", "source_url": "https://t.me/ch/1"}
     _apply_signals(campaign, raw, tier=3)
-    assert campaign.engagement == 800
+    assert campaign.reach == 800
+    assert campaign.engagement is None
 
 
 def test_telegram_provenance_stored():
@@ -86,14 +88,15 @@ def test_youtube_sets_reach_and_engagement():
     assert campaign.engagement == 80
 
 
-def test_youtube_engagement_falls_back_to_views_when_no_likes():
+def test_youtube_engagement_none_when_no_likes():
+    """YouTube без likes: engagement лишається None (НЕ fallback на views)."""
     from fundrec.ingest import _apply_signals
 
     campaign = _base_campaign()
     raw = {"views": 2000, "platform": "youtube", "source_url": "https://youtube.com/v/x"}
     _apply_signals(campaign, raw, tier=3)
     assert campaign.reach == 2000
-    assert campaign.engagement == 2000
+    assert campaign.engagement is None
 
 
 def test_youtube_provenance_confidence_tier3():

@@ -1,6 +1,6 @@
-"""Unit 3 — what_works_now.
+"""Unit 3 — what_works_now (тепер канал-нормалізований reach-резонанс).
 
-Дисципліна: actor-нормалізований engagement_rate; min_n фільтрує малі групи;
+Дисципліна: reach vs медіана каналу (baselines); min_n фільтрує малі групи;
 None-сигнали виключаються; recent-вікно через parse_campaign_date.
 """
 from __future__ import annotations
@@ -17,9 +17,12 @@ def _camp(
     channels: list[str] | None = None,
     tone: list[str] | None = None,
     reach: float | None = None,
-    engagement: float | None = None,
+    handle: str | None = None,
     goal: str = "military",
 ) -> Campaign:
+    prov = {}
+    if handle is not None:
+        prov["reach"] = {"source_url": f"https://t.me/{handle}/1"}
     return Campaign(
         id=id,
         actor_id=actor_id,
@@ -30,47 +33,49 @@ def _camp(
         channels=channels or [],
         tone=tone or [],
         reach=reach,
-        engagement=engagement,
+        provenance=prov,
     )
+
+
+# Спільна база каналів: handle "ch" з медіаною 1000.
+_BL = {"chHi": 1000.0, "chLo": 1000.0, "ch": 1000.0}
 
 
 # ── базові ────────────────────────────────────────────────────────────────────
 
 
-def test_what_works_now_higher_rel_resonance_ranks_first():
-    """Channel A з вищим actor-нормалізованим er → перший у рейтингу."""
+def test_what_works_now_higher_resonance_ranks_first():
+    """Channel-група з вищим reach-резонансом → перша у рейтингу."""
     now = "2024-02-15"
-    # actor a1 має 2 кампанії: er=0.1 та er=0.3 → median=0.2
-    # channel telegram: er=0.3 → rel=1.5
-    # channel youtube: er=0.1 → rel=0.5
     camps = [
-        _camp("k1", actor_id="a1", date_start="2024-02-10",
-              channels=["telegram"], reach=1000.0, engagement=300.0),  # er=0.3
-        _camp("k2", actor_id="a1", date_start="2024-02-08",
-              channels=["telegram"], reach=1000.0, engagement=300.0),  # er=0.3
-        _camp("k3", actor_id="a1", date_start="2024-02-05",
-              channels=["youtube"], reach=1000.0, engagement=100.0),   # er=0.1
-        _camp("k4", actor_id="a1", date_start="2024-02-03",
-              channels=["youtube"], reach=1000.0, engagement=100.0),   # er=0.1
+        # telegram: reach 2000 на каналі з медіаною 1000 → rr=2.0
+        _camp("k1", date_start="2024-02-10", channels=["telegram"],
+              reach=2000.0, handle="chHi"),
+        _camp("k2", date_start="2024-02-08", channels=["telegram"],
+              reach=2000.0, handle="chHi"),
+        # youtube: reach 500 → rr=0.5
+        _camp("k3", date_start="2024-02-05", channels=["youtube"],
+              reach=500.0, handle="chLo"),
+        _camp("k4", date_start="2024-02-03", channels=["youtube"],
+              reach=500.0, handle="chLo"),
     ]
-    # actor a1 median of all 4 er: median(0.3,0.3,0.1,0.1)=0.2
-    rows = what_works_now(camps, now=now, window_days=30, by="channels", min_n=2)
+    rows = what_works_now(camps, now=now, window_days=30, by="channels",
+                          min_n=2, baselines=_BL)
     assert len(rows) >= 2
-    # telegram повинен бути першим (score вищий)
     assert rows[0]["key"] == "telegram"
     assert rows[0]["score"] > rows[1]["score"]
 
 
 def test_what_works_now_result_shape():
-    """Кожен рядок має key, score, n."""
     now = "2024-02-15"
     camps = [
         _camp("k1", date_start="2024-02-10", channels=["telegram"],
-              reach=1000.0, engagement=200.0),
+              reach=1000.0, handle="ch"),
         _camp("k2", date_start="2024-02-05", channels=["telegram"],
-              reach=1000.0, engagement=300.0),
+              reach=1500.0, handle="ch"),
     ]
-    rows = what_works_now(camps, now=now, window_days=30, by="channels", min_n=1)
+    rows = what_works_now(camps, now=now, window_days=30, by="channels",
+                          min_n=1, baselines=_BL)
     assert len(rows) >= 1
     for r in rows:
         assert "key" in r
@@ -79,113 +84,110 @@ def test_what_works_now_result_shape():
 
 
 def test_what_works_now_min_n_filters_small_groups():
-    """Групи з n < min_n не потрапляють у вихід."""
     now = "2024-02-15"
-    # telegram: 2 кампанії; youtube: 1 кампанія
     camps = [
         _camp("k1", date_start="2024-02-10", channels=["telegram"],
-              reach=1000.0, engagement=200.0),
+              reach=1000.0, handle="ch"),
         _camp("k2", date_start="2024-02-08", channels=["telegram"],
-              reach=1000.0, engagement=200.0),
+              reach=1000.0, handle="ch"),
         _camp("k3", date_start="2024-02-06", channels=["youtube"],
-              reach=1000.0, engagement=100.0),
+              reach=1000.0, handle="ch"),
     ]
-    rows = what_works_now(camps, now=now, window_days=30, by="channels", min_n=2)
+    rows = what_works_now(camps, now=now, window_days=30, by="channels",
+                          min_n=2, baselines=_BL)
     keys = {r["key"] for r in rows}
     assert "telegram" in keys
     assert "youtube" not in keys  # n=1 < min_n=2
 
 
 def test_what_works_now_excludes_no_signal_groups():
-    """Групи, де всі rel_resonance=None, не потрапляють у вихід."""
+    """Групи, де всі reach_resonance=None, не потрапляють у вихід."""
     now = "2024-02-15"
     camps = [
         _camp("k1", date_start="2024-02-10", channels=["telegram"],
-              reach=None, engagement=None),  # no signal
+              reach=None),  # no signal
         _camp("k2", date_start="2024-02-08", channels=["telegram"],
-              reach=None, engagement=None),  # no signal
+              reach=None),  # no signal
     ]
-    rows = what_works_now(camps, now=now, window_days=30, by="channels", min_n=1)
-    # Telegram has no er → rel_resonance all None → excluded
+    rows = what_works_now(camps, now=now, window_days=30, by="channels",
+                          min_n=1, baselines=_BL)
     assert rows == []
 
 
 def test_what_works_now_only_recent_campaigns():
-    """Кампанії поза recent-вікном не враховуються."""
     now = "2024-02-15"
     camps = [
-        # recent (within 30 days)
         _camp("k1", date_start="2024-02-10", channels=["telegram"],
-              reach=1000.0, engagement=200.0),
+              reach=1000.0, handle="ch"),
         _camp("k2", date_start="2024-02-05", channels=["telegram"],
-              reach=1000.0, engagement=200.0),
-        # old (outside 30-day window)
+              reach=1000.0, handle="ch"),
         _camp("k3", date_start="2023-12-01", channels=["youtube"],
-              reach=1000.0, engagement=200.0),
+              reach=1000.0, handle="ch"),
         _camp("k4", date_start="2023-11-01", channels=["youtube"],
-              reach=1000.0, engagement=200.0),
+              reach=1000.0, handle="ch"),
     ]
-    rows = what_works_now(camps, now=now, window_days=30, by="channels", min_n=1)
+    rows = what_works_now(camps, now=now, window_days=30, by="channels",
+                          min_n=1, baselines=_BL)
     keys = {r["key"] for r in rows}
     assert "telegram" in keys
     assert "youtube" not in keys  # old campaigns excluded
 
 
 def test_what_works_now_sorted_desc():
-    """Вихід відсортований за score по спаданню."""
     now = "2024-02-15"
-    # actor a1: 4 кампанії. median er = median(0.05,0.05,0.3,0.3) = 0.175
     camps = [
-        _camp("k1", actor_id="a1", date_start="2024-02-10",
-              channels=["youtube"], reach=1000.0, engagement=300.0),  # er=0.3
-        _camp("k2", actor_id="a1", date_start="2024-02-09",
-              channels=["youtube"], reach=1000.0, engagement=300.0),  # er=0.3
-        _camp("k3", actor_id="a1", date_start="2024-02-08",
-              channels=["facebook"], reach=1000.0, engagement=50.0),  # er=0.05
-        _camp("k4", actor_id="a1", date_start="2024-02-07",
-              channels=["facebook"], reach=1000.0, engagement=50.0),  # er=0.05
+        _camp("k1", date_start="2024-02-10", channels=["youtube"],
+              reach=3000.0, handle="ch"),  # rr=3.0
+        _camp("k2", date_start="2024-02-09", channels=["youtube"],
+              reach=3000.0, handle="ch"),  # rr=3.0
+        _camp("k3", date_start="2024-02-08", channels=["facebook"],
+              reach=500.0, handle="ch"),   # rr=0.5
+        _camp("k4", date_start="2024-02-07", channels=["facebook"],
+              reach=500.0, handle="ch"),   # rr=0.5
     ]
-    rows = what_works_now(camps, now=now, window_days=30, by="channels", min_n=2)
+    rows = what_works_now(camps, now=now, window_days=30, by="channels",
+                          min_n=2, baselines=_BL)
     scores = [r["score"] for r in rows]
     assert scores == sorted(scores, reverse=True)
     assert rows[0]["key"] == "youtube"
 
 
 def test_what_works_now_n_field_counts_recent():
-    """n = кількість recent-кампаній у групі."""
     now = "2024-02-15"
     camps = [
         _camp("k1", date_start="2024-02-10", channels=["telegram"],
-              reach=1000.0, engagement=200.0),
+              reach=1000.0, handle="ch"),
         _camp("k2", date_start="2024-02-08", channels=["telegram"],
-              reach=1000.0, engagement=200.0),
+              reach=1000.0, handle="ch"),
         _camp("k3", date_start="2024-02-06", channels=["telegram"],
-              reach=1000.0, engagement=200.0),
+              reach=1000.0, handle="ch"),
     ]
-    rows = what_works_now(camps, now=now, window_days=30, by="channels", min_n=1)
+    rows = what_works_now(camps, now=now, window_days=30, by="channels",
+                          min_n=1, baselines=_BL)
     tg = next(r for r in rows if r["key"] == "telegram")
     assert tg["n"] == 3
 
 
 def test_what_works_now_empty_returns_empty():
-    rows = what_works_now([], now="2024-02-15", window_days=30, by="channels", min_n=1)
+    rows = what_works_now([], now="2024-02-15", window_days=30, by="channels",
+                          min_n=1, baselines=_BL)
     assert rows == []
 
 
 def test_what_works_now_tone_axis():
-    """Вісь tone — аналогічна channels."""
     now = "2024-02-15"
     camps = [
         _camp("k1", date_start="2024-02-10", tone=["urgency"],
-              reach=1000.0, engagement=400.0),
+              reach=4000.0, handle="ch"),  # rr=4.0
         _camp("k2", date_start="2024-02-08", tone=["urgency"],
-              reach=1000.0, engagement=400.0),
+              reach=4000.0, handle="ch"),
         _camp("k3", date_start="2024-02-06", tone=["humor"],
-              reach=1000.0, engagement=100.0),
+              reach=1000.0, handle="ch"),  # rr=1.0
         _camp("k4", date_start="2024-02-04", tone=["humor"],
-              reach=1000.0, engagement=100.0),
+              reach=1000.0, handle="ch"),
     ]
-    rows = what_works_now(camps, now=now, window_days=30, by="tone", min_n=2)
+    rows = what_works_now(camps, now=now, window_days=30, by="tone",
+                          min_n=2, baselines=_BL)
     keys = [r["key"] for r in rows]
     assert "urgency" in keys
-    assert keys[0] == "urgency"  # urgency has higher rel_resonance
+    assert keys[0] == "urgency"  # urgency has higher reach-resonance

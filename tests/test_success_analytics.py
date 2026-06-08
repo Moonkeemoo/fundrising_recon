@@ -163,36 +163,43 @@ def test_build_analytics_has_success_rates(tmp_path):
     assert "channels" in ca["success_rates"]
 
 
-def test_build_analytics_has_engagement_summaries(tmp_path):
+def test_build_analytics_has_resonance_summaries(tmp_path):
+    """axis_summaries має reach-резонансні підсумки (engagement замінено — чесно None)."""
     conn = _setup(tmp_path)
     store.upsert_campaign(conn, _camp("c1", engagement=100, reach=1000))
 
     result = build_analytics(conn)
     ca = result["campaign_analytics"]
     axs = ca["axis_summaries"]
-    assert "tone_engagement" in axs
-    assert "channel_engagement" in axs
+    assert "tone_resonance" in axs
+    assert "channel_resonance" in axs
 
 
-def test_build_analytics_success_rates_values(tmp_path):
-    """Значення success_rates коректні для відомого набору даних."""
+def test_build_analytics_success_rates_from_amount_vs_goal(tmp_path):
+    """success_rates деривується з amount>=goal; ключ лише при n>=3."""
     conn = _setup(tmp_path)
-    store.upsert_campaign(conn, _camp("c1", tone=["urgency"], channels=["telegram"],
-                                      goal_reached=True))
-    store.upsert_campaign(conn, _camp("c2", tone=["urgency"], channels=["telegram"],
-                                      goal_reached=False))
-    store.upsert_campaign(conn, _camp("c3", tone=["emotional"], channels=["youtube"],
-                                      goal_reached=None))
+    # 3 кампанії urgency з amount+goal → key emitted (n=3)
+    store.upsert_campaign(conn, _camp("c1", tone=["urgency"],
+                                      amount_uah=1000.0, goal_amount=800.0))   # reached
+    store.upsert_campaign(conn, _camp("c2", tone=["urgency"],
+                                      amount_uah=500.0, goal_amount=1000.0))   # not
+    store.upsert_campaign(conn, _camp("c3", tone=["urgency"],
+                                      amount_uah=1200.0, goal_amount=1000.0))  # reached
+    # 2 кампанії emotional → n<3 → ключ ВИПУСКАЄТЬСЯ (honest)
+    store.upsert_campaign(conn, _camp("c4", tone=["emotional"],
+                                      amount_uah=900.0, goal_amount=800.0))
+    store.upsert_campaign(conn, _camp("c5", tone=["emotional"],
+                                      amount_uah=700.0, goal_amount=800.0))
 
     result = build_analytics(conn)
     sr = result["campaign_analytics"]["success_rates"]
-
-    # urgency: 1/2 = 0.5
     tone_rows = {r["key"]: r for r in sr["tone"]}
-    assert tone_rows["urgency"]["value"] == pytest.approx(0.5)
 
-    # emotional: all None → value=None
-    assert tone_rows["emotional"]["value"] is None
+    # urgency: 2/3 reached, n=3
+    assert tone_rows["urgency"]["value"] == pytest.approx(2 / 3)
+    assert tone_rows["urgency"]["n"] == 3
+    # emotional: n=2 < min_n=3 → ключ відсутній (не фейковий бар)
+    assert "emotional" not in tone_rows
 
 
 def test_build_analytics_existing_keys_unchanged(tmp_path):

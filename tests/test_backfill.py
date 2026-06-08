@@ -57,14 +57,15 @@ def test_backfill_campaign_telegram_views_forwards():
     assert c.provenance["engagement"]["note"] == "platform signal backfill"
 
 
-def test_backfill_campaign_telegram_no_forwards_uses_views():
-    """Telegram без forwards: engagement=views."""
+def test_backfill_campaign_telegram_no_forwards_engagement_none():
+    """Telegram без forwards: engagement лишається None (НЕ fallback на views)."""
     c = _make_campaign("https://t.me/ch/2")
     raw = {"platform": "telegram", "source_url": "https://t.me/ch/2",
            "views": 3000, "date": "2024-06-01"}
     changed = backfill_campaign(c, raw)
-    assert changed is True
-    assert c.engagement == 3000
+    assert changed is True  # reach + date_start заповнені
+    assert c.reach == 3000
+    assert c.engagement is None
 
 
 def test_backfill_campaign_youtube():
@@ -79,13 +80,14 @@ def test_backfill_campaign_youtube():
     assert c.date_start == "2023-11-10"
 
 
-def test_backfill_campaign_youtube_no_likes_uses_views():
-    """YouTube без likes: engagement=views."""
+def test_backfill_campaign_youtube_no_likes_engagement_none():
+    """YouTube без likes: engagement лишається None (НЕ fallback на views)."""
     c = _make_campaign("https://youtube.com/watch?v=def")
     raw = {"platform": "youtube", "source_url": "https://youtube.com/watch?v=def",
            "views": 12000, "published": "2024-01-05"}
     backfill_campaign(c, raw)
-    assert c.engagement == 12000
+    assert c.reach == 12000
+    assert c.engagement is None
 
 
 def test_backfill_campaign_goal_reached_from_text():

@@ -1,7 +1,7 @@
 """Unit 1 — engagement_rate, actor_median_engagement_rate, rel_resonance_map.
 
-Дисципліна: None≠0; rel_resonance >1 коли вище медіани актора;
-один збір → медіана = саме значення → rel=1.0.
+Дисципліна: None≠0. rel_resonance тепер = reach-резонанс (reach vs медіана
+каналу), а НЕ engagement-нормалізація (engagement чесно відсутній з public TG).
 """
 from __future__ import annotations
 
@@ -20,7 +20,11 @@ def _camp(
     actor_id: str = "a1",
     reach: float | None = None,
     engagement: float | None = None,
+    handle: str | None = None,
 ) -> Campaign:
+    prov = {}
+    if handle is not None:
+        prov["reach"] = {"source_url": f"https://t.me/{handle}/1"}
     return Campaign(
         id=id,
         actor_id=actor_id,
@@ -29,6 +33,7 @@ def _camp(
         type="online_ad",
         reach=reach,
         engagement=engagement,
+        provenance=prov,
     )
 
 
@@ -105,70 +110,55 @@ def test_actor_median_empty_list_returns_none():
     assert actor_median_engagement_rate([]) is None
 
 
-# ── rel_resonance_map ─────────────────────────────────────────────────────────
+# ── rel_resonance_map (тепер reach-резонанс vs медіана каналу) ───────────────
 
 
-def test_rel_resonance_above_median():
-    """er вищий за медіану актора → rel > 1.0."""
+def test_rel_resonance_above_and_below_channel_median():
+    """reach вище медіани каналу → rel > 1; нижче → rel < 1."""
+    baselines = {"chX": 1000.0}
     camps = [
-        _camp("k1", "a1", reach=1000.0, engagement=100.0),  # er=0.1
-        _camp("k2", "a1", reach=1000.0, engagement=200.0),  # er=0.2
-        _camp("k3", "a1", reach=1000.0, engagement=300.0),  # er=0.3
+        _camp("k1", reach=500.0, handle="chX"),   # 0.5
+        _camp("k2", reach=1000.0, handle="chX"),  # 1.0
+        _camp("k3", reach=2000.0, handle="chX"),  # 2.0
     ]
-    # median(0.1,0.2,0.3) = 0.2
-    m = rel_resonance_map(camps)
-    assert m["k1"] == pytest.approx(0.1 / 0.2)  # 0.5
-    assert m["k2"] == pytest.approx(0.2 / 0.2)  # 1.0
-    assert m["k3"] == pytest.approx(0.3 / 0.2)  # 1.5
+    m = rel_resonance_map(camps, baselines)
+    assert m["k1"] == pytest.approx(0.5)
+    assert m["k2"] == pytest.approx(1.0)
+    assert m["k3"] == pytest.approx(2.0)
     assert m["k3"] > 1.0
 
 
-def test_rel_resonance_single_campaign_equals_one():
-    """Один збір актора → медіана = er → rel = 1.0."""
-    camps = [_camp("k1", "a1", reach=1000.0, engagement=200.0)]
-    m = rel_resonance_map(camps)
-    assert m["k1"] == pytest.approx(1.0)
-
-
-def test_rel_resonance_none_when_no_signal():
-    """Немає er (reach=None) → rel=None (не 0)."""
+def test_rel_resonance_none_when_no_reach():
+    """Немає reach → rel=None (не 0)."""
+    baselines = {"chX": 1000.0}
     camps = [
-        _camp("k1", "a1", reach=None, engagement=50.0),
-        _camp("k2", "a1", reach=1000.0, engagement=100.0),
+        _camp("k1", reach=None, handle="chX"),
+        _camp("k2", reach=1000.0, handle="chX"),
     ]
-    m = rel_resonance_map(camps)
-    # k1 has no er → None regardless of actor median
+    m = rel_resonance_map(camps, baselines)
     assert m["k1"] is None
     assert m["k2"] is not None
 
 
-def test_rel_resonance_none_when_actor_median_none():
-    """Якщо всі кампанії актора без er → медіана None → rel для всіх None."""
-    camps = [
-        _camp("k1", "a1", reach=None, engagement=None),
-        _camp("k2", "a1", reach=0.0, engagement=50.0),
-    ]
-    m = rel_resonance_map(camps)
+def test_rel_resonance_none_when_handle_not_in_baselines():
+    """Канал без бази у baselines → rel=None (honest null)."""
+    camps = [_camp("k1", reach=1000.0, handle="unknownch")]
+    m = rel_resonance_map(camps, {"chX": 1000.0})
     assert m["k1"] is None
-    assert m["k2"] is None
 
 
-def test_rel_resonance_multiple_actors_independent():
-    """Нормалізація окремо для кожного актора."""
-    camps = [
-        _camp("k1", "a1", reach=1000.0, engagement=100.0),  # er=0.1 → a1 median=0.1 → rel=1.0
-        _camp("k2", "a2", reach=1000.0, engagement=500.0),  # er=0.5 → a2 median=0.5 → rel=1.0
-    ]
-    m = rel_resonance_map(camps)
-    assert m["k1"] == pytest.approx(1.0)
-    assert m["k2"] == pytest.approx(1.0)
+def test_rel_resonance_none_when_no_handle():
+    """Немає handle у provenance → rel=None."""
+    camps = [_camp("k1", reach=1000.0, handle=None)]
+    m = rel_resonance_map(camps, {"chX": 1000.0})
+    assert m["k1"] is None
 
 
 def test_rel_resonance_returns_all_ids():
     """Повертає ключ для кожної кампанії."""
     camps = [
-        _camp("k1", "a1", reach=1000.0, engagement=100.0),
-        _camp("k2", "a1", reach=None, engagement=None),
+        _camp("k1", reach=1000.0, handle="chX"),
+        _camp("k2", reach=None, handle="chX"),
     ]
-    m = rel_resonance_map(camps)
+    m = rel_resonance_map(camps, {"chX": 1000.0})
     assert set(m.keys()) == {"k1", "k2"}

@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Any
 
 from . import config, schema, store
-from .analyze import derive_themes, engagement_rate, rel_resonance_map
+from .analyze import channel_baselines, derive_themes, engagement_rate, reach_resonance
 from .dedup import campaign_jar_id
 from .destinations import extract_destinations
 from .jars import jar_velocity
@@ -138,12 +138,16 @@ def export_cases(
         rd = None
 
     # Збагачуємо кампанії обчисленими метриками (не змінюємо схему — тільки export-dict)
-    rrmap = rel_resonance_map(campaigns)
+    # Базові медіани каналів для reach-резонансу (рахуємо раз з усіх постів)
+    baselines = channel_baselines(store.load_posts(conn))
     campaign_dicts = []
     for c in campaigns:
         d = schema.campaign_to_dict(c)
-        d["engagement_rate"] = engagement_rate(c)
-        d["rel_resonance"] = rrmap.get(c.id)
+        d["engagement_rate"] = engagement_rate(c)  # ~None (engagement чесно відсутній)
+        # rel_resonance = reach-резонанс (vs медіана каналу); reach_resonance — явний alias
+        rr = reach_resonance(c, baselines)
+        d["rel_resonance"] = rr
+        d["reach_resonance"] = rr
         # Теми — keyword-derived з title + playbook_note (export-time, не в схемі)
         text = (c.title or "") + " " + (c.playbook_note or "")
         d["themes"] = derive_themes(text)

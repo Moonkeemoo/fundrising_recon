@@ -1,5 +1,5 @@
 {
-  "count": 94,
+  "count": 95,
   "cases": [
     {
       "id": "case-011d7b831bd7",
@@ -170,7 +170,7 @@
       "goal": "military",
       "style": [
         "emotional_personal",
-        "urgency"
+        "grassroots"
       ],
       "method": [
         "platform"
@@ -189,7 +189,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:23:25.840184+00:00",
+      "extracted_at": "2026-06-08T06:30:26.951619+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -232,8 +232,8 @@
       "url": "https://t.me/sptzbir/98",
       "goal": "military",
       "style": [
-        "grassroots",
-        "urgency"
+        "urgency",
+        "grassroots"
       ],
       "method": [
         "monobank_jar",
@@ -245,8 +245,8 @@
       "amount_uah": 47911.0,
       "amount_usd": 1155.0692038602758,
       "goal_amount": 42000.0,
-      "currency_raw": "42 000 ₴",
-      "volume_score": 0.5,
+      "currency_raw": "₴",
+      "volume_score": 0.5238095238095238,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -266,7 +266,7 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:32:58.161498+00:00",
+      "extracted_at": "2026-06-08T06:38:53.866714+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -328,7 +328,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:49:08.447853+00:00",
+      "extracted_at": "2026-06-08T06:53:00.188541+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -423,7 +423,7 @@
       "amount_usd": 1596.0061443932411,
       "goal_amount": 1000000.0,
       "currency_raw": "₴ / гривень",
-      "volume_score": 0.5454545454545454,
+      "volume_score": 0.5714285714285714,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -449,13 +449,12 @@
     },
     {
       "id": "case-278f5d8b27f7",
-      "title": "Збір на 1000 комплектів WFD для саперів та штурмовиків",
+      "title": "Збір на 1000 комплектів WFD",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/sptzbir/109",
       "goal": "military",
       "style": [
         "emotional_personal",
-        "urgency",
         "grassroots"
       ],
       "method": [
@@ -469,7 +468,7 @@
       "amount_usd": 13920.191003813121,
       "goal_amount": null,
       "currency_raw": null,
-      "volume_score": 0.8636363636363636,
+      "volume_score": 0.8571428571428571,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -483,7 +482,7 @@
       },
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:38:38.825585+00:00",
+      "extracted_at": "2026-06-08T06:43:10.362713+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -494,9 +493,9 @@
       "url": "https://t.me/ssternenko/59120",
       "goal": "military",
       "style": [
-        "urgency",
         "emotional_personal",
-        "data_transparent"
+        "urgency",
+        "grassroots"
       ],
       "method": [
         "monobank_jar"
@@ -515,7 +514,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:42:47.001116+00:00",
+      "extracted_at": "2026-06-08T06:46:28.873875+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -613,10 +612,10 @@
     },
     {
       "id": "case-36f8c4834f96",
-      "title": "Відновлення медпункту 17 ОВМБр після влучання шахеда",
+      "title": "Відновлення медичного пункту 17 ОВМБр після влучання шахеда",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/sptzbir/100",
-      "goal": "military",
+      "goal": "medical",
       "style": [
         "emotional_personal",
         "urgency",
@@ -633,7 +632,7 @@
       "amount_usd": 3154.2201662991943,
       "goal_amount": 200000.0,
       "currency_raw": "₴",
-      "volume_score": 0.6363636363636364,
+      "volume_score": 1.0,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -653,13 +652,13 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:35:33.874245+00:00",
+      "extracted_at": "2026-06-08T06:40:51.079458+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-3742aec8aae9",
-      "title": "Добропілля: евакуація дітей — ЗБІР Бригади «Рубіж» на НРК",
+      "title": "Збір Бригади «Рубіж» на НРК — евакуація дітей у Добропіллі",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/sylasvobody/305",
       "goal": "military",
@@ -668,9 +667,10 @@
         "urgency"
       ],
       "method": [
-        "monobank_jar"
+        "monobank_jar",
+        "platform"
       ],
-      "date_start": null,
+      "date_start": "2026-05-17",
       "date_end": null,
       "year": 2026,
       "amount_uah": null,
@@ -691,22 +691,22 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:44:45.299638+00:00",
+      "extracted_at": "2026-06-08T06:48:34.641204+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-39aba1d2f60c",
-      "title": "РЕБ/РЕР бригади К-2 перехопили дрон-камікадзе Молнія — захист мирних людей",
+      "title": "Фахівці з РЕБ та РЕР бригади К-2 врятували автівку з цивільними",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/k_2_54/176",
       "goal": "military",
       "style": [
         "emotional_personal",
-        "urgency"
+        "urgency",
+        "grassroots"
       ],
       "method": [
-        "bank_transfer",
         "platform"
       ],
       "date_start": "2026-04-02",
@@ -723,7 +723,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:27:35.293218+00:00",
+      "extracted_at": "2026-06-08T06:34:02.220825+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -748,7 +748,7 @@
       "amount_usd": 223.39774486774508,
       "goal_amount": 9660.0,
       "currency_raw": "грн",
-      "volume_score": 0.09090909090909091,
+      "volume_score": 0.09523809523809523,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -803,13 +803,13 @@
     },
     {
       "id": "case-401dc2f471e7",
-      "title": "Банка підрозділу «Фенікс» (Прикордонний підрозділ ДПСУ)",
+      "title": "Підтримай прикордонний підрозділ «Фенікс»",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/feniksdpsu/2007",
       "goal": "military",
       "style": [
-        "grassroots",
-        "emotional_personal"
+        "emotional_personal",
+        "grassroots"
       ],
       "method": [
         "monobank_jar"
@@ -828,23 +828,23 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:19:52.370712+00:00",
+      "extracted_at": "2026-06-08T06:27:57.740706+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-459ecf6fe964",
-      "title": "Збір Бригади «Рубіж» на НРК",
+      "title": "ЗБІР Бригади «Рубіж» на НРК",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/sylasvobody/291",
       "goal": "military",
       "style": [
-        "emotional_personal",
-        "grassroots"
+        "grassroots",
+        "emotional_personal"
       ],
       "method": [
         "monobank_jar",
-        "nft_merch"
+        "platform"
       ],
       "date_start": null,
       "date_end": null,
@@ -852,7 +852,7 @@
       "amount_uah": null,
       "amount_usd": null,
       "goal_amount": 500000.0,
-      "currency_raw": "грн.",
+      "currency_raw": "грн",
       "volume_score": null,
       "speed": null,
       "virality_score": null,
@@ -867,7 +867,7 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:43:44.638551+00:00",
+      "extracted_at": "2026-06-08T06:47:10.326278+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -930,7 +930,7 @@
       "amount_usd": 532.4706312968099,
       "goal_amount": null,
       "currency_raw": null,
-      "volume_score": 0.22727272727272727,
+      "volume_score": 0.23809523809523808,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -944,7 +944,7 @@
       },
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:37:38.070975+00:00",
+      "extracted_at": "2026-06-08T06:42:23.086244+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -999,7 +999,7 @@
       "amount_usd": 314.4101026146655,
       "goal_amount": 13000.0,
       "currency_raw": "₴",
-      "volume_score": 0.13636363636363635,
+      "volume_score": 0.14285714285714285,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -1019,7 +1019,7 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:41:56.274251+00:00",
+      "extracted_at": "2026-06-08T06:45:36.015288+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -1121,6 +1121,36 @@
       "url": "https://t.me/k_2_54/173",
       "goal": "military",
       "style": [
+        "emotional_personal",
+        "grassroots"
+      ],
+      "method": [],
+      "date_start": null,
+      "date_end": null,
+      "year": 2026,
+      "amount_uah": null,
+      "amount_usd": null,
+      "goal_amount": null,
+      "currency_raw": null,
+      "volume_score": null,
+      "speed": null,
+      "virality_score": null,
+      "repeatability": 1.0,
+      "provenance": {},
+      "confidence_overall": 0.0,
+      "verification_status": "auto",
+      "extracted_at": "2026-06-08T06:31:37.127886+00:00",
+      "extracted_by_model": "claude-opus-4-8",
+      "verdict_reason": null
+    },
+    {
+      "id": "case-70e4dc423df9",
+      "title": "Наземний роботизований комплекс «Мауль» «Надія» для евакуації поранених — збір Оксани Забужко до дня народження",
+      "actor_id": "auto-0c58a8e1",
+      "url": "https://t.me/kyivtv/132390",
+      "goal": "military",
+      "style": [
+        "celebrity",
         "emotional_personal"
       ],
       "method": [],
@@ -1138,7 +1168,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:24:31.907669+00:00",
+      "extracted_at": "2026-06-08T06:36:31.728665+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -1175,13 +1205,13 @@
     },
     {
       "id": "case-734f29cfa570",
-      "title": "43-й автомобіль для Батальйону Безпілотних Систем (155 бригада)",
+      "title": "43-й автомобіль для Батальйону Безпілотних Систем, 155 бригада",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/UKR_volunteers/899",
       "goal": "military",
       "style": [
-        "grassroots",
-        "emotional_personal"
+        "emotional_personal",
+        "grassroots"
       ],
       "method": [],
       "date_start": null,
@@ -1198,7 +1228,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:47:45.040582+00:00",
+      "extracted_at": "2026-06-08T06:51:38.767672+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -1223,7 +1253,7 @@
       "amount_usd": 665.8633642261144,
       "goal_amount": 500000.0,
       "currency_raw": "500 000 грн",
-      "volume_score": 0.2727272727272727,
+      "volume_score": 0.2857142857142857,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -1280,13 +1310,13 @@
     },
     {
       "id": "case-79783669bc7b",
-      "title": "Детектор дронів + виносна антена для підрозділу",
+      "title": "Збір на детектор дронів та виносну антену",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/sptzbir/114",
       "goal": "military",
       "style": [
-        "grassroots",
-        "emotional_personal"
+        "emotional_personal",
+        "grassroots"
       ],
       "method": [
         "monobank_jar"
@@ -1298,7 +1328,7 @@
       "amount_usd": 712.4019591053876,
       "goal_amount": null,
       "currency_raw": null,
-      "volume_score": 0.3181818181818182,
+      "volume_score": 0.3333333333333333,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -1312,7 +1342,7 @@
       },
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:40:50.266341+00:00",
+      "extracted_at": "2026-06-08T06:44:57.102199+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -1337,7 +1367,7 @@
       "amount_usd": 796.5189844610525,
       "goal_amount": 35000.0,
       "currency_raw": "35 000 грн",
-      "volume_score": 0.45454545454545453,
+      "volume_score": 0.47619047619047616,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -1363,7 +1393,7 @@
     },
     {
       "id": "case-7b4fc9008d88",
-      "title": "Збір на детектор дронів для підрозділу 101-ї ОБрО ГШ",
+      "title": "Детектор дронів для підрозділу 101-й ОБрО ГШ",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/sptzbir/113",
       "goal": "military",
@@ -1373,7 +1403,8 @@
         "urgency"
       ],
       "method": [
-        "monobank_jar"
+        "monobank_jar",
+        "bank_transfer"
       ],
       "date_start": "2026-03-13",
       "date_end": null,
@@ -1382,7 +1413,7 @@
       "amount_usd": 784.2431323533407,
       "goal_amount": 35000.0,
       "currency_raw": "грн",
-      "volume_score": 0.4090909090909091,
+      "volume_score": 0.42857142857142855,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -1402,13 +1433,13 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:40:22.646147+00:00",
+      "extracted_at": "2026-06-08T06:44:20.841924+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-7d0a1d0218a8",
-      "title": "Звіт: антена та зарядний пристрій для 23-ї ОМБр (зі збору на FPV дрони)",
+      "title": "Антена та зарядний пристрій для 23-ї ОМБр (ЗБІР №83)",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/helparmy_ua/484",
       "goal": "military",
@@ -1417,7 +1448,7 @@
         "grassroots"
       ],
       "method": [
-        "monobank_jar"
+        "bank_transfer"
       ],
       "date_start": null,
       "date_end": "2023-11-11",
@@ -1426,7 +1457,7 @@
       "amount_usd": 373.9547043091614,
       "goal_amount": null,
       "currency_raw": "₴",
-      "volume_score": 0.18181818181818182,
+      "volume_score": 0.19047619047619047,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -1440,7 +1471,7 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:21:51.332420+00:00",
+      "extracted_at": "2026-06-08T06:28:54.894188+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -1509,17 +1540,16 @@
     },
     {
       "id": "case-84d272f03ce0",
-      "title": "Генератор + старлінк для 159 ОМБр / Пальне для 3 ОШБр / Авто для транспортування крові",
+      "title": "Генератор + старлінк для 159 ОМБр",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/sptzbir/99",
       "goal": "military",
       "style": [
         "emotional_personal",
-        "grassroots"
+        "grassroots",
+        "urgency"
       ],
-      "method": [
-        "monobank_jar"
-      ],
+      "method": [],
       "date_start": "2025-10-01",
       "date_end": null,
       "year": 2025,
@@ -1534,13 +1564,13 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:34:13.757389+00:00",
+      "extracted_at": "2026-06-08T06:40:08.527205+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-86d7459d1217",
-      "title": "Збір коштів на автомобілі для підрозділів ЗСУ (44-й автомобіль передано 20 ОСБ)",
+      "title": "Збір на автомобілі для підрозділів ЗСУ (44-й авто — 20 ОСБ)",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/UKR_volunteers/914",
       "goal": "military",
@@ -1548,7 +1578,9 @@
         "grassroots",
         "emotional_personal"
       ],
-      "method": [],
+      "method": [
+        "bank_transfer"
+      ],
       "date_start": null,
       "date_end": null,
       "year": 2026,
@@ -1563,7 +1595,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:49:43.857380+00:00",
+      "extracted_at": "2026-06-08T06:53:19.672729+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -1693,7 +1725,7 @@
     },
     {
       "id": "case-9489d3c0e826",
-      "title": "1 мільйон на комплектуючі для дронів — підрозділ «Фенікс»",
+      "title": "1 мільйон гривень на комплектуючі для дронів для підрозділу «Фенікс»",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/feniksdpsu/1994",
       "goal": "military",
@@ -1709,7 +1741,7 @@
       "amount_usd": 23610.96682186942,
       "goal_amount": 1000000.0,
       "currency_raw": "1 мільйон гривень",
-      "volume_score": 0.9090909090909091,
+      "volume_score": 0.9047619047619048,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -1729,7 +1761,7 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:17:40.482697+00:00",
+      "extracted_at": "2026-06-08T06:26:01.148442+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -1753,7 +1785,7 @@
       "amount_usd": 77748.22877812729,
       "goal_amount": null,
       "currency_raw": "грн",
-      "volume_score": 0.9545454545454546,
+      "volume_score": 0.9523809523809523,
       "speed": 281569.74583333335,
       "virality_score": null,
       "repeatability": 1.0,
@@ -1812,7 +1844,7 @@
     },
     {
       "id": "case-9a6572444d31",
-      "title": "Підтримати К-2 донатом",
+      "title": "К-2: рекрутинг та підтримка донатом",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/k_2_54/169",
       "goal": "military",
@@ -1822,7 +1854,7 @@
       "method": [
         "platform"
       ],
-      "date_start": "2026-02-23",
+      "date_start": null,
       "date_end": null,
       "year": 2026,
       "amount_uah": null,
@@ -1836,16 +1868,16 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:22:38.350781+00:00",
+      "extracted_at": "2026-06-08T06:29:26.539323+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-9efd44e142d3",
-      "title": "Народний супутник — супутниковий проєкт для ГУР МО України",
+      "title": "Народний супутник — майже 6 000 космічних знімків для ГУР",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/prytulafoundation/4187",
-      "goal": "info_defense",
+      "goal": "military",
       "style": [
         "data_transparent",
         "grassroots"
@@ -1867,13 +1899,13 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:32:31.077435+00:00",
+      "extracted_at": "2026-06-08T06:38:17.716127+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-9f9d67ebb732",
-      "title": "Реквизиты ЗСУ HUB для поддержки 28,35 бригады морской пехоты/Разведки/ПВО",
+      "title": "ЗСУ HUB — підтримка 28, 35 бригади морської піхоти / Розвідки / ППО",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/ZSU_Donate/3",
       "goal": "military",
@@ -1899,13 +1931,13 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:55:55.632756+00:00",
+      "extracted_at": "2026-06-08T06:55:29.845987+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-a115df612f7a",
-      "title": "",
+      "title": "Привітання 28-ї ОМБр з річницею створення від підрозділу «Фенікс»",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/feniksdpsu/1999",
       "goal": "military",
@@ -1914,37 +1946,6 @@
       ],
       "method": [
         "monobank_jar"
-      ],
-      "date_start": "2026-06-01",
-      "date_end": null,
-      "year": 2026,
-      "amount_uah": null,
-      "amount_usd": null,
-      "goal_amount": null,
-      "currency_raw": null,
-      "volume_score": null,
-      "speed": null,
-      "virality_score": null,
-      "repeatability": 1.0,
-      "provenance": {},
-      "confidence_overall": 0.0,
-      "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:19:07.567058+00:00",
-      "extracted_by_model": "claude-opus-4-8",
-      "verdict_reason": null
-    },
-    {
-      "id": "case-a56c9a0ed117",
-      "title": "",
-      "actor_id": "auto-0c58a8e1",
-      "url": "https://t.me/k_2_54/175",
-      "goal": "military",
-      "style": [
-        "emotional_personal",
-        "grassroots"
-      ],
-      "method": [
-        "platform"
       ],
       "date_start": null,
       "date_end": null,
@@ -1960,7 +1961,38 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:26:22.372110+00:00",
+      "extracted_at": "2026-06-08T06:26:51.090624+00:00",
+      "extracted_by_model": "claude-opus-4-8",
+      "verdict_reason": null
+    },
+    {
+      "id": "case-a56c9a0ed117",
+      "title": "Підтримка 3 армійського корпусу (К-2) після відбиття штурму на Лимансько-Борівському напрямку",
+      "actor_id": "auto-0c58a8e1",
+      "url": "https://t.me/k_2_54/175",
+      "goal": "military",
+      "style": [
+        "emotional_personal",
+        "urgency"
+      ],
+      "method": [
+        "bank_transfer"
+      ],
+      "date_start": "2026-03-23",
+      "date_end": null,
+      "year": 2026,
+      "amount_uah": null,
+      "amount_usd": null,
+      "goal_amount": null,
+      "currency_raw": null,
+      "volume_score": null,
+      "speed": null,
+      "virality_score": null,
+      "repeatability": 1.0,
+      "provenance": {},
+      "confidence_overall": 0.0,
+      "verification_status": "auto",
+      "extracted_at": "2026-06-08T06:32:54.316911+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -1985,7 +2017,7 @@
       "amount_usd": 3529.41574112255,
       "goal_amount": 300000.0,
       "currency_raw": "грн",
-      "volume_score": 0.6818181818181818,
+      "volume_score": 0.6666666666666666,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -2011,13 +2043,13 @@
     },
     {
       "id": "case-a5bdbcdd302b",
-      "title": "Підтримай вогонь SIGNUM донейтом — підсумки травня батальйону SIGNUM",
+      "title": "Підтримай вогонь SIGNUM донейтом",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/umftteam/992",
       "goal": "military",
       "style": [
-        "emotional_personal",
-        "urgency"
+        "data_transparent",
+        "grassroots"
       ],
       "method": [
         "monobank_jar"
@@ -2036,7 +2068,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:51:30.627937+00:00",
+      "extracted_at": "2026-06-08T06:54:56.498800+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -2063,7 +2095,7 @@
       "amount_usd": 4967.8841261579155,
       "goal_amount": null,
       "currency_raw": "100 гривень",
-      "volume_score": 0.7272727272727273,
+      "volume_score": 0.7142857142857143,
       "speed": 27558.9025,
       "virality_score": null,
       "repeatability": 1.0,
@@ -2139,7 +2171,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:45:31.996469+00:00",
+      "extracted_at": "2026-06-08T06:49:25.412886+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -2150,9 +2182,9 @@
       "url": "https://t.me/sptzbir/110",
       "goal": "military",
       "style": [
+        "urgency",
         "gamification",
-        "grassroots",
-        "urgency"
+        "grassroots"
       ],
       "method": [
         "monobank_jar",
@@ -2165,7 +2197,7 @@
       "amount_usd": 777.7911932950764,
       "goal_amount": 34128.0,
       "currency_raw": "грн",
-      "volume_score": 0.36363636363636365,
+      "volume_score": 0.38095238095238093,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -2185,7 +2217,7 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:39:16.613325+00:00",
+      "extracted_at": "2026-06-08T06:43:37.938937+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -2241,7 +2273,7 @@
       "amount_usd": 2377.622900766799,
       "goal_amount": 200000.0,
       "currency_raw": "грн",
-      "volume_score": 0.5909090909090909,
+      "volume_score": 0.6190476190476191,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -2267,13 +2299,14 @@
     },
     {
       "id": "case-b462fdd587ac",
-      "title": "К-2: передано бригаді майна на 27 001 170₴",
+      "title": "Бригада К-2 — передача майна підрозділу на 27 001 170 ₴",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/k_2_54/188",
       "goal": "military",
       "style": [
         "data_transparent",
-        "emotional_personal"
+        "emotional_personal",
+        "grassroots"
       ],
       "method": [
         "platform"
@@ -2284,7 +2317,7 @@
       "amount_uah": 27001170.0,
       "amount_usd": 637523.729021656,
       "goal_amount": null,
-      "currency_raw": "27 001 170₴",
+      "currency_raw": "₴",
       "volume_score": 1.0,
       "speed": null,
       "virality_score": null,
@@ -2299,7 +2332,7 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:29:05.181586+00:00",
+      "extracted_at": "2026-06-08T06:35:35.261907+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -2405,8 +2438,10 @@
         "urgency",
         "grassroots"
       ],
-      "method": [],
-      "date_start": null,
+      "method": [
+        "bank_transfer"
+      ],
+      "date_start": "2025-12-15",
       "date_end": null,
       "year": 2025,
       "amount_uah": null,
@@ -2420,23 +2455,23 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:48:33.556942+00:00",
+      "extracted_at": "2026-06-08T06:51:56.922531+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-bdd3e6783035",
-      "title": "FPV К-2 зупиняють — підтримати донатом (бригада К-2)",
+      "title": "FPV К-2 — підтримати бригаду (новий випуск контенту)",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/k_2_54/174",
       "goal": "military",
       "style": [
-        "urgency",
-        "grassroots"
+        "grassroots",
+        "emotional_personal"
       ],
       "method": [
-        "monobank_jar",
-        "platform"
+        "platform",
+        "monobank_jar"
       ],
       "date_start": "2026-03-21",
       "date_end": null,
@@ -2452,7 +2487,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:25:30.373187+00:00",
+      "extracted_at": "2026-06-08T06:32:32.341831+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -2479,7 +2514,7 @@
       "amount_usd": 6996.6177925294,
       "goal_amount": null,
       "currency_raw": null,
-      "volume_score": 0.7727272727272727,
+      "volume_score": 0.7619047619047619,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -2499,13 +2534,11 @@
     },
     {
       "id": "case-c44c6ac7995d",
-      "title": "Попередження про осіб, що представляються від імені фонду Dignitas",
+      "title": "",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/dignitas_fund/659",
       "goal": "other",
-      "style": [
-        "data_transparent"
-      ],
+      "style": [],
       "method": [],
       "date_start": null,
       "date_end": null,
@@ -2521,19 +2554,19 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:16:49.417330+00:00",
+      "extracted_at": "2026-06-08T06:25:15.877649+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-c8adefe5a309",
-      "title": "Збір на 45-й автомобіль для ЗСУ від фонду UKR_volunteers",
+      "title": "Збір на 45-й автомобіль для ЗСУ від фонду UKR Volunteers",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/UKR_volunteers/918",
       "goal": "military",
       "style": [
         "grassroots",
-        "emotional_personal"
+        "urgency"
       ],
       "method": [
         "bank_transfer"
@@ -2552,7 +2585,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:50:25.871331+00:00",
+      "extracted_at": "2026-06-08T06:53:37.792360+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -2596,7 +2629,7 @@
       "goal": "military",
       "style": [
         "emotional_personal",
-        "meme_satire"
+        "grassroots"
       ],
       "method": [
         "monobank_jar"
@@ -2615,7 +2648,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:46:04.168346+00:00",
+      "extracted_at": "2026-06-08T06:50:19.891759+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -2669,7 +2702,7 @@
       "amount_uah": 0.2,
       "amount_usd": 0.004714668275940105,
       "goal_amount": 57600.0,
-      "currency_raw": "57 600 грн",
+      "currency_raw": "грн",
       "volume_score": 0.0,
       "speed": null,
       "virality_score": null,
@@ -2690,7 +2723,7 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:36:53.034396+00:00",
+      "extracted_at": "2026-06-08T06:41:44.981069+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -2727,7 +2760,7 @@
     },
     {
       "id": "case-d393eb2c05e9",
-      "title": "Бійці К-2 врятували трьох козуль із дротяної пастки",
+      "title": "К-2 врятували трьох козуль із дротяної пастки",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/k_2_54/177",
       "goal": "military",
@@ -2752,7 +2785,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:28:12.070911+00:00",
+      "extracted_at": "2026-06-08T06:34:40.517477+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -2841,7 +2874,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:21:00.122885+00:00",
+      "extracted_at": "2026-06-08T06:28:35.719997+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -3013,7 +3046,7 @@
       "amount_usd": 122.27300523180759,
       "goal_amount": null,
       "currency_raw": null,
-      "volume_score": 0.045454545454545456,
+      "volume_score": 0.047619047619047616,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -3053,7 +3086,7 @@
       "amount_usd": 337.0880117532273,
       "goal_amount": null,
       "currency_raw": null,
-      "volume_score": 1.0,
+      "volume_score": 0.0,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -3097,13 +3130,13 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T19:00:48.251786+00:00",
+      "extracted_at": "2026-06-08T06:50:48.671279+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
     {
       "id": "case-f39f38ff3624",
-      "title": "Збір на 20 «Чуйок» — детекторів FPV-дронів для фронту",
+      "title": "Збір на 20 пристроїв «Чуйка» для виявлення FPV-дронів",
       "actor_id": "auto-0c58a8e1",
       "url": "https://t.me/sptzbir/103",
       "goal": "military",
@@ -3114,8 +3147,7 @@
       "method": [
         "monobank_jar",
         "bank_transfer",
-        "crypto",
-        "platform"
+        "crypto"
       ],
       "date_start": "2025-11-06",
       "date_end": null,
@@ -3124,7 +3156,7 @@
       "amount_usd": 13322.477660689707,
       "goal_amount": 385000.0,
       "currency_raw": "грн",
-      "volume_score": 0.8181818181818182,
+      "volume_score": 0.8095238095238095,
       "speed": null,
       "virality_score": null,
       "repeatability": 1.0,
@@ -3144,7 +3176,7 @@
       },
       "confidence_overall": 0.35,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:36:26.822315+00:00",
+      "extracted_at": "2026-06-08T06:41:16.345488+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     },
@@ -3205,7 +3237,7 @@
       "provenance": {},
       "confidence_overall": 0.0,
       "verification_status": "auto",
-      "extracted_at": "2026-06-07T22:16:10.254276+00:00",
+      "extracted_at": "2026-06-08T06:24:49.060602+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "verdict_reason": null
     }
@@ -3213,7 +3245,7 @@
   "analytics": {
     "kpis": {
       "total_usd": 2150706.9626847175,
-      "count": 94,
+      "count": 95,
       "median_speed": 147245.75911764705,
       "n_verified": 0
     },
@@ -3281,8 +3313,8 @@
         },
         {
           "period": "2025-Q1",
-          "value": 2,
-          "n": 2
+          "value": 1,
+          "n": 1
         },
         {
           "period": "2025-Q2",
@@ -3296,13 +3328,13 @@
         },
         {
           "period": "2025-Q4",
-          "value": 3,
-          "n": 3
+          "value": 4,
+          "n": 4
         },
         {
           "period": "2026-Q1",
-          "value": 23,
-          "n": 23
+          "value": 24,
+          "n": 24
         },
         {
           "period": "2026-Q2",
@@ -3384,7 +3416,7 @@
         {
           "period": "2025-Q1",
           "value": null,
-          "n": 2
+          "n": 1
         },
         {
           "period": "2025-Q2",
@@ -3399,12 +3431,12 @@
         {
           "period": "2025-Q4",
           "value": 16476.6978269889,
-          "n": 3
+          "n": 4
         },
         {
           "period": "2026-Q1",
           "value": 677861.7984780574,
-          "n": 23
+          "n": 24
         },
         {
           "period": "2026-Q2",
@@ -3486,7 +3518,7 @@
         {
           "period": "2025-Q1",
           "value": null,
-          "n": 2
+          "n": 1
         },
         {
           "period": "2025-Q2",
@@ -3501,12 +3533,12 @@
         {
           "period": "2025-Q4",
           "value": null,
-          "n": 3
+          "n": 4
         },
         {
           "period": "2026-Q1",
           "value": null,
-          "n": 23
+          "n": 24
         },
         {
           "period": "2026-Q2",
@@ -3539,20 +3571,14 @@
         },
         {
           "period": "2022-Q1",
+          "value": 0,
+          "n": 0,
+          "key": "medical"
+        },
+        {
+          "period": "2022-Q1",
           "value": 1,
           "n": 1,
-          "key": "info_defense"
-        },
-        {
-          "period": "2022-Q1",
-          "value": 0,
-          "n": 0,
-          "key": "medical"
-        },
-        {
-          "period": "2022-Q1",
-          "value": 0,
-          "n": 0,
           "key": "military"
         },
         {
@@ -3578,12 +3604,6 @@
           "value": 0,
           "n": 0,
           "key": "humanitarian"
-        },
-        {
-          "period": "2022-Q2",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
         },
         {
           "period": "2022-Q2",
@@ -3620,12 +3640,6 @@
           "value": 0,
           "n": 0,
           "key": "humanitarian"
-        },
-        {
-          "period": "2022-Q3",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
         },
         {
           "period": "2022-Q3",
@@ -3667,12 +3681,6 @@
           "period": "2022-Q4",
           "value": 0,
           "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2022-Q4",
-          "value": 0,
-          "n": 0,
           "key": "medical"
         },
         {
@@ -3704,12 +3712,6 @@
           "value": 0,
           "n": 0,
           "key": "humanitarian"
-        },
-        {
-          "period": "2023-Q1",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
         },
         {
           "period": "2023-Q1",
@@ -3751,12 +3753,6 @@
           "period": "2023-Q2",
           "value": 0,
           "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2023-Q2",
-          "value": 0,
-          "n": 0,
           "key": "medical"
         },
         {
@@ -3793,12 +3789,6 @@
           "period": "2023-Q3",
           "value": 0,
           "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2023-Q3",
-          "value": 0,
-          "n": 0,
           "key": "medical"
         },
         {
@@ -3835,12 +3825,6 @@
           "period": "2023-Q4",
           "value": 0,
           "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2023-Q4",
-          "value": 0,
-          "n": 0,
           "key": "medical"
         },
         {
@@ -3877,12 +3861,6 @@
           "period": "2024-Q1",
           "value": 0,
           "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2024-Q1",
-          "value": 0,
-          "n": 0,
           "key": "medical"
         },
         {
@@ -3914,12 +3892,6 @@
           "value": 0,
           "n": 0,
           "key": "humanitarian"
-        },
-        {
-          "period": "2024-Q2",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
         },
         {
           "period": "2024-Q2",
@@ -3961,12 +3933,6 @@
           "period": "2024-Q3",
           "value": 0,
           "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2024-Q3",
-          "value": 0,
-          "n": 0,
           "key": "medical"
         },
         {
@@ -3998,12 +3964,6 @@
           "value": 0,
           "n": 0,
           "key": "humanitarian"
-        },
-        {
-          "period": "2024-Q4",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
         },
         {
           "period": "2024-Q4",
@@ -4045,18 +4005,12 @@
           "period": "2025-Q1",
           "value": 0,
           "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2025-Q1",
-          "value": 0,
-          "n": 0,
           "key": "medical"
         },
         {
           "period": "2025-Q1",
-          "value": 2,
-          "n": 2,
+          "value": 1,
+          "n": 1,
           "key": "military"
         },
         {
@@ -4082,12 +4036,6 @@
           "value": 0,
           "n": 0,
           "key": "humanitarian"
-        },
-        {
-          "period": "2025-Q2",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
         },
         {
           "period": "2025-Q2",
@@ -4124,12 +4072,6 @@
           "value": 0,
           "n": 0,
           "key": "humanitarian"
-        },
-        {
-          "period": "2025-Q3",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
         },
         {
           "period": "2025-Q3",
@@ -4169,14 +4111,8 @@
         },
         {
           "period": "2025-Q4",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2025-Q4",
-          "value": 0,
-          "n": 0,
+          "value": 1,
+          "n": 1,
           "key": "medical"
         },
         {
@@ -4213,18 +4149,12 @@
           "period": "2026-Q1",
           "value": 0,
           "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2026-Q1",
-          "value": 0,
-          "n": 0,
           "key": "medical"
         },
         {
           "period": "2026-Q1",
-          "value": 20,
-          "n": 20,
+          "value": 21,
+          "n": 21,
           "key": "military"
         },
         {
@@ -4250,12 +4180,6 @@
           "value": 4,
           "n": 4,
           "key": "humanitarian"
-        },
-        {
-          "period": "2026-Q2",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
         },
         {
           "period": "2026-Q2",
@@ -4297,12 +4221,6 @@
           "period": "2026-Q3",
           "value": 0,
           "n": 0,
-          "key": "info_defense"
-        },
-        {
-          "period": "2026-Q3",
-          "value": 0,
-          "n": 0,
           "key": "medical"
         },
         {
@@ -4334,12 +4252,6 @@
           "value": 0,
           "n": 0,
           "key": "humanitarian"
-        },
-        {
-          "period": "2026-Q4",
-          "value": 0,
-          "n": 0,
-          "key": "info_defense"
         },
         {
           "period": "2026-Q4",
@@ -4567,8 +4479,8 @@
         },
         {
           "period": "2023-Q1",
-          "value": 0,
-          "n": 0,
+          "value": 1,
+          "n": 1,
           "key": "bank_transfer"
         },
         {
@@ -4585,8 +4497,8 @@
         },
         {
           "period": "2023-Q1",
-          "value": 1,
-          "n": 1,
+          "value": 0,
+          "n": 0,
           "key": "monobank_jar"
         },
         {
@@ -4945,8 +4857,8 @@
         },
         {
           "period": "2025-Q1",
-          "value": 2,
-          "n": 2,
+          "value": 1,
+          "n": 1,
           "key": "_none"
         },
         {
@@ -5089,32 +5001,32 @@
         },
         {
           "period": "2025-Q4",
-          "value": 0,
-          "n": 0,
-          "key": "_none"
-        },
-        {
-          "period": "2025-Q4",
-          "value": 2,
-          "n": 2,
-          "key": "bank_transfer"
-        },
-        {
-          "period": "2025-Q4",
-          "value": 0,
-          "n": 0,
-          "key": "challenge"
-        },
-        {
-          "period": "2025-Q4",
           "value": 1,
           "n": 1,
-          "key": "crypto"
+          "key": "_none"
         },
         {
           "period": "2025-Q4",
           "value": 3,
           "n": 3,
+          "key": "bank_transfer"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "challenge"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 1,
+          "n": 1,
+          "key": "crypto"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 2,
+          "n": 2,
           "key": "monobank_jar"
         },
         {
@@ -5125,8 +5037,8 @@
         },
         {
           "period": "2025-Q4",
-          "value": 1,
-          "n": 1,
+          "value": 0,
+          "n": 0,
           "key": "platform"
         },
         {
@@ -5143,8 +5055,8 @@
         },
         {
           "period": "2026-Q1",
-          "value": 4,
-          "n": 4,
+          "value": 7,
+          "n": 7,
           "key": "bank_transfer"
         },
         {
@@ -5167,8 +5079,8 @@
         },
         {
           "period": "2026-Q1",
-          "value": 1,
-          "n": 1,
+          "value": 0,
+          "n": 0,
           "key": "nft_merch"
         },
         {
@@ -5191,8 +5103,8 @@
         },
         {
           "period": "2026-Q2",
-          "value": 16,
-          "n": 16,
+          "value": 15,
+          "n": 15,
           "key": "bank_transfer"
         },
         {
@@ -5221,8 +5133,8 @@
         },
         {
           "period": "2026-Q2",
-          "value": 13,
-          "n": 13,
+          "value": 14,
+          "n": 14,
           "key": "platform"
         },
         {
@@ -5925,8 +5837,8 @@
         },
         {
           "period": "2025-Q1",
-          "value": 2,
-          "n": 2,
+          "value": 1,
+          "n": 1,
           "key": "emotional_personal"
         },
         {
@@ -5937,8 +5849,8 @@
         },
         {
           "period": "2025-Q1",
-          "value": 2,
-          "n": 2,
+          "value": 1,
+          "n": 1,
           "key": "grassroots"
         },
         {
@@ -5949,8 +5861,8 @@
         },
         {
           "period": "2025-Q1",
-          "value": 1,
-          "n": 1,
+          "value": 0,
+          "n": 0,
           "key": "urgency"
         },
         {
@@ -6066,23 +5978,23 @@
           "value": 0,
           "n": 0,
           "key": "data_transparent"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 4,
+          "n": 4,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2025-Q4",
+          "value": 0,
+          "n": 0,
+          "key": "gamification"
         },
         {
           "period": "2025-Q4",
           "value": 3,
           "n": 3,
-          "key": "emotional_personal"
-        },
-        {
-          "period": "2025-Q4",
-          "value": 0,
-          "n": 0,
-          "key": "gamification"
-        },
-        {
-          "period": "2025-Q4",
-          "value": 2,
-          "n": 2,
           "key": "grassroots"
         },
         {
@@ -6093,80 +6005,80 @@
         },
         {
           "period": "2025-Q4",
+          "value": 4,
+          "n": 4,
+          "key": "urgency"
+        },
+        {
+          "period": "2026-Q1",
           "value": 2,
           "n": 2,
-          "key": "urgency"
+          "key": "_none"
         },
         {
           "period": "2026-Q1",
           "value": 1,
           "n": 1,
-          "key": "_none"
+          "key": "celebrity"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 2,
+          "n": 2,
+          "key": "data_transparent"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 18,
+          "n": 18,
+          "key": "emotional_personal"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 1,
+          "n": 1,
+          "key": "gamification"
+        },
+        {
+          "period": "2026-Q1",
+          "value": 17,
+          "n": 17,
+          "key": "grassroots"
         },
         {
           "period": "2026-Q1",
           "value": 0,
           "n": 0,
-          "key": "celebrity"
+          "key": "meme_satire"
         },
         {
           "period": "2026-Q1",
+          "value": 7,
+          "n": 7,
+          "key": "urgency"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 0,
+          "n": 0,
+          "key": "_none"
+        },
+        {
+          "period": "2026-Q2",
+          "value": 3,
+          "n": 3,
+          "key": "celebrity"
+        },
+        {
+          "period": "2026-Q2",
           "value": 4,
           "n": 4,
           "key": "data_transparent"
         },
         {
-          "period": "2026-Q1",
-          "value": 16,
-          "n": 16,
-          "key": "emotional_personal"
-        },
-        {
-          "period": "2026-Q1",
-          "value": 1,
-          "n": 1,
-          "key": "gamification"
-        },
-        {
-          "period": "2026-Q1",
-          "value": 14,
-          "n": 14,
-          "key": "grassroots"
-        },
-        {
-          "period": "2026-Q1",
-          "value": 0,
-          "n": 0,
-          "key": "meme_satire"
-        },
-        {
-          "period": "2026-Q1",
-          "value": 10,
-          "n": 10,
-          "key": "urgency"
-        },
-        {
           "period": "2026-Q2",
-          "value": 0,
-          "n": 0,
-          "key": "_none"
-        },
-        {
-          "period": "2026-Q2",
-          "value": 3,
-          "n": 3,
-          "key": "celebrity"
-        },
-        {
-          "period": "2026-Q2",
-          "value": 3,
-          "n": 3,
-          "key": "data_transparent"
-        },
-        {
-          "period": "2026-Q2",
-          "value": 43,
-          "n": 43,
+          "value": 41,
+          "n": 41,
           "key": "emotional_personal"
         },
         {
@@ -6177,20 +6089,20 @@
         },
         {
           "period": "2026-Q2",
-          "value": 25,
-          "n": 25,
+          "value": 28,
+          "n": 28,
           "key": "grassroots"
         },
         {
           "period": "2026-Q2",
-          "value": 3,
-          "n": 3,
+          "value": 2,
+          "n": 2,
           "key": "meme_satire"
         },
         {
           "period": "2026-Q2",
-          "value": 38,
-          "n": 38,
+          "value": 39,
+          "n": 39,
           "key": "urgency"
         },
         {
@@ -6306,16 +6218,10 @@
           "n": 1
         },
         {
-          "a": "info_defense",
-          "b": "platform",
-          "value": 1.0,
-          "n": 1
-        },
-        {
           "a": "medical",
           "b": "bank_transfer",
-          "value": 1.0,
-          "n": 1
+          "value": 2.0,
+          "n": 2
         },
         {
           "a": "medical",
@@ -6326,8 +6232,8 @@
         {
           "a": "medical",
           "b": "monobank_jar",
-          "value": 1.0,
-          "n": 1
+          "value": 2.0,
+          "n": 2
         },
         {
           "a": "medical",
@@ -6338,8 +6244,8 @@
         {
           "a": "military",
           "b": "bank_transfer",
-          "value": 22.0,
-          "n": 22
+          "value": 25.0,
+          "n": 25
         },
         {
           "a": "military",
@@ -6356,20 +6262,20 @@
         {
           "a": "military",
           "b": "monobank_jar",
-          "value": 47.0,
-          "n": 47
+          "value": 44.0,
+          "n": 44
         },
         {
           "a": "military",
           "b": "nft_merch",
-          "value": 4.0,
-          "n": 4
+          "value": 3.0,
+          "n": 3
         },
         {
           "a": "military",
           "b": "platform",
-          "value": 18.0,
-          "n": 18
+          "value": 19.0,
+          "n": 19
         },
         {
           "a": "military",
@@ -6458,18 +6364,6 @@
           "n": 4
         },
         {
-          "a": "info_defense",
-          "b": "data_transparent",
-          "value": 1.0,
-          "n": 1
-        },
-        {
-          "a": "info_defense",
-          "b": "grassroots",
-          "value": 1.0,
-          "n": 1
-        },
-        {
           "a": "medical",
           "b": "celebrity",
           "value": 1.0,
@@ -6478,14 +6372,14 @@
         {
           "a": "medical",
           "b": "emotional_personal",
-          "value": 1.0,
-          "n": 1
+          "value": 2.0,
+          "n": 2
         },
         {
           "a": "medical",
           "b": "grassroots",
-          "value": 1.0,
-          "n": 1
+          "value": 2.0,
+          "n": 2
         },
         {
           "a": "medical",
@@ -6496,26 +6390,26 @@
         {
           "a": "medical",
           "b": "urgency",
-          "value": 1.0,
-          "n": 1
-        },
-        {
-          "a": "military",
-          "b": "celebrity",
           "value": 2.0,
           "n": 2
         },
         {
           "a": "military",
+          "b": "celebrity",
+          "value": 3.0,
+          "n": 3
+        },
+        {
+          "a": "military",
           "b": "data_transparent",
-          "value": 6.0,
-          "n": 6
+          "value": 7.0,
+          "n": 7
         },
         {
           "a": "military",
           "b": "emotional_personal",
-          "value": 56.0,
-          "n": 56
+          "value": 55.0,
+          "n": 55
         },
         {
           "a": "military",
@@ -6526,26 +6420,20 @@
         {
           "a": "military",
           "b": "grassroots",
-          "value": 42.0,
-          "n": 42
+          "value": 48.0,
+          "n": 48
         },
         {
           "a": "military",
           "b": "meme_satire",
-          "value": 2.0,
-          "n": 2
+          "value": 1.0,
+          "n": 1
         },
         {
           "a": "military",
           "b": "urgency",
-          "value": 44.0,
-          "n": 44
-        },
-        {
-          "a": "other",
-          "b": "data_transparent",
-          "value": 1.0,
-          "n": 1
+          "value": 42.0,
+          "n": 42
         },
         {
           "a": "other",
@@ -6586,13 +6474,13 @@
       ]
     },
     "generated_for_counts": {
-      "total_cases": 94
+      "total_cases": 95
     },
     "campaign_analytics": {
       "kpis": {
         "n_campaigns": 77,
         "n_creatives": 119,
-        "n_partners": 107,
+        "n_partners": 113,
         "total_spend": null
       },
       "crosstabs": {
@@ -6612,7 +6500,7 @@
           {
             "a": "facebook",
             "b": "military",
-            "value": 1029072.6,
+            "value": 1029451.6,
             "n": 12
           },
           {
@@ -6630,7 +6518,7 @@
           {
             "a": "instagram",
             "b": "military",
-            "value": 1029072.6,
+            "value": 1029451.6,
             "n": 11
           },
           {
@@ -6666,19 +6554,19 @@
           {
             "a": "telegram",
             "b": "medical",
-            "value": 122566.97,
+            "value": 101482.24,
             "n": 4
           },
           {
             "a": "telegram",
             "b": "military",
-            "value": 406234829.28000003,
+            "value": 406561992.37,
             "n": 58
           },
           {
             "a": "telegram",
             "b": "other",
-            "value": 3093085.56,
+            "value": 845771.32,
             "n": 5
           },
           {
@@ -6690,7 +6578,7 @@
           {
             "a": "tiktok",
             "b": "military",
-            "value": 539098.4299999999,
+            "value": 539300.4299999999,
             "n": 3
           },
           {
@@ -6702,13 +6590,13 @@
           {
             "a": "web",
             "b": "medical",
-            "value": 105537.24,
+            "value": 82374.24,
             "n": 1
           },
           {
             "a": "web",
             "b": "military",
-            "value": 294787470.59000003,
+            "value": 294794337.88,
             "n": 9
           },
           {
@@ -6726,13 +6614,13 @@
           {
             "a": "youtube",
             "b": "military",
-            "value": 1120276.32,
+            "value": 1120985.32,
             "n": 15
           },
           {
             "a": "youtube",
             "b": "other",
-            "value": 3093085.56,
+            "value": 845771.32,
             "n": 1
           }
         ],
@@ -6866,7 +6754,7 @@
           {
             "a": "video",
             "b": "youtube",
-            "value": 514161.0,
+            "value": 874972.0,
             "n": 10
           }
         ],
@@ -6922,8 +6810,8 @@
           {
             "a": "emotional",
             "b": "telegram",
-            "value": 1139944.0,
-            "n": 47
+            "value": 1141914.0,
+            "n": 48
           },
           {
             "a": "emotional",
@@ -6940,7 +6828,7 @@
           {
             "a": "emotional",
             "b": "youtube",
-            "value": 512272.0,
+            "value": 691251.0,
             "n": 11
           },
           {
@@ -7030,7 +6918,7 @@
           {
             "a": "heroism",
             "b": "youtube",
-            "value": 523186.0,
+            "value": 883997.0,
             "n": 13
           },
           {
@@ -7108,7 +6996,7 @@
           {
             "a": "urgency",
             "b": "youtube",
-            "value": 255369.0,
+            "value": 437201.0,
             "n": 9
           }
         ],
@@ -7128,13 +7016,13 @@
           {
             "a": "blogger",
             "b": "military",
-            "value": 8797662.76,
+            "value": 8814638.56,
             "n": 8
           },
           {
             "a": "blogger",
             "b": "other",
-            "value": 3093085.56,
+            "value": 845771.32,
             "n": 3
           },
           {
@@ -7152,13 +7040,13 @@
           {
             "a": "brand",
             "b": "medical",
-            "value": 17029.73,
+            "value": 19108.0,
             "n": 1
           },
           {
             "a": "brand",
             "b": "military",
-            "value": 30757161.17,
+            "value": 30757851.17,
             "n": 15
           },
           {
@@ -7188,7 +7076,7 @@
           {
             "a": "official",
             "b": "military",
-            "value": 365595276.85,
+            "value": 365904065.14,
             "n": 23
           },
           {
@@ -7206,13 +7094,13 @@
           {
             "a": "soldier",
             "b": "medical",
-            "value": 105537.24,
+            "value": 82374.24,
             "n": 1
           },
           {
             "a": "soldier",
             "b": "military",
-            "value": 1075018.45,
+            "value": 1075727.45,
             "n": 11
           }
         ],
@@ -7361,32 +7249,32 @@
         "tone_amount": [
           {
             "key": "data_transparent",
-            "value": 194584.0,
+            "value": 194684.0,
             "n": 12
           },
           {
             "key": "emotional",
-            "value": 312055.0,
-            "n": 48
+            "value": 303761.08499999996,
+            "n": 49
           },
           {
             "key": "gratitude",
-            "value": 3093085.56,
+            "value": 1200000.0,
             "n": 26
           },
           {
             "key": "heroism",
-            "value": 3093085.56,
+            "value": 1200000.0,
             "n": 40
           },
           {
             "key": "humor",
-            "value": 220471.22,
+            "value": 220624.22,
             "n": 8
           },
           {
             "key": "urgency",
-            "value": 220652.19,
+            "value": 220728.69,
             "n": 41
           }
         ],
@@ -7398,7 +7286,7 @@
           },
           {
             "key": "jar",
-            "value": 220471.22,
+            "value": 220624.22,
             "n": 41
           },
           {
@@ -7425,7 +7313,7 @@
           },
           {
             "key": "brand",
-            "value": 156683.0,
+            "value": 157220.0,
             "n": 19
           },
           {
@@ -7435,24 +7323,24 @@
           },
           {
             "key": "official",
-            "value": 10788356.309999999,
+            "value": 10939456.309999999,
             "n": 29
           },
           {
             "key": "soldier",
-            "value": 70952.0,
+            "value": 71154.0,
             "n": 13
           }
         ],
         "channel_amount": [
           {
             "key": "facebook",
-            "value": 194584.0,
+            "value": 194684.0,
             "n": 14
           },
           {
             "key": "instagram",
-            "value": 194584.0,
+            "value": 194684.0,
             "n": 13
           },
           {
@@ -7462,7 +7350,7 @@
           },
           {
             "key": "telegram",
-            "value": 258111.66499999998,
+            "value": 258150.16499999998,
             "n": 75
           },
           {
@@ -7472,91 +7360,91 @@
           },
           {
             "key": "tiktok",
-            "value": 70952.0,
+            "value": 71154.0,
             "n": 3
           },
           {
             "key": "web",
-            "value": 2293693.96,
+            "value": 2293732.46,
             "n": 11
           },
           {
             "key": "youtube",
-            "value": 132768.0,
+            "value": 132919.0,
             "n": 18
           }
         ],
-        "tone_engagement": [
+        "tone_resonance": [
           {
             "key": "data_transparent",
-            "value": 827.5,
+            "value": 0.9295154185022027,
             "n": 12
           },
           {
             "key": "emotional",
-            "value": 769.0,
-            "n": 48
+            "value": 1.0,
+            "n": 49
           },
           {
             "key": "gratitude",
-            "value": 772.0,
+            "value": 1.0,
             "n": 26
           },
           {
             "key": "heroism",
-            "value": 922.5,
+            "value": 1.0,
             "n": 40
           },
           {
             "key": "humor",
-            "value": 3940.0,
+            "value": 1.0296610169491525,
             "n": 8
           },
           {
             "key": "urgency",
-            "value": 877.0,
+            "value": 0.9975409836065574,
             "n": 41
           }
         ],
-        "channel_engagement": [
+        "channel_resonance": [
           {
             "key": "facebook",
-            "value": 1890.0,
+            "value": 0.995,
             "n": 14
           },
           {
             "key": "instagram",
-            "value": 1790.0,
+            "value": 0.995,
             "n": 13
           },
           {
             "key": "irl",
-            "value": 622.5,
+            "value": 1.0,
             "n": 4
           },
           {
             "key": "telegram",
-            "value": 859.0,
+            "value": 1.0,
             "n": 75
           },
           {
             "key": "threads",
-            "value": 827.0,
+            "value": null,
             "n": 1
           },
           {
             "key": "tiktok",
-            "value": 827.0,
+            "value": 0.995,
             "n": 3
           },
           {
             "key": "web",
-            "value": 779.0,
+            "value": 1.0,
             "n": 11
           },
           {
             "key": "youtube",
-            "value": 2728.0,
+            "value": 0.995,
             "n": 18
           }
         ]
@@ -7565,75 +7453,50 @@
         "tone": [
           {
             "key": "data_transparent",
-            "value": 1.0,
-            "n": 12
+            "value": 0.5,
+            "n": 4
           },
           {
             "key": "emotional",
-            "value": 0.75,
-            "n": 48
+            "value": 0.2,
+            "n": 10
           },
           {
             "key": "gratitude",
-            "value": 1.0,
-            "n": 26
+            "value": 0.0,
+            "n": 3
           },
           {
             "key": "heroism",
-            "value": 0.6666666666666666,
-            "n": 40
+            "value": 0.0,
+            "n": 5
           },
           {
             "key": "humor",
-            "value": null,
-            "n": 8
+            "value": 0.2,
+            "n": 5
           },
           {
             "key": "urgency",
-            "value": 0.5,
-            "n": 41
+            "value": 0.16666666666666666,
+            "n": 12
           }
         ],
         "channels": [
           {
-            "key": "facebook",
-            "value": 0.5,
-            "n": 14
-          },
-          {
-            "key": "instagram",
-            "value": 0.5,
-            "n": 13
-          },
-          {
-            "key": "irl",
-            "value": 1.0,
-            "n": 4
-          },
-          {
             "key": "telegram",
-            "value": 0.7142857142857143,
-            "n": 75
-          },
-          {
-            "key": "threads",
-            "value": null,
-            "n": 1
-          },
-          {
-            "key": "tiktok",
-            "value": 1.0,
-            "n": 3
+            "value": 0.16666666666666666,
+            "n": 18
           },
           {
             "key": "web",
-            "value": 0.5,
-            "n": 11
+            "value": 0.0,
+            "n": 3
           },
           {
             "key": "youtube",
-            "value": 0.6666666666666666,
-            "n": 18
+            "value": 0.0,
+            "n": 3
           }
         ]
       }
@@ -7644,104 +7507,99 @@
         "channel": [
           {
             "key": "telegram",
-            "score": 1.0,
+            "score": 2.1737795899967614,
             "n": 49
           },
           {
-            "key": "web",
-            "score": 1.0,
-            "n": 7
-          },
-          {
-            "key": "facebook",
-            "score": 1.0,
-            "n": 10
-          },
-          {
-            "key": "instagram",
-            "score": 1.0,
-            "n": 9
-          },
-          {
-            "key": "tiktok",
-            "score": 1.0,
+            "key": "irl",
+            "score": 1.1741071428571428,
             "n": 2
           },
           {
-            "key": "threads",
-            "score": 1.0,
-            "n": 1
+            "key": "web",
+            "score": 1.0153532095657647,
+            "n": 7
           },
           {
-            "key": "irl",
-            "score": 1.0,
+            "key": "tiktok",
+            "score": 0.995,
             "n": 2
           },
           {
             "key": "youtube",
-            "score": 0.9935703491869878,
+            "score": 0.8490838725042671,
             "n": 12
+          },
+          {
+            "key": "facebook",
+            "score": 0.7888914910226386,
+            "n": 10
+          },
+          {
+            "key": "instagram",
+            "score": 0.7888914910226386,
+            "n": 9
           }
         ],
         "tone": [
           {
-            "key": "urgency",
-            "score": 1.0,
-            "n": 28
-          },
-          {
-            "key": "humor",
-            "score": 1.0,
-            "n": 6
-          },
-          {
             "key": "gratitude",
-            "score": 1.0,
+            "score": 5.031632275246634,
             "n": 13
           },
           {
-            "key": "data_transparent",
-            "score": 1.0,
-            "n": 5
+            "key": "heroism",
+            "score": 3.646156610905076,
+            "n": 25
           },
           {
             "key": "emotional",
-            "score": 0.9974281396747952,
+            "score": 3.0085359456468246,
             "n": 30
           },
           {
-            "key": "heroism",
-            "score": 0.9969137676097541,
-            "n": 25
+            "key": "humor",
+            "score": 1.0536723163841808,
+            "n": 6
+          },
+          {
+            "key": "urgency",
+            "score": 1.0493833620910802,
+            "n": 28
+          },
+          {
+            "key": "data_transparent",
+            "score": 0.6719197098448921,
+            "n": 5
           }
         ],
         "form_factor": [
           {
+            "key": "video",
+            "score": 7.058326298557127,
+            "n": 12
+          },
+          {
             "key": "text",
-            "score": 1.0,
+            "score": 2.2674853654401,
             "n": 46
           },
           {
             "key": "image",
-            "score": 1.0,
+            "score": 0.995,
             "n": 2
-          },
-          {
-            "key": "video",
-            "score": 0.9935703491869878,
-            "n": 12
           }
         ],
         "goal": [
           {
-            "key": "other",
-            "score": 1.0,
-            "n": 5
+            "key": "military",
+            "score": 2.590949246189472,
+            "n": 35
           },
           {
-            "key": "military",
-            "score": 1.0,
-            "n": 35
+            "key": "other",
+            "score": 1.0398305084745763,
+            "n": 5
           },
           {
             "key": "medical",
@@ -7755,13 +7613,120 @@
           },
           {
             "key": "humanitarian",
-            "score": 1.0,
+            "score": 0.5961820851688693,
             "n": 3
+          }
+        ]
+      },
+      "what_raises_most": {
+        "channel": [
+          {
+            "key": "web",
+            "median_amount_uah": 2293732.46,
+            "n_with_amount": 6,
+            "n_total": 11
           },
           {
-            "key": "info_defense",
-            "score": 0.961422095121927,
-            "n": 2
+            "key": "telegram",
+            "median_amount_uah": 258150.16499999998,
+            "n_with_amount": 38,
+            "n_total": 75
+          },
+          {
+            "key": "facebook",
+            "median_amount_uah": 194684.0,
+            "n_with_amount": 5,
+            "n_total": 14
+          },
+          {
+            "key": "instagram",
+            "median_amount_uah": 194684.0,
+            "n_with_amount": 5,
+            "n_total": 13
+          },
+          {
+            "key": "youtube",
+            "median_amount_uah": 132919.0,
+            "n_with_amount": 8,
+            "n_total": 18
+          },
+          {
+            "key": "tiktok",
+            "median_amount_uah": 71154.0,
+            "n_with_amount": 3,
+            "n_total": 3
+          }
+        ],
+        "tone": [
+          {
+            "key": "heroism",
+            "median_amount_uah": 1200000.0,
+            "n_with_amount": 19,
+            "n_total": 40
+          },
+          {
+            "key": "gratitude",
+            "median_amount_uah": 1200000.0,
+            "n_with_amount": 15,
+            "n_total": 26
+          },
+          {
+            "key": "emotional",
+            "median_amount_uah": 303761.08499999996,
+            "n_with_amount": 24,
+            "n_total": 49
+          },
+          {
+            "key": "urgency",
+            "median_amount_uah": 220728.69,
+            "n_with_amount": 22,
+            "n_total": 41
+          },
+          {
+            "key": "humor",
+            "median_amount_uah": 220624.22,
+            "n_with_amount": 7,
+            "n_total": 8
+          },
+          {
+            "key": "data_transparent",
+            "median_amount_uah": 194684.0,
+            "n_with_amount": 9,
+            "n_total": 12
+          }
+        ],
+        "form_factor": [
+          {
+            "key": "video",
+            "median_amount_uah": 380664.3,
+            "n_with_amount": 8,
+            "n_total": 16
+          },
+          {
+            "key": "text",
+            "median_amount_uah": 220833.16,
+            "n_with_amount": 37,
+            "n_total": 71
+          },
+          {
+            "key": "image",
+            "median_amount_uah": 71154.0,
+            "n_with_amount": 3,
+            "n_total": 4
+          }
+        ],
+        "goal": [
+          {
+            "key": "military",
+            "median_amount_uah": 303761.08499999996,
+            "n_with_amount": 32,
+            "n_total": 59
+          },
+          {
+            "key": "humanitarian",
+            "median_amount_uah": 121067.08,
+            "n_with_amount": 3,
+            "n_total": 5
           }
         ]
       },
@@ -7779,14 +7744,14 @@
             "recent_n": 3,
             "prior_n": 2,
             "momentum": 1,
-            "recent_resonance": 1.0
+            "recent_resonance": 0.5961820851688693
           },
           {
             "key": "info_defense",
             "recent_n": 2,
             "prior_n": 1,
             "momentum": 1,
-            "recent_resonance": 0.5068525233377051
+            "recent_resonance": null
           },
           {
             "key": "medical",
@@ -7800,14 +7765,14 @@
             "recent_n": 35,
             "prior_n": 24,
             "momentum": 11,
-            "recent_resonance": 1.0
+            "recent_resonance": 2.590949246189472
           },
           {
             "key": "other",
             "recent_n": 5,
             "prior_n": 0,
             "momentum": 5,
-            "recent_resonance": 1.0
+            "recent_resonance": 1.0398305084745763
           }
         ],
         "channel": [
@@ -7816,56 +7781,56 @@
             "recent_n": 10,
             "prior_n": 4,
             "momentum": 6,
-            "recent_resonance": 1.0
+            "recent_resonance": 0.7888914910226386
           },
           {
             "key": "instagram",
             "recent_n": 9,
             "prior_n": 4,
             "momentum": 5,
-            "recent_resonance": 1.0
+            "recent_resonance": 0.7888914910226386
           },
           {
             "key": "irl",
             "recent_n": 2,
             "prior_n": 2,
             "momentum": 0,
-            "recent_resonance": 1.0
+            "recent_resonance": 1.1741071428571428
           },
           {
             "key": "telegram",
             "recent_n": 49,
             "prior_n": 26,
             "momentum": 23,
-            "recent_resonance": 1.0
+            "recent_resonance": 2.1737795899967614
           },
           {
             "key": "threads",
             "recent_n": 1,
             "prior_n": 0,
             "momentum": 1,
-            "recent_resonance": 1.0
+            "recent_resonance": null
           },
           {
             "key": "tiktok",
             "recent_n": 2,
             "prior_n": 1,
             "momentum": 1,
-            "recent_resonance": 1.0
+            "recent_resonance": 0.995
           },
           {
             "key": "web",
             "recent_n": 7,
             "prior_n": 4,
             "momentum": 3,
-            "recent_resonance": 1.0
+            "recent_resonance": 1.0153532095657647
           },
           {
             "key": "youtube",
             "recent_n": 12,
             "prior_n": 6,
             "momentum": 6,
-            "recent_resonance": 0.9178087538896175
+            "recent_resonance": 0.8490838725042671
           }
         ],
         "tone": [
@@ -7874,42 +7839,42 @@
             "recent_n": 5,
             "prior_n": 7,
             "momentum": -2,
-            "recent_resonance": 1.0
+            "recent_resonance": 0.6719197098448921
           },
           {
             "key": "emotional",
             "recent_n": 30,
-            "prior_n": 18,
-            "momentum": 12,
-            "recent_resonance": 0.967123501555847
+            "prior_n": 19,
+            "momentum": 11,
+            "recent_resonance": 3.0085359456468246
           },
           {
             "key": "gratitude",
             "recent_n": 13,
             "prior_n": 13,
             "momentum": 0,
-            "recent_resonance": 1.0
+            "recent_resonance": 5.031632275246634
           },
           {
             "key": "heroism",
             "recent_n": 25,
             "prior_n": 15,
             "momentum": 10,
-            "recent_resonance": 0.9605482018670165
+            "recent_resonance": 3.646156610905076
           },
           {
             "key": "humor",
             "recent_n": 6,
             "prior_n": 2,
             "momentum": 4,
-            "recent_resonance": 1.0
+            "recent_resonance": 1.0536723163841808
           },
           {
             "key": "urgency",
             "recent_n": 28,
             "prior_n": 13,
             "momentum": 15,
-            "recent_resonance": 1.0
+            "recent_resonance": 1.0493833620910802
           }
         ]
       }
@@ -7944,7 +7909,7 @@
       "face": "blogger",
       "cadence": "one_off",
       "playbook_note": "Короткий допис у телеграм-каналі блогера Сергія Стерненка анонсує фінальні години розіграшу ножа як призу для донорів від 300 грн через Monobank jar. Кампанія побудована на gamification-механіці (матеріальний приз як стимул до донату) та urgency-тригері (обмежений час до 11:00 поточного дня). Цільове призначення коштів у пості не вказано.",
-      "amount_uah": 3093085.56,
+      "amount_uah": 845771.32,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 234000.0,
@@ -7955,6 +7920,7 @@
       "is_campaign": true,
       "case_id": null,
       "partner_ids": [
+        "93",
         "partner",
         "requiem_group"
       ],
@@ -7990,10 +7956,11 @@
       "extracted_at": "2026-06-07T14:17:51.376670+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.9915254237288136,
+      "reach_resonance": 0.9915254237288136,
       "themes": [],
       "has_destination": true,
-      "reach_total": 528000,
+      "reach_total": 563000,
       "engagement_total": null,
       "post_count": 3,
       "channel_count": 1,
@@ -8018,12 +7985,12 @@
         {
           "date": "2026-06-07",
           "channel": "ssternenko",
-          "views": 163000,
+          "views": 198000,
           "url": "https://t.me/ssternenko/59120"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": -4554583.49236229,
+      "jar_span_days": 0.4934181673842592
     },
     {
       "id": "camp-02dcaa6af241",
@@ -8099,7 +8066,8 @@
       "extracted_at": "2026-06-07T13:08:33.065023+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.1248164464023496,
+      "reach_resonance": 1.1248164464023496,
       "themes": [
         "fpv",
         "interceptors"
@@ -8161,7 +8129,7 @@
       "face": "blogger",
       "cadence": "one_off",
       "playbook_note": "Одиночний Telegram-пост від блогера, прив'язаний до позитивної воєнної новини (вперше з контрнаступу 2023 ЗСУ звільнили більше, ніж РФ окупувала за травень — дані DeepState). Новина використовується як емоційний тригер для донату: успіх на фронті → моментальний заклик підтримати воїнів через monobank-банку.",
-      "amount_uah": 3498676.73,
+      "amount_uah": 3515402.53,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 2960.0,
@@ -8204,10 +8172,11 @@
       "extracted_at": "2026-06-07T18:00:02.362025+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 2.4262295081967213,
+      "reach_resonance": 2.4262295081967213,
       "themes": [],
       "has_destination": true,
-      "reach_total": 4974,
+      "reach_total": 5003,
       "engagement_total": null,
       "post_count": 3,
       "channel_count": 1,
@@ -8232,12 +8201,12 @@
         {
           "date": "2026-06-06",
           "channel": "aronets_live",
-          "views": 794,
+          "views": 823,
           "url": "https://t.me/aronets_live/9867"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 33875.58871107676,
+      "jar_span_days": 0.4937419728009259
     },
     {
       "id": "camp-03bfdfdbbca4",
@@ -8306,7 +8275,8 @@
       "extracted_at": "2026-06-07T13:55:51.878985+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.9295154185022027,
+      "reach_resonance": 0.9295154185022027,
       "themes": [
         "comms"
       ],
@@ -8361,13 +8331,13 @@
       "face": "soldier",
       "cadence": "one_off",
       "playbook_note": "Контент-пост із фото тренувань піхоти 4-го батальйону «Сила Свободи» Бригади «Рубіж» використовується як органічне просування збору: бойова підготовка (вихід з БМП, розгортання, зайняття позицій) показана як доказ боєздатності й необхідності підтримки. CTA вбудовано в кінець допису зі ссилкою на monobank-банку; ціль — 500 000 грн на НРК (нічний розвідувальний комплект або аналогічне).",
-      "amount_uah": 295390.17,
+      "amount_uah": 295467.17,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 2460.0,
       "engagement": 2460.0,
       "spend": null,
-      "assets_count": null,
+      "assets_count": 10.0,
       "goal_reached": null,
       "is_campaign": true,
       "case_id": null,
@@ -8404,6 +8374,12 @@
           "confidence": 0.6,
           "tier": 2,
           "note": "text amount"
+        },
+        "assets_count": {
+          "source_url": "https://t.me/sylasvobody/291",
+          "confidence": 0.35,
+          "tier": 3,
+          "note": ""
         }
       },
       "confidence_overall": 0.95,
@@ -8412,7 +8388,8 @@
       "extracted_at": "2026-06-07T18:54:23.283349+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.6849315068493151,
+      "reach_resonance": 1.6849315068493151,
       "themes": [
         "recon"
       ],
@@ -8446,8 +8423,8 @@
           "url": "https://t.me/sylasvobody/307"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 155.96208542011252,
+      "jar_span_days": 0.4937097358796297
     },
     {
       "id": "camp-079a08dc69dd",
@@ -8525,7 +8502,8 @@
       "extracted_at": "2026-06-07T13:10:14.729612+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv"
       ],
@@ -8598,7 +8576,8 @@
       "extracted_at": "2026-06-07T14:18:47.394666+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.9533898305084746,
+      "reach_resonance": 0.9533898305084746,
       "themes": [
         "fpv"
       ],
@@ -8676,7 +8655,8 @@
       "extracted_at": "2026-06-07T13:08:20.878121+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.261380323054332,
+      "reach_resonance": 1.261380323054332,
       "themes": [],
       "has_destination": true,
       "reach_total": 859,
@@ -8759,7 +8739,8 @@
       "extracted_at": "2026-06-07T13:49:53.340905+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.9397944199706314,
+      "reach_resonance": 0.9397944199706314,
       "themes": [
         "fpv",
         "vehicles"
@@ -8801,7 +8782,7 @@
       "face": "official",
       "cadence": "ongoing",
       "playbook_note": "Пост є milestone-апдейтом ongoing-кампанії «Чисте небо» — повідомляє про досягнення позначки 1000 збиттів ворожих БПЛА. Використовується підхід звітності з конкретними цифрами (59 підрозділів, 1867 літаків-перехоплювачів, 1099 використаних, 1000 збитих) для підтвердження ефективності та мотивації до подальших донатів. Пост завершується нагадуванням про загальну ціль збору — 250 млн грн — і прямими посиланнями на банку monobank та liqpay.",
-      "amount_uah": 18329300.81,
+      "amount_uah": 18335889.1,
       "amount_usd": null,
       "goal_amount": 250000000.0,
       "reach": 779.0,
@@ -8844,7 +8825,8 @@
       "extracted_at": "2026-06-07T13:05:49.330445+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.143906020558003,
+      "reach_resonance": 1.143906020558003,
       "themes": [
         "interceptors"
       ],
@@ -8872,8 +8854,8 @@
           "url": "https://t.me/prytulafoundation/4196"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 13926.702718203112,
+      "jar_span_days": 0.4730689046296296
     },
     {
       "id": "camp-17e7caed0435",
@@ -8940,7 +8922,8 @@
       "extracted_at": "2026-06-07T14:00:34.571512+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.133627019089574,
+      "reach_resonance": 1.133627019089574,
       "themes": [
         "reb_ew"
       ],
@@ -9016,7 +8999,8 @@
       "extracted_at": "2026-06-07T18:07:40.378352+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -9093,7 +9077,8 @@
       "extracted_at": "2026-06-07T18:29:56.881415+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.5622950819672131,
+      "reach_resonance": 0.5622950819672131,
       "themes": [
         "fpv"
       ],
@@ -9174,7 +9159,8 @@
       "extracted_at": "2026-06-07T18:27:55.153339+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.9950819672131147,
+      "reach_resonance": 0.9950819672131147,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -9256,7 +9242,8 @@
       "extracted_at": "2026-06-07T13:06:42.308161+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.8428781204111601,
+      "reach_resonance": 0.8428781204111601,
       "themes": [
         "fpv",
         "humanitarian"
@@ -9279,8 +9266,8 @@
           "url": "https://t.me/prytulafoundation/4173"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 0.0,
+      "jar_span_days": 0.4730360580092593
     },
     {
       "id": "camp-26435f5b91b0",
@@ -9342,7 +9329,8 @@
       "extracted_at": "2026-06-07T13:12:50.992045+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.01370504667541027,
-      "rel_resonance": 0.922844190243854,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv"
       ],
@@ -9398,7 +9386,7 @@
       "face": "soldier",
       "cadence": "one_off",
       "playbook_note": "Урочистий церемоніальний пост з нагоди річниці 28-ї ОМБр: командир «Фенікса» полковник Дмитро Олексюк особисто привітав і нагородив бійців бригади. Фандрайзинговий призив відсутній — посилання на monobank-банку та соцмережі присутні як стандартний підвал каналу, а не як окрема кампанія зі зборів.",
-      "amount_uah": 70952.0,
+      "amount_uah": 71154.0,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 1990.0,
@@ -9409,7 +9397,8 @@
       "is_campaign": true,
       "case_id": null,
       "partner_ids": [
-        "28"
+        "28",
+        "fenix_dpsu"
       ],
       "provenance": {
         "reach": {
@@ -9449,10 +9438,11 @@
       "extracted_at": "2026-06-07T22:18:45.074005+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.995,
+      "reach_resonance": 0.995,
       "themes": [],
       "has_destination": true,
-      "reach_total": 7910,
+      "reach_total": 7960,
       "engagement_total": null,
       "post_count": 4,
       "channel_count": 1,
@@ -9471,24 +9461,24 @@
         {
           "date": "2026-06-01",
           "channel": "feniksdpsu",
-          "views": 1990,
+          "views": 2000,
           "url": "https://t.me/feniksdpsu/1999"
         },
         {
           "date": "2026-06-03",
           "channel": "feniksdpsu",
-          "views": 1840,
+          "views": 1860,
           "url": "https://t.me/feniksdpsu/2007"
         },
         {
           "date": "2026-06-04",
           "channel": "feniksdpsu",
-          "views": 1910,
+          "views": 1930,
           "url": "https://t.me/feniksdpsu/2008"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 409.12312653978677,
+      "jar_span_days": 0.49373889398148146
     },
     {
       "id": "camp-26619690dcb3",
@@ -9555,7 +9545,8 @@
       "extracted_at": "2026-06-07T18:39:03.722157+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [],
       "has_destination": true,
       "reach_total": 409,
@@ -9575,8 +9566,8 @@
           "url": "https://t.me/sptua/2443"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 0.0,
+      "jar_span_days": 0.47310469777777775
     },
     {
       "id": "camp-2de6bcf959c8",
@@ -9646,7 +9637,8 @@
       "extracted_at": "2026-06-07T14:02:46.704197+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.1688693098384728,
+      "reach_resonance": 1.1688693098384728,
       "themes": [
         "energy",
         "humanitarian"
@@ -9730,7 +9722,8 @@
       "extracted_at": "2026-06-07T14:21:42.621237+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.0254237288135593,
+      "reach_resonance": 1.0254237288135593,
       "themes": [
         "interceptors"
       ],
@@ -9770,7 +9763,7 @@
       "face": "official",
       "cadence": "one_off",
       "playbook_note": "Гейміфікована донат-кампанія: кожні 50 грн до банки «Вагон знань» (навчання військових у школі «Боривітер») = 1 шанс виграти Volvo XC40 від партнера VIDI. Поріг входу знижено з 300 до 50 грн для ширшого охоплення; донатери ≥300 грн автоматично отримали 6 шансів. Розіграш — 8 липня 2026 р. на стрімі «Телебачення Торонто». КАСКО-покриття воєнних ризиків для переможця від ТДВ «СК «ВІДІ-Страхування».",
-      "amount_uah": 10013212.62,
+      "amount_uah": 10315412.62,
       "amount_usd": null,
       "goal_amount": 50000000.0,
       "reach": 695.0,
@@ -9816,7 +9809,8 @@
       "extracted_at": "2026-06-07T13:54:44.291117+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.0205580029368575,
+      "reach_resonance": 1.0205580029368575,
       "themes": [
         "vehicles"
       ],
@@ -9844,8 +9838,8 @@
           "url": "https://t.me/prytulafoundation/4139"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 638755.0377010872,
+      "jar_span_days": 0.4731078146759259
     },
     {
       "id": "camp-3fe66e162613",
@@ -9913,7 +9907,8 @@
       "extracted_at": "2026-06-07T18:51:40.022815+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.5254237288135594,
+      "reach_resonance": 0.5254237288135594,
       "themes": [],
       "has_destination": true,
       "reach_total": 62,
@@ -9933,8 +9928,8 @@
           "url": "https://t.me/sptzbir/116"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 0.0,
+      "jar_span_days": 0.4731085111921296
     },
     {
       "id": "camp-4244abe564f1",
@@ -9997,7 +9992,8 @@
       "extracted_at": "2026-06-07T19:05:19.996198+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "vehicles"
       ],
@@ -10084,7 +10080,8 @@
       "extracted_at": "2026-06-07T18:38:11.834685+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv",
         "interceptors"
@@ -10107,8 +10104,8 @@
           "url": "https://t.me/Radisnyi_93/502"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 0.0,
+      "jar_span_days": 0.4939318487731481
     },
     {
       "id": "camp-4699a6fbdde4",
@@ -10185,7 +10182,8 @@
       "extracted_at": "2026-06-07T13:51:36.830167+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 2.6284875183553598,
+      "reach_resonance": 2.6284875183553598,
       "themes": [
         "fpv",
         "interceptors"
@@ -10237,7 +10235,9 @@
       "goal_reached": true,
       "is_campaign": true,
       "case_id": null,
-      "partner_ids": [],
+      "partner_ids": [
+        "ukr_volunteers_ukrainians_without_borders"
+      ],
       "provenance": {
         "reach": {
           "source_url": "https://t.me/UKR_volunteers/906",
@@ -10264,7 +10264,8 @@
       "extracted_at": "2026-06-07T19:04:23.446741+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "vehicles"
       ],
@@ -10339,7 +10340,8 @@
       "extracted_at": "2026-06-07T12:26:24.104986+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.8432203389830508,
+      "reach_resonance": 0.8432203389830508,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -10413,7 +10415,8 @@
       "extracted_at": "2026-06-07T14:07:09.303257+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv",
         "vehicles"
@@ -10497,6 +10500,7 @@
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
+      "reach_resonance": 1.0,
       "themes": [
         "medical"
       ],
@@ -10540,7 +10544,7 @@
       "face": "soldier",
       "cadence": "series",
       "playbook_note": "Щомісячний бойовий звіт батальйону SIGNUM за травень використовується як соціальний доказ ефективності підрозділу: деталізована статистика втрат ворога (880 цілей, особовий склад, бронетехніка, 500+ дронів) підкріплена 6-хвилинним відео-компіляцією ліквідацій. Донейт-CTA через Monobank jar розміщено наприкінці. Контент крос-публікується в Instagram, YouTube, Facebook, X.",
-      "amount_uah": 194584.0,
+      "amount_uah": 194684.0,
       "amount_usd": null,
       "goal_amount": null,
       "reach": 9940.0,
@@ -10585,12 +10589,13 @@
       "extracted_at": "2026-06-07T22:51:11.325371+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv"
       ],
       "has_destination": true,
-      "reach_total": 15090,
+      "reach_total": 15140,
       "engagement_total": null,
       "post_count": 2,
       "channel_count": 1,
@@ -10603,7 +10608,7 @@
         {
           "date": "2026-06-01",
           "channel": "umftteam",
-          "views": 9940,
+          "views": 9990,
           "url": "https://t.me/umftteam/992"
         },
         {
@@ -10613,8 +10618,8 @@
           "url": "https://t.me/umftteam/995"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 299.6597503376133,
+      "jar_span_days": 0.3337118177777778
     },
     {
       "id": "camp-633e763a0cc4",
@@ -10682,7 +10687,8 @@
       "extracted_at": "2026-06-07T22:54:10.298468+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.84375,
+      "reach_resonance": 0.84375,
       "themes": [
         "vehicles"
       ],
@@ -10764,7 +10770,8 @@
       "extracted_at": "2026-06-07T13:56:55.848557+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.0249632892804699,
+      "reach_resonance": 1.0249632892804699,
       "themes": [
         "reb_ew",
         "vehicles",
@@ -10854,7 +10861,8 @@
       "extracted_at": "2026-06-07T13:58:17.997274+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.133627019089574,
+      "reach_resonance": 1.133627019089574,
       "themes": [
         "vehicles"
       ],
@@ -10892,7 +10900,7 @@
       "face": "blogger",
       "cadence": "one_off",
       "playbook_note": "Термінова мобілізація аудиторії через особистий Telegram-канал публіциста Дмитра Корчинського. Пост містить чітку ціль (500 000 грн), пряме посилання на monobank-банку та номер картки — мінімальний бар'єр для донату. Збір прив'язаний до конкретного батальйону «Катехон» на потреби транспорту, дронів і пального.",
-      "amount_uah": 29550.55,
+      "amount_uah": 29800.55,
       "amount_usd": null,
       "goal_amount": 500000.0,
       "reach": 2640.0,
@@ -10937,7 +10945,8 @@
       "extracted_at": "2026-06-07T18:31:54.798619+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv",
         "reb_ew",
@@ -10961,8 +10970,8 @@
           "url": "https://t.me/korchynskiy/12262"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 528.2695528639252,
+      "jar_span_days": 0.4732432498611111
     },
     {
       "id": "camp-78a39a77e72a",
@@ -10984,7 +10993,8 @@
         "urgency",
         "heroism",
         "gratitude",
-        "humor"
+        "humor",
+        "emotional"
       ],
       "face": "soldier",
       "cadence": "one_off",
@@ -11036,10 +11046,11 @@
       "extracted_at": "2026-06-07T18:55:20.002985+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.3493150684931507,
+      "reach_resonance": 1.3493150684931507,
       "themes": [],
       "has_destination": true,
-      "reach_total": 5473,
+      "reach_total": 5498,
       "engagement_total": null,
       "post_count": 4,
       "channel_count": 1,
@@ -11058,24 +11069,24 @@
         {
           "date": "2026-05-19",
           "channel": "sylasvobody",
-          "views": 1790,
+          "views": 1800,
           "url": "https://t.me/sylasvobody/306"
         },
         {
           "date": "2026-06-03",
           "channel": "sylasvobody",
-          "views": 923,
+          "views": 929,
           "url": "https://t.me/sylasvobody/309"
         },
         {
           "date": "2026-06-05",
           "channel": "sylasvobody",
-          "views": 790,
+          "views": 799,
           "url": "https://t.me/sylasvobody/310"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 0.0,
+      "jar_span_days": 0.49406671090277776
     },
     {
       "id": "camp-7a6e0bfb1bc8",
@@ -11140,7 +11151,8 @@
       "extracted_at": "2026-06-07T13:52:37.996572+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.8281938325991189,
+      "reach_resonance": 0.8281938325991189,
       "themes": [
         "vehicles"
       ],
@@ -11225,7 +11237,8 @@
       "extracted_at": "2026-06-07T18:52:34.945758+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.559322033898305,
+      "reach_resonance": 0.559322033898305,
       "themes": [],
       "has_destination": true,
       "reach_total": 66,
@@ -11245,8 +11258,8 @@
           "url": "https://t.me/sptzbir/117"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 0.0,
+      "jar_span_days": 0.4733155272569445
     },
     {
       "id": "camp-7e57b407b450",
@@ -11312,7 +11325,8 @@
       "extracted_at": "2026-06-07T18:29:09.431915+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.6639344262295082,
+      "reach_resonance": 0.6639344262295082,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -11387,7 +11401,8 @@
       "extracted_at": "2026-06-07T13:10:00.013596+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "humanitarian"
       ],
@@ -11467,6 +11482,7 @@
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
+      "reach_resonance": 1.0,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -11554,7 +11570,8 @@
       "extracted_at": "2026-06-07T13:07:01.370167+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.8164464023494861,
+      "reach_resonance": 0.8164464023494861,
       "themes": [
         "interceptors"
       ],
@@ -11639,6 +11656,7 @@
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
+      "reach_resonance": 1.0,
       "themes": [
         "vehicles"
       ],
@@ -11732,7 +11750,8 @@
       "extracted_at": "2026-06-07T12:23:33.618545+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.5961820851688693,
+      "reach_resonance": 0.5961820851688693,
       "themes": [
         "humanitarian"
       ],
@@ -11754,8 +11773,8 @@
           "url": "https://t.me/prytulafoundation/4205"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 0.0,
+      "jar_span_days": 0.47331724402777775
     },
     {
       "id": "camp-970d9f195370",
@@ -11824,7 +11843,8 @@
       "extracted_at": "2026-06-07T13:07:48.271550+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.092511013215859,
+      "reach_resonance": 1.092511013215859,
       "themes": [],
       "has_destination": true,
       "reach_total": null,
@@ -11908,7 +11928,8 @@
       "extracted_at": "2026-06-07T14:06:17.324566+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv",
         "vehicles",
@@ -11949,7 +11970,7 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Медіа-канал bihusinfo публікує заклик до зборів із чітким проміжним мілстоуном (26 тис. грн = половина банки) на тлі загальної цілі 300 тис. грн. Формат — короткий текстовий допис із прямим посиланням на monobank-банку та реквізитами картки. Тон поєднує емоційність (символ 🥹, 'ми віримо') із терміновістю ('зберемо сьогодні'). Просування через власну аудиторію каналу без зовнішніх партнерів.",
-      "amount_uah": 156683.0,
+      "amount_uah": 157220.0,
       "amount_usd": null,
       "goal_amount": 300000.0,
       "reach": 5800.0,
@@ -11992,7 +12013,8 @@
       "extracted_at": "2026-06-07T18:02:56.144368+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.0780669144981412,
+      "reach_resonance": 1.0780669144981412,
       "themes": [
         "vehicles"
       ],
@@ -12014,8 +12036,8 @@
           "url": "https://t.me/bihusinfo/15714"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 1134.533809217357,
+      "jar_span_days": 0.4733221660185185
     },
     {
       "id": "camp-a9da5ca6300e",
@@ -12040,7 +12062,7 @@
       "face": "brand",
       "cadence": "one_off",
       "playbook_note": "Gamification-механіка розіграшу призу (ніж Skif Adventure FB) за донат кратний 100 грн: більше донатів — більше шансів. Верифікація участі через скриншот у бот @d7channelbot. Дедлайн 15 червня 12:00 посилює urgency. Поряд з разовим збором — посилання на регулярний підписний донат у моно.",
-      "amount_uah": 220471.22,
+      "amount_uah": 220624.22,
       "amount_usd": null,
       "goal_amount": 550000.0,
       "reach": 3510.0,
@@ -12083,7 +12105,8 @@
       "extracted_at": "2026-06-07T18:08:26.182999+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [],
       "has_destination": true,
       "reach_total": 3510,
@@ -12103,8 +12126,8 @@
           "url": "https://t.me/D7_channel/83203"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 323.24539565838836,
+      "jar_span_days": 0.47332460741898147
     },
     {
       "id": "camp-acc753da7988",
@@ -12169,7 +12192,8 @@
       "extracted_at": "2026-06-07T13:09:45.979639+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv",
         "vehicles",
@@ -12247,7 +12271,8 @@
       "extracted_at": "2026-06-07T13:07:14.671596+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.9192364170337739,
+      "reach_resonance": 0.9192364170337739,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -12320,7 +12345,8 @@
       "extracted_at": "2026-06-07T14:08:00.027569+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.0593220338983051,
+      "reach_resonance": 1.0593220338983051,
       "themes": [
         "vehicles"
       ],
@@ -12359,7 +12385,7 @@
       "face": "soldier",
       "cadence": "one_off",
       "playbook_note": "Редакція Bihus.Info апелює до корпоративної солідарності з колишнім колегою-журналістом, який тепер служить у медбатальйоні. Використовується подвійна механіка залучення: пряме посилання на monobank jar і merch-колаборація з RBTNK (сталевий жетон), де частина прибутку йде на збір. Меседж поєднує емоційний хук ('колишніх журналістів не буває') з конкретною утилітарною потребою (техніка зв'язку для передових хірургічних груп).",
-      "amount_uah": 105537.24,
+      "amount_uah": 82374.24,
       "amount_usd": null,
       "goal_amount": 200000.0,
       "reach": 5380.0,
@@ -12406,6 +12432,7 @@
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
       "rel_resonance": 1.0,
+      "reach_resonance": 1.0,
       "themes": [
         "reb_ew",
         "comms"
@@ -12428,8 +12455,8 @@
           "url": "https://t.me/bihusinfo/15729"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": -48936.59672111307,
+      "jar_span_days": 0.4733267442361111
     },
     {
       "id": "camp-c11d1c510859",
@@ -12500,7 +12527,8 @@
       "extracted_at": "2026-06-07T18:34:19.984759+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.967032967032967,
+      "reach_resonance": 0.967032967032967,
       "themes": [
         "fpv",
         "reb_ew",
@@ -12587,7 +12615,8 @@
       "extracted_at": "2026-06-07T18:32:59.656046+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "medical"
       ],
@@ -12679,7 +12708,8 @@
       "extracted_at": "2026-06-07T18:10:10.687108+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv"
       ],
@@ -12760,7 +12790,8 @@
       "extracted_at": "2026-06-07T18:13:25.169360+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -12837,7 +12868,8 @@
       "extracted_at": "2026-06-07T13:06:25.844298+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.287812041116006,
+      "reach_resonance": 1.287812041116006,
       "themes": [
         "fpv",
         "interceptors",
@@ -12919,7 +12951,8 @@
       "extracted_at": "2026-06-07T13:07:33.766456+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.895741556534508,
+      "reach_resonance": 0.895741556534508,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -12996,7 +13029,8 @@
       "extracted_at": "2026-06-07T18:30:52.035723+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.1581967213114754,
+      "reach_resonance": 0.1581967213114754,
       "themes": [
         "fpv",
         "reb_ew"
@@ -13081,7 +13115,8 @@
       "extracted_at": "2026-06-07T14:09:32.129738+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.0296610169491525,
+      "reach_resonance": 1.0296610169491525,
       "themes": [],
       "has_destination": true,
       "reach_total": 243000,
@@ -13168,7 +13203,8 @@
       "extracted_at": "2026-06-07T18:37:08.715144+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.8649045521292217,
+      "reach_resonance": 0.8649045521292217,
       "themes": [
         "recon",
         "ammo"
@@ -13245,7 +13281,8 @@
       "extracted_at": "2026-06-07T14:20:10.357190+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.055084745762712,
+      "reach_resonance": 1.055084745762712,
       "themes": [
         "fpv"
       ],
@@ -13329,7 +13366,8 @@
       "extracted_at": "2026-06-07T13:50:43.737359+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.9295154185022027,
+      "reach_resonance": 0.9295154185022027,
       "themes": [
         "vehicles"
       ],
@@ -13404,7 +13442,8 @@
       "extracted_at": "2026-06-07T14:11:43.796534+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.1398305084745763,
+      "reach_resonance": 1.1398305084745763,
       "themes": [
         "vehicles"
       ],
@@ -13484,7 +13523,8 @@
       "extracted_at": "2026-06-07T13:47:46.740959+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.895741556534508,
+      "reach_resonance": 0.895741556534508,
       "themes": [
         "fpv"
       ],
@@ -13575,7 +13615,8 @@
       "extracted_at": "2026-06-07T18:11:44.522946+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv",
         "reb_ew"
@@ -13598,8 +13639,8 @@
           "url": "https://t.me/e_drones/529"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 0.0,
+      "jar_span_days": 0.47326347182870376
     },
     {
       "id": "camp-e48650f529f8",
@@ -13667,7 +13708,8 @@
       "extracted_at": "2026-06-07T13:59:11.529915+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.9794419970631424,
+      "reach_resonance": 0.9794419970631424,
       "themes": [
         "vehicles"
       ],
@@ -13746,7 +13788,8 @@
       "extracted_at": "2026-06-07T13:11:48.219849+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.0677966101694916,
+      "reach_resonance": 1.0677966101694916,
       "themes": [
         "fpv",
         "vehicles"
@@ -13826,7 +13869,8 @@
       "extracted_at": "2026-06-07T22:30:10.120984+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -13903,7 +13947,8 @@
       "extracted_at": "2026-06-07T13:09:26.510326+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv"
       ],
@@ -13987,7 +14032,8 @@
       "extracted_at": "2026-06-07T12:22:57.956929+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 37.73861967694567,
+      "reach_resonance": 37.73861967694567,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -14062,7 +14108,8 @@
       "extracted_at": "2026-06-07T14:25:32.873100+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.42105263157894735,
+      "reach_resonance": 0.42105263157894735,
       "themes": [
         "interceptors"
       ],
@@ -14138,7 +14185,8 @@
       "extracted_at": "2026-06-07T13:13:51.579659+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 0.01599670974305691,
-      "rel_resonance": 1.0771558097561458,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv",
         "fiber",
@@ -14225,7 +14273,8 @@
       "extracted_at": "2026-06-07T13:53:42.813293+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 0.8458149779735683,
+      "reach_resonance": 0.8458149779735683,
       "themes": [
         "comms"
       ],
@@ -14311,7 +14360,8 @@
       "extracted_at": "2026-06-07T22:54:45.508856+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "fpv"
       ],
@@ -14333,8 +14383,8 @@
           "url": "https://t.me/wtormbat4_92OWBr/367"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 0.0,
+      "jar_span_days": 0.3342008595138889
     },
     {
       "id": "camp-ef593a7f8eef",
@@ -14401,7 +14451,8 @@
       "extracted_at": "2026-06-07T22:53:06.122035+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": 1.1741071428571428,
+      "reach_resonance": 1.1741071428571428,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -14440,7 +14491,7 @@
       "face": "soldier",
       "cadence": "one_off",
       "playbook_note": "Telegram-пост від мотоблогу motolifeua просуває збір на потреби солдатів підрозділу НРК 93 ОМБр «Холодний Яр». Як основний контент — YouTube Shorts-відео про нестандартне переобладнання штатної зброї підрозділом, що привертає увагу через демонстрацію технічної майстерності. Прямі посилання на Monobank jar, банківську картку та PayPal (на ім'я Babichev Andrii) дозволяють донатити кількома способами.",
-      "amount_uah": 5398.72,
+      "amount_uah": 5728.72,
       "amount_usd": null,
       "goal_amount": 240000.0,
       "reach": 2500.0,
@@ -14487,7 +14538,8 @@
       "extracted_at": "2026-06-07T22:31:10.889539+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [
         "reb_ew"
       ],
@@ -14522,8 +14574,8 @@
           "url": "https://t.me/motolifeua/1586"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 936.2865429872741,
+      "jar_span_days": 0.35245620314814813
     },
     {
       "id": "camp-f1abe436d06e",
@@ -14549,7 +14601,7 @@
       "face": "brand",
       "cadence": "series",
       "playbook_note": "Кампанія використовує наративний гачок із гумором та інтригою (натяк на весілля і байкерські традиції) як привід увімкнути відео, після чого слідує заклик донатити на гемостатичні бинти. Пропонує три варіанти оплати: monobank-банка, картка та PayPal. Хештег #ШабатШаломЗбір вказує на серійний формат — регулярні (ймовірно щосуботні) збори від організації Sokyra.space.",
-      "amount_uah": 17029.73,
+      "amount_uah": 19108.0,
       "amount_usd": null,
       "goal_amount": 116000.0,
       "reach": 4370.0,
@@ -14594,7 +14646,8 @@
       "extracted_at": "2026-06-07T18:06:54.275308+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": 1.0,
-      "rel_resonance": 1.0,
+      "rel_resonance": null,
+      "reach_resonance": null,
       "themes": [],
       "has_destination": true,
       "reach_total": 4370,
@@ -14614,8 +14667,8 @@
           "url": "https://t.me/D7_channel/83196"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 4390.121155390713,
+      "jar_span_days": 0.4733969579513889
     }
   ],
   "creatives": [
@@ -15087,10 +15140,10 @@
       "hook": "Шість Молній та одна Zala нікому більше не нашкодять, бо ви донатили на Русоріз!",
       "cta": "Донатьте на Небесний Русоріз !",
       "media_url": null,
-      "published": "2026-06-07",
+      "published": "2026-06-07T17:51:38+00:00",
       "impressions_range": null,
       "spend_range": null,
-      "views": 163000.0,
+      "views": 198000.0,
       "likes": null,
       "provenance": {
         "views": {
@@ -15175,11 +15228,11 @@
       "campaign_id": "camp-05b3a8931a05",
       "platform": "telegram",
       "format": "video",
-      "copy_text": "Добропілля: евакуація дітей 🛡 📽 Історію цього виїзду неможливо відокремити від того, що сталося перед цим — російський удар дроном забрав життя двох батьків. У місті залишились діти, які опинились самі під обстрілами ⚔️ У цьому відео ви побачите, як бійці 4-го батальйону оперативного призначення «Сила Свободи» Бригади «Рубіж» разом із евакуаційною групою «Білий Янгол» знаходять дітей і вивозять їх у безпечне місце. Це пряма розмова про те, як проходить евакуація в прифронтових містах, з якими ризиками доводиться працювати і що стоїть за рішеннями, які приймаються в такі моменти ⚔️",
-      "hook": "Добропілля: евакуація дітей — російський удар дроном забрав життя двох батьків",
-      "cta": "Підтримай ЗБІР Бригади «Рубіж» на НРК Ціль: 500 000 грн.",
+      "copy_text": "Добропілля: евакуація дітей 🛡 📽 Історію цього виїзду неможливо відокремити від того, що сталося перед цим — російський удар дроном забрав життя двох батьків. У місті залишились діти, які опинились самі під обстрілами ⚔️ У цьому відео ви побачите, як бійці 4-го батальйону оперативного призначення «Сила Свободи » Бригади «Рубіж» разом із евакуаційною групою «Білий Янгол» знаходять дітей і вивозять їх у безпечне місце. Це пряма розмова про те, як проходить евакуація в прифронтових містах, з якими ризиками доводиться працювати і що стоїть за рішеннями, які приймаються в такі моменти ⚔️ 🛡 ЗАПОВНИТИ АНКЕТУ | ЧАТ-БОТ | НАШ МЕРЧ 🔥 | Facebook | Instagram | YouTube Підтримай ЗБІР Бригади «Рубіж » на НРК Ціль: 500 000 грн.",
+      "hook": "Російський удар дроном забрав життя двох батьків — у місті залишились діти самі під обстрілами",
+      "cta": "Підтримай ЗБІР Бригади «Рубіж» на НРК — Ціль: 500 000 грн",
       "media_url": "https://youtu.be/obFSrVp0l2w",
-      "published": "2026-05-17",
+      "published": "2026-05-17T18:54:56+00:00",
       "impressions_range": null,
       "spend_range": null,
       "views": 1440.0,
@@ -15244,14 +15297,14 @@
       "campaign_id": "camp-2654e4792a42",
       "platform": "telegram",
       "format": "text",
-      "copy_text": "👑 Відчуваєш у собі сили стати частиною чогось величного та загадкового? Для тебе відстань не має значення? Ти не хочеш спостерігати, ти прагнеш бити углиб? Прикордонний підрозділ \"Фенікс\" готовий зробити тобі пропозицію, від якої ти не зможеш відмовитися. Для нас головне, аби був результат. Для тебе головне — щоб у ворога не було тилу. Заповнюй анкету на нашому сайті або телефонуй до рекрутерів підрозділу: +38 097 888 80 11 або +38 095 888 80 11.",
+      "copy_text": "👑 Відчуваєш у собі сили стати частиною чогось величного та загадкового? Для тебе відстань не має значення? Ти не хочеш спостерігати, ти прагнеш бити углиб? Прикордонний підрозділ \"Фенікс\" готовий зробити тобі пропозицію, від якої ти не зможеш відмовитися. Для нас головне, аби був результат. Для тебе головне — щоб у ворога не було тилу. Заповнюй анкету на нашому сайті або телефонуй до рекрутерів підрозділу: +38 097 888 80 11 або +38 095 888 80 11. Підтримай канал бустом Вакансії | Банка | Facebook | TikTok | YouTube | Instagram",
       "hook": "Відчуваєш у собі сили стати частиною чогось величного та загадкового?",
       "cta": "Заповнюй анкету на нашому сайті або телефонуй до рекрутерів підрозділу",
       "media_url": null,
-      "published": "2026-06-03",
+      "published": "2026-06-03T12:03:27+00:00",
       "impressions_range": null,
       "spend_range": null,
-      "views": 1840.0,
+      "views": 1860.0,
       "likes": null,
       "provenance": {
         "views": {
@@ -15315,7 +15368,7 @@
       "format": "image",
       "copy_text": "Тут готують тих, хто тримає фронт: світлини з тренувань піхотинців Бригади «Рубіж» 💪 Піхота 4-го батальйону оперативного призначення «Сила Свободи» Бригади «Рубіж» відпрацьовує те, що в бою не пробачає затримок. Вихід з БМП, розгортання, зайняття позицій — кожен рух доводять до автоматизму, щоб діяти швидко і без зайвих команд 🛡 Кожен знає свою роль: хто прикриває, хто рухається, хто першим відкриває вогонь. Працюють як одне ціле, бо тільки так підрозділ тримає темп і контроль над ситуацією 💥 🛡 ЗАПОВНИТИ АНКЕТУ | ЧАТ-БОТ | НАШ МЕРЧ 🔥 | Facebook | Instagram | YouTube Підтримай ЗБІР Бригади «Рубіж» на НРК Ціль: 500 000 грн.",
       "hook": "Тут готують тих, хто тримає фронт",
-      "cta": "Підтримай ЗБІР Бригади «Рубіж» на НРК. Ціль: 500 000 грн.",
+      "cta": "Підтримай ЗБІР Бригади «Рубіж» на НРК",
       "media_url": "https://t.me/sylasvobody/291",
       "published": "2026-04-24",
       "impressions_range": null,
@@ -16088,14 +16141,14 @@
       "campaign_id": "camp-2654e4792a42",
       "platform": "telegram",
       "format": "image",
-      "copy_text": "👑 ➕ Увесь особовий склад прикордонного підрозділу \"Фенікс\" вітає 28-му окрему механізовану бригаду імені Лицарів Зимового Походу з річницею створення! У цей урочистий для Бригади день командир ГВ БАС \"Фенікс\" Герой України полковник Дмитро Олексюк особисто відзначив бійців, які продемонстрували свою мужність та звитягу в ході війни за українську незалежність. Командир подякував військовослужбовцям 28-ї ОМБр за їх самовіддану бойову роботу, професійний підхід до своїх службових обов'язків, відданість присязі українському народові та незламний дух справжніх воїнів. \"Ви — гордість Сил оборони, які гідно несуть ім'я наших героїв! Ви — справжні лицарі сьогодення! Від імені підрозділу \"Фенікс\" бажаю кожному із вас надійного тилу, безперебійного зв'язку, міцного козацького здоров'я та тільки успішних бойових операцій! Повертайтеся додому живими та здоровими зі спільною для нас усіх Перемогою!\" — сказав полковник Дмитро Олексюк під час урочистостей. Підтримай канал бустом Вакансії | Банка | Facebook | TikTok | YouTube | Instagram",
-      "hook": "Увесь особовий склад підрозділу «Фенікс» вітає 28-му ОМБр з річницею створення!",
-      "cta": "Банка",
-      "media_url": "https://t.me/feniksdpsu/1999?single",
+      "copy_text": "👑 ➕ Увесь особовий склад прикордонного підрозділу \"Фенікс\" вітає 28-му окрему механізовану бригаду імені Лицарів Зимового Походу з річницею створення! У цей урочистий для Бригади день командир ГВ БАС \"Фенікс\" Герой України полковник Дмитро Олексюк особисто відзначив бійців...",
+      "hook": "Увесь особовий склад підрозділу «Фенікс» вітає 28-му ОМБр з річницею створення",
+      "cta": "Підтримай канал бустом | Банка",
+      "media_url": null,
       "published": "2026-06-01T14:01:24+00:00",
       "impressions_range": null,
       "spend_range": null,
-      "views": 1990.0,
+      "views": 2000.0,
       "likes": null,
       "provenance": {
         "views": {
@@ -16134,14 +16187,14 @@
       "campaign_id": "camp-5e44bb2ea585",
       "platform": "telegram",
       "format": "video",
-      "copy_text": "❕ Мінус 880 цілей! Такі втрати ворога завдали бійці батальйону SIGNUM протягом травня. В особовому складі противник втратив 164 — двохсотими, ще 120 — трьохсотими, що еквівалентно майже трьом ротам. Також SIGNUM активно працює над пошуком та ліквідацією ворожих пілотів. Майже 30 укриттів та понад 10 операторів БпЛА — мінус. Горіла й ворожа артилерія. 8 гармат та 2 САУ пілоти SIGNUM вибили зі строю, і на деякий час для нашої піхоти стало тихіше. Після того, як наші бійці активно спалювали ворожу бронетехніку, противник досі не ризикує виїжджати нею на поле бою — натомість пересіли на іншу техніку. Тож за місяць на нашому рахунку ще 7 одиниць важкої автотехніки, 9 автомобілів, 4 квадроцикли та 7 мотоциклів. Також противник лишився без 5-ти НРК. Окремий напрямок роботи — боротьба з ворожими дронами. Протягом місяця пілоти батальйону приземлили пів тисячі безпілотників. Серед них — «Shahed», «КВО», «Supercam», «Гербера», «Молнія», «Zala», «Орлан». Ну, і сідайте зручніше. У відео — понад 6 хв ліквідації під*арів! 💵 Підтримай вогонь SIGNUM донейтом 🫵🏼 SIGNUM чекає на тебе",
-      "hook": "❕ Мінус 880 цілей! Такі втрати ворога завдали бійці батальйону SIGNUM протягом травня.",
+      "copy_text": "❕ Мінус 880 цілей! Такі втрати ворога завдали бійці батальйону SIGNUM протягом травня. В особовому складі противник втратив 164 — двохсотими, ще 120 — трьохсотими, що еквівалентно майже трьом ротам. Також SIGNUM активно працює над пошуком та ліквідацією ворожих пілотів. Майже 30 укриттів та понад 10 операторів БпЛА — мінус. Горіла й ворожа артилерія. 8 гармат та 2 САУ пілоти SIGNUM вибили зі строю, і на деякий час для нашої піхоти стало тихіше. Після того, як наші бійці активно спалювали ворожу бронетехніку, противник досі не ризикує виїжджати нею на поле бою — натомість пересіли на іншу техніку. Тож за місяць на нашому рахунку ще 7 одиниць важкої автотехніки, 9 автомобілів, 4 квадроцикли та 7 мотоциклів. Також противник лишився без 5-ти НРК. Окремий напрямок роботи — боротьба з ворожими дронами. Протягом місяця пілоти батальйону приземлили пів тисячі безпілотників. Серед них — «Shahed», «КВО», «Supercam», «Гербера», «Молнія», «Zala», «Орлан». Ну, і сідайте зручніше. У відео — понад 6 хв ліквідації під*арів! 🗡 Instagram | X | YouTube | Facebook | Телеграм 💵 Підтримай вогонь SIGNUM донейтом 🫵🏼 SIGNUM чекає на тебе",
+      "hook": "Мінус 880 цілей!",
       "cta": "Підтримай вогонь SIGNUM донейтом",
       "media_url": null,
       "published": "2026-06-01T08:34:01+00:00",
       "impressions_range": null,
       "spend_range": null,
-      "views": 9940.0,
+      "views": 9990.0,
       "likes": null,
       "provenance": {
         "views": {
@@ -16205,12 +16258,12 @@
       "format": "text",
       "copy_text": "Ще двоє окупантів закінчили свій маршрут. Один в ямі, іншій під машиною. Земля залізобетоном! Підтримка БПЛА підрозділу [МоноБанка] Дякуємо!",
       "hook": "Ще двоє окупантів закінчили свій маршрут.",
-      "cta": "https://send.monobank.ua/jar/4DqEtUN56Y",
+      "cta": "Підтримка БПЛА підрозділу [МоноБанка]",
       "media_url": null,
-      "published": "2026-05-19",
+      "published": "2026-05-19T08:24:14+00:00",
       "impressions_range": null,
       "spend_range": null,
-      "views": 1790.0,
+      "views": 1800.0,
       "likes": null,
       "provenance": {
         "views": {
@@ -16596,12 +16649,12 @@
       "format": "text",
       "copy_text": "Як то кажуть, згорів на роботі. У буквальному сенсі. Підтримка БПЛА підрозділу [МоноБанка] Дякуємо!",
       "hook": "Як то кажуть, згорів на роботі. У буквальному сенсі.",
-      "cta": "Підтримка БПЛА підрозділу [МоноБанка]",
+      "cta": "https://send.monobank.ua/jar/4DqEtUN56Y",
       "media_url": null,
       "published": "2026-06-03T06:54:28+00:00",
       "impressions_range": null,
       "spend_range": null,
-      "views": 923.0,
+      "views": 929.0,
       "likes": null,
       "provenance": {
         "views": {
@@ -16966,10 +17019,10 @@
       "hook": "🕯 Скорбота. Пам'ять. Біль, що не вщухає.",
       "cta": "Підтримай канал бустом",
       "media_url": null,
-      "published": "2026-06-04",
+      "published": "2026-06-04T07:02:34+00:00",
       "impressions_range": null,
       "spend_range": null,
-      "views": 1910.0,
+      "views": 1930.0,
       "likes": null,
       "provenance": {
         "views": {
@@ -17286,11 +17339,11 @@
       "copy_text": "НРК проти FPV ждуна Підтримка БПЛА підрозділу [МоноБанка] Дякуємо!",
       "hook": "НРК проти FPV ждуна",
       "cta": "Підтримка БПЛА підрозділу [МоноБанка]",
-      "media_url": null,
-      "published": "2026-06-05",
+      "media_url": "https://send.monobank.ua/jar/4DqEtUN56Y",
+      "published": "2026-06-05T16:49:31+00:00",
       "impressions_range": null,
       "spend_range": null,
-      "views": 790.0,
+      "views": 799.0,
       "likes": null,
       "provenance": {
         "views": {
@@ -17331,12 +17384,12 @@
       "format": "text",
       "copy_text": "На жаль, тільки 4 небайдужі людини задонатили(",
       "hook": null,
-      "cta": "https://send.monobank.ua/jar/5ErfgMqeKy",
+      "cta": null,
       "media_url": null,
       "published": "2026-06-06T06:22:07+00:00",
       "impressions_range": null,
       "spend_range": null,
-      "views": 794.0,
+      "views": 823.0,
       "likes": null,
       "provenance": {
         "views": {
@@ -17432,11 +17485,12 @@
     },
     {
       "id": "2",
-      "name": "К-2",
+      "name": "Бригада К-2",
       "role": "organizer",
       "links": [
         "https://t.me/k_2_54",
-        "https://k-2.army/?utm_source=telegram&utm_medium=smm&utm_campaign=post",
+        "https://t.me/k_2_donate",
+        "https://k-2.army/help-us/?utm_source=telegram&utm_medium=smm&utm_campaign=post",
         "https://www.youtube.com/@k2army",
         "https://www.facebook.com/20opbsK2",
         "https://www.instagram.com/k_2.army"
@@ -17451,6 +17505,20 @@
         "https://www.youtube.com/@k2army",
         "https://www.facebook.com/20opbsK2",
         "https://www.instagram.com/k_2.army"
+      ]
+    },
+    {
+      "id": "23",
+      "name": "23-тя окрема механізована бригада",
+      "role": "partner",
+      "links": []
+    },
+    {
+      "id": "24",
+      "name": "Київ24",
+      "role": "partner",
+      "links": [
+        "https://t.me/kyivtv"
       ]
     },
     {
@@ -17519,14 +17587,9 @@
     },
     {
       "id": "5",
-      "name": "5 канал",
-      "role": "organizer",
-      "links": [
-        "https://www.5.ua",
-        "https://www.facebook.com/5kanal/",
-        "https://t.me/news_5ua",
-        "https://www.patreon.com/projects5"
-      ]
+      "name": "5-й батальйон «Рубіж» НГУ",
+      "role": "partner",
+      "links": []
     },
     {
       "id": "53",
@@ -17564,17 +17627,20 @@
     },
     {
       "id": "93",
-      "name": "93 ОМБр «Холодний Яр» — ВУД самохідно-артилерійського дивізіону",
+      "name": "Група Радість (Радісний_93)",
       "role": "organizer",
       "links": [
-        "https://send.monobank.ua/jar/3oMaFiM4Q6"
+        "https://t.me/Radisnyi_93",
+        "https://send.monobank.ua/jar/2JbpBYkhMv"
       ]
     },
     {
       "id": "alexander_borodin",
       "name": "Alexander Borodin",
       "role": "organizer",
-      "links": []
+      "links": [
+        "https://t.me/ZSU_Donate"
+      ]
     },
     {
       "id": "babichev_andrii",
@@ -17609,7 +17675,7 @@
     },
     {
       "id": "black_sky_3",
-      "name": "Батальйон безпілотних систем «BLACK SKY» 3-ї бригади «СПАРТАН» НГУ",
+      "name": "Батальйон безпілотних систем «BLACK SKY», 3-тя бригада оперативного призначення «СПАРТАН» НГУ",
       "role": "partner",
       "links": []
     },
@@ -17728,6 +17794,18 @@
       ]
     },
     {
+      "id": "fenix_dpsu",
+      "name": "Fenix DPSU",
+      "role": "organizer",
+      "links": [
+        "https://t.me/feniksdpsu",
+        "https://www.facebook.com/PhoenixDPSU/",
+        "https://www.tiktok.com/@fenix_dpsu",
+        "https://www.youtube.com/@Fenix_DPSU",
+        "https://www.instagram.com/fenix__dpsu/"
+      ]
+    },
+    {
       "id": "fest",
       "name": "ВиделкаFest",
       "role": "organizer",
@@ -17760,6 +17838,31 @@
         "https://www.facebook.com/Fakty.ICTV",
         "https://t.me/FAKTY_ICTV",
         "https://www.instagram.com/fakty_ictv/"
+      ]
+    },
+    {
+      "id": "k_2_army",
+      "name": "K-2 Army",
+      "role": "organizer",
+      "links": [
+        "https://k-2.army",
+        "https://t.me/k_2army",
+        "https://t.me/k_2_donate",
+        "https://www.youtube.com/@k2army",
+        "https://www.facebook.com/20opbsK2",
+        "https://www.instagram.com/k_2.army"
+      ]
+    },
+    {
+      "id": "k_2_army_20",
+      "name": "K-2 Army (20 ОГШБр)",
+      "role": "organizer",
+      "links": [
+        "https://k-2.army/help-us/",
+        "https://www.youtube.com/@k2army",
+        "https://www.facebook.com/20opbsK2",
+        "https://www.instagram.com/k_2.army",
+        "https://t.me/k_2_54"
       ]
     },
     {
@@ -17908,11 +18011,9 @@
     },
     {
       "id": "partner",
-      "name": "Департамент транспорту та міської мобільності Вінницької міської ради",
-      "role": "organizer",
-      "links": [
-        "https://t.me/vmroficial/23672"
-      ]
+      "name": "Михайло Баранчук",
+      "role": "partner",
+      "links": []
     },
     {
       "id": "pasha_pishe",
@@ -17982,11 +18083,12 @@
       "role": "organizer",
       "links": [
         "https://t.me/umftteam",
-        "https://www.instagram.com/signum_53",
+        "https://www.instagram.com/signum_53?igsh=MWtqcWtnd3lmbWxyNA==",
         "https://x.com/umftteam",
         "https://www.youtube.com/@the-signum-division",
-        "https://www.facebook.com/share/17gg6vekFq/",
-        "https://send.monobank.ua/jar/Ab1zCD9jgN"
+        "https://www.facebook.com/share/17gg6vekFq/?mibextid=wwXIfr",
+        "https://send.monobank.ua/jar/Ab1zCD9jgN",
+        "https://form.jotform.com/signumarmy/recruit-form"
       ]
     },
     {
@@ -18115,6 +18217,14 @@
       ]
     },
     {
+      "id": "ukr_volunteers_ukrainians_without_borders",
+      "name": "UKR Volunteers / Ukrainians Without Borders",
+      "role": "organizer",
+      "links": [
+        "https://t.me/UKR_volunteers"
+      ]
+    },
+    {
       "id": "unbroken",
       "name": "UNBROKEN-НЕЗЛАМНІ",
       "role": "partner",
@@ -18131,9 +18241,9 @@
     {
       "id": "ursus_donor",
       "name": "ursus_donor",
-      "role": "partner",
+      "role": "organizer",
       "links": [
-        "http://t.me/ursus_donor/546"
+        "http://t.me/ursus_donor/546?single"
       ]
     },
     {

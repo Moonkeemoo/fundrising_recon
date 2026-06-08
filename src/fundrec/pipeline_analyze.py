@@ -11,16 +11,19 @@ from . import store
 from .analyze import (
     campaign_axis_summary,
     campaign_crosstab,
+    channel_baselines,
     compute_repeatability,
     compute_speed,
     compute_virality,
     compute_volume_scores,
     crosstab,
-    goal_reached_rate,
+    goal_success_rate,
     kpis,
     parse_campaign_date,
+    reach_resonance_axis_summary,
     trend_momentum,
     trend_series,
+    what_raises_most,
     what_works_now,
 )
 from .rates import to_usd
@@ -148,6 +151,8 @@ def _build_radar(conn: sqlite3.Connection) -> dict:
     import datetime  # noqa: PLC0415
 
     campaigns = store.load_campaigns(conn)
+    # Базові медіани каналів для reach-резонансу (рахуємо раз з усіх постів)
+    baselines = channel_baselines(store.load_posts(conn))
 
     # Знаходимо максимальну відому дату кампанії
     dates = [parse_campaign_date(c) for c in campaigns]
@@ -158,19 +163,32 @@ def _build_radar(conn: sqlite3.Connection) -> dict:
         now_str = datetime.date.today().isoformat()
 
     wwn = {
-        "channel": what_works_now(campaigns, now=now_str, by="channels", min_n=1),
-        "tone": what_works_now(campaigns, now=now_str, by="tone", min_n=1),
-        "form_factor": what_works_now(campaigns, now=now_str, by="form_factor", min_n=1),
-        "goal": what_works_now(campaigns, now=now_str, by="goal", min_n=1),
+        "channel": what_works_now(
+            campaigns, now=now_str, by="channels", min_n=1, baselines=baselines),
+        "tone": what_works_now(
+            campaigns, now=now_str, by="tone", min_n=1, baselines=baselines),
+        "form_factor": what_works_now(
+            campaigns, now=now_str, by="form_factor", min_n=1, baselines=baselines),
+        "goal": what_works_now(
+            campaigns, now=now_str, by="goal", min_n=1, baselines=baselines),
     }
     momentum = {
-        "goal": trend_momentum(campaigns, axis="goal", now=now_str),
-        "channel": trend_momentum(campaigns, axis="channels", now=now_str),
-        "tone": trend_momentum(campaigns, axis="tone", now=now_str),
+        "goal": trend_momentum(campaigns, axis="goal", now=now_str, baselines=baselines),
+        "channel": trend_momentum(
+            campaigns, axis="channels", now=now_str, baselines=baselines),
+        "tone": trend_momentum(campaigns, axis="tone", now=now_str, baselines=baselines),
+    }
+    # Вісь грошей: що приносить найбільше ₴ (медіана amount_uah у розрізі осі)
+    what_raises = {
+        "channel": what_raises_most(campaigns, by="channels", min_n=3),
+        "tone": what_raises_most(campaigns, by="tone", min_n=3),
+        "form_factor": what_raises_most(campaigns, by="form_factor", min_n=3),
+        "goal": what_raises_most(campaigns, by="goal", min_n=3),
     }
     return {
         "now": now_str,
         "what_works_now": wwn,
+        "what_raises_most": what_raises,
         "momentum": momentum,
     }
 
@@ -189,6 +207,8 @@ def _build_campaign_analytics(conn: sqlite3.Connection) -> dict:
     campaigns = store.load_campaigns(conn)
     creatives = store.load_creatives(conn)
     partners = store.load_partners(conn)
+    # Базові медіани каналів для reach-резонансу
+    baselines = channel_baselines(store.load_posts(conn))
 
     spends = [c.spend for c in campaigns if c.spend is not None]
     total_spend = sum(spends) if spends else None
@@ -203,10 +223,11 @@ def _build_campaign_analytics(conn: sqlite3.Connection) -> dict:
     crosstabs = {
         "channel_volume": campaign_crosstab(
             campaigns, axis_a="channels", axis_b="goal_category", metric="amount_uah"),
+        # engagement тепер чесно None → метрика reach (реальні views)
         "format_engagement": campaign_crosstab(
-            campaigns, axis_a="form_factor", axis_b="channels", metric="engagement"),
+            campaigns, axis_a="form_factor", axis_b="channels", metric="reach"),
         "tone_virality": campaign_crosstab(
-            campaigns, axis_a="tone", axis_b="channels", metric="engagement"),
+            campaigns, axis_a="tone", axis_b="channels", metric="reach"),
         "face_volume": campaign_crosstab(
             campaigns, axis_a="face", axis_b="goal_category", metric="amount_uah"),
         "goal_channel": campaign_crosstab(
@@ -218,14 +239,17 @@ def _build_campaign_analytics(conn: sqlite3.Connection) -> dict:
         "cta_amount": campaign_axis_summary(campaigns, axis="cta_type", metric="amount_uah"),
         "face_amount": campaign_axis_summary(campaigns, axis="face", metric="amount_uah"),
         "channel_amount": campaign_axis_summary(campaigns, axis="channels", metric="amount_uah"),
-        # Нові: медіана engagement/reach по осях
-        "tone_engagement": campaign_axis_summary(campaigns, axis="tone", metric="engagement"),
-        "channel_engagement": campaign_axis_summary(campaigns, axis="channels", metric="engagement"),
+        # Медіана reach-резонансу по осях (замість фейкового engagement)
+        "tone_resonance": reach_resonance_axis_summary(
+            campaigns, axis="tone", baselines=baselines),
+        "channel_resonance": reach_resonance_axis_summary(
+            campaigns, axis="channels", baselines=baselines),
     }
 
+    # Успіх = amount_uah >= goal_amount (де обидва відомі); ключ лише при n>=3
     success_rates = {
-        "tone": goal_reached_rate(campaigns, axis="tone"),
-        "channels": goal_reached_rate(campaigns, axis="channels"),
+        "tone": goal_success_rate(campaigns, axis="tone", min_n=3),
+        "channels": goal_success_rate(campaigns, axis="channels", min_n=3),
     }
 
     return {

@@ -17,7 +17,7 @@ import pytest
 from fundrec import store
 from fundrec.export import export_cases
 from fundrec.pipeline_analyze import build_analytics
-from fundrec.schema import Actor, Campaign
+from fundrec.schema import Actor, Campaign, Post
 
 
 def _actor(id: str = "a1") -> Actor:
@@ -34,7 +34,11 @@ def _camp(
     goal: str = "military",
     reach: float | None = None,
     engagement: float | None = None,
+    handle: str | None = None,
 ) -> Campaign:
+    prov = {}
+    if handle is not None:
+        prov["reach"] = {"source_url": f"https://t.me/{handle}/1"}
     return Campaign(
         id=id,
         actor_id=actor_id,
@@ -47,7 +51,17 @@ def _camp(
         form_factor=["video"],
         reach=reach,
         engagement=engagement,
+        provenance=prov,
     )
+
+
+def _seed_baseline(conn, handle: str, median: float):
+    """Створює 3 пости каналу `handle` з views=median → channel_baselines дає median."""
+    for i in range(3):
+        store.upsert_post(conn, Post(
+            id=f"p_{handle}_{i}", channel=handle, views=int(median),
+            source_url=f"https://t.me/{handle}/{i}",
+        ))
 
 
 def _setup(tmp_path):
@@ -141,15 +155,18 @@ def test_export_campaigns_have_engagement_rate(tmp_path):
 
 
 def test_export_campaigns_have_rel_resonance(tmp_path):
+    """rel_resonance = reach / медіана каналу (з постів)."""
     conn = _setup(tmp_path)
-    # Single-campaign actor → rel_resonance = 1.0
-    store.upsert_campaign(conn, _camp("k1", reach=1000.0, engagement=200.0))
+    _seed_baseline(conn, "chA", 1000.0)
+    store.upsert_campaign(conn, _camp("k1", reach=1000.0, handle="chA"))
     out = tmp_path / "cases.json"
     export_cases(conn, out)
     data = json.loads(out.read_text(encoding="utf-8"))
     camp = data["campaigns"][0]
     assert "rel_resonance" in camp
     assert camp["rel_resonance"] == pytest.approx(1.0)
+    # явний alias reach_resonance дублює rel_resonance
+    assert camp["reach_resonance"] == pytest.approx(1.0)
 
 
 def test_export_campaigns_engagement_rate_none_when_no_reach(tmp_path):
@@ -162,9 +179,10 @@ def test_export_campaigns_engagement_rate_none_when_no_reach(tmp_path):
     assert camp["engagement_rate"] is None
 
 
-def test_export_campaigns_rel_resonance_none_when_no_er(tmp_path):
+def test_export_campaigns_rel_resonance_none_when_no_baseline(tmp_path):
+    """Немає бази каналу (немає постів) → rel_resonance=None (honest null)."""
     conn = _setup(tmp_path)
-    store.upsert_campaign(conn, _camp("k1", reach=None, engagement=None))
+    store.upsert_campaign(conn, _camp("k1", reach=1000.0, handle="chMissing"))
     out = tmp_path / "cases.json"
     export_cases(conn, out)
     data = json.loads(out.read_text(encoding="utf-8"))
@@ -173,13 +191,11 @@ def test_export_campaigns_rel_resonance_none_when_no_er(tmp_path):
 
 
 def test_export_campaigns_rel_resonance_above_one(tmp_path):
-    """Кампанія з er > медіани актора → rel > 1."""
+    """Кампанія з reach > медіани каналу → rel > 1."""
     conn = _setup(tmp_path)
-    # a1 has two campaigns: er=0.1 and er=0.3 → median=0.2
-    store.upsert_campaign(conn, _camp("k1", actor_id="a1",
-                                      reach=1000.0, engagement=100.0))  # er=0.1
-    store.upsert_campaign(conn, _camp("k2", actor_id="a1",
-                                      reach=1000.0, engagement=300.0))  # er=0.3
+    _seed_baseline(conn, "chA", 1000.0)
+    store.upsert_campaign(conn, _camp("k1", reach=500.0, handle="chA"))   # 0.5
+    store.upsert_campaign(conn, _camp("k2", reach=1500.0, handle="chA"))  # 1.5
     out = tmp_path / "cases.json"
     export_cases(conn, out)
     data = json.loads(out.read_text(encoding="utf-8"))

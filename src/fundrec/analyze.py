@@ -560,13 +560,59 @@ def goal_reached_rate(
     return result
 
 
+def goal_success_rate(
+    campaigns: Sequence[Campaign],
+    *,
+    axis: str,
+    min_n: int = 3,
+) -> list[dict]:
+    """Частка «досягнуто цілі» (amount_uah >= goal_amount) у розрізі осі.
+
+    На відміну від goal_reached_rate (прапор goal_reached відомий лише для
+    кількох кампаній → degenerate), сигнал успіху деривується з amount vs goal:
+    кампанія «досягнута», якщо amount_uah і goal_amount обидва відомі та
+    amount_uah >= goal_amount.
+
+    Знаменник — лише кампанії під ключем, де ОБА amount_uah і goal_amount
+    відомі. Ключ ВИПУСКАЄТЬСЯ якщо знаменник n < min_n (honest «недостатньо
+    даних» — не фейковий бар). Кожен запис несе `n` (знаменник).
+
+    Returns:
+        [{key, value (частка успіху 0..1), n (кваліфікований знаменник)}].
+    """
+    buckets: dict[str, list[Campaign]] = {}
+    for c in campaigns:
+        for key in _campaign_axis_values(c, axis):
+            buckets.setdefault(key, []).append(c)
+
+    result: list[dict] = []
+    for key, camps in sorted(buckets.items()):
+        qualifying = [
+            c for c in camps
+            if c.amount_uah is not None and c.goal_amount is not None
+        ]
+        if len(qualifying) < min_n:
+            continue  # недостатньо даних — пропускаємо (honest)
+        n_reached = sum(1 for c in qualifying if c.amount_uah >= c.goal_amount)
+        result.append({
+            "key": key,
+            "value": n_reached / len(qualifying),
+            "n": len(qualifying),
+        })
+    return result
+
+
 # ── ENGAGEMENT METRICS (модель успіху) ───────────────────────────────────────
 
 
 def engagement_rate(campaign: Campaign) -> float | None:
-    """Головна метрика резонансу: engagement / reach.
+    """engagement / reach. БІЛЬШЕ НЕ використовується для резонансу.
 
-    Повертає None (НЕ 0) якщо reach відсутній або == 0.
+    Публічний Telegram (t.me/s/) не дає forwards/реакцій, тож engagement
+    здебільшого None → ця метрика повертає None майже для всіх кампаній.
+    Головний резонанс тепер рахується через reach_resonance (vs медіана каналу).
+
+    Повертає None (НЕ 0) якщо reach відсутній/≤0 або engagement відсутній.
     Нульове залучення при ненульовому охопленні — валідне 0.0.
     """
     if campaign.reach is None or campaign.reach <= 0:
@@ -579,8 +625,8 @@ def engagement_rate(campaign: Campaign) -> float | None:
 def actor_median_engagement_rate(campaigns: Sequence[Campaign]) -> float | None:
     """Медіана engagement_rate для списку кампаній одного актора.
 
-    Ігнорує кампанії з None engagement_rate.
-    Повертає None якщо немає жодного валідного er.
+    БІЛЬШЕ НЕ використовується для резонансу (engagement здебільшого None —
+    див. engagement_rate). Ігнорує кампанії з None er; None якщо немає валідних.
     """
     ers = [engagement_rate(c) for c in campaigns]
     valid = [e for e in ers if e is not None]
@@ -589,36 +635,78 @@ def actor_median_engagement_rate(campaigns: Sequence[Campaign]) -> float | None:
     return statistics.median(valid)
 
 
-def rel_resonance_map(campaigns: Sequence[Campaign]) -> dict[str, float | None]:
-    """Actor-нормалізований резонанс: {campaign.id: rel_resonance | None}.
+# ── REACH-RESONANCE (новий головний резонанс) ────────────────────────────────
+#
+# Замість фейкового engagement (публічний Telegram не дає forwards/реакцій →
+# engagement==reach → engagement_rate==1.0 всюди) рахуємо reach-резонанс:
+# охоплення поста відносно МЕДІАНИ ЙОГО КАНАЛУ. Це дає реальний розкид
+# (нижче/вище типового рівня каналу), бо views у нас є чесні.
 
-    rel_resonance = engagement_rate(кампанії) / median(engagement_rate актора).
-    > 1 → кампанія перевищує типовий рівень цього ж актора.
-    None якщо: немає er кампанії, немає медіани актора, або медіана == 0.
+_HANDLE_RE = re.compile(r"t\.me/(?:s/)?([A-Za-z0-9_]+)")
+
+
+def campaign_handle(campaign: Campaign) -> str | None:
+    """Telegram-handle каналу кампанії з provenance (reach/engagement source_url).
+
+    Шукає t.me/<handle> (або t.me/s/<handle>) у provenance['reach'] чи
+    provenance['engagement'] source_url. Повертає handle або None.
     """
-    # групуємо за actor_id
-    by_actor: dict[str, list[Campaign]] = {}
-    for c in campaigns:
-        by_actor.setdefault(c.actor_id, []).append(c)
+    prov = campaign.provenance or {}
+    for k in ("reach", "engagement"):
+        u = ((prov.get(k) or {}).get("source_url")) or ""
+        m = _HANDLE_RE.search(u)
+        if m:
+            return m.group(1)
+    return None
 
-    # медіана er по кожному актору
-    actor_median: dict[str, float | None] = {
-        aid: actor_median_engagement_rate(camps)
-        for aid, camps in by_actor.items()
-    }
 
-    result: dict[str, float | None] = {}
-    for c in campaigns:
-        er = engagement_rate(c)
-        if er is None:
-            result[c.id] = None
-            continue
-        med = actor_median.get(c.actor_id)
-        if med is None or med == 0.0:
-            result[c.id] = None
-            continue
-        result[c.id] = er / med
-    return result
+def channel_baselines(posts: Sequence, *, min_posts: int = 3) -> dict[str, float]:
+    """Медіана views по кожному каналу (handle) з ≥min_posts постів-з-views.
+
+    Приймає будь-яку послідовність обʼєктів із атрибутами .channel і .views.
+    Канали з меншою кількістю відомих views відкидаються (нестабільна база).
+
+    Returns:
+        {handle: median_views} — лише для каналів з достатньою базою.
+    """
+    by: dict[str, list[float]] = {}
+    for p in posts:
+        channel = getattr(p, "channel", None)
+        views = getattr(p, "views", None)
+        if channel and views is not None:
+            by.setdefault(channel, []).append(float(views))
+    return {h: float(statistics.median(v)) for h, v in by.items() if len(v) >= min_posts}
+
+
+def reach_resonance(campaign: Campaign, baselines: dict[str, float]) -> float | None:
+    """Reach-резонанс: reach кампанії / медіана її каналу.
+
+    > 1 → охоплення вище типового рівня каналу; < 1 → нижче.
+    None якщо: reach відсутній/≤0, handle не визначено, handle без бази
+    у baselines, або база ≤0 (honest null — не вигадуємо резонанс).
+    """
+    if campaign.reach is None or campaign.reach <= 0:
+        return None
+    handle = campaign_handle(campaign)
+    if handle is None:
+        return None
+    base = baselines.get(handle)
+    if base is None or base <= 0:
+        return None
+    return campaign.reach / base
+
+
+def rel_resonance_map(
+    campaigns: Sequence[Campaign], baselines: dict[str, float]
+) -> dict[str, float | None]:
+    """Канал-нормалізований reach-резонанс: {campaign.id: reach_resonance | None}.
+
+    ЗАМІНЮЄ старий engagement-нормалізований варіант (engagement тепер чесно
+    None → стара метрика була б None всюди). Ключ-контракт `rel_resonance`
+    збережено для export/дашборда; змінився лише сенс — тепер це reach vs
+    медіана каналу. None де резонанс не обчислюється (honest null).
+    """
+    return {c.id: reach_resonance(c, baselines) for c in campaigns}
 
 
 # ── TREND MOMENTUM (модель успіху) ───────────────────────────────────────────
@@ -670,6 +758,7 @@ def trend_momentum(
     axis: str,
     now: str,
     window_days: int = 30,
+    baselines: dict[str, float] | None = None,
 ) -> list[dict]:
     """Порівняння recent-вікна vs prior-вікна для кожного значення осі.
 
@@ -678,11 +767,13 @@ def trend_momentum(
         axis: 'channel' | 'tone' | 'form_factor' | 'goal' | 'face'.
         now: ISO-рядок дати (YYYY-MM-DD) — референсна точка (не datetime.now).
         window_days: розмір вікна в днях.
+        baselines: медіани каналів для reach_resonance (channel_baselines).
 
     Returns:
         [{key, recent_n, prior_n, momentum (recent-prior),
-          recent_resonance (mean er recent-кампаній | None)}]
+          recent_resonance (mean reach_resonance recent-кампаній | None)}]
     """
+    baselines = baselines or {}
     now_date = date.fromisoformat(now)
     recent_start = now_date - timedelta(days=window_days)
     prior_start = now_date - timedelta(days=2 * window_days)
@@ -723,11 +814,11 @@ def trend_momentum(
         recent_n = len(recent_camps)
         prior_n = len(prior_camps)
 
-        # recent_resonance = mean er recent-кампаній (None якщо нема сигналу)
-        ers = [engagement_rate(c) for c in recent_camps]
-        valid_ers = [e for e in ers if e is not None]
+        # recent_resonance = mean reach_resonance recent-кампаній (None якщо нема сигналу)
+        rrs = [reach_resonance(c, baselines) for c in recent_camps]
+        valid_rrs = [r for r in rrs if r is not None]
         recent_resonance: float | None = (
-            sum(valid_ers) / len(valid_ers) if valid_ers else None
+            sum(valid_rrs) / len(valid_rrs) if valid_rrs else None
         )
 
         result.append({
@@ -750,11 +841,12 @@ def what_works_now(
     window_days: int = 30,
     by: str = "channels",
     min_n: int = 2,
+    baselines: dict[str, float] | None = None,
 ) -> list[dict]:
-    """«Що працює зараз»: топ-комбо за actor-нормалізованим engagement_rate.
+    """«Що працює зараз»: топ-комбо за канал-нормалізованим reach-резонансом.
 
     Серед СВІЖИХ зборів (within window_days від now) групує за значенням осі `by`,
-    обчислює mean rel_resonance (actor-нормалізований er) по групі.
+    обчислює mean rel_resonance (reach vs медіана каналу) по групі.
     Виключає групи з n < min_n та групи без жодного rel_resonance-сигналу.
 
     Args:
@@ -763,10 +855,12 @@ def what_works_now(
         window_days: вікно «свіжості» в днях.
         by: вісь групування — 'channels' | 'tone' | 'form_factor' | 'goal' | 'face'.
         min_n: мінімальна кількість recent-кампаній в групі.
+        baselines: медіани каналів для reach_resonance (channel_baselines).
 
     Returns:
         [{key, score (mean rel_resonance), n}] — відсортовано desc за score.
     """
+    baselines = baselines or {}
     now_date = date.fromisoformat(now)
     window_start = now_date - timedelta(days=window_days)
 
@@ -786,8 +880,8 @@ def what_works_now(
     if not recent:
         return []
 
-    # rel_resonance обчислюємо по ВСІХ кампаніях (щоб actor median був стабільним)
-    rrmap = rel_resonance_map(list(campaigns))
+    # rel_resonance (reach vs медіана каналу) обчислюємо по ВСІХ кампаніях
+    rrmap = rel_resonance_map(list(campaigns), baselines)
 
     # Групуємо recent по осі
     buckets: dict[str, list[Campaign]] = {}
@@ -810,6 +904,46 @@ def what_works_now(
         result.append({"key": key, "score": score, "n": n})
 
     result.sort(key=lambda x: x["score"], reverse=True)
+    return result
+
+
+# ── WHAT RAISES MOST (вісь грошей) ───────────────────────────────────────────
+
+
+def what_raises_most(
+    campaigns: Sequence[Campaign],
+    *,
+    by: str,
+    min_n: int = 3,
+) -> list[dict]:
+    """«Що приносить найбільше грошей»: медіана amount_uah у розрізі осі `by`.
+
+    Друга вісь успіху — гроші (₴ зібрано). Групує за значенням осі `by`
+    (channels/tone/form_factor/goal/face), value = МЕДІАНА amount_uah серед
+    кампаній під ключем, що МАЮТЬ amount. Ключі з < min_n amount-кампаній
+    пропускаються (honest null — не показуємо як 0).
+
+    Returns:
+        [{key, median_amount_uah, n_with_amount, n_total}] — desc за медіаною.
+    """
+    buckets: dict[str, list[Campaign]] = {}
+    for c in campaigns:
+        for key in _camp_axis_values_momentum(c, by):
+            buckets.setdefault(key, []).append(c)
+
+    result: list[dict] = []
+    for key, camps in buckets.items():
+        amounts = [c.amount_uah for c in camps if c.amount_uah is not None]
+        if len(amounts) < min_n:
+            continue  # недостатньо amount-даних — пропускаємо (honest)
+        result.append({
+            "key": key,
+            "median_amount_uah": float(statistics.median(amounts)),
+            "n_with_amount": len(amounts),
+            "n_total": len(camps),
+        })
+
+    result.sort(key=lambda x: x["median_amount_uah"], reverse=True)
     return result
 
 
@@ -840,5 +974,31 @@ def campaign_axis_summary(
                 v for v in (_campaign_metric_value(c, metric) for c in camps) if v is not None
             ]
             value = statistics.median(vals) if vals else None
+        result.append({"key": key, "value": value, "n": len(camps)})
+    return result
+
+
+def reach_resonance_axis_summary(
+    campaigns: Sequence[Campaign],
+    *,
+    axis: str,
+    baselines: dict[str, float],
+) -> list[dict]:
+    """Медіана reach_resonance у розрізі осі: {key, value, n}.
+
+    Замінює медіани по engagement (engagement тепер чесно None → garbage).
+    value = МЕДІАНА reach_resonance непорожніх значень під ключем (None якщо
+    жодне не обчислюється — honest null). `n` рахує всі кампанії під ключем.
+    """
+    buckets: dict[str, list[Campaign]] = {}
+    for c in campaigns:
+        for key in _campaign_axis_values(c, axis):
+            buckets.setdefault(key, []).append(c)
+
+    result: list[dict] = []
+    for key, camps in sorted(buckets.items()):
+        rrs = [reach_resonance(c, baselines) for c in camps]
+        valid = [r for r in rrs if r is not None]
+        value = statistics.median(valid) if valid else None
         result.append({"key": key, "value": value, "n": len(camps)})
     return result

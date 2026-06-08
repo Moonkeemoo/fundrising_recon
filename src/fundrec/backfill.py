@@ -46,8 +46,9 @@ def _parse_date(raw_date: str | None) -> str | None:
 def _extract_signals(raw_item: dict[str, Any]) -> tuple[int | float | None, int | float | None]:
     """Витягує (reach, engagement) з raw_item детерміновано.
 
-    Telegram: reach=views; engagement=forwards якщо є, інакше views.
-    YouTube:  reach=views; engagement=likes якщо є, інакше views.
+    Telegram: reach=views; engagement=forwards (БЕЗ fallback на views →
+        None якщо forwards відсутній; публічний t.me/s/ не дає forwards/реакцій).
+    YouTube:  reach=views; engagement=likes (БЕЗ fallback на views).
     Інші платформи: (None, None).
     """
     platform = (raw_item.get("platform") or "").lower()
@@ -58,13 +59,13 @@ def _extract_signals(raw_item: dict[str, Any]) -> tuple[int | float | None, int 
     if platform == "telegram":
         if views is not None:
             reach: int | float | None = views
-            engagement: int | float | None = forwards if forwards is not None else views
+            engagement: int | float | None = forwards  # None якщо відсутній — чесно
             return reach, engagement
 
     elif platform == "youtube":
         if views is not None:
             reach = views
-            engagement = likes if likes is not None else views
+            engagement = likes  # None якщо відсутній — чесно
             return reach, engagement
 
     return None, None

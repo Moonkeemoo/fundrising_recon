@@ -243,8 +243,10 @@ def _apply_jar_to_case(case: Any, jar_data: dict[str, Any]) -> None:
 def _apply_signals(campaign: Any, raw_item: dict[str, Any], tier: int) -> None:
     """Встановлює reach/engagement кампанії детерміновано з сирих платформних даних.
 
-    Telegram: reach = views; engagement = forwards якщо є, інакше views.
-    YouTube:  reach = views; engagement = likes якщо є, інакше views.
+    Telegram: reach = views; engagement = forwards (БЕЗ fallback на views →
+        лишається None якщо forwards відсутній — публічний t.me/s/ не дає
+        forwards/реакцій, тож engagement здебільшого None, і це чесно).
+    YouTube:  reach = views; engagement = likes (БЕЗ fallback на views).
     Встановлює лише якщо значення ненульове; перезаписує LLM-здогад реальним числом.
     Кожне встановлене поле отримує provenance з tier та confidence.
     """
@@ -262,11 +264,11 @@ def _apply_signals(campaign: Any, raw_item: dict[str, Any], tier: int) -> None:
     if platform in ("telegram",):
         if views is not None:
             reach_val = views
-            engagement_val = forwards if forwards is not None else views
+            engagement_val = forwards  # None якщо forwards відсутній — чесно
     elif platform in ("youtube",):
         if views is not None:
             reach_val = views
-            engagement_val = likes if likes is not None else views
+            engagement_val = likes  # None якщо likes відсутній — чесно
 
     if reach_val is not None:
         campaign.reach = reach_val
