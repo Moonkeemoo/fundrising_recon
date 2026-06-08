@@ -54,7 +54,17 @@ def test_ammo():
 
 def test_optics():
     result = derive_themes("тепловізор та приціл для снайпера")
-    assert "optics_electro" in result
+    assert "optics_thermal" in result
+
+
+def test_concrete_items():
+    assert "body_armor" in derive_themes("збір на бронежилети та плитоноски")
+    assert "nrk_demining" in derive_themes("НРК для розмінування «Кріт»")
+    assert "camouflage" in derive_themes("маскувальні сітки та кікімори")
+    assert "comms" in derive_themes("рації та Starlink для звʼязку")
+    assert "bombers" in derive_themes("важкий дрон-бомбер «Вампір»")
+    # хибних збігів НЕ має бути: «скидаємось» не має тегати fpv
+    assert "fpv" not in derive_themes("друзі, скидаємось на потреби")
 
 
 def test_humanitarian():

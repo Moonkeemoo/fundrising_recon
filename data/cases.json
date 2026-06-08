@@ -8391,7 +8391,8 @@
       "rel_resonance": 1.6849315068493151,
       "reach_resonance": 1.6849315068493151,
       "themes": [
-        "recon"
+        "recon",
+        "nrk_demining"
       ],
       "has_destination": true,
       "reach_total": 5370,
@@ -8743,7 +8744,8 @@
       "reach_resonance": 0.9397944199706314,
       "themes": [
         "fpv",
-        "vehicles"
+        "vehicles",
+        "nrk_demining"
       ],
       "has_destination": false,
       "reach_total": null,
@@ -9246,6 +9248,7 @@
       "reach_resonance": 0.8428781204111601,
       "themes": [
         "fpv",
+        "nrk_demining",
         "humanitarian"
       ],
       "has_destination": true,
@@ -9332,7 +9335,8 @@
       "rel_resonance": null,
       "reach_resonance": null,
       "themes": [
-        "fpv"
+        "fpv",
+        "bombers"
       ],
       "has_destination": false,
       "reach_total": 181466,
@@ -9812,7 +9816,8 @@
       "rel_resonance": 1.0205580029368575,
       "reach_resonance": 1.0205580029368575,
       "themes": [
-        "vehicles"
+        "vehicles",
+        "body_armor"
       ],
       "has_destination": true,
       "reach_total": 1543,
@@ -9909,7 +9914,9 @@
       "engagement_rate": null,
       "rel_resonance": 0.5254237288135594,
       "reach_resonance": 0.5254237288135594,
-      "themes": [],
+      "themes": [
+        "body_armor"
+      ],
       "has_destination": true,
       "reach_total": 62,
       "engagement_total": null,
@@ -10502,7 +10509,7 @@
       "rel_resonance": 1.0,
       "reach_resonance": 1.0,
       "themes": [
-        "medical"
+        "vehicles"
       ],
       "has_destination": false,
       "reach_total": null,
@@ -10775,6 +10782,8 @@
       "themes": [
         "reb_ew",
         "vehicles",
+        "nrk_demining",
+        "energy",
         "humanitarian"
       ],
       "has_destination": true,
@@ -11933,7 +11942,7 @@
       "themes": [
         "fpv",
         "vehicles",
-        "medical"
+        "nrk_demining"
       ],
       "has_destination": false,
       "reach_total": null,
@@ -12435,7 +12444,8 @@
       "reach_resonance": 1.0,
       "themes": [
         "reb_ew",
-        "comms"
+        "comms",
+        "medical"
       ],
       "has_destination": true,
       "reach_total": 5380,
@@ -12532,7 +12542,6 @@
       "themes": [
         "fpv",
         "reb_ew",
-        "optics_electro",
         "energy"
       ],
       "has_destination": true,
@@ -12618,7 +12627,7 @@
       "rel_resonance": null,
       "reach_resonance": null,
       "themes": [
-        "medical"
+        "vehicles"
       ],
       "has_destination": false,
       "reach_total": null,
@@ -12792,7 +12801,9 @@
       "engagement_rate": null,
       "rel_resonance": null,
       "reach_resonance": null,
-      "themes": [],
+      "themes": [
+        "comms"
+      ],
       "has_destination": false,
       "reach_total": null,
       "engagement_total": null,
@@ -13526,7 +13537,8 @@
       "rel_resonance": 0.895741556534508,
       "reach_resonance": 0.895741556534508,
       "themes": [
-        "fpv"
+        "fpv",
+        "comms"
       ],
       "has_destination": false,
       "reach_total": null,
@@ -14189,8 +14201,8 @@
       "reach_resonance": null,
       "themes": [
         "fpv",
-        "fiber",
-        "comms"
+        "comms",
+        "fiber"
       ],
       "has_destination": false,
       "reach_total": 184788,
@@ -14541,7 +14553,8 @@
       "rel_resonance": null,
       "reach_resonance": null,
       "themes": [
-        "reb_ew"
+        "reb_ew",
+        "nrk_demining"
       ],
       "has_destination": true,
       "reach_total": 66837,
@@ -14648,7 +14661,9 @@
       "engagement_rate": null,
       "rel_resonance": null,
       "reach_resonance": null,
-      "themes": [],
+      "themes": [
+        "medical"
+      ],
       "has_destination": true,
       "reach_total": 4370,
       "engagement_total": null,
