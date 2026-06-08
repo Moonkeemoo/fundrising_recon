@@ -125,7 +125,14 @@
     "url": "https://send.monobank.ua/jar/AEHzYfDirG",
     "title": "ДІГНІТАС created a fundraiser",
     "amount_uah": 1152556.32,
-    "goal_amount": 3000000.0
+    "goal_amount": 3000000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:37.289939+00:00",
+        "amount_uah": 1152556.32,
+        "goal_amount": 3000000.0
+      }
+    ]
   },
   "REALJAR1": {
     "jar_id": "REALJAR1",
@@ -265,28 +272,56 @@
     "url": "https://send.monobank.ua/jar/5Qxg2dyZZV",
     "title": "Ірина К. shattered the jar",
     "amount_uah": 4034546.22,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:47.384864+00:00",
+        "amount_uah": 4034546.22,
+        "goal_amount": null
+      }
+    ]
   },
   "9LbwdnWSch": {
     "jar_id": "9LbwdnWSch",
     "url": "https://send.monobank.ua/jar/9LbwdnWSch",
     "title": "Charity",
-    "amount_uah": 30497947.34,
-    "goal_amount": 30436397.41
+    "amount_uah": 30506965.54,
+    "goal_amount": 30500212.34,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:09.708112+00:00",
+        "amount_uah": 30506965.54,
+        "goal_amount": 30500212.34
+      }
+    ]
   },
   "98LvvS7jDn": {
     "jar_id": "98LvvS7jDn",
     "url": "https://send.monobank.ua/jar/98LvvS7jDn",
     "title": "Олександр Р. created the jar",
     "amount_uah": 25320.88,
-    "goal_amount": 30000.0
+    "goal_amount": 30000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:42.858058+00:00",
+        "amount_uah": 25320.88,
+        "goal_amount": 30000.0
+      }
+    ]
   },
   "8sbboyw3as": {
     "jar_id": "8sbboyw3as",
     "url": "https://send.monobank.ua/jar/8sbboyw3as",
     "title": "Руслан Г. shattered the jar",
     "amount_uah": 198432.58,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:21.173154+00:00",
+        "amount_uah": 198432.58,
+        "goal_amount": null
+      }
+    ]
   },
   "AbbEKfgbg7": {
     "jar_id": "AbbEKfgbg7",
@@ -311,36 +346,71 @@
     "jar_id": "9nJmjXLDu4",
     "url": "https://send.monobank.ua/jar/9nJmjXLDu4",
     "title": "Charity",
-    "amount_uah": 46918479.0,
-    "goal_amount": 46877658.45
+    "amount_uah": 46950592.14,
+    "goal_amount": 46930996.37,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:20.148004+00:00",
+        "amount_uah": 46950592.14,
+        "goal_amount": 46930996.37
+      }
+    ]
   },
   "5XcmGy5bif": {
     "jar_id": "5XcmGy5bif",
     "url": "https://send.monobank.ua/jar/5XcmGy5bif",
     "title": "Віталій Г. shattered the jar",
     "amount_uah": 254636.92,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:53.923522+00:00",
+        "amount_uah": 254636.92,
+        "goal_amount": null
+      }
+    ]
   },
   "4U54e31BsM": {
     "jar_id": "4U54e31BsM",
     "url": "https://send.monobank.ua/jar/4U54e31BsM",
     "title": "Андрій Б. created the jar",
-    "amount_uah": 2678.96,
-    "goal_amount": 220000.0
+    "amount_uah": 4094.96,
+    "goal_amount": 220000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:41.536903+00:00",
+        "amount_uah": 4094.96,
+        "goal_amount": 220000.0
+      }
+    ]
   },
   "2uU5rZToih": {
     "jar_id": "2uU5rZToih",
     "url": "https://send.monobank.ua/jar/2uU5rZToih",
     "title": "Віталій К. created the jar",
     "amount_uah": 0.02,
-    "goal_amount": 20000.0
+    "goal_amount": 20000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:16.444680+00:00",
+        "amount_uah": 0.02,
+        "goal_amount": 20000.0
+      }
+    ]
   },
   "2VbpoF4uuV": {
     "jar_id": "2VbpoF4uuV",
     "url": "https://send.monobank.ua/jar/2VbpoF4uuV",
     "title": "Володимир С. shattered the jar",
     "amount_uah": 60057.53,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:27.312352+00:00",
+        "amount_uah": 60057.53,
+        "goal_amount": null
+      }
+    ]
   },
   "3oMaFiM4Q6": {
     "jar_id": "3oMaFiM4Q6",
@@ -384,57 +454,113 @@
     "jar_id": "28o1edDVvu",
     "url": "https://send.monobank.ua/jar/28o1edDVvu",
     "title": "Володимир Г. created the jar",
-    "amount_uah": 239958.16,
-    "goal_amount": 10.0
+    "amount_uah": 251113.16,
+    "goal_amount": 10.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:06.032441+00:00",
+        "amount_uah": 251113.16,
+        "goal_amount": 10.0
+      }
+    ]
   },
   "3eNx4oNDhj": {
     "jar_id": "3eNx4oNDhj",
     "url": "https://send.monobank.ua/jar/3eNx4oNDhj",
     "title": "Мирослав К. shattered the jar",
     "amount_uah": 31602.23,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:11.788506+00:00",
+        "amount_uah": 31602.23,
+        "goal_amount": null
+      }
+    ]
   },
   "9YocE4WyEZ": {
     "jar_id": "9YocE4WyEZ",
     "url": "https://send.monobank.ua/jar/9YocE4WyEZ",
     "title": "Володимир А. shattered the jar",
     "amount_uah": 4016689.03,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:33.624527+00:00",
+        "amount_uah": 4016689.03,
+        "goal_amount": null
+      }
+    ]
   },
   "5hcTqJf8BL": {
     "jar_id": "5hcTqJf8BL",
     "url": "https://send.monobank.ua/jar/5hcTqJf8BL",
     "title": "Микола П. created the jar",
-    "amount_uah": 50123.0,
-    "goal_amount": 64000.0
+    "amount_uah": 51391.3,
+    "goal_amount": 64000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:39.096738+00:00",
+        "amount_uah": 51391.3,
+        "goal_amount": 64000.0
+      }
+    ]
   },
   "7dre3dgkJK": {
     "jar_id": "7dre3dgkJK",
     "url": "https://send.monobank.ua/jar/7dre3dgkJK",
     "title": "Андрій О. shattered the jar",
     "amount_uah": 1025994.0,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:44.697940+00:00",
+        "amount_uah": 1025994.0,
+        "goal_amount": null
+      }
+    ]
   },
   "88Pg9HLZMQ": {
     "jar_id": "88Pg9HLZMQ",
     "url": "https://send.monobank.ua/jar/88Pg9HLZMQ",
     "title": "Ірина Г. created the jar",
-    "amount_uah": 20081.65,
-    "goal_amount": 10.0
+    "amount_uah": 16281.65,
+    "goal_amount": 10.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:58.292281+00:00",
+        "amount_uah": 16281.65,
+        "goal_amount": 10.0
+      }
+    ]
   },
   "25Uk4VZ4FP": {
     "jar_id": "25Uk4VZ4FP",
     "url": "https://send.monobank.ua/jar/25Uk4VZ4FP",
     "title": "Тарас М. shattered the jar",
     "amount_uah": 283481.78,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:50.143298+00:00",
+        "amount_uah": 283481.78,
+        "goal_amount": null
+      }
+    ]
   },
   "5AEPyNCvkG": {
     "jar_id": "5AEPyNCvkG",
     "url": "https://send.monobank.ua/jar/5AEPyNCvkG",
     "title": "Ірина Г. created the jar",
-    "amount_uah": 238105.04,
-    "goal_amount": 1000000.0
+    "amount_uah": 239425.04,
+    "goal_amount": 1000000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:52.592993+00:00",
+        "amount_uah": 239425.04,
+        "goal_amount": 1000000.0
+      }
+    ]
   },
   "Rmhzf7Ktw": {
     "jar_id": "Rmhzf7Ktw",
@@ -460,7 +586,14 @@
     "url": "https://send.monobank.ua/jar/nbPQzGmRy",
     "title": "Ярослав Г. shattered the jar",
     "amount_uah": 961578.06,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:33:33.673173+00:00",
+        "amount_uah": 961578.06,
+        "goal_amount": null
+      }
+    ]
   },
   "5ErfgMqeKy": {
     "jar_id": "5ErfgMqeKy",
@@ -1030,6 +1163,608 @@
         "ts": "2026-06-08T10:04:57.273028+00:00",
         "amount_uah": 381490.6,
         "goal_amount": 5500000.0
+      }
+    ]
+  },
+  "AcKMNFgxnF": {
+    "jar_id": "AcKMNFgxnF",
+    "url": "https://send.monobank.ua/jar/AcKMNFgxnF",
+    "title": "Олександр М. shattered the jar",
+    "amount_uah": 74052.0,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:06.344630+00:00",
+        "amount_uah": 74052.0,
+        "goal_amount": null
+      }
+    ]
+  },
+  "PFye3j7N8": {
+    "jar_id": "PFye3j7N8",
+    "url": "https://send.monobank.ua/jar/PFye3j7N8",
+    "title": "Андрій Б. shattered the jar",
+    "amount_uah": 541300.0,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:14.516948+00:00",
+        "amount_uah": 541300.0,
+        "goal_amount": null
+      }
+    ]
+  },
+  "2H1bEMVkpc": {
+    "jar_id": "2H1bEMVkpc",
+    "url": "https://send.monobank.ua/jar/2H1bEMVkpc",
+    "title": "Олена О. created the jar",
+    "amount_uah": 534084.16,
+    "goal_amount": 500000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:19.776292+00:00",
+        "amount_uah": 534084.16,
+        "goal_amount": 500000.0
+      }
+    ]
+  },
+  "3KCKr9RCkG": {
+    "jar_id": "3KCKr9RCkG",
+    "url": "https://send.monobank.ua/jar/3KCKr9RCkG",
+    "title": "Charity",
+    "amount_uah": 1077250.28,
+    "goal_amount": 1070992.68,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:25.229763+00:00",
+        "amount_uah": 1077250.28,
+        "goal_amount": 1070992.68
+      }
+    ]
+  },
+  "4Urysc5BJ9": {
+    "jar_id": "4Urysc5BJ9",
+    "url": "https://send.monobank.ua/jar/4Urysc5BJ9",
+    "title": "Олександр Л. created the jar",
+    "amount_uah": 4550.91,
+    "goal_amount": 400000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:30.829682+00:00",
+        "amount_uah": 4550.91,
+        "goal_amount": 400000.0
+      }
+    ]
+  },
+  "4XdurMxeJT": {
+    "jar_id": "4XdurMxeJT",
+    "url": "https://send.monobank.ua/jar/4XdurMxeJT",
+    "title": "Сергій Б. shattered the jar",
+    "amount_uah": 73765.63,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:28:36.300050+00:00",
+        "amount_uah": 73765.63,
+        "goal_amount": null
+      }
+    ]
+  },
+  "74hQNt1R8J": {
+    "jar_id": "74hQNt1R8J",
+    "url": "https://send.monobank.ua/jar/74hQNt1R8J",
+    "title": "Андрій Б. shattered the jar",
+    "amount_uah": 503749.46,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:04.271486+00:00",
+        "amount_uah": 503749.46,
+        "goal_amount": null
+      }
+    ]
+  },
+  "7wEp1dFfy2": {
+    "jar_id": "7wEp1dFfy2",
+    "url": "https://send.monobank.ua/jar/7wEp1dFfy2",
+    "title": "Jar owner Борис Р.",
+    "amount_uah": 183581.16,
+    "goal_amount": 30581.16,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:15.423363+00:00",
+        "amount_uah": 183581.16,
+        "goal_amount": 30581.16
+      }
+    ]
+  },
+  "2uhdSynMcr": {
+    "jar_id": "2uhdSynMcr",
+    "url": "https://send.monobank.ua/jar/2uhdSynMcr",
+    "title": "Людмила К. shattered the jar",
+    "amount_uah": 20216.88,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:26.476320+00:00",
+        "amount_uah": 20216.88,
+        "goal_amount": null
+      }
+    ]
+  },
+  "6FdbUYws5b": {
+    "jar_id": "6FdbUYws5b",
+    "url": "https://send.monobank.ua/jar/6FdbUYws5b",
+    "title": "Роман Р. shattered the jar",
+    "amount_uah": 2252026.26,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:31.710822+00:00",
+        "amount_uah": 2252026.26,
+        "goal_amount": null
+      }
+    ]
+  },
+  "9QNtRCReUr": {
+    "jar_id": "9QNtRCReUr",
+    "url": "https://send.monobank.ua/jar/9QNtRCReUr",
+    "title": "Валерія П. shattered the jar",
+    "amount_uah": 634069.65,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:37.085758+00:00",
+        "amount_uah": 634069.65,
+        "goal_amount": null
+      }
+    ]
+  },
+  "3PYVbn1hQZ": {
+    "jar_id": "3PYVbn1hQZ",
+    "url": "https://send.monobank.ua/jar/3PYVbn1hQZ",
+    "title": "Prytula Foundation closed the fundraiser",
+    "amount_uah": 50020280.68,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:42.380827+00:00",
+        "amount_uah": 50020280.68,
+        "goal_amount": null
+      }
+    ]
+  },
+  "5xg3UNubX": {
+    "jar_id": "5xg3UNubX",
+    "url": "https://send.monobank.ua/jar/5xg3UNubX",
+    "title": "Ігор Х. shattered the jar",
+    "amount_uah": 100.0,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:47.687833+00:00",
+        "amount_uah": 100.0,
+        "goal_amount": null
+      }
+    ]
+  },
+  "3qLNjmXw6c": {
+    "jar_id": "3qLNjmXw6c",
+    "url": "https://send.monobank.ua/jar/3qLNjmXw6c",
+    "title": "Тарас М. shattered the jar",
+    "amount_uah": 8351.22,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:52.963664+00:00",
+        "amount_uah": 8351.22,
+        "goal_amount": null
+      }
+    ]
+  },
+  "5LjaTBLVft": {
+    "jar_id": "5LjaTBLVft",
+    "url": "https://send.monobank.ua/jar/5LjaTBLVft",
+    "title": "Андрій Б. shattered the jar",
+    "amount_uah": 386725.0,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:29:58.427148+00:00",
+        "amount_uah": 386725.0,
+        "goal_amount": null
+      }
+    ]
+  },
+  "4nGwkrc3KW": {
+    "jar_id": "4nGwkrc3KW",
+    "url": "https://send.monobank.ua/jar/4nGwkrc3KW",
+    "title": "Віталій С. shattered the jar",
+    "amount_uah": 50710.0,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:03.770222+00:00",
+        "amount_uah": 50710.0,
+        "goal_amount": null
+      }
+    ]
+  },
+  "o77ggEgtV": {
+    "jar_id": "o77ggEgtV",
+    "url": "https://send.monobank.ua/jar/o77ggEgtV",
+    "title": "Ігор К. shattered the jar",
+    "amount_uah": 259809.58,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:09.146496+00:00",
+        "amount_uah": 259809.58,
+        "goal_amount": null
+      }
+    ]
+  },
+  "54x8XxQrun": {
+    "jar_id": "54x8XxQrun",
+    "url": "https://send.monobank.ua/jar/54x8XxQrun",
+    "title": "Дмитро Ш. created the jar",
+    "amount_uah": 26890.0,
+    "goal_amount": 180000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:14.409149+00:00",
+        "amount_uah": 26890.0,
+        "goal_amount": 180000.0
+      }
+    ]
+  },
+  "7PD39rgTT8": {
+    "jar_id": "7PD39rgTT8",
+    "url": "https://send.monobank.ua/jar/7PD39rgTT8",
+    "title": "Катерина К. created the jar",
+    "amount_uah": 318600.65,
+    "goal_amount": 500000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:26.212379+00:00",
+        "amount_uah": 318600.65,
+        "goal_amount": 500000.0
+      }
+    ]
+  },
+  "q64vwQS2L": {
+    "jar_id": "q64vwQS2L",
+    "url": "https://send.monobank.ua/jar/q64vwQS2L",
+    "title": "Андрій Б. shattered the jar",
+    "amount_uah": 633397.21,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:31.915652+00:00",
+        "amount_uah": 633397.21,
+        "goal_amount": null
+      }
+    ]
+  },
+  "2ynh68AfhJ": {
+    "jar_id": "2ynh68AfhJ",
+    "url": "https://send.monobank.ua/jar/2ynh68AfhJ",
+    "title": "Антон Ш. shattered the jar",
+    "amount_uah": 331289.9,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:48.618235+00:00",
+        "amount_uah": 331289.9,
+        "goal_amount": null
+      }
+    ]
+  },
+  "4kvhAC8R3Y": {
+    "jar_id": "4kvhAC8R3Y",
+    "url": "https://send.monobank.ua/jar/4kvhAC8R3Y",
+    "title": "Юрій Л. shattered the jar",
+    "amount_uah": 650015.87,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:30:59.297621+00:00",
+        "amount_uah": 650015.87,
+        "goal_amount": null
+      }
+    ]
+  },
+  "5iWf9YdYcx": {
+    "jar_id": "5iWf9YdYcx",
+    "url": "https://send.monobank.ua/jar/5iWf9YdYcx",
+    "title": "Ігор Л. created the jar",
+    "amount_uah": 192640.0,
+    "goal_amount": 30000000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:04.613375+00:00",
+        "amount_uah": 192640.0,
+        "goal_amount": 30000000.0
+      }
+    ]
+  },
+  "82ZS1S5JDR": {
+    "jar_id": "82ZS1S5JDR",
+    "url": "https://send.monobank.ua/jar/82ZS1S5JDR",
+    "title": "Андрій К. created the jar",
+    "amount_uah": 31721.34,
+    "goal_amount": 150000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:10.415906+00:00",
+        "amount_uah": 31721.34,
+        "goal_amount": 150000.0
+      }
+    ]
+  },
+  "9KovuZR59J": {
+    "jar_id": "9KovuZR59J",
+    "url": "https://send.monobank.ua/jar/9KovuZR59J",
+    "title": "Василь Б. shattered the jar",
+    "amount_uah": 5069408.53,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:22.054568+00:00",
+        "amount_uah": 5069408.53,
+        "goal_amount": null
+      }
+    ]
+  },
+  "2oiKBozkaB": {
+    "jar_id": "2oiKBozkaB",
+    "url": "https://send.monobank.ua/jar/2oiKBozkaB",
+    "title": "Ігор В. shattered the jar",
+    "amount_uah": 314108.0,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:32.748247+00:00",
+        "amount_uah": 314108.0,
+        "goal_amount": null
+      }
+    ]
+  },
+  "6SbfDp44PT": {
+    "jar_id": "6SbfDp44PT",
+    "url": "https://send.monobank.ua/jar/6SbfDp44PT",
+    "title": "Андрій С. shattered the jar",
+    "amount_uah": 48026.2,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:38.149343+00:00",
+        "amount_uah": 48026.2,
+        "goal_amount": null
+      }
+    ]
+  },
+  "258N2kAsu9": {
+    "jar_id": "258N2kAsu9",
+    "url": "https://send.monobank.ua/jar/258N2kAsu9",
+    "title": "Артем Ш. created the jar",
+    "amount_uah": 114843.0,
+    "goal_amount": 200000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:43.437131+00:00",
+        "amount_uah": 114843.0,
+        "goal_amount": 200000.0
+      }
+    ]
+  },
+  "2migcEjNcS": {
+    "jar_id": "2migcEjNcS",
+    "url": "https://send.monobank.ua/jar/2migcEjNcS",
+    "title": "Артем П. created the jar",
+    "amount_uah": 20423.44,
+    "goal_amount": 30000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:49.366413+00:00",
+        "amount_uah": 20423.44,
+        "goal_amount": 30000.0
+      }
+    ]
+  },
+  "3KPkxiomJx": {
+    "jar_id": "3KPkxiomJx",
+    "url": "https://send.monobank.ua/jar/3KPkxiomJx",
+    "title": "Микита П. shattered the jar",
+    "amount_uah": 107523.38,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:31:55.167352+00:00",
+        "amount_uah": 107523.38,
+        "goal_amount": null
+      }
+    ]
+  },
+  "8KeF6tfioC": {
+    "jar_id": "8KeF6tfioC",
+    "url": "https://send.monobank.ua/jar/8KeF6tfioC",
+    "title": "Сергій М. shattered the jar",
+    "amount_uah": 640981.05,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:00.578225+00:00",
+        "amount_uah": 640981.05,
+        "goal_amount": null
+      }
+    ]
+  },
+  "8daNfbDqMa": {
+    "jar_id": "8daNfbDqMa",
+    "url": "https://send.monobank.ua/jar/8daNfbDqMa",
+    "title": "Євген Д. created the jar",
+    "amount_uah": 54564.44,
+    "goal_amount": 500000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:17.019079+00:00",
+        "amount_uah": 54564.44,
+        "goal_amount": 500000.0
+      }
+    ]
+  },
+  "99tzCmwTRB": {
+    "jar_id": "99tzCmwTRB",
+    "url": "https://send.monobank.ua/jar/99tzCmwTRB",
+    "title": "Дмитро С. shattered the jar",
+    "amount_uah": 148490.51,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:22.582280+00:00",
+        "amount_uah": 148490.51,
+        "goal_amount": null
+      }
+    ]
+  },
+  "3RK28hAUrj": {
+    "jar_id": "3RK28hAUrj",
+    "url": "https://send.monobank.ua/jar/3RK28hAUrj",
+    "title": "Тетяна Р. created the jar",
+    "amount_uah": 107752.66,
+    "goal_amount": 200000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:27.986317+00:00",
+        "amount_uah": 107752.66,
+        "goal_amount": 200000.0
+      }
+    ]
+  },
+  "JVSeVBURu": {
+    "jar_id": "JVSeVBURu",
+    "url": "https://send.monobank.ua/jar/JVSeVBURu",
+    "title": "ПОБАЧИМО ПЕРЕМОГУ created a fundraiser",
+    "amount_uah": 53776.0,
+    "goal_amount": 750000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:32:55.430771+00:00",
+        "amount_uah": 53776.0,
+        "goal_amount": 750000.0
+      }
+    ]
+  },
+  "5mKT2Vr8xE": {
+    "jar_id": "5mKT2Vr8xE",
+    "url": "https://send.monobank.ua/jar/5mKT2Vr8xE",
+    "title": "Ігор К. shattered the jar",
+    "amount_uah": 207309.64,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:33:01.211149+00:00",
+        "amount_uah": 207309.64,
+        "goal_amount": null
+      }
+    ]
+  },
+  "A1Y9sGJ3ZD": {
+    "jar_id": "A1Y9sGJ3ZD",
+    "url": "https://send.monobank.ua/jar/A1Y9sGJ3ZD",
+    "title": "Олександр А. created the jar",
+    "amount_uah": 542.2,
+    "goal_amount": 10.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:33:06.684630+00:00",
+        "amount_uah": 542.2,
+        "goal_amount": 10.0
+      }
+    ]
+  },
+  "3W7V3Q9i6q": {
+    "jar_id": "3W7V3Q9i6q",
+    "url": "https://send.monobank.ua/jar/3W7V3Q9i6q",
+    "title": "Олександра Г. shattered the jar",
+    "amount_uah": 112870.41,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:33:12.249481+00:00",
+        "amount_uah": 112870.41,
+        "goal_amount": null
+      }
+    ]
+  },
+  "2y3XBJLyMQ": {
+    "jar_id": "2y3XBJLyMQ",
+    "url": "https://send.monobank.ua/jar/2y3XBJLyMQ",
+    "title": "Максим П. shattered the jar",
+    "amount_uah": 301922.43,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:33:17.503711+00:00",
+        "amount_uah": 301922.43,
+        "goal_amount": null
+      }
+    ]
+  },
+  "3dGsVAbD34": {
+    "jar_id": "3dGsVAbD34",
+    "url": "https://send.monobank.ua/jar/3dGsVAbD34",
+    "title": "Ігор Л. shattered the jar",
+    "amount_uah": 853133.0,
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T11:33:22.830317+00:00",
+        "amount_uah": 853133.0,
+        "goal_amount": null
+      }
+    ]
+  },
+  "4hFup91hV3": {
+    "jar_id": "4hFup91hV3",
+    "url": "https://send.monobank.ua/jar/4hFup91hV3",
+    "title": "Андрій Ф. created the jar",
+    "amount_uah": 14150.45,
+    "goal_amount": 2000000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:33:28.194783+00:00",
+        "amount_uah": 14150.45,
+        "goal_amount": 2000000.0
+      }
+    ]
+  },
+  "8SURmA17uo": {
+    "jar_id": "8SURmA17uo",
+    "url": "https://send.monobank.ua/jar/8SURmA17uo",
+    "title": "Юрій Г. created the jar",
+    "amount_uah": 357605.68,
+    "goal_amount": 2000000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:33:39.028009+00:00",
+        "amount_uah": 357605.68,
+        "goal_amount": 2000000.0
+      }
+    ]
+  },
+  "AP2iskEXPe": {
+    "jar_id": "AP2iskEXPe",
+    "url": "https://send.monobank.ua/jar/AP2iskEXPe",
+    "title": "ГРОМАДЯНИН created a fundraiser",
+    "amount_uah": 90410.37,
+    "goal_amount": 90000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T11:33:44.670136+00:00",
+        "amount_uah": 90410.37,
+        "goal_amount": 90000.0
       }
     ]
   }

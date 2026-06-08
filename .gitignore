@@ -32,3 +32,4 @@ data/_refresh_run.log
 data/fundrec.sqlite.bak_stale
 data/fundrec.sqlite.bak_sweep
 data/_sweep.log
+data/fundrec.sqlite.bak_bankfirst
