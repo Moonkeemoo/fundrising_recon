@@ -27,3 +27,5 @@ data/fundrec.sqlite.bak_audit
 data/_audit_run.log
 data/fundrec.sqlite.bak_llm
 data/_resolve_run.log
+data/fundrec.sqlite.bak_precollect
+data/_refresh_run.log
