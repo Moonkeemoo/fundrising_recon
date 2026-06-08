@@ -6761,7 +6761,7 @@
           {
             "a": "telegram",
             "b": "military",
-            "value": 406513023.37,
+            "value": 406894513.97,
             "n": 55
           },
           {
@@ -7247,7 +7247,7 @@
           {
             "a": "brand",
             "b": "military",
-            "value": 30757851.17,
+            "value": 31139341.77,
             "n": 17
           },
           {
@@ -7460,7 +7460,7 @@
           },
           {
             "key": "gratitude",
-            "value": 2289418.475,
+            "value": 1200000.0,
             "n": 25
           },
           {
@@ -7487,7 +7487,7 @@
           },
           {
             "key": "jar",
-            "value": 220624.22,
+            "value": 220728.69,
             "n": 41
           },
           {
@@ -7514,7 +7514,7 @@
           },
           {
             "key": "brand",
-            "value": 157220.0,
+            "value": 188922.11,
             "n": 21
           },
           {
@@ -7551,7 +7551,7 @@
           },
           {
             "key": "telegram",
-            "value": 295467.17,
+            "value": 303761.08499999996,
             "n": 72
           },
           {
@@ -7664,8 +7664,8 @@
           },
           {
             "key": "gratitude",
-            "value": 0.375,
-            "n": 8
+            "value": 0.3333333333333333,
+            "n": 9
           },
           {
             "key": "heroism",
@@ -7696,8 +7696,8 @@
           },
           {
             "key": "telegram",
-            "value": 0.27586206896551724,
-            "n": 29
+            "value": 0.26666666666666666,
+            "n": 30
           },
           {
             "key": "tiktok",
@@ -7854,8 +7854,8 @@
           },
           {
             "key": "telegram",
-            "median_amount_uah": 295467.17,
-            "n_with_amount": 37,
+            "median_amount_uah": 303761.08499999996,
+            "n_with_amount": 38,
             "n_total": 72
           },
           {
@@ -7885,12 +7885,6 @@
         ],
         "tone": [
           {
-            "key": "gratitude",
-            "median_amount_uah": 2289418.475,
-            "n_with_amount": 14,
-            "n_total": 25
-          },
-          {
             "key": "data_transparent",
             "median_amount_uah": 2243341.375,
             "n_with_amount": 8,
@@ -7901,6 +7895,12 @@
             "median_amount_uah": 1200000.0,
             "n_with_amount": 19,
             "n_total": 38
+          },
+          {
+            "key": "gratitude",
+            "median_amount_uah": 1200000.0,
+            "n_with_amount": 15,
+            "n_total": 25
           },
           {
             "key": "emotional",
@@ -7924,8 +7924,8 @@
         "form_factor": [
           {
             "key": "text",
-            "median_amount_uah": 258150.16499999998,
-            "n_with_amount": 36,
+            "median_amount_uah": 295467.17,
+            "n_with_amount": 37,
             "n_total": 69
           },
           {
@@ -7944,8 +7944,8 @@
         "goal": [
           {
             "key": "military",
-            "median_amount_uah": 312055.0,
-            "n_with_amount": 31,
+            "median_amount_uah": 346772.8,
+            "n_with_amount": 32,
             "n_total": 56
           },
           {
@@ -8746,6 +8746,12 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "destination": {
+          "source_url": "https://u24.gov.ua/uk/sky-defense?utm_source=telegram&amp;utm_medium=social&amp;utm_campaign=sky-defense&amp;utm_content=u24",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "donation landing page (no embedded jar resolved)"
         }
       },
       "confidence_overall": 0.35,
@@ -8759,7 +8765,7 @@
       "themes": [
         "fpv"
       ],
-      "has_destination": false,
+      "has_destination": true,
       "reach_total": null,
       "engagement_total": null,
       "post_count": 0,
@@ -9173,6 +9179,12 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "destination": {
+          "source_url": "https://base.monobank.ua/vprytul",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "donation landing page (no embedded jar resolved)"
         }
       },
       "confidence_overall": 0.35,
@@ -9186,7 +9198,7 @@
       "themes": [
         "reb_ew"
       ],
-      "has_destination": false,
+      "has_destination": true,
       "reach_total": null,
       "engagement_total": null,
       "post_count": 0,
@@ -10603,6 +10615,12 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "destination": {
+          "source_url": "https://u24.gov.ua/uk/donate/humanitarian?utm_source=telegram&amp;utm_medium=social&amp;utm_campaign=medical&amp;utm_content=u24",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "donation landing page (no embedded jar resolved)"
         }
       },
       "confidence_overall": 0.35,
@@ -10617,7 +10635,7 @@
         "fpv",
         "vehicles"
       ],
-      "has_destination": false,
+      "has_destination": true,
       "reach_total": null,
       "engagement_total": null,
       "post_count": 0,
@@ -12244,6 +12262,12 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "destination": {
+          "source_url": "https://u24.gov.ua/uk/donate/defend?utm_source=telegram&amp;utm_medium=social&amp;utm_campaign=defense&amp;utm_content=u24",
+          "confidence": 0.6,
+          "tier": 2,
+          "note": "donation landing page (no embedded jar resolved)"
         }
       },
       "confidence_overall": 0.35,
@@ -12259,7 +12283,7 @@
         "vehicles",
         "nrk_demining"
       ],
-      "has_destination": false,
+      "has_destination": true,
       "reach_total": null,
       "engagement_total": null,
       "post_count": 0,
@@ -14126,6 +14150,12 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "destination": {
+          "source_url": "https://send.monobank.ua/jar/2JbpBYkhMv",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "resolved donation destination"
         }
       },
       "confidence_overall": 0.35,
@@ -14140,7 +14170,7 @@
         "fpv",
         "vehicles"
       ],
-      "has_destination": false,
+      "has_destination": true,
       "reach_total": null,
       "engagement_total": null,
       "post_count": 0,
@@ -14149,8 +14179,8 @@
       "last_post": null,
       "post_channels": [],
       "posts": [],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": -3664736.1140633957,
+      "jar_span_days": 0.5418336923032407
     },
     {
       "id": "camp-e503eadd26ea",
@@ -14415,9 +14445,9 @@
       "face": "brand",
       "cadence": "ongoing",
       "playbook_note": "Нерегулярний звітний пост від організації Dignitas Fund про хід будівництва Антишахедного рубежу. Публікація поєднує подяку нідерландському партнеру Protect Ukraine та донорам, що здійснюють внески в гривнях і валюті. Кампанія позиціонується як триваючий процес, а не разовий збір.",
-      "amount_uah": null,
+      "amount_uah": 381490.6,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 5500000.0,
       "reach": 80.0,
       "engagement": null,
       "spend": null,
@@ -14446,11 +14476,23 @@
           "confidence": 0.35,
           "tier": 3,
           "note": "platform signal backfill"
+        },
+        "destination": {
+          "source_url": "https://send.monobank.ua/jar/PvJTEZ5fa",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "resolved donation destination"
+        },
+        "amount_uah": {
+          "source_url": "https://send.monobank.ua/jar/PvJTEZ5fa",
+          "confidence": 0.95,
+          "tier": 1,
+          "note": "monobank jar tier-1"
         }
       },
       "confidence_overall": 0.35,
-      "verification_status": "auto",
-      "verdict_reason": null,
+      "verification_status": "verified",
+      "verdict_reason": "audit: monobank jar tier-1",
       "extracted_at": "2026-06-07T14:25:32.873100+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,

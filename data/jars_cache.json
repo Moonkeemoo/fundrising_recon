@@ -1013,5 +1013,19 @@
         "goal_amount": 500000.0
       }
     ]
+  },
+  "PvJTEZ5fa": {
+    "jar_id": "PvJTEZ5fa",
+    "url": "https://send.monobank.ua/jar/PvJTEZ5fa",
+    "title": "CO CF DIGNITAS created a fundraiser",
+    "amount_uah": 381490.6,
+    "goal_amount": 5500000.0,
+    "history": [
+      {
+        "ts": "2026-06-08T10:04:57.273028+00:00",
+        "amount_uah": 381490.6,
+        "goal_amount": 5500000.0
+      }
+    ]
   }
 }
