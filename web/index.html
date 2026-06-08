@@ -426,6 +426,9 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
      </div>
     </div>
     <div class="chart" id="rm-bar"></div>
+    <div style="font-size:10px;color:var(--faint);margin-top:4px;line-height:1.4">
+     ℹ️ «канал» = платформа, не конкретний канал. «web» нагорі тому, що сайт мають переважно великі фонди (Притула/Спротив) — це сигнал «хто організований», а не «де постити вигідніше». Дивись на <b>n</b> (на скількох зборах із сумою рахунок) — мала n = обережно з висновками.
+    </div>
    </div>
 
    <!-- % ДОСЯГНЕННЯ ЦІЛІ -->
@@ -916,10 +919,10 @@ function renderStyleHeat(chart,nId,camps,axisA,axisB,metric,orderA,orderB){
   yAxis:{type:"category",data:aKeys,splitArea:{show:true},
    axisLabel:{color:"#8893a0",fontFamily:"monospace",fontSize:11},axisLine:{lineStyle:{color:"#222a35"}}},
   visualMap:{min:0,max:maxV,calculable:true,orient:"horizontal",left:"center",bottom:6,
-   inRange:{color:["#11151c","#1f2e3a","#2e4f6b","#8bb6df"]},
+   inRange:{color:["#1f4a5f","#2e6a8f","#4f9fd0","#9fd0ff","#ffb000"]},
    textStyle:{color:"#8893a0",fontFamily:"monospace",fontSize:10}},
   series:[{type:"heatmap",data,
-   label:{show:true,fontFamily:"monospace",fontSize:9,color:"#0a0c10",
+   label:{show:true,fontFamily:"monospace",fontSize:9,color:"#eaf2f8",
     formatter:p=>{const v=p.data[2];return metric==="count"?(v||""):(v>=1e6?(v/1e6).toFixed(0)+"M":v>=1e3?(v/1e3).toFixed(0)+"K":Math.round(v)||"");}},
    emphasis:{itemStyle:{borderColor:"#ffb000",borderWidth:1}}}]},true);
 }
@@ -1427,8 +1430,8 @@ function renderMatrix(camps){
   const grNonNull=cs.filter(c=>c.goal_reached!=null);
   const grYes=grNonNull.filter(c=>c.goal_reached===true).length;
   return {key:k,n:cs.length,
-   er:ers.length?median(ers):null,erN:ers.length,
-   gr:grNonNull.length?grYes/grNonNull.length:null,grN:grNonNull.length,
+   er:ers.length?ers.reduce((a,b)=>a+b,0)/ers.length:null,erN:ers.length,
+   gr:grNonNull.length>=2?grYes/grNonNull.length:null,grN:grNonNull.length,
    amt:amts.length?median(amts):null,amtN:amts.length};
  });
  // нормалізація для теплоти
@@ -1437,7 +1440,7 @@ function renderMatrix(camps){
  const grVals=rows.map(r=>r.gr).filter(x=>x!=null);const maxGr=grVals.length?Math.max(...grVals):0;
  const amtVals=rows.map(r=>r.amt).filter(x=>x!=null);const maxAmt=amtVals.length?Math.max(...amtVals):0;
  document.getElementById("mx-head").innerHTML=
-  `<tr><th>${MX_LABEL[axis]}</th><th>к-сть</th><th>мед. reach-рез.</th><th>% цілі</th><th>мед. ₴</th></tr>`;
+  `<tr><th>${MX_LABEL[axis]}</th><th>к-сть</th><th>сер. reach-рез.</th><th>% цілі</th><th>мед. ₴</th></tr>`;
  const cell=(v,disp,t)=>`<td style="background:${heatColor(t)}">${disp}</td>`;
  document.getElementById("mx-body").innerHTML=rows.map(r=>{
   const low=r.n<2?" lown":"";
