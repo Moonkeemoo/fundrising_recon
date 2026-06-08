@@ -396,7 +396,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
    <!-- АНАЛІТИКА СТИЛЮ / РЕЗОНАНС -->
    <div class="panel">
     <div class="head">
-     <h3>Що працює зараз (резонанс)</h3><span class="n" id="sa-bar-n"></span>
+     <h3>резонанс за зрізом стилю</h3><span class="n" id="sa-bar-n"></span>
      <span class="spacer"></span>
      <div class="seg" id="sa-metric">
       <button data-m="engagement" class="on">залучення</button>
@@ -501,7 +501,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
     <div id="timeline-info" style="font-size:10px;color:var(--faint);margin-top:4px"></div>
    </div>
 
-   <!-- ГАЛЕРЕЯ КРЕАТИВІВ -->
+   <!-- ГАЛЕРЕЯ КРЕАТИВІВ — приклади артефактів, що природно йдуть перед каталогом -->
    <div class="panel">
     <div class="head">
      <h3>🖼 Галерея креативів</h3><span class="n" id="gal-n"></span>
@@ -516,7 +516,7 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
    <!-- КАТАЛОГ ЗБОРІВ -->
    <div class="panel">
     <div class="head">
-     <h3>📋 Каталог зборів</h3><span class="n" id="ce-n"></span>
+     <h3>усі збори за фільтрами</h3><span class="n" id="ce-n"></span>
      <span class="spacer"></span>
      <span style="color:var(--faint);font-size:11px">сортувати:</span>
      <div class="seg" id="ce-sort">
@@ -547,14 +547,8 @@ table.mx td .mn{color:var(--faint);font-size:10px;margin-left:4px}
 // ── стан ──
 let RAW=null, CASES=[], ANALYTICS=null;
 let CAMPAIGNS=[], CREATIVES=[], PARTNERS=[];
-const SEL={goal:new Set(),style:new Set(),method:new Set()};
-let yFrom=2022, yTo=2026, verifMode="all", showConflict=true;
-let trendMetric="volume_usd", trendSplit="", trendWindow=0, heatMetric="count", heatAxis="theme_channel", lbAxis="amount_uah", lbDir=-1;
-const openRows=new Set();
-let chTrend=null, chHeat=null;
 const HAS_ECHARTS=(typeof echarts!=="undefined");
 // ── стан КАМПАНІЙ ──
-let activeTab="cases";
 const CSEL={themes:new Set(),channels:new Set(),form_factor:new Set(),tone:new Set(),face:new Set(),type:new Set()};
 let cVerifMode="all", saAxis="tone", saMetric="engagement", srAxis="tone";
 let recencyDays=30; // 0 = усі
@@ -567,11 +561,7 @@ let ceSort="rel_resonance", ceSearch="", mxAxis="channels";
 
 // ── словники (упорядкований показ) ──
 const GOAL_ORDER=["military","medical","humanitarian","reconstruction","energy","animals","science_education","info_defense","other"];
-const STYLE_ORDER=["emotional_personal","data_transparent","urgency","gamification","celebrity","grassroots","meme_satire"];
-const METHOD_ORDER=["monobank_jar","bank_transfer","crypto","nft_merch","auction","telethon","stream","challenge","corporate_match","platform"];
 const VERIF_RANK={auto:0,"cross-checked":1,verified:2};
-const ALL_QUARTERS=(()=>{const a=[];for(let y=2022;y<=2026;y++)for(let q=1;q<=4;q++)a.push(y+"-Q"+q);return a;})();
-const AXIS_LABEL={amount_uah:"обсяг ₴",volume_score:"volume",speed:"speed",virality_score:"virality",repeatability:"repeat"};
 // ── словники кампаній ──
 const CHANNEL_ORDER=["facebook","instagram","threads","youtube","telegram","tiktok","web","irl"];
 const FORM_ORDER=["video","carousel","banner","longread","stream","image","text"];
@@ -588,20 +578,11 @@ const esc=s=>(s==null?"":String(s)).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;"
 const goalCat=g=>(g||"other").split("/")[0];
 function median(arr){if(!arr.length)return null;const a=[...arr].sort((x,y)=>x-y);const m=a.length>>1;
  return a.length%2?a[m]:(a[m-1]+a[m])/2;}
-function fmtUSD(v){if(v==null)return "—";
- if(v>=1e9)return "$"+(v/1e9).toFixed(2)+"B";
- if(v>=1e6)return "$"+(v/1e6).toFixed(1)+"M";
- if(v>=1e3)return "$"+(v/1e3).toFixed(0)+"K";
- return "$"+v.toFixed(0);}
 function fmtUAH(v){if(v==null)return "—";
  if(v>=1e9)return "₴"+(v/1e9).toFixed(2)+" млрд";
  if(v>=1e6)return "₴"+(v/1e6).toFixed(1)+" млн";
  if(v>=1e3)return "₴"+(v/1e3).toFixed(0)+" тис";
  return "₴"+v.toFixed(0);}
-function fmtSpeed(v){if(v==null)return "—";
- if(v>=1e6)return (v/1e6).toFixed(1)+"M ₴/д";
- if(v>=1e3)return (v/1e3).toFixed(0)+"K ₴/д";
- return v.toFixed(0)+" ₴/д";}
 function fmtScore(v){return v==null?"—":v.toFixed(2);}
 function fmtVelocity(v){
  // Форматує jar velocity (₴/день) у читабельний вигляд.
