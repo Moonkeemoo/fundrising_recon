@@ -7377,59 +7377,59 @@
         "tone_resonance": [
           {
             "key": "data_transparent",
-            "value": 0.9295154185022027,
+            "value": 0.9873887240356083,
             "n": 12
           },
           {
             "key": "emotional",
-            "value": 1.0,
+            "value": 1.0017492917847026,
             "n": 49
           },
           {
             "key": "gratitude",
-            "value": 1.0,
+            "value": 1.0094421701229814,
             "n": 26
           },
           {
             "key": "heroism",
-            "value": 1.0,
+            "value": 1.010221613970463,
             "n": 40
           },
           {
             "key": "humor",
-            "value": 1.0296610169491525,
+            "value": 1.0587622149837133,
             "n": 8
           },
           {
             "key": "urgency",
-            "value": 0.9975409836065574,
+            "value": 0.9865829694323144,
             "n": 41
           }
         ],
         "channel_resonance": [
           {
             "key": "facebook",
-            "value": 0.995,
+            "value": 0.9342240352630353,
             "n": 14
           },
           {
             "key": "instagram",
-            "value": 0.995,
+            "value": 0.9781659388646288,
             "n": 13
           },
           {
             "key": "irl",
-            "value": 1.0,
+            "value": 0.9235905044510386,
             "n": 4
           },
           {
             "key": "telegram",
-            "value": 1.0,
+            "value": 0.9781659388646288,
             "n": 75
           },
           {
             "key": "threads",
-            "value": null,
+            "value": 1.0775244299674267,
             "n": 1
           },
           {
@@ -7439,12 +7439,12 @@
           },
           {
             "key": "web",
-            "value": 1.0,
+            "value": 0.9781659388646288,
             "n": 11
           },
           {
             "key": "youtube",
-            "value": 0.995,
+            "value": 0.9817943396947051,
             "n": 18
           }
         ]
@@ -7453,50 +7453,65 @@
         "tone": [
           {
             "key": "data_transparent",
-            "value": 0.5,
-            "n": 4
+            "value": 0.4,
+            "n": 5
           },
           {
             "key": "emotional",
-            "value": 0.2,
-            "n": 10
+            "value": 0.2222222222222222,
+            "n": 18
           },
           {
             "key": "gratitude",
-            "value": 0.0,
-            "n": 3
+            "value": 0.16666666666666666,
+            "n": 6
           },
           {
             "key": "heroism",
-            "value": 0.0,
-            "n": 5
+            "value": 0.15384615384615385,
+            "n": 13
           },
           {
             "key": "humor",
-            "value": 0.2,
-            "n": 5
+            "value": 0.2857142857142857,
+            "n": 7
           },
           {
             "key": "urgency",
-            "value": 0.16666666666666666,
-            "n": 12
+            "value": 0.21052631578947367,
+            "n": 19
           }
         ],
         "channels": [
           {
+            "key": "facebook",
+            "value": 0.0,
+            "n": 5
+          },
+          {
+            "key": "instagram",
+            "value": 0.0,
+            "n": 5
+          },
+          {
             "key": "telegram",
-            "value": 0.16666666666666666,
-            "n": 18
+            "value": 0.19230769230769232,
+            "n": 26
+          },
+          {
+            "key": "tiktok",
+            "value": 0.0,
+            "n": 3
           },
           {
             "key": "web",
             "value": 0.0,
-            "n": 3
+            "n": 6
           },
           {
             "key": "youtube",
             "value": 0.0,
-            "n": 3
+            "n": 7
           }
         ]
       }
@@ -7507,114 +7522,124 @@
         "channel": [
           {
             "key": "telegram",
-            "score": 2.1737795899967614,
+            "score": 1.7235894147896191,
             "n": 49
           },
           {
-            "key": "irl",
-            "score": 1.1741071428571428,
+            "key": "threads",
+            "score": 1.0775244299674267,
+            "n": 1
+          },
+          {
+            "key": "tiktok",
+            "score": 1.0362622149837133,
             "n": 2
           },
           {
             "key": "web",
-            "score": 1.0153532095657647,
+            "score": 0.9730003053133925,
             "n": 7
           },
           {
-            "key": "tiktok",
-            "score": 0.995,
+            "key": "irl",
+            "score": 0.9550925682350946,
             "n": 2
           },
           {
             "key": "youtube",
-            "score": 0.8490838725042671,
+            "score": 0.8377646671377775,
             "n": 12
           },
           {
             "key": "facebook",
-            "score": 0.7888914910226386,
+            "score": 0.8186590846799102,
             "n": 10
           },
           {
             "key": "instagram",
-            "score": 0.7888914910226386,
+            "score": 0.810700968348629,
             "n": 9
           }
         ],
         "tone": [
           {
             "key": "gratitude",
-            "score": 5.031632275246634,
+            "score": 3.77134406342194,
             "n": 13
           },
           {
             "key": "heroism",
-            "score": 3.646156610905076,
+            "score": 2.561522318732894,
             "n": 25
           },
           {
             "key": "emotional",
-            "score": 3.0085359456468246,
+            "score": 2.324253004813808,
             "n": 30
           },
           {
-            "key": "humor",
-            "score": 1.0536723163841808,
-            "n": 6
-          },
-          {
             "key": "urgency",
-            "score": 1.0493833620910802,
+            "score": 1.0369647911478561,
             "n": 28
           },
           {
+            "key": "humor",
+            "score": 1.0066488237801279,
+            "n": 6
+          },
+          {
             "key": "data_transparent",
-            "score": 0.6719197098448921,
+            "score": 0.748076772599554,
             "n": 5
           }
         ],
         "form_factor": [
           {
             "key": "video",
-            "score": 7.058326298557127,
+            "score": 4.301254061919926,
             "n": 12
           },
           {
             "key": "text",
-            "score": 2.2674853654401,
+            "score": 1.7838126747458396,
             "n": 46
           },
           {
             "key": "image",
-            "score": 0.995,
+            "score": 0.8783567603748327,
             "n": 2
           }
         ],
         "goal": [
           {
             "key": "military",
-            "score": 2.590949246189472,
+            "score": 2.0169194283226477,
             "n": 35
           },
           {
             "key": "other",
-            "score": 1.0398305084745763,
+            "score": 1.0906666666666667,
             "n": 5
           },
           {
             "key": "medical",
-            "score": 1.0,
+            "score": 0.9965613734793032,
             "n": 4
           },
           {
             "key": "animals",
-            "score": 1.0,
+            "score": 0.9781659388646288,
             "n": 1
           },
           {
             "key": "humanitarian",
-            "score": 0.5961820851688693,
+            "score": 0.9589330581988925,
             "n": 3
+          },
+          {
+            "key": "info_defense",
+            "score": 0.5691573926868044,
+            "n": 2
           }
         ]
       },
@@ -7737,42 +7762,42 @@
             "recent_n": 1,
             "prior_n": 0,
             "momentum": 1,
-            "recent_resonance": 1.0
+            "recent_resonance": 0.9781659388646288
           },
           {
             "key": "humanitarian",
             "recent_n": 3,
             "prior_n": 2,
             "momentum": 1,
-            "recent_resonance": 0.5961820851688693
+            "recent_resonance": 0.9589330581988925
           },
           {
             "key": "info_defense",
             "recent_n": 2,
             "prior_n": 1,
             "momentum": 1,
-            "recent_resonance": null
+            "recent_resonance": 0.5691573926868044
           },
           {
             "key": "medical",
             "recent_n": 4,
             "prior_n": 0,
             "momentum": 4,
-            "recent_resonance": 1.0
+            "recent_resonance": 0.9965613734793032
           },
           {
             "key": "military",
             "recent_n": 35,
             "prior_n": 24,
             "momentum": 11,
-            "recent_resonance": 2.590949246189472
+            "recent_resonance": 2.0169194283226477
           },
           {
             "key": "other",
             "recent_n": 5,
             "prior_n": 0,
             "momentum": 5,
-            "recent_resonance": 1.0398305084745763
+            "recent_resonance": 1.0906666666666667
           }
         ],
         "channel": [
@@ -7781,56 +7806,56 @@
             "recent_n": 10,
             "prior_n": 4,
             "momentum": 6,
-            "recent_resonance": 0.7888914910226386
+            "recent_resonance": 0.8186590846799102
           },
           {
             "key": "instagram",
             "recent_n": 9,
             "prior_n": 4,
             "momentum": 5,
-            "recent_resonance": 0.7888914910226386
+            "recent_resonance": 0.810700968348629
           },
           {
             "key": "irl",
             "recent_n": 2,
             "prior_n": 2,
             "momentum": 0,
-            "recent_resonance": 1.1741071428571428
+            "recent_resonance": 0.9550925682350946
           },
           {
             "key": "telegram",
             "recent_n": 49,
             "prior_n": 26,
             "momentum": 23,
-            "recent_resonance": 2.1737795899967614
+            "recent_resonance": 1.7235894147896191
           },
           {
             "key": "threads",
             "recent_n": 1,
             "prior_n": 0,
             "momentum": 1,
-            "recent_resonance": null
+            "recent_resonance": 1.0775244299674267
           },
           {
             "key": "tiktok",
             "recent_n": 2,
             "prior_n": 1,
             "momentum": 1,
-            "recent_resonance": 0.995
+            "recent_resonance": 1.0362622149837133
           },
           {
             "key": "web",
             "recent_n": 7,
             "prior_n": 4,
             "momentum": 3,
-            "recent_resonance": 1.0153532095657647
+            "recent_resonance": 0.9730003053133925
           },
           {
             "key": "youtube",
             "recent_n": 12,
             "prior_n": 6,
             "momentum": 6,
-            "recent_resonance": 0.8490838725042671
+            "recent_resonance": 0.8377646671377775
           }
         ],
         "tone": [
@@ -7839,42 +7864,42 @@
             "recent_n": 5,
             "prior_n": 7,
             "momentum": -2,
-            "recent_resonance": 0.6719197098448921
+            "recent_resonance": 0.748076772599554
           },
           {
             "key": "emotional",
             "recent_n": 30,
             "prior_n": 19,
             "momentum": 11,
-            "recent_resonance": 3.0085359456468246
+            "recent_resonance": 2.324253004813808
           },
           {
             "key": "gratitude",
             "recent_n": 13,
             "prior_n": 13,
             "momentum": 0,
-            "recent_resonance": 5.031632275246634
+            "recent_resonance": 3.77134406342194
           },
           {
             "key": "heroism",
             "recent_n": 25,
             "prior_n": 15,
             "momentum": 10,
-            "recent_resonance": 3.646156610905076
+            "recent_resonance": 2.561522318732894
           },
           {
             "key": "humor",
             "recent_n": 6,
             "prior_n": 2,
             "momentum": 4,
-            "recent_resonance": 1.0536723163841808
+            "recent_resonance": 1.0066488237801279
           },
           {
             "key": "urgency",
             "recent_n": 28,
             "prior_n": 13,
             "momentum": 15,
-            "recent_resonance": 1.0493833620910802
+            "recent_resonance": 1.0369647911478561
           }
         ]
       }
@@ -7911,7 +7936,7 @@
       "playbook_note": "Короткий допис у телеграм-каналі блогера Сергія Стерненка анонсує фінальні години розіграшу ножа як призу для донорів від 300 грн через Monobank jar. Кампанія побудована на gamification-механіці (матеріальний приз як стимул до донату) та urgency-тригері (обмежений час до 11:00 поточного дня). Цільове призначення коштів у пості не вказано.",
       "amount_uah": 845771.32,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 10000000.0,
       "reach": 234000.0,
       "engagement": null,
       "spend": null,
@@ -7952,20 +7977,20 @@
       },
       "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "relink: monobank jar tier-1",
+      "verdict_reason": "audit: monobank jar tier-1",
       "extracted_at": "2026-06-07T14:17:51.376670+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.9915254237288136,
-      "reach_resonance": 0.9915254237288136,
+      "rel_resonance": 1.04,
+      "reach_resonance": 1.04,
       "themes": [],
       "has_destination": true,
-      "reach_total": 563000,
+      "reach_total": 1262900,
       "engagement_total": null,
-      "post_count": 3,
+      "post_count": 7,
       "channel_count": 1,
       "first_post": "2026-06-03",
-      "last_post": "2026-06-07",
+      "last_post": "2026-06-08",
       "post_channels": [
         "ssternenko"
       ],
@@ -7979,18 +8004,42 @@
         {
           "date": "2026-06-07",
           "channel": "ssternenko",
-          "views": 131000,
+          "views": 220000,
           "url": "https://t.me/ssternenko/59106"
         },
         {
           "date": "2026-06-07",
           "channel": "ssternenko",
-          "views": 198000,
+          "views": 208000,
           "url": "https://t.me/ssternenko/59120"
+        },
+        {
+          "date": "2026-06-07",
+          "channel": "ssternenko",
+          "views": 212000,
+          "url": "https://t.me/ssternenko/59111"
+        },
+        {
+          "date": "2026-06-07",
+          "channel": "ssternenko",
+          "views": 217000,
+          "url": "https://t.me/ssternenko/59108"
+        },
+        {
+          "date": "2026-06-08",
+          "channel": "ssternenko",
+          "views": 50900,
+          "url": "https://t.me/ssternenko/59140"
+        },
+        {
+          "date": "2026-06-08",
+          "channel": "ssternenko",
+          "views": 121000,
+          "url": "https://t.me/ssternenko/59137"
         }
       ],
-      "jar_velocity_uah_per_day": -4554583.49236229,
-      "jar_span_days": 0.4934181673842592
+      "jar_velocity_uah_per_day": -3664736.1140633957,
+      "jar_span_days": 0.5418336923032407
     },
     {
       "id": "camp-02dcaa6af241",
@@ -8020,7 +8069,7 @@
       "playbook_note": "Короткий текстовий пост у Telegram-каналі фонду Притули, опублікований у контексті новин про перемир'я. Використовує провокативний заголовок ('Перемир'я — всьо') як гачок для мотивації донатів на антишахедні дрони, одразу надаючи пряме посилання на банку Monobank.",
       "amount_uah": 271799829.86,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 1000000000.0,
       "reach": 766.0,
       "engagement": null,
       "spend": null,
@@ -8062,18 +8111,18 @@
       },
       "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "relink: monobank jar tier-1",
+      "verdict_reason": "audit: monobank jar tier-1",
       "extracted_at": "2026-06-07T13:08:33.065023+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.1248164464023496,
-      "reach_resonance": 1.1248164464023496,
+      "rel_resonance": 1.1364985163204748,
+      "reach_resonance": 1.1364985163204748,
       "themes": [
         "fpv",
         "interceptors"
       ],
       "has_destination": true,
-      "reach_total": 2077,
+      "reach_total": 2087,
       "engagement_total": null,
       "post_count": 3,
       "channel_count": 1,
@@ -8098,12 +8147,12 @@
         {
           "date": "2026-06-02",
           "channel": "prytulafoundation",
-          "views": 610,
+          "views": 620,
           "url": "https://t.me/prytulafoundation/4201"
         }
       ],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 994498.5650239679,
+      "jar_span_days": 0.5062735610763889
     },
     {
       "id": "camp-03030141b5b7",
@@ -8131,7 +8180,7 @@
       "playbook_note": "Одиночний Telegram-пост від блогера, прив'язаний до позитивної воєнної новини (вперше з контрнаступу 2023 ЗСУ звільнили більше, ніж РФ окупувала за травень — дані DeepState). Новина використовується як емоційний тригер для донату: успіх на фронті → моментальний заклик підтримати воїнів через monobank-банку.",
       "amount_uah": 3515402.53,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 407890.78,
       "reach": 2960.0,
       "engagement": null,
       "spend": null,
@@ -8168,7 +8217,7 @@
       },
       "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "relink: monobank jar tier-1",
+      "verdict_reason": "audit: monobank jar tier-1",
       "extracted_at": "2026-06-07T18:00:02.362025+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
@@ -8205,8 +8254,8 @@
           "url": "https://t.me/aronets_live/9867"
         }
       ],
-      "jar_velocity_uah_per_day": 33875.58871107676,
-      "jar_span_days": 0.4937419728009259
+      "jar_velocity_uah_per_day": 33612.99547974143,
+      "jar_span_days": 0.5422248073958333
     },
     {
       "id": "camp-03bfdfdbbca4",
@@ -8275,8 +8324,8 @@
       "extracted_at": "2026-06-07T13:55:51.878985+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.9295154185022027,
-      "reach_resonance": 0.9295154185022027,
+      "rel_resonance": 0.9391691394658753,
+      "reach_resonance": 0.9391691394658753,
       "themes": [
         "comms"
       ],
@@ -8333,7 +8382,7 @@
       "playbook_note": "Контент-пост із фото тренувань піхоти 4-го батальйону «Сила Свободи» Бригади «Рубіж» використовується як органічне просування збору: бойова підготовка (вихід з БМП, розгортання, зайняття позицій) показана як доказ боєздатності й необхідності підтримки. CTA вбудовано в кінець допису зі ссилкою на monobank-банку; ціль — 500 000 грн на НРК (нічний розвідувальний комплект або аналогічне).",
       "amount_uah": 295467.17,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 500000.0,
       "reach": 2460.0,
       "engagement": null,
       "spend": null,
@@ -8384,7 +8433,7 @@
       },
       "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "relink: monobank jar tier-1",
+      "verdict_reason": "audit: monobank jar tier-1",
       "extracted_at": "2026-06-07T18:54:23.283349+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
@@ -8503,8 +8552,8 @@
       "extracted_at": "2026-06-07T13:10:14.729612+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 1.021551724137931,
+      "reach_resonance": 1.021551724137931,
       "themes": [
         "fpv"
       ],
@@ -8577,8 +8626,8 @@
       "extracted_at": "2026-06-07T14:18:47.394666+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.9533898305084746,
-      "reach_resonance": 0.9533898305084746,
+      "rel_resonance": 1.0,
+      "reach_resonance": 1.0,
       "themes": [
         "fpv"
       ],
@@ -8656,8 +8705,8 @@
       "extracted_at": "2026-06-07T13:08:20.878121+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.261380323054332,
-      "reach_resonance": 1.261380323054332,
+      "rel_resonance": 1.274480712166172,
+      "reach_resonance": 1.274480712166172,
       "themes": [],
       "has_destination": true,
       "reach_total": 859,
@@ -8740,8 +8789,8 @@
       "extracted_at": "2026-06-07T13:49:53.340905+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.9397944199706314,
-      "reach_resonance": 0.9397944199706314,
+      "rel_resonance": 0.9495548961424333,
+      "reach_resonance": 0.9495548961424333,
       "themes": [
         "fpv",
         "vehicles",
@@ -8827,13 +8876,13 @@
       "extracted_at": "2026-06-07T13:05:49.330445+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.143906020558003,
-      "reach_resonance": 1.143906020558003,
+      "rel_resonance": 1.155786350148368,
+      "reach_resonance": 1.155786350148368,
       "themes": [
         "interceptors"
       ],
       "has_destination": true,
-      "reach_total": 1364,
+      "reach_total": 1368,
       "engagement_total": null,
       "post_count": 2,
       "channel_count": 1,
@@ -8846,13 +8895,13 @@
         {
           "date": "2026-05-19",
           "channel": "prytulafoundation",
-          "views": 779,
+          "views": 780,
           "url": "https://t.me/prytulafoundation/4155"
         },
         {
           "date": "2026-05-28",
           "channel": "prytulafoundation",
-          "views": 585,
+          "views": 588,
           "url": "https://t.me/prytulafoundation/4196"
         }
       ],
@@ -8924,8 +8973,8 @@
       "extracted_at": "2026-06-07T14:00:34.571512+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.133627019089574,
-      "reach_resonance": 1.133627019089574,
+      "rel_resonance": 1.1454005934718101,
+      "reach_resonance": 1.1454005934718101,
       "themes": [
         "reb_ew"
       ],
@@ -9001,8 +9050,8 @@
       "extracted_at": "2026-06-07T18:07:40.378352+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.890282131661442,
+      "reach_resonance": 0.890282131661442,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -9079,8 +9128,8 @@
       "extracted_at": "2026-06-07T18:29:56.881415+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.5622950819672131,
-      "reach_resonance": 0.5622950819672131,
+      "rel_resonance": 0.3902161547212742,
+      "reach_resonance": 0.3902161547212742,
       "themes": [
         "fpv"
       ],
@@ -9161,8 +9210,8 @@
       "extracted_at": "2026-06-07T18:27:55.153339+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.9950819672131147,
-      "reach_resonance": 0.9950819672131147,
+      "rel_resonance": 0.6905574516496018,
+      "reach_resonance": 0.6905574516496018,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -9244,15 +9293,15 @@
       "extracted_at": "2026-06-07T13:06:42.308161+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.8428781204111601,
-      "reach_resonance": 0.8428781204111601,
+      "rel_resonance": 0.8516320474777448,
+      "reach_resonance": 0.8516320474777448,
       "themes": [
         "fpv",
         "nrk_demining",
         "humanitarian"
       ],
       "has_destination": true,
-      "reach_total": 574,
+      "reach_total": 577,
       "engagement_total": null,
       "post_count": 1,
       "channel_count": 1,
@@ -9265,7 +9314,7 @@
         {
           "date": "2026-05-25",
           "channel": "prytulafoundation",
-          "views": 574,
+          "views": 577,
           "url": "https://t.me/prytulafoundation/4173"
         }
       ],
@@ -9392,7 +9441,7 @@
       "playbook_note": "Урочистий церемоніальний пост з нагоди річниці 28-ї ОМБр: командир «Фенікса» полковник Дмитро Олексюк особисто привітав і нагородив бійців бригади. Фандрайзинговий призив відсутній — посилання на monobank-банку та соцмережі присутні як стандартний підвал каналу, а не як окрема кампанія зі зборів.",
       "amount_uah": 71154.0,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 1000000.0,
       "reach": 1990.0,
       "engagement": null,
       "spend": null,
@@ -9438,7 +9487,7 @@
       },
       "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "relink: monobank jar tier-1",
+      "verdict_reason": "audit: monobank jar tier-1",
       "extracted_at": "2026-06-07T22:18:45.074005+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
@@ -9481,8 +9530,8 @@
           "url": "https://t.me/feniksdpsu/2008"
         }
       ],
-      "jar_velocity_uah_per_day": 409.12312653978677,
-      "jar_span_days": 0.49373889398148146
+      "jar_velocity_uah_per_day": 838.2268378551526,
+      "jar_span_days": 0.5428124935300926
     },
     {
       "id": "camp-26619690dcb3",
@@ -9549,11 +9598,11 @@
       "extracted_at": "2026-06-07T18:39:03.722157+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.955607476635514,
+      "reach_resonance": 0.955607476635514,
       "themes": [],
       "has_destination": true,
-      "reach_total": 409,
+      "reach_total": 411,
       "engagement_total": null,
       "post_count": 1,
       "channel_count": 1,
@@ -9566,7 +9615,7 @@
         {
           "date": "2026-05-23",
           "channel": "sptua",
-          "views": 409,
+          "views": 411,
           "url": "https://t.me/sptua/2443"
         }
       ],
@@ -9641,8 +9690,8 @@
       "extracted_at": "2026-06-07T14:02:46.704197+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.1688693098384728,
-      "reach_resonance": 1.1688693098384728,
+      "rel_resonance": 1.1810089020771513,
+      "reach_resonance": 1.1810089020771513,
       "themes": [
         "energy",
         "humanitarian"
@@ -9726,8 +9775,8 @@
       "extracted_at": "2026-06-07T14:21:42.621237+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0254237288135593,
-      "reach_resonance": 1.0254237288135593,
+      "rel_resonance": 1.0755555555555556,
+      "reach_resonance": 1.0755555555555556,
       "themes": [
         "interceptors"
       ],
@@ -9813,19 +9862,19 @@
       "extracted_at": "2026-06-07T13:54:44.291117+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0205580029368575,
-      "reach_resonance": 1.0205580029368575,
+      "rel_resonance": 1.0311572700296736,
+      "reach_resonance": 1.0311572700296736,
       "themes": [
         "vehicles",
         "body_armor"
       ],
       "has_destination": true,
-      "reach_total": 1543,
+      "reach_total": 2348,
       "engagement_total": null,
-      "post_count": 2,
+      "post_count": 3,
       "channel_count": 1,
       "first_post": "2026-05-01",
-      "last_post": "2026-05-08",
+      "last_post": "2026-06-02",
       "post_channels": [
         "prytulafoundation"
       ],
@@ -9841,6 +9890,12 @@
           "channel": "prytulafoundation",
           "views": 848,
           "url": "https://t.me/prytulafoundation/4139"
+        },
+        {
+          "date": "2026-06-02",
+          "channel": "prytulafoundation",
+          "views": 805,
+          "url": "https://t.me/prytulafoundation/4203"
         }
       ],
       "jar_velocity_uah_per_day": 638755.0377010872,
@@ -9999,8 +10054,8 @@
       "extracted_at": "2026-06-07T19:05:19.996198+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.8101983002832861,
+      "reach_resonance": 0.8101983002832861,
       "themes": [
         "vehicles"
       ],
@@ -10087,28 +10142,106 @@
       "extracted_at": "2026-06-07T18:38:11.834685+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 1.0775244299674267,
+      "reach_resonance": 1.0775244299674267,
       "themes": [
         "fpv",
         "interceptors"
       ],
       "has_destination": true,
-      "reach_total": 827,
+      "reach_total": 11419,
       "engagement_total": null,
-      "post_count": 1,
+      "post_count": 14,
       "channel_count": 1,
-      "first_post": "2026-05-30",
-      "last_post": "2026-05-30",
+      "first_post": "2026-05-18",
+      "last_post": "2026-06-05",
       "post_channels": [
-        "radisnyi_93"
+        "Radisnyi_93"
       ],
       "posts": [
         {
+          "date": "2026-05-18",
+          "channel": "Radisnyi_93",
+          "views": 975,
+          "url": "https://t.me/Radisnyi_93/473"
+        },
+        {
+          "date": "2026-05-19",
+          "channel": "Radisnyi_93",
+          "views": 1180,
+          "url": "https://t.me/Radisnyi_93/474"
+        },
+        {
+          "date": "2026-05-21",
+          "channel": "Radisnyi_93",
+          "views": 912,
+          "url": "https://t.me/Radisnyi_93/482"
+        },
+        {
+          "date": "2026-05-21",
+          "channel": "Radisnyi_93",
+          "views": 928,
+          "url": "https://t.me/Radisnyi_93/481"
+        },
+        {
+          "date": "2026-05-22",
+          "channel": "Radisnyi_93",
+          "views": 880,
+          "url": "https://t.me/Radisnyi_93/483"
+        },
+        {
+          "date": "2026-05-26",
+          "channel": "Radisnyi_93",
+          "views": 746,
+          "url": "https://t.me/Radisnyi_93/487"
+        },
+        {
+          "date": "2026-05-27",
+          "channel": "Radisnyi_93",
+          "views": 773,
+          "url": "https://t.me/Radisnyi_93/488"
+        },
+        {
+          "date": "2026-05-28",
+          "channel": "Radisnyi_93",
+          "views": 749,
+          "url": "https://t.me/Radisnyi_93/489"
+        },
+        {
+          "date": "2026-05-29",
+          "channel": "Radisnyi_93",
+          "views": 712,
+          "url": "https://t.me/Radisnyi_93/491"
+        },
+        {
           "date": "2026-05-30",
-          "channel": "radisnyi_93",
-          "views": 827,
+          "channel": "Radisnyi_93",
+          "views": 850,
           "url": "https://t.me/Radisnyi_93/502"
+        },
+        {
+          "date": "2026-06-02",
+          "channel": "Radisnyi_93",
+          "views": 699,
+          "url": "https://t.me/Radisnyi_93/504"
+        },
+        {
+          "date": "2026-06-03",
+          "channel": "Radisnyi_93",
+          "views": 712,
+          "url": "https://t.me/Radisnyi_93/505"
+        },
+        {
+          "date": "2026-06-04",
+          "channel": "Radisnyi_93",
+          "views": 690,
+          "url": "https://t.me/Radisnyi_93/507"
+        },
+        {
+          "date": "2026-06-05",
+          "channel": "Radisnyi_93",
+          "views": 613,
+          "url": "https://t.me/Radisnyi_93/508"
         }
       ],
       "jar_velocity_uah_per_day": 0.0,
@@ -10189,8 +10322,8 @@
       "extracted_at": "2026-06-07T13:51:36.830167+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 2.6284875183553598,
-      "reach_resonance": 2.6284875183553598,
+      "rel_resonance": 2.655786350148368,
+      "reach_resonance": 2.655786350148368,
       "themes": [
         "fpv",
         "interceptors"
@@ -10271,8 +10404,8 @@
       "extracted_at": "2026-06-07T19:04:23.446741+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 1.0084985835694051,
+      "reach_resonance": 1.0084985835694051,
       "themes": [
         "vehicles"
       ],
@@ -10347,8 +10480,8 @@
       "extracted_at": "2026-06-07T12:26:24.104986+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.8432203389830508,
-      "reach_resonance": 0.8432203389830508,
+      "rel_resonance": 0.8844444444444445,
+      "reach_resonance": 0.8844444444444445,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -10422,8 +10555,8 @@
       "extracted_at": "2026-06-07T14:07:09.303257+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 1.4511494252873562,
+      "reach_resonance": 1.4511494252873562,
       "themes": [
         "fpv",
         "vehicles"
@@ -10506,8 +10639,8 @@
       "extracted_at": "2026-06-07T22:53:40.336126+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0,
-      "reach_resonance": 1.0,
+      "rel_resonance": 0.9781659388646288,
+      "reach_resonance": 0.9781659388646288,
       "themes": [
         "vehicles"
       ],
@@ -10553,7 +10686,7 @@
       "playbook_note": "Щомісячний бойовий звіт батальйону SIGNUM за травень використовується як соціальний доказ ефективності підрозділу: деталізована статистика втрат ворога (880 цілей, особовий склад, бронетехніка, 500+ дронів) підкріплена 6-хвилинним відео-компіляцією ліквідацій. Донейт-CTA через Monobank jar розміщено наприкінці. Контент крос-публікується в Instagram, YouTube, Facebook, X.",
       "amount_uah": 194684.0,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 1000000.0,
       "reach": 9940.0,
       "engagement": null,
       "spend": null,
@@ -10592,41 +10725,233 @@
       },
       "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "relink: monobank jar tier-1",
+      "verdict_reason": "audit: monobank jar tier-1",
       "extracted_at": "2026-06-07T22:51:11.325371+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 1.2026618269812461,
+      "reach_resonance": 1.2026618269812461,
       "themes": [
         "fpv"
       ],
       "has_destination": true,
-      "reach_total": 15140,
+      "reach_total": 503500,
       "engagement_total": null,
-      "post_count": 2,
+      "post_count": 34,
       "channel_count": 1,
-      "first_post": "2026-06-01",
-      "last_post": "2026-06-04",
+      "first_post": "2026-05-09",
+      "last_post": "2026-06-07",
       "post_channels": [
         "umftteam"
       ],
       "posts": [
         {
+          "date": "2026-05-09",
+          "channel": "umftteam",
+          "views": 9820,
+          "url": "https://t.me/umftteam/958"
+        },
+        {
+          "date": "2026-05-10",
+          "channel": "umftteam",
+          "views": 10900,
+          "url": "https://t.me/umftteam/959"
+        },
+        {
+          "date": "2026-05-11",
+          "channel": "umftteam",
+          "views": 10200,
+          "url": "https://t.me/umftteam/960"
+        },
+        {
+          "date": "2026-05-12",
+          "channel": "umftteam",
+          "views": 7830,
+          "url": "https://t.me/umftteam/962"
+        },
+        {
+          "date": "2026-05-12",
+          "channel": "umftteam",
+          "views": 8810,
+          "url": "https://t.me/umftteam/961"
+        },
+        {
+          "date": "2026-05-13",
+          "channel": "umftteam",
+          "views": 7890,
+          "url": "https://t.me/umftteam/966"
+        },
+        {
+          "date": "2026-05-14",
+          "channel": "umftteam",
+          "views": 17800,
+          "url": "https://t.me/umftteam/967"
+        },
+        {
+          "date": "2026-05-14",
+          "channel": "umftteam",
+          "views": 8240,
+          "url": "https://t.me/umftteam/968"
+        },
+        {
+          "date": "2026-05-15",
+          "channel": "umftteam",
+          "views": 8290,
+          "url": "https://t.me/umftteam/971"
+        },
+        {
+          "date": "2026-05-16",
+          "channel": "umftteam",
+          "views": 17400,
+          "url": "https://t.me/umftteam/972"
+        },
+        {
+          "date": "2026-05-17",
+          "channel": "umftteam",
+          "views": 7380,
+          "url": "https://t.me/umftteam/973"
+        },
+        {
+          "date": "2026-05-18",
+          "channel": "umftteam",
+          "views": 9370,
+          "url": "https://t.me/umftteam/975"
+        },
+        {
+          "date": "2026-05-18",
+          "channel": "umftteam",
+          "views": 7430,
+          "url": "https://t.me/umftteam/974"
+        },
+        {
+          "date": "2026-05-19",
+          "channel": "umftteam",
+          "views": 8590,
+          "url": "https://t.me/umftteam/976"
+        },
+        {
+          "date": "2026-05-20",
+          "channel": "umftteam",
+          "views": 7660,
+          "url": "https://t.me/umftteam/977"
+        },
+        {
+          "date": "2026-05-21",
+          "channel": "umftteam",
+          "views": 8020,
+          "url": "https://t.me/umftteam/978"
+        },
+        {
+          "date": "2026-05-21",
+          "channel": "umftteam",
+          "views": 7580,
+          "url": "https://t.me/umftteam/979"
+        },
+        {
+          "date": "2026-05-22",
+          "channel": "umftteam",
+          "views": 8680,
+          "url": "https://t.me/umftteam/981"
+        },
+        {
+          "date": "2026-05-23",
+          "channel": "umftteam",
+          "views": 9010,
+          "url": "https://t.me/umftteam/982"
+        },
+        {
+          "date": "2026-05-24",
+          "channel": "umftteam",
+          "views": 9050,
+          "url": "https://t.me/umftteam/983"
+        },
+        {
+          "date": "2026-05-25",
+          "channel": "umftteam",
+          "views": 7610,
+          "url": "https://t.me/umftteam/984"
+        },
+        {
+          "date": "2026-05-26",
+          "channel": "umftteam",
+          "views": 8510,
+          "url": "https://t.me/umftteam/985"
+        },
+        {
+          "date": "2026-05-27",
+          "channel": "umftteam",
+          "views": 89400,
+          "url": "https://t.me/umftteam/986"
+        },
+        {
+          "date": "2026-05-27",
+          "channel": "umftteam",
+          "views": 6270,
+          "url": "https://t.me/umftteam/987"
+        },
+        {
+          "date": "2026-05-28",
+          "channel": "umftteam",
+          "views": 7120,
+          "url": "https://t.me/umftteam/989"
+        },
+        {
+          "date": "2026-05-29",
+          "channel": "umftteam",
+          "views": 8070,
+          "url": "https://t.me/umftteam/990"
+        },
+        {
+          "date": "2026-05-30",
+          "channel": "umftteam",
+          "views": 7580,
+          "url": "https://t.me/umftteam/991"
+        },
+        {
           "date": "2026-06-01",
           "channel": "umftteam",
-          "views": 9990,
+          "views": 10000,
           "url": "https://t.me/umftteam/992"
+        },
+        {
+          "date": "2026-06-02",
+          "channel": "umftteam",
+          "views": 6480,
+          "url": "https://t.me/umftteam/993"
+        },
+        {
+          "date": "2026-06-03",
+          "channel": "umftteam",
+          "views": 81200,
+          "url": "https://t.me/umftteam/994"
         },
         {
           "date": "2026-06-04",
           "channel": "umftteam",
-          "views": 5150,
+          "views": 5310,
           "url": "https://t.me/umftteam/995"
+        },
+        {
+          "date": "2026-06-05",
+          "channel": "umftteam",
+          "views": 68400,
+          "url": "https://t.me/umftteam/996"
+        },
+        {
+          "date": "2026-06-06",
+          "channel": "umftteam",
+          "views": 4280,
+          "url": "https://t.me/umftteam/997"
+        },
+        {
+          "date": "2026-06-07",
+          "channel": "umftteam",
+          "views": 3320,
+          "url": "https://t.me/umftteam/998"
         }
       ],
-      "jar_velocity_uah_per_day": 299.6597503376133,
-      "jar_span_days": 0.3337118177777778
+      "jar_velocity_uah_per_day": 263.23402347274515,
+      "jar_span_days": 0.38368900291666663
     },
     {
       "id": "camp-633e763a0cc4",
@@ -10694,8 +11019,8 @@
       "extracted_at": "2026-06-07T22:54:10.298468+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.84375,
-      "reach_resonance": 0.84375,
+      "rel_resonance": 0.8253275109170306,
+      "reach_resonance": 0.8253275109170306,
       "themes": [
         "vehicles"
       ],
@@ -10777,8 +11102,8 @@
       "extracted_at": "2026-06-07T13:56:55.848557+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0249632892804699,
-      "reach_resonance": 1.0249632892804699,
+      "rel_resonance": 1.0356083086053411,
+      "reach_resonance": 1.0356083086053411,
       "themes": [
         "reb_ew",
         "vehicles",
@@ -10870,8 +11195,8 @@
       "extracted_at": "2026-06-07T13:58:17.997274+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.133627019089574,
-      "reach_resonance": 1.133627019089574,
+      "rel_resonance": 1.1454005934718101,
+      "reach_resonance": 1.1454005934718101,
       "themes": [
         "vehicles"
       ],
@@ -10954,15 +11279,15 @@
       "extracted_at": "2026-06-07T18:31:54.798619+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.8394276629570747,
+      "reach_resonance": 0.8394276629570747,
       "themes": [
         "fpv",
         "reb_ew",
         "vehicles"
       ],
       "has_destination": true,
-      "reach_total": 2640,
+      "reach_total": 2720,
       "engagement_total": null,
       "post_count": 1,
       "channel_count": 1,
@@ -10975,7 +11300,7 @@
         {
           "date": "2026-06-05",
           "channel": "korchynskiy",
-          "views": 2640,
+          "views": 2720,
           "url": "https://t.me/korchynskiy/12262"
         }
       ],
@@ -11010,7 +11335,7 @@
       "playbook_note": "Короткий емоційний пост від каналу «Сила Свободи» з прямим закликом донатити на банку 25-ї бригади імені князя Аскольда. Акцент на невідворотності знищення окупантів і спільній дії («наша спільна робота»); завершується подякою донорам. Немає цифрових цілей, дедлайну або конкретного звіту про використання коштів.",
       "amount_uah": 5547.13,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 10.0,
       "reach": 1970.0,
       "engagement": null,
       "spend": null,
@@ -11051,7 +11376,7 @@
       },
       "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "relink: monobank jar tier-1",
+      "verdict_reason": "audit: monobank jar tier-1",
       "extracted_at": "2026-06-07T18:55:20.002985+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
@@ -11094,8 +11419,8 @@
           "url": "https://t.me/sylasvobody/310"
         }
       ],
-      "jar_velocity_uah_per_day": 0.0,
-      "jar_span_days": 0.49406671090277776
+      "jar_velocity_uah_per_day": 1836.2712630828207,
+      "jar_span_days": 0.5445818491550926
     },
     {
       "id": "camp-7a6e0bfb1bc8",
@@ -11160,8 +11485,8 @@
       "extracted_at": "2026-06-07T13:52:37.996572+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.8281938325991189,
-      "reach_resonance": 0.8281938325991189,
+      "rel_resonance": 0.8367952522255193,
+      "reach_resonance": 0.8367952522255193,
       "themes": [
         "vehicles"
       ],
@@ -11250,14 +11575,15 @@
       "reach_resonance": 0.559322033898305,
       "themes": [],
       "has_destination": true,
-      "reach_total": 66,
+      "reach_total": 582,
       "engagement_total": null,
-      "post_count": 1,
-      "channel_count": 1,
+      "post_count": 2,
+      "channel_count": 2,
       "first_post": "2026-04-26",
       "last_post": "2026-04-26",
       "post_channels": [
-        "sptzbir"
+        "sptzbir",
+        "sptua"
       ],
       "posts": [
         {
@@ -11265,6 +11591,12 @@
           "channel": "sptzbir",
           "views": 66,
           "url": "https://t.me/sptzbir/117"
+        },
+        {
+          "date": "2026-04-26",
+          "channel": "sptua",
+          "views": 516,
+          "url": "https://t.me/sptua/2420"
         }
       ],
       "jar_velocity_uah_per_day": 0.0,
@@ -11334,8 +11666,8 @@
       "extracted_at": "2026-06-07T18:29:09.431915+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.6639344262295082,
-      "reach_resonance": 0.6639344262295082,
+      "rel_resonance": 0.46075085324232085,
+      "reach_resonance": 0.46075085324232085,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -11410,8 +11742,8 @@
       "extracted_at": "2026-06-07T13:10:00.013596+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 1.0100574712643677,
+      "reach_resonance": 1.0100574712643677,
       "themes": [
         "humanitarian"
       ],
@@ -11490,8 +11822,8 @@
       "extracted_at": "2026-06-07T18:04:16.843230+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0,
-      "reach_resonance": 1.0,
+      "rel_resonance": 0.8601119104716227,
+      "reach_resonance": 0.8601119104716227,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -11579,8 +11911,8 @@
       "extracted_at": "2026-06-07T13:07:01.370167+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.8164464023494861,
-      "reach_resonance": 0.8164464023494861,
+      "rel_resonance": 0.8249258160237388,
+      "reach_resonance": 0.8249258160237388,
       "themes": [
         "interceptors"
       ],
@@ -11664,8 +11996,8 @@
       "extracted_at": "2026-06-07T14:01:44.740938+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0,
-      "reach_resonance": 1.0,
+      "rel_resonance": 1.010385756676558,
+      "reach_resonance": 1.010385756676558,
       "themes": [
         "vehicles"
       ],
@@ -11759,13 +12091,13 @@
       "extracted_at": "2026-06-07T12:23:33.618545+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.5961820851688693,
-      "reach_resonance": 0.5961820851688693,
+      "rel_resonance": 0.6023738872403561,
+      "reach_resonance": 0.6023738872403561,
       "themes": [
         "humanitarian"
       ],
       "has_destination": true,
-      "reach_total": 406,
+      "reach_total": 518,
       "engagement_total": null,
       "post_count": 1,
       "channel_count": 1,
@@ -11778,7 +12110,7 @@
         {
           "date": "2026-06-04",
           "channel": "prytulafoundation",
-          "views": 406,
+          "views": 518,
           "url": "https://t.me/prytulafoundation/4205"
         }
       ],
@@ -11811,7 +12143,7 @@
       "playbook_note": "Пост публікується як звіт про результат попереднього збору «Щелепи»: донори отримують конкретний бойовий результат — знищення ворожого РЛС «Небо-СВУ» вартістю ~100 млн доларів. Підхід поєднує звітність перед донорами з негайним закликом до нового збору («убивчий тандем»), використовуючи ефект підтвердженої ефективності як мотиватор для повторного донату.",
       "amount_uah": 12515882.81,
       "amount_usd": null,
-      "goal_amount": null,
+      "goal_amount": 800000000.0,
       "reach": 744.0,
       "engagement": null,
       "spend": null,
@@ -11848,12 +12180,12 @@
       },
       "confidence_overall": 0.95,
       "verification_status": "verified",
-      "verdict_reason": "relink: monobank jar tier-1",
+      "verdict_reason": "audit: monobank jar tier-1",
       "extracted_at": "2026-06-07T13:07:48.271550+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.092511013215859,
-      "reach_resonance": 1.092511013215859,
+      "rel_resonance": 1.1038575667655786,
+      "reach_resonance": 1.1038575667655786,
       "themes": [],
       "has_destination": true,
       "reach_total": null,
@@ -11864,8 +12196,8 @@
       "last_post": null,
       "post_channels": [],
       "posts": [],
-      "jar_velocity_uah_per_day": null,
-      "jar_span_days": null
+      "jar_velocity_uah_per_day": 7039.415314204607,
+      "jar_span_days": 0.5241912623842593
     },
     {
       "id": "camp-9fac1202defb",
@@ -11937,8 +12269,8 @@
       "extracted_at": "2026-06-07T14:06:17.324566+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 1.1206896551724137,
+      "reach_resonance": 1.1206896551724137,
       "themes": [
         "fpv",
         "vehicles",
@@ -12022,13 +12354,13 @@
       "extracted_at": "2026-06-07T18:02:56.144368+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0780669144981412,
-      "reach_resonance": 1.0780669144981412,
+      "rel_resonance": 0.9272581934452439,
+      "reach_resonance": 0.9272581934452439,
       "themes": [
         "vehicles"
       ],
       "has_destination": true,
-      "reach_total": 5800,
+      "reach_total": 5920,
       "engagement_total": null,
       "post_count": 1,
       "channel_count": 1,
@@ -12041,7 +12373,7 @@
         {
           "date": "2026-06-05",
           "channel": "bihusinfo",
-          "views": 5800,
+          "views": 5920,
           "url": "https://t.me/bihusinfo/15714"
         }
       ],
@@ -12114,25 +12446,31 @@
       "extracted_at": "2026-06-07T18:08:26.182999+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.7335423197492164,
+      "reach_resonance": 0.7335423197492164,
       "themes": [],
       "has_destination": true,
-      "reach_total": 3510,
+      "reach_total": 7410,
       "engagement_total": null,
-      "post_count": 1,
+      "post_count": 2,
       "channel_count": 1,
       "first_post": "2026-06-07",
-      "last_post": "2026-06-07",
+      "last_post": "2026-06-08",
       "post_channels": [
-        "d7_channel"
+        "D7_channel"
       ],
       "posts": [
         {
           "date": "2026-06-07",
-          "channel": "d7_channel",
-          "views": 3510,
+          "channel": "D7_channel",
+          "views": 4620,
           "url": "https://t.me/D7_channel/83203"
+        },
+        {
+          "date": "2026-06-08",
+          "channel": "D7_channel",
+          "views": 2790,
+          "url": "https://t.me/D7_channel/83222"
         }
       ],
       "jar_velocity_uah_per_day": 323.24539565838836,
@@ -12201,8 +12539,8 @@
       "extracted_at": "2026-06-07T13:09:45.979639+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 1.264367816091954,
+      "reach_resonance": 1.264367816091954,
       "themes": [
         "fpv",
         "vehicles",
@@ -12280,8 +12618,8 @@
       "extracted_at": "2026-06-07T13:07:14.671596+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.9192364170337739,
-      "reach_resonance": 0.9192364170337739,
+      "rel_resonance": 0.9287833827893175,
+      "reach_resonance": 0.9287833827893175,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -12354,8 +12692,8 @@
       "extracted_at": "2026-06-07T14:08:00.027569+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0593220338983051,
-      "reach_resonance": 1.0593220338983051,
+      "rel_resonance": 1.1111111111111112,
+      "reach_resonance": 1.1111111111111112,
       "themes": [
         "vehicles"
       ],
@@ -12440,15 +12778,15 @@
       "extracted_at": "2026-06-07T18:05:40.531021+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0,
-      "reach_resonance": 1.0,
+      "rel_resonance": 0.8601119104716227,
+      "reach_resonance": 0.8601119104716227,
       "themes": [
         "reb_ew",
         "comms",
         "medical"
       ],
       "has_destination": true,
-      "reach_total": 5380,
+      "reach_total": 5740,
       "engagement_total": null,
       "post_count": 1,
       "channel_count": 1,
@@ -12461,7 +12799,7 @@
         {
           "date": "2026-06-06",
           "channel": "bihusinfo",
-          "views": 5380,
+          "views": 5740,
           "url": "https://t.me/bihusinfo/15729"
         }
       ],
@@ -12624,8 +12962,8 @@
       "extracted_at": "2026-06-07T18:32:59.656046+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.882051282051282,
+      "reach_resonance": 0.882051282051282,
       "themes": [
         "vehicles"
       ],
@@ -12717,8 +13055,8 @@
       "extracted_at": "2026-06-07T18:10:10.687108+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 1.1640866873065014,
+      "reach_resonance": 1.1640866873065014,
       "themes": [
         "fpv"
       ],
@@ -12799,8 +13137,8 @@
       "extracted_at": "2026-06-07T18:13:25.169360+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.7617135207496654,
+      "reach_resonance": 0.7617135207496654,
       "themes": [
         "comms"
       ],
@@ -12879,8 +13217,8 @@
       "extracted_at": "2026-06-07T13:06:25.844298+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.287812041116006,
-      "reach_resonance": 1.287812041116006,
+      "rel_resonance": 1.301186943620178,
+      "reach_resonance": 1.301186943620178,
       "themes": [
         "fpv",
         "interceptors",
@@ -12962,8 +13300,8 @@
       "extracted_at": "2026-06-07T13:07:33.766456+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.895741556534508,
-      "reach_resonance": 0.895741556534508,
+      "rel_resonance": 0.9050445103857567,
+      "reach_resonance": 0.9050445103857567,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -13040,8 +13378,8 @@
       "extracted_at": "2026-06-07T18:30:52.035723+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.1581967213114754,
-      "reach_resonance": 0.1581967213114754,
+      "rel_resonance": 0.10978384527872583,
+      "reach_resonance": 0.10978384527872583,
       "themes": [
         "fpv",
         "reb_ew"
@@ -13126,8 +13464,8 @@
       "extracted_at": "2026-06-07T14:09:32.129738+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0296610169491525,
-      "reach_resonance": 1.0296610169491525,
+      "rel_resonance": 1.08,
+      "reach_resonance": 1.08,
       "themes": [],
       "has_destination": true,
       "reach_total": 243000,
@@ -13214,8 +13552,8 @@
       "extracted_at": "2026-06-07T18:37:08.715144+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.8649045521292217,
-      "reach_resonance": 0.8649045521292217,
+      "rel_resonance": 0.8738872403560831,
+      "reach_resonance": 0.8738872403560831,
       "themes": [
         "recon",
         "ammo"
@@ -13292,8 +13630,8 @@
       "extracted_at": "2026-06-07T14:20:10.357190+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.055084745762712,
-      "reach_resonance": 1.055084745762712,
+      "rel_resonance": 1.1066666666666667,
+      "reach_resonance": 1.1066666666666667,
       "themes": [
         "fpv"
       ],
@@ -13377,8 +13715,8 @@
       "extracted_at": "2026-06-07T13:50:43.737359+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.9295154185022027,
-      "reach_resonance": 0.9295154185022027,
+      "rel_resonance": 0.9391691394658753,
+      "reach_resonance": 0.9391691394658753,
       "themes": [
         "vehicles"
       ],
@@ -13453,8 +13791,8 @@
       "extracted_at": "2026-06-07T14:11:43.796534+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.1398305084745763,
-      "reach_resonance": 1.1398305084745763,
+      "rel_resonance": 1.1955555555555555,
+      "reach_resonance": 1.1955555555555555,
       "themes": [
         "vehicles"
       ],
@@ -13534,8 +13872,8 @@
       "extracted_at": "2026-06-07T13:47:46.740959+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.895741556534508,
-      "reach_resonance": 0.895741556534508,
+      "rel_resonance": 0.9050445103857567,
+      "reach_resonance": 0.9050445103857567,
       "themes": [
         "fpv",
         "comms"
@@ -13627,14 +13965,14 @@
       "extracted_at": "2026-06-07T18:11:44.522946+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.5510835913312694,
+      "reach_resonance": 0.5510835913312694,
       "themes": [
         "fpv",
         "reb_ew"
       ],
       "has_destination": true,
-      "reach_total": 8900,
+      "reach_total": 9060,
       "engagement_total": null,
       "post_count": 1,
       "channel_count": 1,
@@ -13647,7 +13985,7 @@
         {
           "date": "2026-05-31",
           "channel": "e_drones",
-          "views": 8900,
+          "views": 9060,
           "url": "https://t.me/e_drones/529"
         }
       ],
@@ -13720,8 +14058,8 @@
       "extracted_at": "2026-06-07T13:59:11.529915+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.9794419970631424,
-      "reach_resonance": 0.9794419970631424,
+      "rel_resonance": 0.9896142433234422,
+      "reach_resonance": 0.9896142433234422,
       "themes": [
         "vehicles"
       ],
@@ -13800,8 +14138,8 @@
       "extracted_at": "2026-06-07T13:11:48.219849+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.0677966101694916,
-      "reach_resonance": 1.0677966101694916,
+      "rel_resonance": 1.12,
+      "reach_resonance": 1.12,
       "themes": [
         "fpv",
         "vehicles"
@@ -13881,8 +14219,8 @@
       "extracted_at": "2026-06-07T22:30:10.120984+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.5691573926868044,
+      "reach_resonance": 0.5691573926868044,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -13959,8 +14297,8 @@
       "extracted_at": "2026-06-07T13:09:26.510326+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.8089080459770115,
+      "reach_resonance": 0.8089080459770115,
       "themes": [
         "fpv"
       ],
@@ -14044,8 +14382,8 @@
       "extracted_at": "2026-06-07T12:22:57.956929+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 37.73861967694567,
-      "reach_resonance": 37.73861967694567,
+      "rel_resonance": 38.13056379821958,
+      "reach_resonance": 38.13056379821958,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -14120,8 +14458,8 @@
       "extracted_at": "2026-06-07T14:25:32.873100+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.42105263157894735,
-      "reach_resonance": 0.42105263157894735,
+      "rel_resonance": 0.3669724770642202,
+      "reach_resonance": 0.3669724770642202,
       "themes": [
         "interceptors"
       ],
@@ -14285,8 +14623,8 @@
       "extracted_at": "2026-06-07T13:53:42.813293+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 0.8458149779735683,
-      "reach_resonance": 0.8458149779735683,
+      "rel_resonance": 0.8545994065281899,
+      "reach_resonance": 0.8545994065281899,
       "themes": [
         "comms"
       ],
@@ -14372,27 +14710,123 @@
       "extracted_at": "2026-06-07T22:54:45.508856+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.9854227405247813,
+      "reach_resonance": 0.9854227405247813,
       "themes": [
         "fpv"
       ],
       "has_destination": true,
-      "reach_total": 338,
+      "reach_total": 5888,
       "engagement_total": null,
-      "post_count": 1,
+      "post_count": 17,
       "channel_count": 1,
-      "first_post": "2026-04-18",
-      "last_post": "2026-04-18",
+      "first_post": "2026-03-28",
+      "last_post": "2026-05-13",
       "post_channels": [
-        "wtormbat4_92owbr"
+        "wtormbat4_92OWBr"
       ],
       "posts": [
         {
+          "date": "2026-03-28",
+          "channel": "wtormbat4_92OWBr",
+          "views": 316,
+          "url": "https://t.me/wtormbat4_92OWBr/338"
+        },
+        {
+          "date": "2026-03-29",
+          "channel": "wtormbat4_92OWBr",
+          "views": 356,
+          "url": "https://t.me/wtormbat4_92OWBr/344"
+        },
+        {
+          "date": "2026-03-30",
+          "channel": "wtormbat4_92OWBr",
+          "views": 486,
+          "url": "https://t.me/wtormbat4_92OWBr/349"
+        },
+        {
+          "date": "2026-04-07",
+          "channel": "wtormbat4_92OWBr",
+          "views": 380,
+          "url": "https://t.me/wtormbat4_92OWBr/355"
+        },
+        {
+          "date": "2026-04-11",
+          "channel": "wtormbat4_92OWBr",
+          "views": 446,
+          "url": "https://t.me/wtormbat4_92OWBr/356"
+        },
+        {
+          "date": "2026-04-12",
+          "channel": "wtormbat4_92OWBr",
+          "views": 343,
+          "url": "https://t.me/wtormbat4_92OWBr/364"
+        },
+        {
+          "date": "2026-04-15",
+          "channel": "wtormbat4_92OWBr",
+          "views": 350,
+          "url": "https://t.me/wtormbat4_92OWBr/365"
+        },
+        {
+          "date": "2026-04-16",
+          "channel": "wtormbat4_92OWBr",
+          "views": 339,
+          "url": "https://t.me/wtormbat4_92OWBr/366"
+        },
+        {
           "date": "2026-04-18",
-          "channel": "wtormbat4_92owbr",
-          "views": 338,
+          "channel": "wtormbat4_92OWBr",
+          "views": 339,
           "url": "https://t.me/wtormbat4_92OWBr/367"
+        },
+        {
+          "date": "2026-04-21",
+          "channel": "wtormbat4_92OWBr",
+          "views": 383,
+          "url": "https://t.me/wtormbat4_92OWBr/368"
+        },
+        {
+          "date": "2026-04-24",
+          "channel": "wtormbat4_92OWBr",
+          "views": 342,
+          "url": "https://t.me/wtormbat4_92OWBr/369"
+        },
+        {
+          "date": "2026-04-25",
+          "channel": "wtormbat4_92OWBr",
+          "views": 403,
+          "url": "https://t.me/wtormbat4_92OWBr/370"
+        },
+        {
+          "date": "2026-04-29",
+          "channel": "wtormbat4_92OWBr",
+          "views": 366,
+          "url": "https://t.me/wtormbat4_92OWBr/371"
+        },
+        {
+          "date": "2026-05-08",
+          "channel": "wtormbat4_92OWBr",
+          "views": 290,
+          "url": "https://t.me/wtormbat4_92OWBr/372"
+        },
+        {
+          "date": "2026-05-09",
+          "channel": "wtormbat4_92OWBr",
+          "views": 315,
+          "url": "https://t.me/wtormbat4_92OWBr/373"
+        },
+        {
+          "date": "2026-05-13",
+          "channel": "wtormbat4_92OWBr",
+          "views": 225,
+          "url": "https://t.me/wtormbat4_92OWBr/374"
+        },
+        {
+          "date": "2026-05-13",
+          "channel": "wtormbat4_92OWBr",
+          "views": 209,
+          "url": "https://t.me/wtormbat4_92OWBr/375"
         }
       ],
       "jar_velocity_uah_per_day": 0.0,
@@ -14463,8 +14897,8 @@
       "extracted_at": "2026-06-07T22:53:06.122035+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": 1.1741071428571428,
-      "reach_resonance": 1.1741071428571428,
+      "rel_resonance": 1.148471615720524,
+      "reach_resonance": 1.148471615720524,
       "themes": [],
       "has_destination": false,
       "reach_total": null,
@@ -14550,19 +14984,19 @@
       "extracted_at": "2026-06-07T22:31:10.889539+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.8547008547008547,
+      "reach_resonance": 0.8547008547008547,
       "themes": [
         "reb_ew",
         "nrk_demining"
       ],
       "has_destination": true,
-      "reach_total": 66837,
+      "reach_total": 80237,
       "engagement_total": 7749,
-      "post_count": 3,
+      "post_count": 8,
       "channel_count": 2,
       "first_post": "2022-11-17",
-      "last_post": "2026-05-20",
+      "last_post": "2026-06-07",
       "post_channels": [
         "Moto LIFE",
         "motolifeua"
@@ -14581,10 +15015,40 @@
           "url": "https://www.youtube.com/watch?v=bFULh2J-oUY"
         },
         {
+          "date": "2026-05-07",
+          "channel": "motolifeua",
+          "views": 3240,
+          "url": "https://t.me/motolifeua/1568"
+        },
+        {
+          "date": "2026-05-09",
+          "channel": "motolifeua",
+          "views": 2980,
+          "url": "https://t.me/motolifeua/1571"
+        },
+        {
           "date": "2026-05-20",
           "channel": "motolifeua",
-          "views": 2500,
+          "views": 2510,
           "url": "https://t.me/motolifeua/1586"
+        },
+        {
+          "date": "2026-05-26",
+          "channel": "motolifeua",
+          "views": 2810,
+          "url": "https://t.me/motolifeua/1593"
+        },
+        {
+          "date": "2026-05-28",
+          "channel": "motolifeua",
+          "views": 2400,
+          "url": "https://t.me/motolifeua/1594"
+        },
+        {
+          "date": "2026-06-07",
+          "channel": "motolifeua",
+          "views": 1960,
+          "url": "https://t.me/motolifeua/1602"
         }
       ],
       "jar_velocity_uah_per_day": 936.2865429872741,
@@ -14659,27 +15123,33 @@
       "extracted_at": "2026-06-07T18:06:54.275308+00:00",
       "extracted_by_model": "claude-opus-4-8",
       "engagement_rate": null,
-      "rel_resonance": null,
-      "reach_resonance": null,
+      "rel_resonance": 0.9132706374085684,
+      "reach_resonance": 0.9132706374085684,
       "themes": [
         "medical"
       ],
       "has_destination": true,
-      "reach_total": 4370,
+      "reach_total": 10030,
       "engagement_total": null,
-      "post_count": 1,
+      "post_count": 2,
       "channel_count": 1,
       "first_post": "2026-06-07",
       "last_post": "2026-06-07",
       "post_channels": [
-        "d7_channel"
+        "D7_channel"
       ],
       "posts": [
         {
           "date": "2026-06-07",
-          "channel": "d7_channel",
-          "views": 4370,
+          "channel": "D7_channel",
+          "views": 5100,
           "url": "https://t.me/D7_channel/83196"
+        },
+        {
+          "date": "2026-06-07",
+          "channel": "D7_channel",
+          "views": 4930,
+          "url": "https://t.me/D7_channel/83212"
         }
       ],
       "jar_velocity_uah_per_day": 4390.121155390713,

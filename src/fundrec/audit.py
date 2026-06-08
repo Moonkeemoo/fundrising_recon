@@ -901,6 +901,13 @@ def main(argv: list[str] | None = None) -> int:
                    llm-style/diagnose) + re-export + матриця before/after.
     Прапори: --no-llm, --max N, --only-actions a,b, --dry-run, --fields, --db, --raw-dir.
     """
+    # Windows-консоль (cp1252) інакше падає на ₴/→ у звіті — форсуємо UTF-8.
+    for _stream in (sys.stdout, sys.stderr):
+        try:
+            _stream.reconfigure(encoding="utf-8")  # type: ignore[union-attr]
+        except (AttributeError, ValueError):
+            pass
+
     parser = argparse.ArgumentParser(description="Аудит повноти зборів фандрайзингу.")
     parser.add_argument("--db", default=str(config.DB_PATH), help="Шлях до SQLite БД.")
     parser.add_argument(

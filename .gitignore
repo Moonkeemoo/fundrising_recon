@@ -23,3 +23,5 @@ venv/
 .DS_Store
 Thumbs.db
 data/jars_cache.json
+data/fundrec.sqlite.bak_audit
+data/_audit_run.log

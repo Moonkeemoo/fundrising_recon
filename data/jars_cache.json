@@ -22,12 +22,17 @@
     "jar_id": "3w8JTb7xhE",
     "url": "https://send.monobank.ua/jar/3w8JTb7xhE",
     "title": "Serhii Prytula Charity Foundation created a fundraiser",
-    "amount_uah": 271806270.84,
+    "amount_uah": 272309759.17,
     "goal_amount": 1000000000.0,
     "history": [
       {
         "ts": "2026-06-07T19:57:34.574946+00:00",
         "amount_uah": 271806270.84,
+        "goal_amount": 1000000000.0
+      },
+      {
+        "ts": "2026-06-08T08:06:36.610623+00:00",
+        "amount_uah": 272309759.17,
         "goal_amount": 1000000000.0
       }
     ]
@@ -70,7 +75,14 @@
     "url": "https://send.monobank.ua/jar/2U42YsYFmd",
     "title": "Serhii Prytula Charity Foundation closed the fundraiser",
     "amount_uah": 3378836.95,
-    "goal_amount": null
+    "goal_amount": null,
+    "history": [
+      {
+        "ts": "2026-06-08T08:11:57.741734+00:00",
+        "amount_uah": 3378836.95,
+        "goal_amount": null
+      }
+    ]
   },
   "8bzZXDEURy": {
     "jar_id": "8bzZXDEURy",
@@ -83,7 +95,7 @@
     "jar_id": "2JbpBYkhMv",
     "url": "https://send.monobank.ua/jar/2JbpBYkhMv",
     "title": "БФ СПІЛЬНОТА СТЕРНЕНКА created a fundraiser",
-    "amount_uah": 845771.32,
+    "amount_uah": 1107408.06,
     "goal_amount": 10000000.0,
     "history": [
       {
@@ -94,6 +106,11 @@
       {
         "ts": "2026-06-08T06:56:44.782664+00:00",
         "amount_uah": 845771.32,
+        "goal_amount": 10000000.0
+      },
+      {
+        "ts": "2026-06-08T08:06:27.884017+00:00",
+        "amount_uah": 1107408.06,
         "goal_amount": 10000000.0
       }
     ]
@@ -418,12 +435,17 @@
     "jar_id": "Rmhzf7Ktw",
     "url": "https://send.monobank.ua/jar/Rmhzf7Ktw",
     "title": "Serhii Prytula Charity Foundation created a fundraiser",
-    "amount_uah": 12515882.81,
+    "amount_uah": 12519572.81,
     "goal_amount": 800000000.0,
     "history": [
       {
         "ts": "2026-06-07T19:37:12.905833+00:00",
         "amount_uah": 12515882.81,
+        "goal_amount": 800000000.0
+      },
+      {
+        "ts": "2026-06-08T08:12:03.030903+00:00",
+        "amount_uah": 12519572.81,
         "goal_amount": 800000000.0
       }
     ]
@@ -439,8 +461,8 @@
     "jar_id": "5ErfgMqeKy",
     "url": "https://send.monobank.ua/jar/5ErfgMqeKy",
     "title": "Fundraiser by ЛЮБАРТ ФАУНДЕЙШН",
-    "amount_uah": 3515402.53,
-    "goal_amount": 407690.78,
+    "amount_uah": 3516902.53,
+    "goal_amount": 407890.78,
     "history": [
       {
         "ts": "2026-06-07T19:05:54.205510+00:00",
@@ -451,6 +473,11 @@
         "ts": "2026-06-08T06:56:53.511960+00:00",
         "amount_uah": 3515402.53,
         "goal_amount": 407690.78
+      },
+      {
+        "ts": "2026-06-08T08:06:42.428869+00:00",
+        "amount_uah": 3516902.53,
+        "goal_amount": 407890.78
       }
     ]
   },
@@ -553,7 +580,7 @@
     "jar_id": "3T8X5TJ9aN",
     "url": "https://send.monobank.ua/jar/3T8X5TJ9aN",
     "title": "Костянтин Ч. created the jar",
-    "amount_uah": 71154.0,
+    "amount_uah": 71407.0,
     "goal_amount": 1000000.0,
     "history": [
       {
@@ -564,6 +591,11 @@
       {
         "ts": "2026-06-08T06:57:18.122418+00:00",
         "amount_uah": 71154.0,
+        "goal_amount": 1000000.0
+      },
+      {
+        "ts": "2026-06-08T08:07:58.081419+00:00",
+        "amount_uah": 71407.0,
         "goal_amount": 1000000.0
       }
     ]
@@ -890,7 +922,7 @@
     "jar_id": "4DqEtUN56Y",
     "url": "https://send.monobank.ua/jar/4DqEtUN56Y",
     "title": "Максим Д. created the jar",
-    "amount_uah": 5547.13,
+    "amount_uah": 6547.13,
     "goal_amount": 10.0,
     "history": [
       {
@@ -901,6 +933,11 @@
       {
         "ts": "2026-06-08T06:57:57.514392+00:00",
         "amount_uah": 5547.13,
+        "goal_amount": 10.0
+      },
+      {
+        "ts": "2026-06-08T08:10:42.022337+00:00",
+        "amount_uah": 6547.13,
         "goal_amount": 10.0
       }
     ]
@@ -923,7 +960,7 @@
     "jar_id": "Ab1zCD9jgN",
     "url": "https://send.monobank.ua/jar/Ab1zCD9jgN",
     "title": "Єлизавета О. created the jar",
-    "amount_uah": 194684.0,
+    "amount_uah": 194685.0,
     "goal_amount": 1000000.0,
     "history": [
       {
@@ -934,6 +971,11 @@
       {
         "ts": "2026-06-08T06:57:45.935418+00:00",
         "amount_uah": 194684.0,
+        "goal_amount": 1000000.0
+      },
+      {
+        "ts": "2026-06-08T08:09:43.964214+00:00",
+        "amount_uah": 194685.0,
         "goal_amount": 1000000.0
       }
     ]
