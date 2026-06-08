@@ -95,7 +95,7 @@
     "jar_id": "2JbpBYkhMv",
     "url": "https://send.monobank.ua/jar/2JbpBYkhMv",
     "title": "БФ СПІЛЬНОТА СТЕРНЕНКА created a fundraiser",
-    "amount_uah": 1107408.06,
+    "amount_uah": 3463991.93,
     "goal_amount": 10000000.0,
     "history": [
       {
@@ -111,6 +111,11 @@
       {
         "ts": "2026-06-08T08:06:27.884017+00:00",
         "amount_uah": 1107408.06,
+        "goal_amount": 10000000.0
+      },
+      {
+        "ts": "2026-06-08T11:16:55.701202+00:00",
+        "amount_uah": 3463991.93,
         "goal_amount": 10000000.0
       }
     ]
