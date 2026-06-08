@@ -380,10 +380,11 @@ def test_audit_database_live():
     reports = audit.audit_database(conn, raw_dir=config.RAW_DIR)
     # ~64 реальні збори
     assert 60 <= len(reports) <= 70
-    # покриття узгоджене зі spec (has_destination≈31, amount≈34)
+    # покриття призначень зросло після CTA-anchor/донат-лендінг розпізнавання
+    # (extract_destinations тепер ловить url:-лендінги) — has_destination≈36.
     n_dest = sum(1 for r in reports if r.fields["has_destination"] == audit.PRESENT)
     n_amount = sum(1 for r in reports if r.fields["amount_uah"] == audit.PRESENT)
-    assert 28 <= n_dest <= 34
+    assert 33 <= n_dest <= 42
     assert 31 <= n_amount <= 37
     # кожен звіт — валідний CompletenessReport
     for r in reports:

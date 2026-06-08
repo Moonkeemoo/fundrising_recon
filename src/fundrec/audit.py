@@ -126,8 +126,12 @@ def _raw_has_link(raw: dict | None) -> bool:
 
 
 def _has_destination(campaign: Campaign, raw: dict | None) -> bool:
-    """Чи має збір призначення (jar з провенансу АБО призначення з raw)."""
+    """Чи має збір призначення (jar/лендінг з провенансу АБО призначення з raw)."""
     if campaign_jar_id(campaign) is not None:
+        return True
+    # Лендінг-призначення, прикріплене fill_resolve_links (provenance[destination]).
+    entry = campaign.provenance.get(_DESTINATION_PROV_KEY)
+    if isinstance(entry, dict) and entry.get("source_url"):
         return True
     if raw is not None and extract_destinations(raw, _client=None):
         return True
@@ -348,35 +352,100 @@ def _attach_jar_destination(campaign: Campaign, jar_id: str) -> None:
     }
 
 
+def _attach_landing_destination(campaign: Campaign, url: str) -> None:
+    """Прикріплює донат-лендінг як призначення донату через provenance (tier-2).
+
+    Пише source_url лендінгу у provenance[_DESTINATION_PROV_KEY]. Лендінг — не
+    банка (campaign_jar_id його не зчитає), тому _has_destination окремо
+    консультує цей ключ (див. _campaign_landing_url).
+    """
+    campaign.provenance[_DESTINATION_PROV_KEY] = {
+        "source_url": url,
+        "confidence": 0.6,
+        "tier": 2,
+        "note": "donation landing page (no embedded jar resolved)",
+    }
+
+
+def _campaign_landing_url(campaign: Campaign) -> str | None:
+    """Повертає лендінг-URL з provenance[destination], якщо це НЕ банка Monobank.
+
+    Дозволяє _has_destination бачити лендінг-призначення (url:) симетрично до
+    того, як campaign_jar_id бачить банку.
+    """
+    entry = campaign.provenance.get(_DESTINATION_PROV_KEY)
+    if not isinstance(entry, dict):
+        return None
+    url = entry.get("source_url")
+    if not url:
+        return None
+    from .jars import extract_jar_ids  # noqa: PLC0415
+    if extract_jar_ids(str(url)):
+        return None  # це банка — її ловить campaign_jar_id
+    return str(url)
+
+
 def fill_resolve_links(
     conn: Any,
     campaign: Campaign,
     raw: dict | None,
     *,
     _resolve: Any | None = None,
+    _client: Any | None = None,
 ) -> bool:
-    """RESOLVE_LINKS: re-скан raw на призначення (вкл. скорочені лінки).
+    """RESOLVE_LINKS: re-скан raw на призначення (скорочувачі + донат-лендінги).
 
-    Використовує jars.jar_ids_from_raw_resolved (прямі + скорочувачі через
-    _resolve-клієнт) для пошуку банки, якої збору бракує. Якщо знайдено нову
-    банку — прикріплює її як призначення (provenance[destination]) і зберігає.
+    Порядок:
+      a. jars.jar_ids_from_raw_resolved (прямі лінки + скорочувачі через клієнт)
+         — якщо знайдено банку, прикріплює її як призначення й повертає True;
+      b. інакше для кожного donation_candidate_urls(raw) краулить лендінг
+         (jars.jar_from_landing): якщо вшита банка знайдена — прикріплює її
+         (tier-1) і повертає True;
+      c. інакше, якщо є donation-кандидати — прикріплює ПЕРШИЙ як лендінг-
+         призначення (provenance[destination], url:-tier-2) і повертає True;
+      d. інакше — False.
 
-    _resolve інжектує link-resolver (httpx-подібний клієнт) для тестів;
-    за замовчуванням — реальне розкриття скорочувачів (live: # pragma: no cover).
+    Ідемпотентно: якщо призначення (банка або лендінг) вже є — повертає False.
+    _resolve/_client інжектують httpx-подібний клієнт для тестів; за замовчуванням
+    — реальна мережа (live: # pragma: no cover). _resolve має пріоритет для
+    скорочувачів; _client — для краулу лендінгу (run_audit передає один клієнт).
 
     Повертає True якщо щось додано, інакше False.
     """
     if raw is None:
         return False
+    # Призначення вже є (банка АБО раніше прикріплений лендінг) → no-op (ідемпотентність).
     if campaign_jar_id(campaign) is not None:
-        return False  # призначення вже є
+        return False
+    if _campaign_landing_url(campaign) is not None:
+        return False
 
-    from .jars import jar_ids_from_raw_resolved  # noqa: PLC0415
+    from .destinations import donation_candidate_urls  # noqa: PLC0415
+    from .jars import jar_from_landing, jar_ids_from_raw_resolved  # noqa: PLC0415
 
-    jar_ids = jar_ids_from_raw_resolved(raw, _client=_resolve)
-    if not jar_ids:
-        return False  # priv-призначення вже ловить extract_destinations(raw) у audit
-    _attach_jar_destination(campaign, jar_ids[0])
+    client = _resolve if _resolve is not None else _client
+
+    # (a) Прямі лінки + скорочувачі.
+    jar_ids = jar_ids_from_raw_resolved(raw, _client=client)
+    if jar_ids:
+        _attach_jar_destination(campaign, jar_ids[0])
+        store.upsert_campaign(conn, campaign)
+        return True
+
+    # (b/c) Донат-лендінги: спершу краул вшитої банки, потім — лендінг як призначення.
+    candidates = donation_candidate_urls(raw)
+    if not candidates:
+        return False
+
+    for url in candidates:
+        jar_id = jar_from_landing(url, _client=client)
+        if jar_id:
+            _attach_jar_destination(campaign, jar_id)
+            store.upsert_campaign(conn, campaign)
+            return True
+
+    # (c) Жодна банка не вшита — прикріплюємо перший лендінг як призначення.
+    _attach_landing_destination(campaign, candidates[0])
     store.upsert_campaign(conn, campaign)
     return True
 
@@ -794,7 +863,7 @@ def _dispatch_action(
     але приймається для сумісності CLI/інтерфейсу.
     """
     if action == RESOLVE_LINKS:
-        return fill_resolve_links(conn, campaign, raw, _resolve=_client)
+        return fill_resolve_links(conn, campaign, raw, _resolve=_client, _client=_client)
     if action == RENDER_JAR:
         return fill_render_jar(
             conn, campaign, _render=_render, cache_path=jars_cache_path, force=True

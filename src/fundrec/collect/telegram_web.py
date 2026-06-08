@@ -80,6 +80,11 @@ class _TmeParser(HTMLParser):
         self._in_views: bool = False
         self._text_parts: list[str] = []
         self._links_seen: set[str] = set()   # для дедупу посилань поточного поста
+        # — стан захоплення внутрішнього тексту <a> (CTA-анкор) —
+        self._in_anchor: bool = False        # чи зараз всередині <a>
+        self._anchor_href: str | None = None  # href поточного <a>
+        self._anchor_parts: list[str] = []   # акумулятор inner-тексту <a>
+        self._anchors_seen: set[tuple[str, str]] = set()  # дедуп (href,text)
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attrs_dict = dict(attrs)
@@ -105,6 +110,7 @@ class _TmeParser(HTMLParser):
                     "message_id": message_id,
                     "text": None,
                     "links": [],
+                    "anchors": [],
                     "views": None,
                     "date": None,
                     "source_url": None,
@@ -112,6 +118,10 @@ class _TmeParser(HTMLParser):
                 self._msg_depth = self._div_depth
                 self._text_parts = []
                 self._links_seen = set()
+                self._anchors_seen = set()
+                self._in_anchor = False
+                self._anchor_href = None
+                self._anchor_parts = []
 
             elif "tgme_widget_message_text" in classes and self._current is not None:
                 self._in_text = True
@@ -132,6 +142,12 @@ class _TmeParser(HTMLParser):
             if href and not _is_date_link and href not in self._links_seen:
                 self._links_seen.add(href)
                 self._current["links"].append(href)
+            # Починаємо захоплення inner-тексту анкора (CTA-сигнал).
+            # Дата-лінк пропускаємо — це permalink поста, а не призначення.
+            if not _is_date_link:
+                self._in_anchor = True
+                self._anchor_href = href
+                self._anchor_parts = []
 
         if tag == "span" and "tgme_widget_message_views" in classes:
             self._in_views = True
@@ -147,6 +163,10 @@ class _TmeParser(HTMLParser):
                 self._current["date"] = dt
 
     def handle_endtag(self, tag: str) -> None:
+        if tag == "a" and self._in_anchor and self._current is not None:
+            # Закриваємо <a> — фіксуємо (href, inner-text) як анкор.
+            self._finalize_anchor()
+
         if tag == "div":
             if self._in_text and self._div_depth <= self._text_depth:
                 # Закрито div тексту
@@ -168,10 +188,32 @@ class _TmeParser(HTMLParser):
     def handle_data(self, data: str) -> None:
         if self._current is None:
             return
+        # Inner-текст анкора накопичуємо паралельно (не виключає _in_text:
+        # анкор зазвичай лежить усередині message_text-блоку).
+        if self._in_anchor:
+            self._anchor_parts.append(data)
         if self._in_text:
             self._text_parts.append(data)
         elif self._in_views:
             self._current["views"] = _parse_views(data.strip())
+
+    def _finalize_anchor(self) -> None:
+        """Фіксує поточний <a> як запис anchors: {href, text} (дедуп за (href,text))."""
+        if self._current is None:
+            self._in_anchor = False
+            self._anchor_href = None
+            self._anchor_parts = []
+            return
+        href = self._anchor_href or ""
+        text = " ".join(p.strip() for p in self._anchor_parts if p.strip()).strip()
+        if href:
+            key = (href, text)
+            if key not in self._anchors_seen:
+                self._anchors_seen.add(key)
+                self._current["anchors"].append({"href": href, "text": text})
+        self._in_anchor = False
+        self._anchor_href = None
+        self._anchor_parts = []
 
     def _save_current(self) -> None:
         """Фіналізує та зберігає поточний пост."""
@@ -191,6 +233,10 @@ class _TmeParser(HTMLParser):
         self._in_views = False
         self._text_parts = []
         self._links_seen = set()
+        self._in_anchor = False
+        self._anchor_href = None
+        self._anchor_parts = []
+        self._anchors_seen = set()
 
     def close(self) -> None:
         if self._current is not None:
@@ -226,8 +272,11 @@ def parse_tme_html(channel: str, html: str) -> list[dict[str, Any]]:
     """Парсить HTML t.me/s/<channel> → list[dict] нормалізованих постів.
 
     Кожен dict містить:
-      source_url, platform, channel, text, views, date, message_id.
-    Honest null: views=None, date=None, text=None якщо відсутні.
+      source_url, platform, channel, text, links, anchors, views, date, message_id.
+    links — list[str] href-ів (зворотно-сумісно). anchors — list[dict]
+    {"href": str, "text": str}: href + видимий inner-текст кожного <a>
+    (CTA-сигнал, напр. «Донать на шахедоріз»), дедуп за (href,text).
+    Honest null: views=None, date=None, text=None якщо відсутні; anchors=[] якщо нема.
     """
     parser = _TmeParser(channel)
     parser.feed(html)
@@ -246,6 +295,7 @@ def parse_tme_html(channel: str, html: str) -> list[dict[str, Any]]:
             "channel": channel,
             "text": post.get("text"),
             "links": post.get("links") or [],
+            "anchors": post.get("anchors") or [],
             "views": post.get("views"),
             "date": post.get("date"),
             "message_id": message_id,
@@ -264,6 +314,9 @@ def fetch_channel_web(
     pages > 1: слідкує за курсором ?before=<min_message_id> і накопичує
     пости до `pages` запитів. Зупиняється достроково якщо сторінка не
     повертає нових постів. Дедуплікація за message_id.
+
+    Кожен пост містить anchors: list[dict] {"href","text"} — href + inner-текст
+    кожного <a> (CTA-сигнал), окрім backward-сумісного links: list[str].
 
     _client інжектиться в тестах.
     Live _client=None шлях: # pragma: no cover.

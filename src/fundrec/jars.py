@@ -11,6 +11,10 @@ fetch_jar_data(jar_id, *, _client=None) -> dict | None
     GET https://send.monobank.ua/jar/<jar_id>, повертає parse_jar_page або None.
     _client інжектується в тестах; live-шлях # pragma: no cover.
 
+jar_from_landing(url, *, _client=None, _depth=0) -> str | None
+    Краулить донат-лендінг (один хоп) і витягує jar-id вшитої банки.
+    Лише http(s); мережеві помилки → None. _client інжектується в тестах.
+
 jar_velocity(history) -> dict
     Обчислює velocity (₴/день) зі списку timestamped snapshot-ів (history).
     Потребує ≥2 snapshots; повертає None-значення якщо недостатньо даних.
@@ -388,6 +392,56 @@ def jar_ids_from_raw_resolved(
     # description окремо не сканується resolve_jar_id (скорочувачів зазвичай нема)
 
     return result
+
+
+def jar_from_landing(
+    url: str,
+    *,
+    _client: Any | None = None,
+    _depth: int = 0,
+) -> str | None:
+    """Краулить донат-лендінг і витягує jar-id вшитої банки Monobank.
+
+    GET сторінки лендінгу (напр. https://k-2.army/help-us), потім
+    extract_jar_ids по тексту відповіді + заголовку Location/фінальному URL.
+    Повертає перший знайдений jar-id або None.
+
+    Гарантії:
+      - фетчимо лише http(s)-URL (інші схеми → None без мережі);
+      - один хоп (без рекурсії landing→landing): _depth>0 → None;
+      - мережеві помилки ковтаються → None.
+
+    _client інжектується в тестах (fake, що повертає канонічний HTML);
+    live httpx-шлях: # pragma: no cover. У юніт-тестах без _client не фетчимо.
+    """
+    if _depth > 0:
+        return None
+    if not url or not url.lower().startswith(("http://", "https://")):
+        return None
+
+    if _client is None:  # pragma: no cover
+        import httpx  # noqa: PLC0415  # pragma: no cover
+        _client = httpx.Client(follow_redirects=True, timeout=10)  # pragma: no cover
+
+    try:
+        resp = _client.get(url, timeout=10)
+    except Exception:  # noqa: BLE001
+        return None
+
+    # Сканування: фінальний URL (після редиректів) + тіло відповіді.
+    candidates: list[str] = []
+    final_url = getattr(resp, "url", None)
+    if final_url:
+        candidates.append(str(final_url))
+    text = getattr(resp, "text", None)
+    if text:
+        candidates.append(str(text))
+
+    for blob in candidates:
+        ids = extract_jar_ids(blob)
+        if ids:
+            return ids[0]
+    return None
 
 
 def fetch_jar_data(jar_id: str, *, _client: Any | None = None) -> dict[str, Any] | None:
