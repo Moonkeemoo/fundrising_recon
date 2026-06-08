@@ -393,3 +393,337 @@ def test_audit_database_live():
             "post_count", "reach_total", "reach_resonance",
             "tone", "form_factor", "face", "cta_type", "themes",
         }
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# ВИКОНАВЕЦЬ (executor): handler-и добору дірок + run_audit + CLI
+# Усі зовнішні ефекти (мережа/LLM/рендер) ІНʼЄКТУЮТЬСЯ — жодного реального I/O.
+# ═════════════════════════════════════════════════════════════════════════════
+
+import hashlib  # noqa: E402
+import json  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+
+def _seed_db(tmp_path: Path):
+    """Створює tmp БД + порожній raw_dir; повертає (conn, db_path, raw_dir)."""
+    db_path = tmp_path / "test.sqlite"
+    raw_dir = tmp_path / "raw"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+    conn = store.connect(db_path)
+    store.init_db(conn)
+    from fundrec.schema import Actor
+    store.upsert_actor(conn, Actor(id="a1", name="Тест-актор", type="unknown"))
+    return conn, db_path, raw_dir
+
+
+def _write_raw(raw_dir: Path, source_url: str, payload: dict) -> None:
+    """Записує raw-файл так, як його знайде _find_raw_for_campaign (sha256[:16])."""
+    file_id = hashlib.sha256(source_url.encode()).hexdigest()[:16]
+    (raw_dir / f"{file_id}.json").write_text(
+        json.dumps(payload, ensure_ascii=False), encoding="utf-8"
+    )
+
+
+def _camp_with_source(source_url: str, **kw) -> Campaign:
+    """Кампанія з provenance['campaign'].source_url (щоб raw знаходився)."""
+    prov = kw.pop("provenance", {})
+    prov.setdefault("campaign", {"source_url": source_url, "tier": 2})
+    cid = "camp-" + hashlib.sha256(source_url.encode()).hexdigest()[:12]
+    base = dict(id=cid, actor_id="a1", title="Тестовий збір", goal="military", type="jar")
+    base.update(kw)
+    return Campaign(provenance=prov, **base)
+
+
+# ── fill_render_jar ──────────────────────────────────────────────────────────
+
+
+def test_fill_render_jar_sets_amount_and_goal(tmp_path):
+    conn, _db, _raw = _seed_db(tmp_path)
+    c = _camp_with_source("https://t.me/ch/1", provenance=_jar_prov("JARX"))
+    store.upsert_campaign(conn, c)
+
+    def _render(jar_id):  # повертає тіло сторінки банки
+        return "Збір на дрони\n100 000 ₴\n500 000 ₴"
+
+    ok = audit.fill_render_jar(
+        conn, c, _render=_render, cache_path=tmp_path / "jars.json"
+    )
+    assert ok is True
+    reloaded = store.get_campaign(conn, c.id)
+    assert reloaded.amount_uah == 100000.0
+    assert reloaded.goal_amount == 500000.0
+
+
+def test_fill_render_jar_closed_jar_returns_false(tmp_path):
+    conn, _db, _raw = _seed_db(tmp_path)
+    c = _camp_with_source("https://t.me/ch/2", provenance=_jar_prov("JARCLOSED"))
+    store.upsert_campaign(conn, c)
+
+    def _render(jar_id):  # закрита банка — жодних чисел
+        return "Збір завершено\nДякуємо!"
+
+    ok = audit.fill_render_jar(
+        conn, c, _render=_render, cache_path=tmp_path / "jars.json"
+    )
+    assert ok is False
+    reloaded = store.get_campaign(conn, c.id)
+    assert reloaded.amount_uah is None
+    assert reloaded.goal_amount is None
+
+
+def test_fill_render_jar_no_jar_returns_false(tmp_path):
+    conn, _db, _raw = _seed_db(tmp_path)
+    c = _camp_with_source("https://t.me/ch/3", type="organic_social")  # без jar
+    store.upsert_campaign(conn, c)
+    ok = audit.fill_render_jar(
+        conn, c, _render=lambda jid: "1 ₴", cache_path=tmp_path / "jars.json"
+    )
+    assert ok is False
+
+
+# ── fill_resolve_links ───────────────────────────────────────────────────────
+
+
+class _FakeShortenerClient:
+    """Імітує httpx-клієнт: HEAD скороченого лінку → редирект на банку."""
+
+    def __init__(self, mapping: dict[str, str]):
+        self._mapping = mapping
+
+    def head(self, url, timeout=10):  # noqa: ARG002
+        final = self._mapping.get(url, url)
+        return type("R", (), {"url": final})()
+
+    def get(self, url, timeout=10):  # noqa: ARG002
+        final = self._mapping.get(url, url)
+        return type("R", (), {"url": final})()
+
+
+def test_fill_resolve_links_attaches_jar_from_shortener(tmp_path):
+    conn, _db, raw_dir = _seed_db(tmp_path)
+    src = "https://t.me/ch/10"
+    raw = {"source_url": src, "text": "Донат тут", "links": ["https://cutt.ly/abc"]}
+    _write_raw(raw_dir, src, raw)
+    c = _camp_with_source(src, type="organic_social")  # призначення відсутнє
+    store.upsert_campaign(conn, c)
+    assert audit.campaign_jar_id(c) is None
+
+    client = _FakeShortenerClient(
+        {"https://cutt.ly/abc": "https://send.monobank.ua/jar/RESOLVED1"}
+    )
+    ok = audit.fill_resolve_links(conn, c, raw, _resolve=client)
+    assert ok is True
+    reloaded = store.get_campaign(conn, c.id)
+    assert audit.campaign_jar_id(reloaded) == "RESOLVED1"
+
+
+def test_fill_resolve_links_no_new_destination_returns_false(tmp_path):
+    conn, _db, raw_dir = _seed_db(tmp_path)
+    src = "https://t.me/ch/11"
+    raw = {"source_url": src, "text": "Просто текст без банки", "links": []}
+    _write_raw(raw_dir, src, raw)
+    c = _camp_with_source(src, type="organic_social")
+    store.upsert_campaign(conn, c)
+    ok = audit.fill_resolve_links(conn, c, raw, _resolve=_FakeShortenerClient({}))
+    assert ok is False
+
+
+# ── fill_search_posts ────────────────────────────────────────────────────────
+
+
+class _FakeTgClient:
+    """Імітує httpx для fetch_channel_web: повертає HTML t.me/s з постами."""
+
+    def __init__(self, html: str):
+        self._html = html
+
+    def get(self, url, timeout=20):  # noqa: ARG002
+        return type("R", (), {"text": self._html, "raise_for_status": lambda self=None: None})()
+
+
+def _tme_html(channel: str, msgs: list[tuple[int, str]]) -> str:
+    """Будує мінімальний HTML t.me/s/<channel> з постами (id, text)."""
+    blocks = []
+    for mid, text in msgs:
+        blocks.append(
+            f'<div class="tgme_widget_message" data-post="{channel}/{mid}">'
+            f'<div class="tgme_widget_message_text">{text} '
+            f'<a href="https://send.monobank.ua/jar/JARSP">банка</a></div>'
+            f'<span class="tgme_widget_message_views">1.2K</span>'
+            f"</div>"
+        )
+    return "<html><body>" + "".join(blocks) + "</body></html>"
+
+
+def test_fill_search_posts_links_new_posts(tmp_path):
+    conn, _db, raw_dir = _seed_db(tmp_path)
+    src = "https://t.me/spchan/100"
+    # raw кампанії містить банку JARSP — пости з тією ж банкою привʼяжуться
+    raw = {
+        "source_url": src,
+        "channel": "spchan",
+        "text": "Збір банка https://send.monobank.ua/jar/JARSP",
+        "links": ["https://send.monobank.ua/jar/JARSP"],
+    }
+    _write_raw(raw_dir, src, raw)
+    c = _camp_with_source(
+        src, provenance={"reach": {"source_url": "https://t.me/s/spchan/100", "tier": 2}}
+    )
+    store.upsert_campaign(conn, c)
+
+    html = _tme_html("spchan", [(101, "Ще пост про збір"), (102, "І ще один збір")])
+    client = _FakeTgClient(html)
+
+    n = audit.fill_search_posts(
+        conn, c, pages=1, raw_dir=raw_dir, _client=client
+    )
+    assert n > 0
+    linked = store.load_posts(conn, campaign_id=c.id)
+    assert len(linked) >= 1
+
+    # Ідемпотентність: повторний запуск не додає нових постів
+    n2 = audit.fill_search_posts(
+        conn, c, pages=1, raw_dir=raw_dir, _client=client
+    )
+    assert n2 == 0
+
+
+# ── fill_llm_style ───────────────────────────────────────────────────────────
+
+
+def test_fill_llm_style_fills_only_empty_fields(tmp_path):
+    conn, _db, _raw = _seed_db(tmp_path)
+    # tone вже задано (НЕ чіпаємо), cta_type/face порожні (заповнюємо)
+    c = _camp_with_source(
+        "https://t.me/ch/20", tone=["emotional"], cta_type=None, face=None
+    )
+    store.upsert_campaign(conn, c)
+    raw = {"source_url": "https://t.me/ch/20", "text": "Збір на дрони"}
+
+    def _complete(prompt):  # noqa: ARG001
+        return {
+            "tone": ["urgent"],          # НЕ повинно перезаписати наявне
+            "form_factor": ["video"],
+            "cta_type": "jar",
+            "face": "soldier",
+        }
+
+    ok = audit.fill_llm_style(conn, c, raw, _complete=_complete)
+    assert ok is True
+    reloaded = store.get_campaign(conn, c.id)
+    assert reloaded.tone == ["emotional"]   # збережено наявне
+    assert reloaded.cta_type == "jar"        # заповнено порожнє
+    assert reloaded.face == "soldier"
+
+
+def test_fill_llm_style_no_raw_returns_false(tmp_path):
+    conn, _db, _raw = _seed_db(tmp_path)
+    c = _camp_with_source("https://t.me/ch/21", cta_type=None)
+    store.upsert_campaign(conn, c)
+    ok = audit.fill_llm_style(conn, c, None, _complete=lambda p: {"cta_type": "jar"})
+    assert ok is False
+
+
+# ── fill_diagnose ────────────────────────────────────────────────────────────
+
+
+def test_fill_diagnose_applies_goal_and_destination(tmp_path):
+    conn, _db, _raw = _seed_db(tmp_path)
+    c = _camp_with_source("https://t.me/ch/30", type="organic_social")
+    store.upsert_campaign(conn, c)
+    raw = {"source_url": "https://t.me/ch/30", "text": "Ціль у закріпі"}
+
+    def _complete(prompt):  # noqa: ARG001
+        return {
+            "found_destination": "https://send.monobank.ua/jar/DIAGJAR",
+            "found_goal": 250000,
+        }
+
+    hint = audit.fill_diagnose(conn, c, raw, _complete=_complete)
+    assert isinstance(hint, dict)
+    reloaded = store.get_campaign(conn, c.id)
+    assert reloaded.goal_amount == 250000
+    assert audit.campaign_jar_id(reloaded) == "DIAGJAR"
+
+
+# ── run_audit ────────────────────────────────────────────────────────────────
+
+
+def test_run_audit_dry_run_writes_nothing(tmp_path):
+    conn, _db, raw_dir = _seed_db(tmp_path)
+    src = "https://t.me/ch/40"
+    raw = {"source_url": src, "text": "Донат", "links": ["https://cutt.ly/x"]}
+    _write_raw(raw_dir, src, raw)
+    c = _camp_with_source(src, is_campaign=True, type="organic_social")
+    store.upsert_campaign(conn, c)
+
+    before = store.get_campaign(conn, c.id)
+    summary = audit.run_audit(
+        conn, raw_dir=raw_dir, use_llm=False, dry_run=True
+    )
+    after = store.get_campaign(conn, c.id)
+
+    # Нічого не змінилось у БД
+    assert after.amount_uah == before.amount_uah
+    assert after.provenance == before.provenance
+    # summary містить намічені дії
+    assert summary["n_campaigns"] >= 1
+    assert "actions_run" in summary
+    assert sum(summary["actions_run"].values()) >= 1
+
+
+def test_run_audit_summary_shape_no_llm(tmp_path):
+    conn, db_path, raw_dir = _seed_db(tmp_path)
+    src = "https://t.me/ch/50"
+    raw = {"source_url": src, "channel": "ch", "text": "Збір банка",
+           "links": ["https://send.monobank.ua/jar/RUNJAR"]}
+    _write_raw(raw_dir, src, raw)
+    c = _camp_with_source(src, is_campaign=True, provenance=_jar_prov("RUNJAR"))
+    store.upsert_campaign(conn, c)
+
+    def _render(jar_id):
+        return "Збір\n10 000 ₴\n20 000 ₴"
+
+    summary = audit.run_audit(
+        conn,
+        raw_dir=raw_dir,
+        channels_file=tmp_path / "channels.txt",
+        use_llm=False,
+        _render=_render,
+        _client=_FakeTgClient(_tme_html("ch", [])),
+        out_path=tmp_path / "cases.json",
+        jars_cache_path=tmp_path / "jars.json",
+    )
+    # форма summary
+    for key in ("before", "after", "actions_run", "n_campaigns",
+                "fully_complete_before", "fully_complete_after"):
+        assert key in summary
+    # LLM-дії пропущені (use_llm=False)
+    assert summary["actions_run"].get(audit.LLM_EXTRACT_STYLE, 0) == 0
+    assert summary["actions_run"].get(audit.LLM_DIAGNOSE, 0) == 0
+    # RENDER_JAR заповнив суму → before<after для amount_uah
+    assert summary["after"]["amount_uah"] >= summary["before"]["amount_uah"]
+
+
+def test_run_audit_only_actions_filter(tmp_path):
+    conn, _db, raw_dir = _seed_db(tmp_path)
+    src = "https://t.me/ch/60"
+    raw = {"source_url": src, "text": "Донат", "links": ["https://cutt.ly/y"]}
+    _write_raw(raw_dir, src, raw)
+    c = _camp_with_source(src, is_campaign=True, type="organic_social", provenance=_jar_prov("ONLYJAR"))
+    store.upsert_campaign(conn, c)
+
+    summary = audit.run_audit(
+        conn,
+        raw_dir=raw_dir,
+        channels_file=tmp_path / "channels.txt",
+        use_llm=False,
+        only_actions={audit.RENDER_JAR},
+        _render=lambda jid: "Збір завершено",  # закрита → no-op
+        out_path=tmp_path / "cases.json",
+        jars_cache_path=tmp_path / "jars.json",
+    )
+    # Лише RENDER_JAR розглядався; RESOLVE_LINKS не запускався
+    assert audit.RESOLVE_LINKS not in summary["actions_run"] or \
+        summary["actions_run"].get(audit.RESOLVE_LINKS, 0) == 0
